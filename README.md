@@ -16,7 +16,7 @@
 - **Audio Playback**: Listen to the generated content directly through the built-in audio player.
 - **Interactive GUI**: Built with **Tkinter**, allowing users to easily input concepts, view translations, and play audio.
 - **Customizable Appearance**: Change font sizes, colors, and background themes to suit your preferences.
-- **Low API Costs**: Very cheap OpenAI API calls ensure affordability while still leveraging powerful AI models.
+- **Low API Costs**: Very cheap OpenAI API calls ensure affordability while still leveraging powerful AI models (create '.env' file and insert 'OPENAI_KEY="personal key"').
 
 ## Screenshot of the Software
 ![CleanShot 2025-03-04 at 17 55 18@2x](https://github.com/user-attachments/assets/0d245389-4506-442e-925d-9d01284611d5)
