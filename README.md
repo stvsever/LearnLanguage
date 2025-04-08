@@ -14,6 +14,7 @@
   - The **target language** (Spanish or Russian).
 - **Text-to-Speech (TTS) Integration**: Uses **gTTS** (Google Text-to-Speech) to generate audio pronunciations.
 - **Audio Playback**: Listen to the generated content directly through the built-in audio player.
+- **Testing Mode**: Allows you to test your ortographical and/or phonological knowledge.
 - **Interactive GUI**: Built with **Tkinter**, allowing users to easily input concepts, view translations, and play audio.
 - **Customizable Appearance**: Change font sizes, colors, and background themes to suit your preferences.
 - **Low API Costs**: Very cheap OpenAI API calls ensure affordability while still leveraging powerful AI models (create '.env' file and insert 'OPENAI_KEY="personal key"').
