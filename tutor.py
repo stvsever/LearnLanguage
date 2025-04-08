@@ -128,7 +128,6 @@ class Tutor:
             f"Provide two lists (original untranslated - translated) to teach the language related to the concept '{concept}' which is an explicit request from the user. "
             f"Generate {num_items} items for each list: English items (untranslated) and their translations into the target language. "
             f"The items can be words, phrases, or sentences ; depending on the request! (so read carefully) Just anything typical to tutor the user. "
-            f"The items are either in-first-person saying or general words/phrases/sentences. "
             f"Provide letters as items if alphabet is requested."
             f"Difficulty level: '{self.map_difficulty_to_level(target_language)}', adjust your response accordingly! ; There are five difficulty levels: 1. Beginner, 2. Elementary, 3. Intermediate, 4. Advanced, 5. Expert. "
             f"Target language: '{target_language}'. "
@@ -801,8 +800,7 @@ class TutorGUI:
     def check_answer(self):
         """
         Records the user's answer for the current question and moves to the next question.
-        No immediate per-question feedback is displayed.
-        Incorrect answers are tracked and will be displayed at the end.
+        Provides partial feedback immediately if the answer is incorrect.
         """
         if not self.selected_option.get():
             messagebox.showwarning("Select an answer", "Please select an answer.")
@@ -817,10 +815,21 @@ class TutorGUI:
             # Record the incorrect item: question order, question text, correct answer, and user's answer.
             self.incorrect_items.append(
                 (self.question_count, self.current_question[0], correct_answer, self.selected_option.get()))
+            # Display partial feedback for incorrect answer.
+            self.final_feedback_label.config(text=f"Incorrect! Correct answer: {correct_answer}")
+            self.submit_button.config(state="disabled")
+            # Proceed to the next question after a short delay.
+            self.test_window.after(3000, self.proceed_to_next_question)
         else:
             self.score += 1
+            self.show_next_question()
 
-        # Proceed to next question
+    def proceed_to_next_question(self):
+        """
+        Clears the partial feedback and re-enables the submit button then moves to the next question.
+        """
+        self.final_feedback_label.config(text="")
+        self.submit_button.config(state="normal")
         self.show_next_question()
 
 
@@ -839,8 +848,6 @@ if __name__ == "__main__":
     main()
 
 # for later:
-# ADD TESTING (with latent disposition adaptation - and store the results in a file)
 # ADD CONVERSATION (with chatting lay-out)
 # ADD relevant GUI control (playback speed, tts gender, colors, context separate from user_query, goals, etc)
 # ADD method to manually input sentences for translation
-# ADD way to show handling of HTTP request(s)
