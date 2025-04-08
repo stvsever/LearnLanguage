@@ -11,6 +11,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox, scrolledtext, colorchooser
 import threading
 from dotenv import load_dotenv
+import random
 
 # Initialize colorama
 init(autoreset=True)
@@ -86,7 +87,7 @@ class Tutor:
     content and utilizes text-to-speech for auditory learning in selected languages.
     Note on voice gender: gTTS does not support explicitly selecting male/female voices.
     If a male voice is required, consider using a different TTS service that supports
-    voice gender selection (e.g., Amazon Polly, Azure TTS, etc.).
+    voice gender selection (e.g., Amazon Polly, Azure TTS, etc).
     """
 
     def __init__(self):
@@ -126,10 +127,10 @@ class Tutor:
         user_query = (
             f"Provide two lists (original untranslated - translated) to teach the language related to the concept '{concept}' which is an explicit request from the user. "
             f"Generate {num_items} items for each list: English items (untranslated) and their translations into the target language. "
-            f"The items can be words, phrases, or sentences ; depending on the request. Just anything typical to tutor the user. "
+            f"The items can be words, phrases, or sentences ; depending on the request! (so read carefully) Just anything typical to tutor the user. "
             f"The items are either in-first-person saying or general words/phrases/sentences. "
             f"Provide letters as items if alphabet is requested."
-            f"Difficulty level: '{self.map_difficulty_to_level(target_language)}', adjust your response accordingly. "
+            f"Difficulty level: '{self.map_difficulty_to_level(target_language)}', adjust your response accordingly! ; There are five difficulty levels: 1. Beginner, 2. Elementary, 3. Intermediate, 4. Advanced, 5. Expert. "
             f"Target language: '{target_language}'. "
         )
 
@@ -219,6 +220,7 @@ class TutorGUI:
         self.current_font_size = 14  # Increased default font size
         self.min_font_size = 12  # Minimum font size
         self.max_font_size = 24  # Maximum font size
+        self.last_bilingual_content = None  # Store most recent bilingual content for testing
         self.create_widgets()
         self.create_menu()
 
@@ -320,7 +322,7 @@ class TutorGUI:
         input_frame.pack(fill="x", padx=20, pady=10)
 
         # Concept Entry
-        ttk.Label(input_frame, text="Enter a concept:", style="Header.TLabel").grid(
+        ttk.Label(input_frame, text="Enter instruction or concept of choice:", style="Header.TLabel").grid(
             row=0, column=0, padx=5, pady=10, sticky="w")
         self.concept_entry = ttk.Entry(input_frame, width=50, font=("Helvetica", self.current_font_size))
         self.concept_entry.grid(row=0, column=1, padx=5, pady=10, sticky="w")
@@ -330,7 +332,7 @@ class TutorGUI:
             row=1, column=0, padx=5, pady=10, sticky="w")
         self.num_items_entry = ttk.Entry(input_frame, width=10, font=("Helvetica", self.current_font_size))
         self.num_items_entry.grid(row=1, column=1, padx=5, pady=10, sticky="w")
-        self.num_items_entry.insert(0, "20")  # Initialize with default value (20)
+        self.num_items_entry.insert(0, "10")  # Initialize with default value (10)
 
         # Difficulty Level Selection
         ttk.Label(input_frame, text="Select difficulty level:", style="Header.TLabel").grid(
@@ -360,8 +362,8 @@ class TutorGUI:
         self.learn_button = tk.Button(
             input_frame,
             text="Learn Concept",
-            bg="#007BFF",      # Blue background color (not correctly implemented ; skip for now)
-            fg="black",        # Black text
+            bg="#007BFF",  # Blue background color (not correctly implemented ; skip for now)
+            fg="black",  # Black text
             activebackground="#0056b3",  # Darker blue when pressed
             activeforeground="white",
             font=("Helvetica", self.current_font_size),
@@ -415,6 +417,16 @@ class TutorGUI:
         self.play_all_button = ttk.Button(audio_frame, text="Play All Audio", command=self.play_all_audio,
                                           state='disabled', style="Custom.TButton")
         self.play_all_button.pack(side="left", padx=5, pady=5)
+
+        # Frame for Testing Controls - now with two separate buttons for Verbal and Audio testing.
+        test_frame = ttk.LabelFrame(self.root, text="Testing Mode", padding=(20, 10), style="Custom.TLabelframe")
+        test_frame.pack(fill="x", padx=20, pady=10)
+        self.start_verbal_test_button = ttk.Button(test_frame, text="Start Test: type 1 - orthographic",
+                                                   command=self.start_test_verbal, style="Custom.TButton")
+        self.start_verbal_test_button.pack(side="left", padx=5, pady=5)
+        self.start_audio_test_button = ttk.Button(test_frame, text="Start Test: type 2 - phonologic",
+                                                  command=self.start_test_audio, style="Custom.TButton")
+        self.start_audio_test_button.pack(side="left", padx=5, pady=5)
 
         # Frame for Viewing Logs
         log_frame = ttk.LabelFrame(self.root, text="Logs", padding=(20, 10), style="Custom.TLabelframe")
@@ -477,7 +489,7 @@ class TutorGUI:
             num_items = int(num_items_str)
         else:
             # Set a default number if not provided
-            num_items = 20
+            num_items = 10
             logger.info(f"Number of items not provided. Defaulting to {num_items}.")
             messagebox.showinfo("Default Number of Items", "Number of items not provided. Defaulting to 10.")
 
@@ -496,6 +508,9 @@ class TutorGUI:
             if not bilingual_content.translated_words:
                 self.display_message("Failed to retrieve content.")
                 return
+
+            # Save content for testing later
+            self.last_bilingual_content = bilingual_content
 
             # Determine target language display name
             target_lang_display = self.get_language_display(language)
@@ -608,6 +623,205 @@ class TutorGUI:
 
     def display_message(self, message):
         messagebox.showinfo("Information", message)
+
+    # ====== Testing Component Methods ======
+
+    def start_test_verbal(self):
+        """
+        Initiates verbal test mode. Opens a new window for testing with test type set to 'verbal'.
+        """
+        self.start_test_common("verbal")
+
+    def start_test_audio(self):
+        """
+        Initiates audio test mode. Opens a new window for testing with test type set to 'audio'.
+        """
+        self.start_test_common("audio")
+
+    def start_test_common(self, test_mode):
+        """
+        Initiates test mode with the specified test_mode ("verbal" or "audio").
+        Checks that bilingual content exists, then opens a new window for testing.
+        """
+        if not self.last_bilingual_content or not self.last_bilingual_content.untranslated_words:
+            messagebox.showwarning("Test Error", "No content available for testing. Please learn a concept first.")
+            return
+
+        # Prepare test questions as a list of tuples (english, target)
+        self.test_questions = list(zip(self.last_bilingual_content.untranslated_words,
+                                       self.last_bilingual_content.translated_words))
+        random.shuffle(self.test_questions)
+        self.score = 0
+        self.total_questions = len(self.test_questions)
+        self.question_count = 0
+        self.incorrect_items = []
+
+        # Set the test mode for use in the testing interface
+        self.test_mode = test_mode  # "verbal" or "audio"
+
+        # Open test window
+        self.test_window = tk.Toplevel(self.root)
+        self.test_window.title("Test Mode")
+        self.test_window.geometry("600x500")
+        self.current_question = None
+        self.create_test_widgets()
+        self.show_next_question()
+
+    def create_test_widgets(self):
+        """
+        Creates widgets for the test window including settings for the max number of options.
+        The question sentence is displayed in italic.
+        """
+        self.test_frame = ttk.Frame(self.test_window, padding=20)
+        self.test_frame.pack(fill="both", expand=True)
+
+        # ----- Test Settings -----
+        settings_frame = ttk.Frame(self.test_frame)
+        settings_frame.pack(fill="x", pady=10)
+
+        ttk.Label(settings_frame, text="Max Options:").pack(side="left", padx=5)
+        self.max_display_entry = ttk.Entry(settings_frame, width=5)
+        self.max_display_entry.insert(0, "5")
+        self.max_display_entry.pack(side="left", padx=5)
+
+        # ----- Question Label (in italic) -----
+        self.question_label = ttk.Label(self.test_frame, text="", font=("Helvetica", 16, "italic"), wraplength=550)
+        self.question_label.pack(pady=10)
+
+        # If audio test mode, add a "Play Audio" button (it will be used per question)
+        self.play_audio_button = ttk.Button(self.test_frame, text="Play Audio", command=self.play_current_audio)
+        # Initially hidden; will be shown for audio test mode.
+        if self.test_mode == "audio":
+            self.play_audio_button.pack(pady=5)
+        else:
+            self.play_audio_button.pack_forget()
+
+        # ----- Options Frame -----
+        self.options_frame = ttk.Frame(self.test_frame)
+        self.options_frame.pack(pady=10, fill="both", expand=True)
+
+        # Variable to hold user's answer
+        self.selected_option = tk.StringVar()
+
+        # List to store radio button widgets for each question
+        self.radio_buttons = []
+
+        # ----- Submit Button -----
+        self.submit_button = ttk.Button(self.test_frame, text="Submit Answer", command=self.check_answer)
+        self.submit_button.pack(pady=10)
+
+        # ----- Final Feedback (hidden until end) -----
+        self.final_feedback_label = ttk.Label(self.test_frame, text="", font=("Helvetica", 14))
+        self.final_feedback_label.pack(pady=10)
+
+    def play_current_audio(self):
+        """
+        Plays the audio associated with the current question (used in audio test mode).
+        """
+        if self.current_question and self.test_mode == "audio":
+            target_text = self.current_question[1]
+            audio_file = self.audio_files_target.get(target_text)
+            if audio_file and os.path.exists(audio_file):
+                threading.Thread(target=self.play_audio_thread, args=(audio_file,), daemon=True).start()
+            else:
+                messagebox.showerror("Audio Error", "No audio available for this question.")
+
+    def show_next_question(self):
+        """
+        Displays the next question in the test window.
+        For verbal tests the question is the English sentence and answer options are translations.
+        For audio tests the question is the audio prompt (target) and answer options are English sentences.
+        The question is displayed in italic.
+        """
+        # Clear previous radio buttons
+        for rb in self.radio_buttons:
+            rb.destroy()
+        self.radio_buttons.clear()
+        self.selected_option.set("")
+        self.final_feedback_label.config(text="")
+
+        # Increment question count
+        self.question_count += 1
+
+        # Hide or show the play audio button based on test mode.
+        if self.test_mode == "verbal":
+            self.play_audio_button.pack_forget()
+        else:
+            self.play_audio_button.pack(pady=5)
+
+        if not self.test_questions:
+            # Test finished: hide submit button and options; display only final feedback.
+            percentage = (self.score / self.total_questions) * 100 if self.total_questions > 0 else 0
+            feedback = "Excellent job!" if percentage >= 80 else "Good effort, keep practicing!" if percentage >= 50 else "Needs more practice."
+            final_text = f"Final Score: {self.score}/{self.total_questions}\nFeedback: {feedback}"
+            if self.incorrect_items:
+                final_text += "\n\nIncorrect Items:\n"
+                for order, question, correct, _ in sorted(self.incorrect_items, key=lambda x: x[0]):
+                    final_text += f"{order}. {question} --> {correct}\n"
+            self.question_label.config(text="Test Completed!")
+            self.submit_button.pack_forget()
+            self.options_frame.pack_forget()
+            self.play_audio_button.pack_forget()
+            self.final_feedback_label.config(text=final_text)
+            return
+
+        # Get the next question from the list.
+        self.current_question = self.test_questions.pop(0)
+        # Determine max options from entry (default to 4 if invalid)
+        try:
+            max_display = int(self.max_display_entry.get())
+            if max_display < 2:
+                max_display = 4
+        except:
+            max_display = 4
+
+        if self.test_mode == "verbal":
+            question_text = f'What is the translation for:\n\n---- "{self.current_question[0]}" ----'
+            correct_answer = self.current_question[1]
+            all_options = set(self.last_bilingual_content.translated_words)
+        else:
+            question_text = "Listen to the audio and select the correct English sentence."
+            correct_answer = self.current_question[0]
+            all_options = set(self.last_bilingual_content.untranslated_words)
+
+        self.question_label.config(text=question_text)
+
+        # Prepare options: include correct answer plus up to (max_display - 1) distractors.
+        all_options.discard(correct_answer)
+        distractors = random.sample(sorted(all_options), min(max_display - 1, len(all_options))) if all_options else []
+        options = distractors + [correct_answer]
+        random.shuffle(options)
+
+        # Create radio buttons for options (packed to fill vertically).
+        for opt in options:
+            rb = ttk.Radiobutton(self.options_frame, text=opt, variable=self.selected_option, value=opt)
+            rb.pack(fill="x", padx=5, pady=5, anchor="w")
+            self.radio_buttons.append(rb)
+
+    def check_answer(self):
+        """
+        Records the user's answer for the current question and moves to the next question.
+        No immediate per-question feedback is displayed.
+        Incorrect answers are tracked and will be displayed at the end.
+        """
+        if not self.selected_option.get():
+            messagebox.showwarning("Select an answer", "Please select an answer.")
+            return
+
+        if self.test_mode == "verbal":
+            correct_answer = self.current_question[1]
+        else:
+            correct_answer = self.current_question[0]
+
+        if self.selected_option.get() != correct_answer:
+            # Record the incorrect item: question order, question text, correct answer, and user's answer.
+            self.incorrect_items.append(
+                (self.question_count, self.current_question[0], correct_answer, self.selected_option.get()))
+        else:
+            self.score += 1
+
+        # Proceed to next question
+        self.show_next_question()
 
 
 # Usage Example with GUI
