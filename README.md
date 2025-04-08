@@ -2,7 +2,7 @@
 
 ## AI-Powered Tutor for Learning a New Language
 
-**LearnLanguage** is an interactive AI-driven language tutor that helps you practice vocabulary and phrases in a new language with minimal input. Simply provide a **concept** (a topic or instruction), and the system will generate a bilingual word list based on your request. You can then **listen** to the pronunciation of the words and phrases in your target language, making it easier to learn through auditory reinforcement.
+**LearnLanguage** is an interactive AI-driven language tutor that helps you practice vocabulary and phrases in a new language with minimal input. Simply provide a **concept** (a topic or instruction), and the system will generate a bilingual word list based on your request. You can then **listen** to the pronunciation of the words and phrases in your target language, making it easier to learn through auditory reinforcement. Finally, you can put your ortographic and/or phonological knowledge to the test in 'test mode'.
 
 ## Features
 
