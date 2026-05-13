@@ -98,6 +98,16 @@ Core capabilities:
 - Switch Q&A display between the target language and English.
 - Play target-language passage, question, and answer-option audio.
 
+## Screenshots
+
+Tutor 1 (Vocabulary Tutor):
+
+![Tutor 1 Interface](docs/images/tutor1-interface.png)
+
+Tutor 2 (Scenario Tutor):
+
+![Tutor 2 Interface](docs/images/tutor2-interface.png)
+
 ## Data Model
 
 Tutor 1 uses a source vocabulary library:
