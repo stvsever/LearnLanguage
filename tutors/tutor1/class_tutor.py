@@ -8,7 +8,7 @@ import warnings
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Callable, Dict, List, Optional
 
 os.environ.setdefault("PYGAME_HIDE_SUPPORT_PROMPT", "1")
 warnings.filterwarnings("ignore", message="pkg_resources is deprecated.*", category=UserWarning)
@@ -366,6 +366,7 @@ class Tutor:
         items: List[str],
         language: str = "es",
         voice_name: Optional[str] = None,
+        progress_callback: Optional[Callable[[int, int], None]] = None,
     ) -> Dict[str, str]:
         if not items:
             return {}
@@ -388,6 +389,12 @@ class Tutor:
         def _synth(item: str) -> tuple[str, str]:
             return item, self.text_to_speech(item, language, voice_name)
 
+        if progress_callback:
+            try:
+                progress_callback(0, total)
+            except Exception:
+                pass
+
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = {executor.submit(_synth, item): item for item in unique_items}
             completed = 0
@@ -404,6 +411,11 @@ class Tutor:
                 completed += 1
                 if completed % progress_step == 0 or completed == total:
                     logger.info("TTS progress: %d/%d completed.", completed, total)
+                if progress_callback:
+                    try:
+                        progress_callback(completed, total)
+                    except Exception:
+                        pass
 
         elapsed = time.perf_counter() - start
         logger.info("TTS generation finished: %d/%d succeeded in %.2fs.", len(results), total, elapsed)

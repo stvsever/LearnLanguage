@@ -105,6 +105,8 @@ Tutor 1 (Vocabulary Tutor):
 
 ![Tutor 1 Interface](docs/images/tutor1-interface.png)
 
+Tip: Use Tutor 1 > File > Export Screenshot, or run `python tutor1.py --export-screenshot`, to refresh this image after UI updates.
+
 Tutor 2 (Scenario Tutor):
 
 ![Tutor 2 Interface](docs/images/tutor2-interface.png)

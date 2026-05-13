@@ -1,8 +1,10 @@
+import argparse
 import os
 import logging
 import tkinter as tk
 import tkinter.font as tkfont
 from tkinter import ttk, messagebox, scrolledtext, colorchooser
+from PIL import ImageGrab
 import threading
 import random
 import json
@@ -52,22 +54,34 @@ class TutorGUI:
 
         # make all content scrollable
         container = ScrollableFrame(self.root)
-        container.pack(fill="both", expand=True)
+        container.pack(fill="both", expand=True, side="top")
         self.content = container.scrollable_frame
 
         # keep your existing attributes
-        self.current_bg_color = "#f0f0f0"
-        self.current_fg_color = "#000000"
+        self.current_bg_color = "#f6f7fb"
+        self.current_fg_color = "#0f172a"
+        self.muted_fg_color = "#475569"
+        self.accent_color = "#2563eb"
+        self.border_color = "#d7dee8"
         self.current_font_size = 14
         self.min_font_size = 12
         self.max_font_size = 30
         self.last_bilingual_content = None
         self.current_language_code = "es"
         self.current_voice_name = get_language_profile("es").voices[get_language_profile("es").default_voice_label]
+        self.primary_font_family = self.pick_font_family(
+            ("SF Pro Text", "Avenir Next", "Helvetica", "Arial", "TkDefaultFont")
+        )
+        self.body_font = (self.primary_font_family, self.current_font_size)
+        self.section_font = (self.primary_font_family, self.current_font_size + 2, "bold")
+        self.header_font = (self.primary_font_family, self.current_font_size + 8, "bold")
+        self.subheader_font = (self.primary_font_family, self.current_font_size + 1)
+        self.progress_running = False
 
         # build UI into self.content instead of self.root
         self.create_menu()               # menu bar stays on root
         self.create_widgets(self.content)
+        self.create_status_bar(self.root)
         self.load_vocabulary()
         self.create_vocab_selector(self.content)
 
@@ -83,9 +97,38 @@ class TutorGUI:
         menubar = tk.Menu(self.root)
         self.root.config(menu=menubar)
 
+        file_menu = tk.Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="File", menu=file_menu)
+        file_menu.add_command(label="Export Screenshot", command=self.export_screenshot)
+
         appearance_menu = tk.Menu(menubar, tearoff=0)
         menubar.add_cascade(label="Appearance", menu=appearance_menu)
         appearance_menu.add_command(label="Change Colors", command=self.change_colors)
+
+    def export_screenshot(self):
+        """Exports a screenshot of the current window to docs/images."""
+        try:
+            self.root.update_idletasks()
+            x = self.root.winfo_rootx()
+            y = self.root.winfo_rooty()
+            w = self.root.winfo_width()
+            h = self.root.winfo_height()
+            bbox = (x, y, x + w, y + h)
+            image = ImageGrab.grab(bbox)
+
+            app_dir = Path(__file__).resolve().parent
+            out_dir = app_dir.parents[2] / "docs" / "images"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            out_path = out_dir / "tutor1-interface.png"
+            image.save(out_path)
+
+            messagebox.showinfo("Screenshot", f"Saved screenshot to {out_path}")
+        except Exception as e:
+            logger.error("Failed to export screenshot: %s", e)
+            messagebox.showerror(
+                "Screenshot Error",
+                "Could not export screenshot. On macOS, grant Screen Recording permission to the Python interpreter, then try again.",
+            )
 
     def change_colors(self):
         """
@@ -148,46 +191,117 @@ class TutorGUI:
                         fieldbackground=self.current_bg_color)
         style.map("Custom.Treeview", background=[('selected', '#ececec')], foreground=[('selected', '#000000')])
 
-    def create_widgets(self, parent):
-        # Style Configuration
+    def pick_font_family(self, candidates):
+        try:
+            available = set(tkfont.families(self.root))
+        except Exception:
+            available = set()
+        for candidate in candidates:
+            if not available or candidate in available:
+                return candidate
+        return "TkDefaultFont"
+
+    def configure_styles(self):
         style = ttk.Style()
+        try:
+            style.theme_use("clam")
+        except tk.TclError:
+            pass
+
         style.configure("TFrame", background=self.current_bg_color)
-        style.configure("TButton", font=("Helvetica", self.current_font_size))
-        style.configure("TLabel", font=("Helvetica", self.current_font_size),
-                        background=self.current_bg_color, foreground=self.current_fg_color)
-        style.configure("Header.TLabel", font=("Helvetica", self.current_font_size + 2, "bold"),
-                        background=self.current_bg_color, foreground=self.current_fg_color)
-        style.configure("Treeview.Heading", font=("Helvetica", self.current_font_size, "bold"),
-                        background="#d3d3d3", foreground="black")
-        style.configure("Treeview", font=("Helvetica", self.current_font_size),
-                        rowheight=self.current_font_size + 10)
+        style.configure("TLabel", background=self.current_bg_color, foreground=self.current_fg_color, font=self.body_font)
+        style.configure("Muted.TLabel", background=self.current_bg_color, foreground=self.muted_fg_color, font=self.body_font)
+        style.configure("Header.TLabel", background=self.current_bg_color, foreground=self.current_fg_color, font=self.header_font)
+        style.configure("Subheader.TLabel", background=self.current_bg_color, foreground=self.muted_fg_color, font=self.subheader_font)
+        style.configure("Section.TLabel", background=self.current_bg_color, foreground=self.current_fg_color, font=self.section_font)
 
         style.configure("Custom.TLabelframe", background=self.current_bg_color, foreground=self.current_fg_color)
-        style.configure("Custom.TLabel", background=self.current_bg_color, foreground=self.current_fg_color)
-        style.configure("Custom.Treeview", background=self.current_bg_color, foreground=self.current_fg_color,
-                        fieldbackground=self.current_bg_color)
-        style.map("Custom.Treeview", background=[('selected', '#ececec')], foreground=[('selected', '#000000')])
+        style.configure("Custom.TLabelframe.Label", background=self.current_bg_color, foreground=self.current_fg_color, font=self.section_font)
+        style.configure("Custom.TLabel", background=self.current_bg_color, foreground=self.current_fg_color, font=self.body_font)
+        style.configure("Custom.TButton", font=self.body_font)
+        style.configure("Custom.TRadiobutton", background=self.current_bg_color, foreground=self.current_fg_color, font=self.body_font)
+
+        style.configure("Chip.TButton", font=(self.primary_font_family, self.current_font_size - 1), padding=(10, 4))
+        style.configure("ChipActive.TButton", font=(self.primary_font_family, self.current_font_size - 1, "bold"), padding=(10, 4))
+
+        style.configure("Treeview.Heading", font=(self.primary_font_family, self.current_font_size, "bold"), background="#e2e8f0")
+        style.configure("Treeview", font=self.body_font, rowheight=self.current_font_size + 12)
+        style.map("Treeview", background=[('selected', '#dbeafe')], foreground=[('selected', '#0f172a')])
+
+    def create_header(self, parent):
+        header_frame = ttk.Frame(parent, style="TFrame")
+        header_frame.pack(fill="x", padx=20, pady=(16, 10))
+
+        ttk.Label(header_frame, text="Tutor 1 - Vocabulary Tutor", style="Header.TLabel").pack(anchor="w")
+        ttk.Label(
+            header_frame,
+            text="Concept generation, multilingual topic equivalents, text-to-speech, and vocabulary testing",
+            style="Subheader.TLabel",
+        ).pack(anchor="w", pady=(4, 0))
+
+        chips_frame = ttk.Frame(header_frame, style="TFrame")
+        chips_frame.pack(anchor="w", pady=(10, 0))
+        self.lang_chip_buttons = {}
+        for code in ("es", "ru", "fr", "zh"):
+            profile = get_language_profile(code)
+            btn = ttk.Button(
+                chips_frame,
+                text=profile.display,
+                style="Chip.TButton",
+                command=lambda c=code: self.set_language(c),
+            )
+            btn.pack(side="left", padx=(0, 8))
+            self.lang_chip_buttons[code] = btn
+        self.update_language_chips()
+
+    def create_status_bar(self, parent):
+        status_frame = ttk.Frame(parent, style="TFrame")
+        status_frame.pack(fill="x", side="bottom")
+        self.status_var = tk.StringVar(value="Ready")
+        self.status_label = ttk.Label(status_frame, textvariable=self.status_var, style="Muted.TLabel")
+        self.status_label.pack(side="left", padx=12, pady=6)
+        self.progress = ttk.Progressbar(status_frame, mode="indeterminate")
+        self.progress.pack(side="right", padx=12, pady=6)
+
+    def set_status(self, message: str, busy: bool = False):
+        def _apply():
+            self.status_var.set(message)
+            if busy and not self.progress_running:
+                self.progress_running = True
+                self.progress.start(12)
+            elif not busy and self.progress_running:
+                self.progress_running = False
+                self.progress.stop()
+        self.root.after(0, _apply)
+
+    def create_widgets(self, parent):
+        self.configure_styles()
+        self.create_header(parent)
 
         # Concept Input
         input_frame = ttk.LabelFrame(parent, text="Explore Vocabulary Across Languages",
-                                     padding=(20, 10), style="Custom.TLabelframe")
+                         padding=(20, 12), style="Custom.TLabelframe")
         input_frame.pack(fill="x", padx=20, pady=10)
 
-        ttk.Label(input_frame, text="Enter instruction or concept of choice:", style="Header.TLabel") \
-            .grid(row=0, column=0, padx=5, pady=10, sticky="w")
-        self.concept_entry = ttk.Entry(input_frame, width=50,
-                                       font=("Helvetica", self.current_font_size))
-        self.concept_entry.grid(row=0, column=1, padx=5, pady=10, sticky="w")
+        input_frame.columnconfigure(1, weight=1)
+        input_frame.columnconfigure(3, weight=1)
 
-        ttk.Label(input_frame, text="Number of items to generate:", style="Header.TLabel") \
-            .grid(row=1, column=0, padx=5, pady=10, sticky="w")
+        ttk.Label(input_frame, text="Enter instruction or concept of choice:", style="Section.TLabel") \
+            .grid(row=0, column=0, padx=5, pady=8, sticky="w")
+        self.concept_entry = ttk.Entry(input_frame, width=50,
+                                       font=self.body_font)
+        self.concept_entry.grid(row=0, column=1, padx=5, pady=8, sticky="ew")
+        self.concept_entry.bind("<Return>", lambda _evt: self.learn_concept())
+
+        ttk.Label(input_frame, text="Number of items to generate:", style="Section.TLabel") \
+            .grid(row=1, column=0, padx=5, pady=8, sticky="w")
         self.num_items_entry = ttk.Entry(input_frame, width=10,
-                                         font=("Helvetica", self.current_font_size))
-        self.num_items_entry.grid(row=1, column=1, padx=5, pady=10, sticky="w")
+                                         font=self.body_font)
+        self.num_items_entry.grid(row=1, column=1, padx=5, pady=8, sticky="w")
         self.num_items_entry.insert(0, "10")
 
-        ttk.Label(input_frame, text="Select difficulty level:", style="Header.TLabel") \
-            .grid(row=2, column=0, padx=5, pady=10, sticky="w")
+        ttk.Label(input_frame, text="Select difficulty level:", style="Section.TLabel") \
+            .grid(row=2, column=0, padx=5, pady=8, sticky="w")
         self.difficulty_var = tk.StringVar(value='intermediate')
         difficulty_frame = ttk.Frame(input_frame, style="Custom.TLabelframe")
         difficulty_frame.grid(row=2, column=1, padx=5, pady=10, sticky="w")
@@ -196,8 +310,8 @@ class TutorGUI:
                             value=level.lower(), style="Custom.TRadiobutton") \
                 .pack(side="left", padx=5)
 
-        ttk.Label(input_frame, text="Choose target language:", style="Header.TLabel") \
-            .grid(row=3, column=0, padx=5, pady=10, sticky="w")
+        ttk.Label(input_frame, text="Choose target language:", style="Section.TLabel") \
+            .grid(row=3, column=0, padx=5, pady=8, sticky="w")
         self.language_var = tk.StringVar(value='es')
         self.language_combo = ttk.Combobox(
             input_frame,
@@ -206,35 +320,36 @@ class TutorGUI:
             width=28,
         )
         self.language_combo.set("Spanish (es)")
-        self.language_combo.grid(row=3, column=1, padx=5, pady=10, sticky="w")
+        self.language_combo.grid(row=3, column=1, padx=5, pady=8, sticky="w")
         self.language_combo.bind("<<ComboboxSelected>>", self.on_language_change)
+        self.update_language_chips()
 
-        ttk.Label(input_frame, text="Voice:", style="Header.TLabel") \
-            .grid(row=4, column=0, padx=5, pady=10, sticky="w")
+        ttk.Label(input_frame, text="Voice:", style="Section.TLabel") \
+            .grid(row=4, column=0, padx=5, pady=8, sticky="w")
         self.voice_var = tk.StringVar()
         self.voice_combo = ttk.Combobox(input_frame, textvariable=self.voice_var, state="readonly", width=28)
-        self.voice_combo.grid(row=4, column=1, padx=5, pady=10, sticky="w")
+        self.voice_combo.grid(row=4, column=1, padx=5, pady=8, sticky="w")
         self.update_voice_options("es")
 
         self.learn_button = tk.Button(
             input_frame, text="Learn Concept",
-            bg="#007BFF", fg="black",
-            activebackground="#0056b3", activeforeground="white",
-            font=("Helvetica", self.current_font_size),
-            padx=10, pady=5, command=self.learn_concept
+            bg=self.accent_color, fg="white",
+            activebackground="#1d4ed8", activeforeground="white",
+            font=(self.primary_font_family, self.current_font_size, "bold"),
+            padx=16, pady=6, command=self.learn_concept
         )
-        self.learn_button.grid(row=5, column=1, padx=5, pady=20, sticky="e")
+        self.learn_button.grid(row=5, column=1, padx=5, pady=16, sticky="e")
 
         # Font Controls
-        font_frame = ttk.LabelFrame(parent, text="Font Controls",
-                                    padding=(20, 10), style="Custom.TLabelframe")
+        font_frame = ttk.LabelFrame(parent, text="Text Size",
+                        padding=(20, 10), style="Custom.TLabelframe")
         font_frame.pack(fill="x", padx=20, pady=10)
         self.decrease_font_button = ttk.Button(font_frame, text="--smaller--",
                                                command=self.decrease_font_size, style="Custom.TButton")
         self.decrease_font_button.pack(side="left", padx=5, pady=5)
         self.font_size_label = ttk.Label(font_frame,
-                                         text=f"Font Size: {self.current_font_size}",
-                                         style="Header.TLabel")
+                         text=f"Font Size: {self.current_font_size}",
+                         style="Section.TLabel")
         self.font_size_label.pack(side="left", padx=10)
         self.increase_font_button = ttk.Button(font_frame, text="++bigger++",
                                                command=self.increase_font_size, style="Custom.TButton")
@@ -242,7 +357,7 @@ class TutorGUI:
 
         # Bilingual Translations
         display_frame = ttk.LabelFrame(parent, text="Bilingual Translations",
-                                       padding=(20, 10), style="Custom.TLabelframe")
+                           padding=(20, 10), style="Custom.TLabelframe")
         display_frame.pack(fill="both", expand=True, padx=20, pady=10)
 
         columns = ("English", "Target Language", "Play")
@@ -257,6 +372,9 @@ class TutorGUI:
                 # auto-width, allow stretch
                 self.translations_tree.column(col, anchor="center", stretch=True)
 
+        self.translations_tree.tag_configure("odd", background="#f8fafc")
+        self.translations_tree.tag_configure("even", background="#ffffff")
+
         self.translations_tree.pack(fill="both", expand=True, side="left", padx=(0, 10), pady=10)
         scrollbar = ttk.Scrollbar(display_frame, orient=tk.VERTICAL,
                                   command=self.translations_tree.yview)
@@ -264,7 +382,7 @@ class TutorGUI:
         self.translations_tree.configure(yscroll=scrollbar.set)
 
         # Audio Controls
-        audio_frame = ttk.LabelFrame(parent, text="Audio Controls",
+        audio_frame = ttk.LabelFrame(parent, text="Practice Controls",
                                      padding=(20, 10), style="Custom.TLabelframe")
         audio_frame.pack(fill="x", padx=20, pady=10)
         self.play_all_button = ttk.Button(audio_frame, text="Play All Audio",
@@ -274,7 +392,7 @@ class TutorGUI:
 
         # Testing Mode
         test_frame = ttk.LabelFrame(parent, text="Testing Mode",
-                                    padding=(20, 10), style="Custom.TLabelframe")
+                        padding=(20, 10), style="Custom.TLabelframe")
         test_frame.pack(fill="x", padx=20, pady=10)
         self.start_verbal_test_button = ttk.Button(test_frame,
                                                    text="Start Test: type 1 - orthographic",
@@ -287,17 +405,20 @@ class TutorGUI:
                                                   style="Custom.TButton")
         self.start_audio_test_button.pack(side="left", padx=5, pady=5)
 
-        # Logs
-        log_frame = ttk.LabelFrame(parent, text="Logs",
-                                   padding=(20, 10), style="Custom.TLabelframe")
-        log_frame.pack(fill="x", padx=20, pady=10)
+        # Status bar is managed separately to stay visible.
 
     def selected_language_code(self):
-        raw = self.language_combo.get() if hasattr(self, "language_combo") else self.language_var.get()
+        if hasattr(self, "language_combo"):
+            raw = self.language_combo.get()
+        elif hasattr(self, "language_var"):
+            raw = self.language_var.get()
+        else:
+            raw = self.current_language_code
         if "(" in raw and ")" in raw:
             raw = raw.split("(")[-1].split(")")[0]
         code = normalize_language_code(raw)
-        self.language_var.set(code)
+        if hasattr(self, "language_var"):
+            self.language_var.set(code)
         self.current_language_code = code
         return code
 
@@ -309,12 +430,26 @@ class TutorGUI:
             self.voice_var.set(profile.default_voice_label)
         self.current_voice_name = profile.voices[self.voice_var.get()]
 
+    def set_language(self, language_code: str):
+        profile = get_language_profile(language_code)
+        self.language_combo.set(f"{profile.display} ({profile.code})")
+        self.on_language_change()
+
+    def update_language_chips(self):
+        if not hasattr(self, "lang_chip_buttons"):
+            return
+        active = self.selected_language_code()
+        for code, button in self.lang_chip_buttons.items():
+            style = "ChipActive.TButton" if code == active else "Chip.TButton"
+            button.configure(style=style)
+
     def on_language_change(self, _event=None):
         code = self.selected_language_code()
         self.update_voice_options(code)
         profile = get_language_profile(code)
         self.translations_tree.heading("Target Language", text=profile.display)
         self.update_font_family_for_language(code)
+        self.update_language_chips()
 
     def selected_voice_name(self):
         profile = get_language_profile(self.selected_language_code())
@@ -326,7 +461,7 @@ class TutorGUI:
             available = set(tkfont.families(self.root))
         except Exception:
             available = set()
-        family = "Helvetica"
+        family = self.primary_font_family
         for candidate in profile.preferred_fonts:
             if not available or candidate in available:
                 family = candidate
@@ -363,13 +498,11 @@ class TutorGUI:
         Updates the font size of the Treeview and adjusts the row height accordingly.
         """
         try:
-            style = ttk.Style()
-            style.configure("TButton", font=("Helvetica", self.current_font_size))
-            style.configure("TLabel", font=("Helvetica", self.current_font_size))
-            style.configure("Header.TLabel", font=("Helvetica", self.current_font_size + 2, "bold"))
-            style.configure("Treeview.Heading", font=("Helvetica", self.current_font_size, "bold"))
-            style.configure("Treeview", font=("Helvetica", self.current_font_size),
-                            rowheight=self.current_font_size + 10)
+            self.body_font = (self.primary_font_family, self.current_font_size)
+            self.section_font = (self.primary_font_family, self.current_font_size + 2, "bold")
+            self.header_font = (self.primary_font_family, self.current_font_size + 8, "bold")
+            self.subheader_font = (self.primary_font_family, self.current_font_size + 1)
+            self.configure_styles()
             self.font_size_label.config(text=f"Font Size: {self.current_font_size}")
             logger.info(f"Font size updated to {self.current_font_size}.")
         except Exception as e:
@@ -408,6 +541,7 @@ class TutorGUI:
         self.learn_button.config(state='disabled')
         self.play_all_button.config(state='disabled')
         self.translations_tree.delete(*self.translations_tree.get_children())
+        self.set_status("Generating concept text...", busy=True)
 
         threading.Thread(
             target=self.process_learning,
@@ -427,6 +561,7 @@ class TutorGUI:
             bilingual_content = self.tutor.request_concept(concept, num_items, language, difficulty_level)
             if not bilingual_content.translated_words:
                 self.root.after(0, lambda: self.display_message("Failed to retrieve content."))
+                self.set_status("Concept generation failed.", busy=False)
                 return
 
             logger.info("LLM returned %d item(s).", len(bilingual_content.translated_words))
@@ -439,19 +574,23 @@ class TutorGUI:
 
             def update_table():
                 self.translations_tree.heading("Target Language", text=target_lang_display)
-                for eng, target in zip(bilingual_content.untranslated_words, bilingual_content.translated_words):
-                    self.translations_tree.insert('', tk.END, values=(eng, target, "▶"))
+                for idx, (eng, target) in enumerate(zip(bilingual_content.untranslated_words, bilingual_content.translated_words)):
+                    tag = "even" if idx % 2 == 0 else "odd"
+                    self.translations_tree.insert('', tk.END, values=(eng, target, "▶"), tags=(tag,))
                 self.translations_tree.bind('<ButtonRelease-1>', self.on_tree_click)
                 self.play_all_button.config(state='normal')
 
             self.root.after(0, update_table)
 
             # Prepare audio for all words
+            self.set_status(f"Generating audio for {len(bilingual_content.translated_words)} item(s)...", busy=True)
             self.prepare_audio_files(bilingual_content, language, voice_name)
+            self.set_status("Ready", busy=False)
 
         except Exception as e:
             logger.error(f"Error in process_learning: {e}")
             self.root.after(0, lambda: self.display_message("An error occurred. Check logs for details."))
+            self.set_status("Error during generation.", busy=False)
         finally:
             self.root.after(0, lambda: self.learn_button.config(state='normal'))
 
@@ -464,10 +603,16 @@ class TutorGUI:
         Stores the file paths in a dictionary for easy access during playback.
         """
         self.audio_files_en = {}  # English audio not generated intentionally.
+        total = len(bilingual_content.translated_words)
+
+        def progress_callback(done, total_items):
+            self.set_status(f"Generating audio... {done}/{total_items}", busy=True)
+
         self.audio_files_target = self.tutor.text_to_speech_batch(
             bilingual_content.translated_words,
             language,
             voice_name,
+            progress_callback=progress_callback,
         )
 
     def on_tree_click(self, event):
@@ -524,6 +669,29 @@ class TutorGUI:
 
     def display_message(self, message):
         messagebox.showinfo("Information", message)
+
+    def load_demo_state(self):
+        """Populate the UI with sample content for documentation screenshots."""
+        sample_concept = "basic greetings for a first meeting"
+        sample_pairs = [
+            ("Hello", "你好"),
+            ("Nice to meet you.", "很高兴认识你。"),
+            ("What is your name?", "你叫什么名字？"),
+            ("See you tomorrow.", "明天见。"),
+        ]
+
+        self.concept_entry.delete(0, tk.END)
+        self.concept_entry.insert(0, sample_concept)
+        self.difficulty_var.set("beginner")
+
+        self.set_language("zh")
+        self.translations_tree.delete(*self.translations_tree.get_children())
+        self.translations_tree.heading("Target Language", text=self.get_language_display("zh"))
+        for idx, (eng, target) in enumerate(sample_pairs):
+            tag = "even" if idx % 2 == 0 else "odd"
+            self.translations_tree.insert('', tk.END, values=(eng, target, "▶"), tags=(tag,))
+
+        self.play_all_button.config(state='normal')
 
     # ====== Testing Component Methods ======
 
@@ -812,6 +980,7 @@ class TutorGUI:
                     topic.get("name_en", topic_id),
                     self.get_language_display(language),
                 )
+                self.set_status(f"Translating {len(english_entries)} item(s)...", busy=True)
                 target_entries = self.tutor.translate_entries(
                     topic_id=topic_id,
                     topic_name_en=topic.get("name_en", topic_id),
@@ -826,20 +995,25 @@ class TutorGUI:
             def update_table():
                 self.translations_tree.delete(*self.translations_tree.get_children())
                 self.translations_tree.heading("Target Language", text=self.get_language_display(language))
-                for eng, target in zip(english_entries, target_entries):
-                    self.translations_tree.insert("", tk.END, values=(eng, target, "▶"))
+                for idx, (eng, target) in enumerate(zip(english_entries, target_entries)):
+                    tag = "even" if idx % 2 == 0 else "odd"
+                    self.translations_tree.insert("", tk.END, values=(eng, target, "▶"), tags=(tag,))
                 self.play_all_button.config(state='normal')
 
             self.root.after(0, update_table)
 
             if language == "es":
+                self.set_status("Preparing cached Spanish audio...", busy=True)
                 self.prepare_audio_from_disk(topic.get("name_es", topic_id), list(zip(english_entries, target_entries)), voice_name)
             else:
                 self.prepare_audio_files(bilingual, language, voice_name)
 
+            self.set_status("Ready", busy=False)
+
         except Exception as e:
             logger.error("Error loading topic equivalents: %s", e)
             self.root.after(0, lambda: self.display_message("Could not load topic equivalents. Check logs for details."))
+            self.set_status("Error loading topic.", busy=False)
 
     def prepare_audio_from_disk(self, topic, entries, voice_name=None):
         """
@@ -862,7 +1036,15 @@ class TutorGUI:
                 "No cached Spanish audio found for %d item(s); generating fallback audio.",
                 len(missing),
             )
-            generated = self.tutor.text_to_speech_batch(missing, "es", voice_name)
+            def progress_callback(done, total_items):
+                self.set_status(f"Generating audio... {done}/{total_items}", busy=True)
+
+            generated = self.tutor.text_to_speech_batch(
+                missing,
+                "es",
+                voice_name,
+                progress_callback=progress_callback,
+            )
             self.audio_files_target.update(generated)
 
     def save_test_results(self, test_mode: str):
@@ -916,9 +1098,21 @@ class TutorGUI:
 
 # Usage Example with GUI
 def main():
+    parser = argparse.ArgumentParser(description="Launch the Language Tutor GUI")
+    parser.add_argument(
+        "--export-screenshot",
+        action="store_true",
+        help="Populate demo content and export a screenshot to docs/images.",
+    )
+    args = parser.parse_args()
+
     # Launch GUI
     root = tk.Tk()
     app = TutorGUI(root)
+    if args.export_screenshot:
+        app.load_demo_state()
+        root.after(350, app.export_screenshot)
+        root.after(700, root.destroy)
     root.mainloop()
 
 
