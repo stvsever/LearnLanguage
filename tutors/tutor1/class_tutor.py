@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import tempfile
+import threading
 import time
 import warnings
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -227,6 +228,7 @@ class Tutor:
         self.audio_files_en: Dict[str, str] = {}
         self.audio_files_target: Dict[str, str] = {}
         self.target_language = "es"
+        self.audio_lock = threading.Lock()
 
         try:
             pygame.mixer.init()
@@ -346,6 +348,7 @@ class Tutor:
     def text_to_speech(self, text: str, language: str = "es", voice_name: Optional[str] = None) -> str:
         profile = get_language_profile(language)
         voice = voice_name or profile.voices[profile.default_voice_label]
+        out_path = ""
         try:
             fd, out_path = tempfile.mkstemp(prefix="language_tutor_", suffix=".mp3")
             os.close(fd)
@@ -355,9 +358,16 @@ class Tutor:
                 await communicate.save(out_path)
 
             asyncio.run(_synth())
+            if not os.path.exists(out_path) or os.path.getsize(out_path) == 0:
+                raise ValueError("No audio data received.")
             logger.info("Text-to-speech conversion successful for %s.", profile.display)
             return out_path
         except Exception as e:
+            if out_path:
+                try:
+                    os.remove(out_path)
+                except OSError:
+                    pass
             logger.error("Error in text-to-speech conversion: %s", e)
             return ""
 
@@ -367,6 +377,8 @@ class Tutor:
         language: str = "es",
         voice_name: Optional[str] = None,
         progress_callback: Optional[Callable[[int, int], None]] = None,
+        max_rounds: int = 3,
+        retry_delay_s: float = 0.6,
     ) -> Dict[str, str]:
         if not items:
             return {}
@@ -374,14 +386,6 @@ class Tutor:
         profile = get_language_profile(language)
         unique_items = list(dict.fromkeys(items))
         total = len(unique_items)
-        max_workers = min(MAX_TTS_WORKERS, total)
-        logger.info(
-            "Starting TTS generation for %d item(s) in %s using up to %d worker(s).",
-            total,
-            profile.display,
-            max_workers,
-        )
-
         results: Dict[str, str] = {}
         start = time.perf_counter()
         progress_step = 1 if total <= 20 else 5 if total <= 100 else 10
@@ -395,43 +399,74 @@ class Tutor:
             except Exception:
                 pass
 
-        with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            futures = {executor.submit(_synth, item): item for item in unique_items}
-            completed = 0
-            for future in as_completed(futures):
-                item = futures[future]
-                try:
-                    _, path = future.result()
-                except Exception as e:
-                    logger.error("TTS task failed for '%s': %s", item, e)
-                    path = ""
+        remaining = unique_items
+        for round_idx in range(1, max_rounds + 1):
+            if not remaining:
+                break
 
-                if path:
-                    results[item] = path
-                completed += 1
-                if completed % progress_step == 0 or completed == total:
-                    logger.info("TTS progress: %d/%d completed.", completed, total)
-                if progress_callback:
+            max_workers = min(MAX_TTS_WORKERS, len(remaining))
+            if round_idx == 1:
+                logger.info(
+                    "Starting TTS generation for %d item(s) in %s using up to %d worker(s).",
+                    total,
+                    profile.display,
+                    max_workers,
+                )
+            else:
+                logger.warning(
+                    "Retry round %d/%d for %d item(s) in %s (max %d worker(s)).",
+                    round_idx,
+                    max_rounds,
+                    len(remaining),
+                    profile.display,
+                    max_workers,
+                )
+
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                futures = {executor.submit(_synth, item): item for item in remaining}
+                completed = 0
+                for future in as_completed(futures):
+                    item = futures[future]
                     try:
-                        progress_callback(completed, total)
-                    except Exception:
-                        pass
+                        _, path = future.result()
+                    except Exception as e:
+                        logger.error("TTS task failed for '%s': %s", item, e)
+                        path = ""
+
+                    if path:
+                        results[item] = path
+                    completed += 1
+                    if completed % progress_step == 0 or completed == len(remaining):
+                        logger.info("TTS progress: %d/%d completed.", len(results), total)
+                    if progress_callback:
+                        try:
+                            progress_callback(len(results), total)
+                        except Exception:
+                            pass
+
+            remaining = [item for item in remaining if item not in results]
+            if remaining and round_idx < max_rounds:
+                time.sleep(retry_delay_s)
+                retry_delay_s *= 2
 
         elapsed = time.perf_counter() - start
+        if remaining:
+            logger.warning("TTS missing for %d/%d item(s) after %d round(s).", len(remaining), total, max_rounds)
         logger.info("TTS generation finished: %d/%d succeeded in %.2fs.", len(results), total, elapsed)
         return results
 
     def play_audio(self, file_path: str) -> None:
         try:
-            pygame.mixer.music.load(file_path)
-            pygame.mixer.music.play()
-            logger.info("Playing audio.")
+            with self.audio_lock:
+                pygame.mixer.music.load(file_path)
+                pygame.mixer.music.play()
+                logger.info("Playing audio.")
 
-            while pygame.mixer.music.get_busy():
-                pygame.time.Clock().tick(10)
+                while pygame.mixer.music.get_busy():
+                    pygame.time.Clock().tick(10)
 
-            pygame.mixer.music.unload()
-            logger.info("Finished playing audio.")
+                pygame.mixer.music.unload()
+                logger.info("Finished playing audio.")
         except Exception as e:
             logger.error("Error playing audio: %s", e)
             print(Fore.RED + "Error playing audio. Check logs for details.")

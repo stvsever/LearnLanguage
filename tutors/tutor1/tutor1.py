@@ -77,6 +77,7 @@ class TutorGUI:
         self.header_font = (self.primary_font_family, self.current_font_size + 8, "bold")
         self.subheader_font = (self.primary_font_family, self.current_font_size + 1)
         self.progress_running = False
+        self.play_all_running = False
 
         # build UI into self.content instead of self.root
         self.create_menu()               # menu bar stays on root
@@ -638,15 +639,24 @@ class TutorGUI:
         Plays the specified audio file in a separate thread.
         """
         try:
+            if not self.play_all_running:
+                self.set_status("Playing audio...", busy=False)
             self.tutor.play_audio(audio_file)
         except Exception as e:
             logger.error(f"Error during audio playback: {e}")
             messagebox.showerror("Playback Error", "Failed to play audio. Check logs for details.")
+        finally:
+            if not self.play_all_running:
+                self.set_status("Ready", busy=False)
 
     def play_all_audio(self):
         """
         Plays all target language audio files sequentially.
         """
+        if self.play_all_running:
+            return
+        self.play_all_running = True
+        self.play_all_button.config(state='disabled')
         threading.Thread(target=self.play_all_audio_thread, daemon=True).start()
 
     def play_all_audio_thread(self):
@@ -654,6 +664,7 @@ class TutorGUI:
         Plays all audio files in a separate thread in the desired sequence.
         """
         try:
+            self.set_status("Playing all audio...", busy=False)
             items = self.translations_tree.get_children()
             for item in items:
                 values = self.translations_tree.item(item, 'values')
@@ -666,6 +677,13 @@ class TutorGUI:
         except Exception as e:
             logger.error(f"Error during all audio playback: {e}")
             messagebox.showerror("Playback Error", "Failed to play all audio. Check logs for details.")
+        finally:
+            def _restore():
+                self.play_all_running = False
+                self.play_all_button.config(state='normal')
+                self.set_status("Ready", busy=False)
+
+            self.root.after(0, _restore)
 
     def display_message(self, message):
         messagebox.showinfo("Information", message)
