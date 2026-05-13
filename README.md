@@ -2,7 +2,7 @@
 
 LearnLanguage is a Python-based language learning workspace focused on practical vocabulary practice, AI-generated learning material, and audio-supported comprehension training. The current tutor applications support Spanish, Russian, French, and Mandarin Chinese, with English used as the source or explanation language.
 
-## Project Scope
+## 📌 Project Scope
 
 The repository contains two active tutor applications:
 
@@ -14,7 +14,7 @@ The repository contains two active tutor applications:
 
 Both tutors are designed for local desktop use and require an OpenAI API key for AI-generated content.
 
-## Supported Languages
+## 🌍 Supported Languages
 
 | Language | Script | Tutor 1 | Tutor 2 | TTS |
 | --- | --- | --- | --- | --- |
@@ -23,16 +23,17 @@ Both tutors are designed for local desktop use and require an OpenAI API key for
 | French | Latin with accents | Yes | Yes | Edge-TTS French voices |
 | Mandarin Chinese | Simplified Chinese | Yes | Yes | Edge-TTS Mandarin voices |
 
-## Directory Structure
+## 🧭 Directory Structure
 
 ```text
 LearnLanguage/
 ├── README.md
 ├── requirements.txt
-├── content/
-│   └── TENSES/
+├── docs/
+│   └── images/
 ├── other/
-│   └── obsolete/
+│   ├── count_.py
+│   └── extract_titles.py
 └── tutors/
     ├── tutor1/
     │   ├── tutor1.py
@@ -51,7 +52,7 @@ LearnLanguage/
 
 Generated audio, local result files, virtual environments, IDE metadata, and secret files are intentionally excluded from version control.
 
-## Setup
+## ⚙️ Setup
 
 Create or activate a Python environment, then install the project dependencies:
 
@@ -63,7 +64,7 @@ Create a local `.env` file in the project root and define an `OPENAI_API_KEY` va
 
 Do not commit `.env` or any file containing API keys. The repository `.gitignore` excludes `.env`, virtual environments, generated audio, local test reports, IDE metadata, and OS metadata.
 
-## Running Tutor 1
+## 🧠 Running Tutor 1
 
 Tutor 1 is the vocabulary tutor.
 
@@ -81,7 +82,7 @@ Core capabilities:
 - Play individual or sequential target-language audio.
 - Run orthographic and audio-based tests.
 
-## Running Tutor 2
+## 🧪 Running Tutor 2
 
 Tutor 2 is the scenario comprehension tutor.
 
@@ -98,7 +99,7 @@ Core capabilities:
 - Switch Q&A display between the target language and English.
 - Play target-language passage, question, and answer-option audio.
 
-## Screenshots
+## 🖼️ Screenshots
 
 Tutor 1 (Vocabulary Tutor):
 
@@ -108,7 +109,7 @@ Tutor 2 (Scenario Tutor):
 
 ![Tutor 2 Interface](docs/images/tutor2-interface.png)
 
-## Data Model
+## 🗂️ Data Model
 
 Tutor 1 uses a source vocabulary library:
 
@@ -126,7 +127,7 @@ That cache is generated data and is excluded from version control by default. Re
 
 Tutor 2 scenario bundles are UTF-8 JSON files and preserve non-Latin scripts with `ensure_ascii=False`.
 
-## Security Notes
+## 🔒 Security Notes
 
 - API keys are loaded only from environment variables.
 - `.env` is ignored and must stay local.
@@ -134,7 +135,7 @@ Tutor 2 scenario bundles are UTF-8 JSON files and preserve non-Latin scripts wit
 - Generated audio and test results are local runtime artifacts.
 - Before publishing, run a secret/path scan and inspect any staged files.
 
-## Validation
+## ✅ Validation
 
 Recommended local checks:
 
@@ -152,7 +153,7 @@ For GUI validation, launch each tutor and confirm:
 - TTS creates and plays target-language audio.
 - Non-Latin scripts render correctly.
 
-## Development Status
+## 🚧 Development Status
 
 This repository is actively evolving toward a broader multilingual language-learning toolkit with stronger reusable data models, richer practice flows, and cleaner generated asset management.
 
