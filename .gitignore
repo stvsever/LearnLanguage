@@ -28,6 +28,7 @@ env/
 tutors/tutor1/test_results/*.txt
 tutors/tutor1/audio/
 tutors/tutor2/**/*.mp3
+tutors/tutor3/runtime/
 
 # Local/generated vocabulary cache
 tutors/tutor1/data/vocabulary_multilingual_cache.json
