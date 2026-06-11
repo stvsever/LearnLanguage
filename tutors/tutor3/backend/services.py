@@ -123,7 +123,7 @@ def log_generation_failure(label: str, exc: Exception) -> None:
 
 def config_payload() -> dict:
     return {
-        "appName": "LearnLanguage Tutor 3",
+        "appName": "LearnLanguage",
         "model": MODEL,
         "languages": public_language_payload(),
         "difficulties": [
@@ -233,7 +233,7 @@ def demo_vocabulary(language_code: str, concept: str, count: int, difficulty: st
     ]
     return {
         "source": "offline-demo",
-        "warning": "OpenAI generation was unavailable, so Tutor 3 returned a built-in demo set.",
+        "warning": "OpenAI generation was unavailable, so LearnLanguage returned a built-in demo set.",
         **serialize_model(VocabularyPack(target_language=language_code, concept=concept, difficulty=difficulty, items=items)),
     }
 
@@ -452,7 +452,7 @@ def demo_scenario(language_code: str, topic: str, difficulty: str) -> dict:
     )
     return {
         "source": "offline-demo",
-        "warning": "OpenAI generation was unavailable, so Tutor 3 returned a built-in scenario.",
+        "warning": "OpenAI generation was unavailable, so LearnLanguage returned a built-in scenario.",
         **serialize_model(pack),
     }
 
@@ -548,7 +548,7 @@ def save_session(payload: Dict[str, Any]) -> dict:
     path = SESSION_DIR / filename
     clean_payload = {
         "createdAt": created_at,
-        "app": "LearnLanguage Tutor 3",
+        "app": "LearnLanguage",
         "payload": payload,
     }
     path.write_text(json.dumps(clean_payload, ensure_ascii=False, indent=2), encoding="utf-8")

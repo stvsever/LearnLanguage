@@ -3,219 +3,228 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LearnLanguage Tutor 3</title>
+    <title>LearnLanguage</title>
     <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/static/styles.css?v=12" />
+    <link rel="stylesheet" href="/static/styles.css?v=30" />
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <a class="brand" href="/" aria-label="LearnLanguage Tutor 3">
+        <a class="brand" href="/" aria-label="LearnLanguage">
           <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" role="img">
-              <path d="M8 10.5a5.5 5.5 0 0 1 10.2-2.9A5.5 5.5 0 1 1 24 17h-3.2a5.8 5.8 0 0 1-9.6 0H8a3.5 3.5 0 0 1 0-7Z" fill="currentColor" opacity=".16"></path>
-              <path d="M11 8.8c1.9 0 3.4 1.4 3.7 3.1h2.6A3.8 3.8 0 1 1 21 16h-3.7a3.8 3.8 0 1 1-6.3-4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <svg viewBox="0 0 32 32">
+              <path d="M7 9.5 16 5l9 4.5v11L16 27l-9-6.5v-11Z"></path>
+              <path d="M16 5v22M7 9.5l9 5 9-5"></path>
             </svg>
           </span>
           <span>
             <strong>LearnLanguage</strong>
-            <small>Tutor 3</small>
+            <small>AI language tutor</small>
           </span>
         </a>
+
         <div class="language-strip" id="languageStrip" aria-label="Target language"></div>
+
         <div class="top-actions">
-          <div class="model-pill" id="modelStatus">Starting</div>
-          <button class="icon-button" id="saveSessionBtn" type="button" title="Save session">
+          <div class="metric-pill"><span id="modelStatus">Starting</span></div>
+          <button class="icon-button" id="saveSessionBtn" type="button" title="Save session" aria-label="Save session">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5V4Z"></path><path d="M8 4v6h8V4M8 20v-6h8v6"></path></svg>
           </button>
         </div>
       </header>
 
       <main class="workspace">
-        <nav class="rail" aria-label="App sections">
-          <button class="rail-button active" data-mode="vocabulary" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4V4Z"></path><path d="M9 8h6M9 12h5M9 16h4"></path></svg>
-            <span>Vocabulary</span>
-          </button>
-          <button class="rail-button" data-mode="scenario" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-4l-4 4v-4H7a3 3 0 0 1-3-3V6Z"></path><path d="M8 8h8M8 12h5"></path></svg>
-            <span>Scenario</span>
-          </button>
-          <button class="rail-button" data-mode="review" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v7l4 2"></path><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path></svg>
-            <span>Review</span>
-          </button>
-        </nav>
-
-        <section class="control-panel" aria-label="Tutor controls">
-          <div class="mode-tabs" role="tablist" aria-label="Learning mode">
-            <button class="mode-tab active" data-mode="vocabulary" type="button">Vocabulary</button>
-            <button class="mode-tab" data-mode="scenario" type="button">Scenario</button>
+        <aside class="setup-panel" aria-label="Learning setup">
+          <div class="setup-head">
+            <span>Setup</span>
+            <strong id="activeLanguageLabel">Spanish</strong>
           </div>
 
-          <div class="field-stack">
-            <label class="field-label" for="conceptInput">Topic or prompt</label>
-            <textarea id="conceptInput" maxlength="360" rows="5">Travel in a new city: directions, transportation, tickets, and polite questions.</textarea>
+          <div class="mode-switch" aria-label="Content mode">
+            <button class="mode-chip active" id="vocabularyModeBtn" data-generate-mode="vocabulary" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4V4Z"></path><path d="M9 8h6M9 12h5M9 16h4"></path></svg>
+              Vocabulary
+            </button>
+            <button class="mode-chip" id="scenarioModeBtn" data-generate-mode="scenario" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-4l-4 4v-4H7a3 3 0 0 1-3-3V6Z"></path><path d="M8 8h8M8 12h5"></path></svg>
+              Scenarios
+            </button>
           </div>
 
-          <div class="two-col">
+          <label class="field-stack">
+            <span class="field-label">Source</span>
+            <select id="sourceSelect">
+              <option value="custom">Custom prompt</option>
+              <option value="topic">Source vocabulary topic</option>
+            </select>
+          </label>
+
+          <label class="field-stack" id="topicField">
+            <span class="field-label">Topic library</span>
+            <select id="topicSelect"></select>
+          </label>
+
+          <label class="field-stack">
+            <span class="field-label">Topic or prompt</span>
+            <textarea id="conceptInput" maxlength="360" rows="5" wrap="soft">Travel in a new city:
+directions, transport,
+tickets, and polite questions.</textarea>
+          </label>
+
+          <div class="control-grid">
             <label class="field-stack">
               <span class="field-label">Difficulty</span>
               <select id="difficultySelect"></select>
             </label>
             <label class="field-stack">
-              <span class="field-label">Item count</span>
-              <input id="itemCountInput" type="number" min="3" max="50" value="12" />
+              <span class="field-label">Items</span>
+              <input id="itemCountInput" type="number" min="3" max="50" value="20" />
             </label>
           </div>
 
-          <div class="field-stack">
-            <label class="field-label" for="topicSelect">Source vocabulary topics</label>
-            <select id="topicSelect"></select>
-          </div>
-
-          <div class="two-col">
+          <div class="control-grid">
             <label class="field-stack">
               <span class="field-label">Voice</span>
               <select id="voiceSelect"></select>
             </label>
             <label class="field-stack">
-              <span class="field-label">Audio rate</span>
+              <span class="field-label">Pace</span>
               <select id="rateSelect">
                 <option value="-25%">Slow</option>
-                <option value="-10%" selected>Study pace</option>
+                <option value="-10%" selected>Study</option>
                 <option value="+0%">Natural</option>
                 <option value="+15%">Fast</option>
               </select>
             </label>
           </div>
 
-          <label class="field-stack">
-            <span class="field-label">Practice direction</span>
-            <select id="directionSelect">
-              <option value="en-to-target">English to target</option>
-              <option value="target-to-en">Target to English</option>
-              <option value="mixed">Mixed recall</option>
-            </select>
-          </label>
-
-          <div class="toggles">
+          <div class="toggle-list">
             <label><input id="englishToggle" type="checkbox" checked /> English support</label>
-            <label><input id="maskToggle" type="checkbox" /> Hide target first</label>
-            <label><input id="autoQueueToggle" type="checkbox" checked /> Build review queue</label>
+            <label><input id="maskToggle" type="checkbox" /> Reveal after recall</label>
+            <label><input id="autoQueueToggle" type="checkbox" checked /> Spaced review queue</label>
           </div>
 
-          <div class="button-grid">
-            <button class="primary-button" id="generateVocabularyBtn" type="button">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg>
-              Generate
-            </button>
-            <button class="secondary-button" id="topicVocabularyBtn" type="button">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"></path></svg>
-              Use topic
-            </button>
-            <button class="secondary-button" id="generateScenarioBtn" type="button">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4M6 10l6-6 6 6"></path></svg>
-              Scenario
-            </button>
+          <button class="primary-button" id="generateBtn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg>
+            Generate session
+          </button>
+
+          <div class="generation-card" aria-live="polite">
+            <div class="generation-title">
+              <span>Generation status</span>
+              <strong id="generationStepCount">0 / 5</strong>
+            </div>
+            <ol id="generationSteps"></ol>
+            <div class="progress-track"><span id="generationProgress"></span></div>
+            <p id="statusLine">Ready for a new session.</p>
           </div>
-
-          <p class="helper-copy" id="statusLine">Choose a language and generate a study set.</p>
-        </section>
-
-        <section class="study-canvas" aria-label="Learning workspace">
-          <div class="canvas-header">
-            <div>
-              <p class="eyebrow" id="canvasKicker">Vocabulary Studio</p>
-              <h1 id="canvasTitle">Daily recall, listening, and comprehension in one place.</h1>
-            </div>
-            <div class="canvas-actions">
-              <button class="icon-button" id="prevItemBtn" type="button" title="Previous">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
-              </button>
-              <span class="counter" id="itemCounter">0 / 0</span>
-              <button class="icon-button" id="nextItemBtn" type="button" title="Next">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
-              </button>
-            </div>
-          </div>
-
-          <div class="main-card" id="primaryCard"></div>
-
-          <div class="audio-deck">
-            <button class="audio-button" id="playCurrentBtn" type="button">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7-11-7Z"></path></svg>
-              Play
-            </button>
-            <button class="audio-button" id="repeatCurrentBtn" type="button">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a7 7 0 0 1 12-5l2 2"></path><path d="M18 4v5h-5"></path><path d="M20 12a7 7 0 0 1-12 5l-2-2"></path><path d="M6 20v-5h5"></path></svg>
-              Repeat
-            </button>
-            <button class="audio-button" id="shadowBtn" type="button">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11"></path><path d="M8 7a4 4 0 0 1 8 0v4a4 4 0 0 1-8 0V7Z"></path><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg>
-              Shadow
-            </button>
-            <div class="mini-player">
-              <button class="mini-play" id="miniPlayBtn" type="button" aria-label="Play current audio">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7-11-7Z"></path></svg>
-              </button>
-              <div class="wave" id="waveform" aria-hidden="true"></div>
-              <span id="audioTime">0:00</span>
-            </div>
-          </div>
-
-          <div class="learning-notes" id="learningNotes"></div>
-        </section>
-
-        <aside class="practice-panel" aria-label="Practice and progress">
-          <section class="queue-block">
-            <div class="panel-title">
-              <span>Retrieval Queue</span>
-              <strong id="queueCount">0</strong>
-            </div>
-            <div class="queue-list" id="queueList"></div>
-          </section>
-
-          <section class="practice-block">
-            <div class="practice-tabs" role="tablist" aria-label="Practice type">
-              <button class="practice-tab active" data-practice="choice" type="button">Multiple Choice</button>
-              <button class="practice-tab" data-practice="typing" type="button">Typing</button>
-            </div>
-            <div id="practiceArea"></div>
-          </section>
-
-          <section class="confidence-block">
-            <div class="panel-title">
-              <span>Confidence</span>
-              <strong id="accuracyLabel">0%</strong>
-            </div>
-            <div class="confidence-grid">
-              <button data-confidence="5" type="button">Very sure</button>
-              <button data-confidence="4" type="button">Sure</button>
-              <button data-confidence="3" type="button">Not sure</button>
-              <button data-confidence="2" type="button">Hard</button>
-              <button data-confidence="1" type="button">Very hard</button>
-            </div>
-          </section>
-
-          <section class="stats-block">
-            <div class="stat-row">
-              <span>Cards seen</span>
-              <strong id="cardsSeen">0</strong>
-            </div>
-            <div class="stat-row">
-              <span>Correct</span>
-              <strong id="correctCount">0</strong>
-            </div>
-            <div class="stat-row">
-              <span>New words</span>
-              <strong id="newWords">0</strong>
-            </div>
-            <div class="progress-track"><span id="progressFill"></span></div>
-          </section>
         </aside>
+
+        <section class="learning-shell" aria-label="Learning workspace">
+          <div class="progress-strip">
+            <div class="progress-main">
+              <span id="sessionCounter">0 / 0 items</span>
+              <div class="progress-track"><span id="sessionProgress"></span></div>
+            </div>
+            <div class="stat-pill"><span>Accuracy</span><strong id="accuracyLabel">0%</strong></div>
+            <div class="stat-pill"><span>Review</span><strong id="queueCount">0</strong></div>
+            <div class="stat-pill"><span>Tests</span><strong id="testCount">0</strong></div>
+          </div>
+
+          <nav class="section-tabs" aria-label="Workspace sections">
+            <button class="section-tab active" data-section="study" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4V4Z"></path><path d="M9 8h6M9 12h5"></path></svg>
+              Study
+            </button>
+            <button class="section-tab" data-section="tests" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l2 2 4-5"></path><path d="M5 4h14v16H5V4Z"></path></svg>
+              Tests
+            </button>
+            <button class="section-tab" data-section="insights" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V9M12 19V5M19 19v-7"></path></svg>
+              Insights
+            </button>
+          </nav>
+
+          <section class="section-view study-view active" id="studyView">
+            <div class="vocab-column">
+              <div class="column-head">
+                <div>
+                  <span class="field-label">Vocabulary audio list</span>
+                  <strong id="vocabListTitle">No session loaded</strong>
+                </div>
+                <select id="listSortSelect" aria-label="Sort vocabulary list">
+                  <option value="order">Session order</option>
+                  <option value="due">Due first</option>
+                  <option value="hard">Hard first</option>
+                </select>
+              </div>
+              <div class="vocab-list" id="vocabList"></div>
+            </div>
+
+            <article class="focus-card" id="focusCard"></article>
+          </section>
+
+          <section class="section-view tests-view" id="testsView">
+            <div class="test-menu">
+              <button class="test-mode active" data-test-mode="orthographic" type="button">
+                <strong>Orthographic recall</strong>
+                <span>Type the target form from memory.</span>
+              </button>
+              <button class="test-mode" data-test-mode="dictation" type="button">
+                <strong>Dictation</strong>
+                <span>Listen, then type exactly what you hear.</span>
+              </button>
+              <button class="test-mode" data-test-mode="phonemic" type="button">
+                <strong>Sound discrimination</strong>
+                <span>Hear one item and choose what was played.</span>
+              </button>
+              <button class="test-mode" data-test-mode="scenario" type="button">
+                <strong>Scenario comprehension</strong>
+                <span>Infer from the generated passage.</span>
+              </button>
+            </div>
+
+            <div class="test-stage" id="testStage"></div>
+          </section>
+
+          <section class="section-view insights-view" id="insightsView">
+            <div class="insight-grid">
+              <article class="insight-card">
+                <span class="field-label">Learning state</span>
+                <strong id="insightSummary">No tests yet</strong>
+                <p id="insightRecommendation">Generate a session, complete at least one spelling or dictation test, then review the evaluation here.</p>
+              </article>
+              <article class="insight-card">
+                <span class="field-label">Orthography</span>
+                <strong id="orthographyScore">0%</strong>
+                <p id="orthographyNote">Measures typed recall, accents, Cyrillic, and character precision.</p>
+              </article>
+              <article class="insight-card">
+                <span class="field-label">Phonemic mapping</span>
+                <strong id="phonemicScore">0%</strong>
+                <p id="phonemicNote">Measures audio to written-form mapping and sound discrimination.</p>
+              </article>
+              <article class="insight-card wide">
+                <span class="field-label">Weak items</span>
+                <div class="weak-list" id="weakList"></div>
+              </article>
+            </div>
+          </section>
+
+          <div class="command-bar">
+            <button class="command-button filled" id="playAllBtn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7-11-7Z"></path></svg>
+              Play all
+            </button>
+            <button class="command-button" data-start-test="dictation" type="button">Dictation test</button>
+            <button class="command-button" data-start-test="orthographic" type="button">Spelling test</button>
+            <button class="command-button" data-start-test="phonemic" type="button">Sound discrimination</button>
+            <button class="command-button filled" id="focusModeBtn" type="button">Start focus</button>
+          </div>
+        </section>
       </main>
     </div>
-    <script type="module" src="/static/app.js?v=12"></script>
+    <script type="module" src="/static/app.js?v=30"></script>
   </body>
 </html>

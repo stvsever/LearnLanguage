@@ -15,6 +15,7 @@ class LanguageProfile:
     code: str
     display: str
     native_name: str
+    flag: str
     prompt_name: str
     script_name: str
     script_sample: str
@@ -29,6 +30,7 @@ LANGUAGES: Dict[str, LanguageProfile] = {
         code="es",
         display="Spanish",
         native_name="Español",
+        flag="🇪🇸",
         prompt_name="Spanish",
         script_name="Latin alphabet with accents",
         script_sample="A B C Ñ á é í ó ú ü ¿ ¡",
@@ -46,6 +48,7 @@ LANGUAGES: Dict[str, LanguageProfile] = {
         code="ru",
         display="Russian",
         native_name="Русский",
+        flag="🇷🇺",
         prompt_name="Russian",
         script_name="Cyrillic",
         script_sample="А Б В Г Д Е Ё Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Ы Э Ю Я",
@@ -61,6 +64,7 @@ LANGUAGES: Dict[str, LanguageProfile] = {
         code="fr",
         display="French",
         native_name="Français",
+        flag="🇫🇷",
         prompt_name="French",
         script_name="Latin alphabet with French accents",
         script_sample="A B C Ç à â æ é è ê ë î ï ô œ ù û ü ÿ",
@@ -77,6 +81,7 @@ LANGUAGES: Dict[str, LanguageProfile] = {
         code="zh",
         display="Mandarin Chinese",
         native_name="普通话",
+        flag="🇨🇳",
         prompt_name="Mandarin Chinese",
         script_name="Simplified Chinese characters",
         script_sample="我 你 他 她 学 语 文 中 国 普 通 话",
@@ -134,6 +139,7 @@ def public_language_payload() -> List[dict]:
             "code": profile.code,
             "display": profile.display,
             "nativeName": profile.native_name,
+            "flag": profile.flag,
             "scriptName": profile.script_name,
             "scriptSample": profile.script_sample,
             "defaultVoice": profile.default_voice,

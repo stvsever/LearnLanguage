@@ -30,11 +30,11 @@ from backend.services import (  # noqa: E402
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger("tutor3")
+logger = logging.getLogger("learnlanguage")
 
 
 class TutorRequestHandler(BaseHTTPRequestHandler):
-    server_version = "LearnLanguageTutor3/1.0"
+    server_version = "LearnLanguage/1.0"
 
     def log_message(self, fmt: str, *args: object) -> None:
         logger.info("%s - %s", self.address_string(), fmt % args)
@@ -155,19 +155,19 @@ def run(host: str, port: int, open_browser: bool) -> None:
     ensure_runtime_dirs()
     server = ThreadingHTTPServer((host, port), TutorRequestHandler)
     url = f"http://{host}:{port}"
-    logger.info("Tutor 3 is running at %s", url)
+    logger.info("LearnLanguage is running at %s", url)
     if open_browser:
         webbrowser.open(url)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        logger.info("Shutting down Tutor 3.")
+        logger.info("Shutting down LearnLanguage.")
     finally:
         server.server_close()
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run the LearnLanguage Tutor 3 local web app.")
+    parser = argparse.ArgumentParser(description="Run the LearnLanguage local web app.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--open", action="store_true", help="Open the app in your default browser.")

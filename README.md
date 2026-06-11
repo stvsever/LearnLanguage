@@ -1,57 +1,53 @@
 # LearnLanguage
 
-LearnLanguage is a local AI language-learning workspace for vocabulary practice, scenario comprehension, active recall, and target-language audio. The project now supports Spanish, Russian, French, and Mandarin Chinese across the maintained tutor applications.
+LearnLanguage is a local AI language tutor for vocabulary acquisition, scenario comprehension, active recall, and target-language audio. It supports Spanish, Russian, French, and Mandarin Chinese with script-aware rendering, modern browser-based study controls, and maintained legacy desktop tutors.
 
-The recommended interface is **Tutor 3**, a local browser app that integrates the previous vocabulary and scenario workflows into one modern learning environment.
+The recommended experience is the integrated local web tutor in `tutors/tutor3`. The folder name is retained for repository compatibility, while the product UI is branded simply as LearnLanguage.
 
-## Current Applications
+![LearnLanguage interface](docs/images/learnlanguage-interface.png)
 
-| App | Interface | Status | Purpose |
-| --- | --- | --- | --- |
-| Tutor 3 | Local web app | Recommended | Integrated vocabulary, scenarios, audio, retrieval practice, confidence scoring, and session save |
-| Tutor 1 | Tkinter desktop app | Legacy maintained | Vocabulary generation, source-topic vocabulary, tests, and audio |
-| Tutor 2 | Tkinter desktop app | Legacy maintained | Scenario generation, aligned English support, multiple-choice comprehension, and audio |
+## What It Does
+
+- Generates bilingual vocabulary from custom prompts with OpenAI structured output.
+- Loads source-topic vocabulary from the curated vocabulary library.
+- Translates topic vocabulary into Russian, French, and Mandarin Chinese with caching.
+- Generates short scenario passages with aligned English support, questions, choices, answers, and explanations.
+- Plays target-language audio with Edge-TTS voices for every supported language.
+- Provides per-item audio controls, play-all review, and a real decoded waveform display in the browser.
+- Separates Study, Tests, and Insights so retrieval practice does not distract from focused learning.
+- Includes orthographic recall, dictation, sound discrimination, and scenario comprehension tests.
+- Tracks accuracy, review load, weak items, orthography score, phonemic score, and session attempts.
+- Keeps runtime audio, translation caches, and saved sessions local.
+
+## Applications
+
+| Application | Path | Interface | Status | Purpose |
+| --- | --- | --- | --- | --- |
+| Integrated web tutor | `tutors/tutor3` | Local browser app | Recommended | Vocabulary, scenarios, audio, tests, insights, and saved sessions |
+| Vocabulary desktop tutor | `tutors/tutor1` | Tkinter desktop app | Legacy maintained | Original vocabulary workflow, source topics, orthographic tests, phonologic audio tests |
+| Scenario desktop tutor | `tutors/tutor2` | Tkinter desktop app | Legacy maintained | Original scenario workflow, aligned English support, MCQ comprehension, audio player |
 
 ## Supported Languages
 
-| Language | Script | LLM generation | Topic vocabulary | TTS |
+| Language | Script | Vocabulary generation | Topic vocabulary | Audio |
 | --- | --- | --- | --- | --- |
-| Spanish | Latin with accents | Yes | Source data | Edge-TTS Spanish voices |
-| Russian | Cyrillic | Yes | Generated and cached | Edge-TTS Russian voices |
-| French | Latin with accents | Yes | Generated and cached | Edge-TTS French voices |
-| Mandarin Chinese | Simplified Chinese | Yes | Generated and cached | Edge-TTS Mandarin voices |
+| Spanish | Latin with accents | Yes | Source Spanish data | Spanish Edge-TTS voices |
+| Russian | Cyrillic | Yes | Generated and cached | Russian Edge-TTS voices |
+| French | Latin with accents | Yes | Generated and cached | French Edge-TTS voices |
+| Mandarin Chinese | Simplified Chinese | Yes | Generated and cached | Mandarin Edge-TTS voices |
 
-## Tutor 3
+## Learning Workflow
 
-Tutor 3 combines the strongest pieces of Tutor 1 and Tutor 2 into a single local web app:
+1. Choose a language from the flag switcher.
+2. Select Vocabulary or Scenarios in the setup panel.
+3. Use a custom prompt or a source vocabulary topic.
+4. Pick difficulty, item count, voice, pace, and study support options.
+5. Generate a session.
+6. Study with the focused card, arrow buttons, keyboard navigation, and per-item audio.
+7. Move to Tests for spelling, dictation, sound discrimination, or scenario comprehension.
+8. Check Insights for accuracy, weak items, and recommended next practice.
 
-- Vocabulary Studio for custom concept generation and source-topic vocabulary.
-- Scenario Lab for short information-dense passages with aligned English support.
-- Multiple-choice and typing retrieval practice.
-- Confidence rating and a hard-item review queue.
-- Target-language audio with Edge-TTS and browser playback.
-- Script-aware rendering for accents, Cyrillic, and Simplified Chinese.
-- Local runtime cache for generated audio, topic translations, and saved sessions.
-- OpenAI-powered generation with safe offline demo fallback when no API key is configured.
-
-![Tutor 3 Interface](docs/images/tutor3-interface.png)
-
-### Run Tutor 3
-
-```bash
-cd tutors/tutor3
-python app.py --host 127.0.0.1 --port 8765 --open
-```
-
-Then open:
-
-```text
-http://127.0.0.1:8765
-```
-
-Use the language buttons at the top to switch between Spanish, Russian, French, and Mandarin Chinese. Use **Generate** for custom AI vocabulary, **Use topic** for the source vocabulary library, and **Scenario** for comprehension practice.
-
-## Setup
+## Run The Web Tutor
 
 Install dependencies from the repository root:
 
@@ -71,27 +67,40 @@ Optional model override:
 LEARNLANGUAGE_MODEL="gpt-4o-mini"
 ```
 
-Do not commit `.env`, API keys, generated audio, runtime caches, IDE metadata, or local test results. The repository `.gitignore` excludes those files.
+Start the local web app:
 
-## Legacy Desktop Tutors
+```bash
+cd tutors/tutor3
+python app.py --host 127.0.0.1 --port 8765 --open
+```
 
-Tutor 1 remains available for the original Tkinter vocabulary workflow:
+Then open:
+
+```text
+http://127.0.0.1:8765
+```
+
+If OpenAI is unavailable or a request times out, LearnLanguage keeps the interface usable with built-in demo content and labels the source as offline demo content.
+
+## Run Legacy Tutors
+
+Vocabulary desktop tutor:
 
 ```bash
 cd tutors/tutor1
 python tutor1.py
 ```
 
-Tutor 2 remains available for the original Tkinter scenario workflow:
+Scenario desktop tutor:
 
 ```bash
 cd tutors/tutor2
 python tutor2.py
 ```
 
-![Tutor 1 Interface](docs/images/tutor1-interface.png)
+![Vocabulary desktop tutor](docs/images/tutor1-interface.png)
 
-![Tutor 2 Interface](docs/images/tutor2-interface.png)
+![Scenario desktop tutor](docs/images/tutor2-interface.png)
 
 ## Directory Structure
 
@@ -101,9 +110,9 @@ LearnLanguage/
 ├── requirements.txt
 ├── docs/
 │   └── images/
+│       ├── learnlanguage-interface.png
 │       ├── tutor1-interface.png
-│       ├── tutor2-interface.png
-│       └── tutor3-interface.png
+│       └── tutor2-interface.png
 ├── tutors/
 │   ├── tutor1/
 │   │   ├── tutor1.py
@@ -135,13 +144,15 @@ cd tutors/tutor3 && python app.py --host 127.0.0.1 --port 8765
 
 Manual UI checks:
 
-- Tutor 3 opens at `http://127.0.0.1:8765`.
-- Spanish, Russian, French, and Mandarin Chinese language controls are visible.
-- Source-topic vocabulary loads and builds the retrieval queue.
+- The web tutor opens at `http://127.0.0.1:8765`.
+- Spanish, Russian, French, and Mandarin Chinese flags and labels are visible.
+- Switching languages restores that language's own session or loads the matching starter set.
+- Source-topic vocabulary loads and builds the review queue.
 - OpenAI vocabulary generation returns aligned English and target-language text.
-- Scenario generation returns a passage, five questions, English mirrors, and explanations.
+- Scenario generation returns a passage, questions, choices, answers, and explanations.
+- Orthographic recall, dictation, sound discrimination, and scenario comprehension tests are separate from the Study view.
 - Edge-TTS returns MP3 audio for all four target languages.
-- Browser audio playback either starts or shows a clear ready state if the browser blocks immediate playback.
+- Browser audio playback starts or shows a clear ready state if autoplay is blocked.
 - Desktop and mobile layouts render without clipped primary controls.
 
 ## Security
@@ -149,11 +160,11 @@ Manual UI checks:
 - API keys are read from environment variables only.
 - `.env` files are ignored and must stay local.
 - Runtime audio, caches, and session files are ignored.
-- The README and source files avoid hard-coded local machine paths.
+- Source files and documentation avoid hard-coded local machine paths.
 - Before publishing, run a secret and path scan over the files being committed.
 
 ## Development Status
 
-The project is moving toward Tutor 3 as the primary full-stack local learning app while Tutor 1 and Tutor 2 remain available for legacy workflows and regression comparison.
+LearnLanguage is moving toward the integrated local web tutor as the primary learning environment while the two legacy desktop tutors remain available for regression comparison and specialized workflows.
 
 Ongoing project.
