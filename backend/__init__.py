@@ -1,1 +1,1 @@
-"""Backend package for the integrated LearnLanguage web application."""
+"""Backend package for the integrated Glotta web application."""

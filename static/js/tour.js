@@ -9,7 +9,7 @@ const STEPS = [
   {
     target: null,
     title: 'Bienvenue 👋',
-    body: 'LearnLanguage is a science-based tutor: spaced repetition, active recall, listening, speaking, and real reading - all in one loop, all stored privately in your browser.',
+    body: 'Glotta is a science-based tutor: spaced repetition, active recall, listening, speaking, and real reading - all in one loop, all stored privately in your browser.',
   },
   {
     target: '[data-tour="nav"]',

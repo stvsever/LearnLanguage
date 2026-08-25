@@ -1,4 +1,4 @@
-"""LearnLanguage local web server.
+"""Glotta local web server.
 
 Zero-framework HTTP server (Python stdlib) exposing a small JSON API over the
 backend services, plus static file serving for the frontend. All learner state
@@ -48,7 +48,7 @@ def config_payload() -> dict:
 
 
 class TutorRequestHandler(BaseHTTPRequestHandler):
-    server_version = f"LearnLanguage/{config.APP_VERSION}"
+    server_version = f"Glotta/{config.APP_VERSION}"
 
     def log_message(self, fmt: str, *args: object) -> None:
         logger.info("%s - %s", self.address_string(), fmt % args)
@@ -174,20 +174,20 @@ def run(host: str, port: int, open_browser: bool) -> None:
     config.ensure_runtime_dirs()
     server = ThreadingHTTPServer((host, port), TutorRequestHandler)
     url = f"http://{host}:{port}"
-    logger.info("LearnLanguage %s | provider=%s model=%s | %s",
+    logger.info("Glotta %s | provider=%s model=%s | %s",
                 config.APP_VERSION, config.active_provider(), config.active_model(), url)
     if open_browser:
         webbrowser.open(url)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        logger.info("Shutting down LearnLanguage.")
+        logger.info("Shutting down Glotta.")
     finally:
         server.server_close()
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run the LearnLanguage local web app.")
+    parser = argparse.ArgumentParser(description="Run the Glotta local web app.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--open", action="store_true", help="Open the app in your default browser.")
