@@ -8,7 +8,7 @@
 //   as 'almost' so the scheduler can rate them Hard instead of Again.
 
 const APOSTROPHES = /[’ʼ`´]/g;
-const PUNCT_EDGES = /^[\s.,;:!?¿¡«»"()\-–—]+|[\s.,;:!?¿¡«»"()\-–—]+$/g;
+const PUNCT_EDGES = /^[\s.,;:!?¿¡«»"()\-\u2013\u2014]+|[\s.,;:!?¿¡«»"()\-\u2013\u2014]+$/g;
 
 export function stripDiacritics(text) {
   return text.normalize('NFD').replace(/[̀-ͯ]/g, '').normalize('NFC');

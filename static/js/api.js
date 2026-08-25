@@ -41,6 +41,7 @@ function withModel(payload) {
 
 export const api = {
   config: () => request('/api/config'),
+  setupKey: (key) => request('/api/setup/key', { method: 'POST', body: { key }, timeout: 15000 }),
   grammar: (language) => request(`/api/grammar?language=${encodeURIComponent(language)}`),
   lesson: (payload) => request('/api/lesson', { method: 'POST', body: withModel(payload), timeout: 180000 }),
   compose: (payload) => request('/api/compose', { method: 'POST', body: withModel(payload), timeout: 300000 }),

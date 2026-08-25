@@ -1,0 +1,15 @@
+.git
+.venv
+.env
+.idea
+.claude
+__pycache__
+**/__pycache__
+runtime
+tutors
+content
+other
+docs
+tests
+requirements-legacy.txt
+*.md

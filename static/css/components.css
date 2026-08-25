@@ -252,9 +252,10 @@ textarea.input { resize: vertical; min-height: 44px; }
 .modal-overlay.show .modal-panel { transform: none; }
 .modal-panel.wide { width: min(640px, 100%); }
 .modal-head {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; justify-content: flex-start;
   padding: 18px 22px 12px;
 }
+.modal-head .btn-icon { margin-left: auto; }
 .modal-head h2 { margin: 0; font-size: 18px; }
 .modal-body { padding: 4px 22px 22px; overflow-y: auto; }
 .confirm-text { font-size: 15px; }
@@ -473,3 +474,101 @@ kbd {
   padding: 2px 8px;
   white-space: nowrap;
 }
+
+/* -- Staged generation progress ------------------------------------------------ */
+.progress-host { margin-top: 4px; }
+.progress-steps {
+  display: flex; flex-direction: column; gap: 2px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  animation: fadeUp 0.25s var(--ease);
+}
+.pstep {
+  display: flex; align-items: center; gap: 10px;
+  padding: 5px 0;
+  color: var(--text-faint);
+  font-size: 13.5px;
+  transition: color 0.2s;
+}
+.pstep-marker {
+  width: 18px; height: 18px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+  position: relative;
+}
+.pstep-marker svg { display: none; color: #fff; }
+.pstep-spinner {
+  display: none;
+  width: 10px; height: 10px;
+  border: 2px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+.pstep.active { color: var(--text); }
+.pstep.active .pstep-marker { border-color: var(--accent); }
+.pstep.active .pstep-spinner { display: block; }
+.pstep.done { color: var(--text-muted); }
+.pstep.done .pstep-marker { background: var(--ok); border-color: var(--ok); }
+.pstep.done .pstep-marker svg { display: block; }
+.pstep.failed { color: var(--bad); }
+.pstep.failed .pstep-marker { border-color: var(--bad); }
+.progress-steps.all-done .pstep.done { color: var(--ok); }
+.pstep-error {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--bad);
+}
+
+/* -- OpenRouter key setup ------------------------------------------------------ */
+.key-setup {
+  border: 1px solid var(--accent-soft-border);
+  background: linear-gradient(140deg, var(--accent-soft), var(--surface) 75%);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+.key-setup.compact { margin-bottom: 8px; }
+.key-head {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px;
+}
+.key-head svg { color: var(--accent); }
+.key-head strong { font-size: 14.5px; }
+.key-steps {
+  margin: 0 0 12px;
+  padding-left: 20px;
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+.key-steps a { color: var(--accent); font-weight: 600; }
+.key-input { font-family: var(--font-mono); font-size: 13px; }
+.key-input.shake { animation: shake 0.4s; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+.key-status { margin-top: 8px; font-size: 13px; min-height: 18px; }
+.key-hint { color: var(--text-faint); }
+.key-saving { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); }
+.key-ok { display: inline-flex; align-items: center; gap: 6px; color: var(--ok); font-weight: 550; }
+.key-error { display: inline-flex; align-items: center; gap: 6px; color: var(--bad); }
+
+/* -- Saved flash (settings) ---------------------------------------------------- */
+.saved-flash {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-left: 12px;
+  font-size: 12.5px; font-weight: 650;
+  color: var(--ok);
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.saved-flash.show { opacity: 1; transform: none; }

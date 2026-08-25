@@ -44,6 +44,18 @@ def normalize_level(value: Optional[str]) -> str:
     return raw if raw in CEFR_LEVELS else "A2"
 
 
+def strip_em_dashes(value):
+    """House style bans em dashes everywhere, including generated content.
+    Walks any JSON-like structure and replaces them with plain hyphens."""
+    if isinstance(value, str):
+        return value.replace(" \u2014 ", " - ").replace("\u2014", "-")
+    if isinstance(value, list):
+        return [strip_em_dashes(item) for item in value]
+    if isinstance(value, dict):
+        return {key: strip_em_dashes(item) for key, item in value.items()}
+    return value
+
+
 def _load_seed(name: str) -> Optional[dict]:
     path = config.SEED_DIR / name
     if not path.exists():
@@ -134,7 +146,7 @@ def generate_lesson(topic: str, language_code: str, level: str, count: int,
         result.update({"language": language.code, "topic": topic, "level": level, "source": config.active_provider()})
         result["items"] = result["items"][:count]
         result["grammar_features"] = _filter_features(result.get("grammar_features", []), language.code)
-        return result
+        return strip_em_dashes(result)
     except LLMUnavailable as exc:
         logger.warning("Lesson generation unavailable: %s", exc)
         seeded = seed_lesson(language.code, count)
@@ -192,7 +204,7 @@ def generate_composition(prompt: str, language_code: str, level: str, length: st
         ]
         if result["format"] != "dialogue":
             result["participants"] = []
-        return result
+        return strip_em_dashes(result)
     except LLMUnavailable as exc:
         logger.warning("Composition generation unavailable: %s", exc)
         seeded = seed_composition(language.code)
@@ -224,4 +236,4 @@ def generate_gloss(text: str, context: str, language_code: str, model: Optional[
     payload_out = result.model_dump()
     payload_out["text"] = text
     payload_out["source"] = config.active_provider()
-    return payload_out
+    return strip_em_dashes(payload_out)

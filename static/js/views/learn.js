@@ -6,7 +6,8 @@
 //  3. Produce  - effortful typed recall, the strongest encoding event.
 // Completed items enter the FSRS pipeline and resurface in Review.
 
-import { el, icon, toast, shuffled, sample } from '../ui.js';
+import { el, icon, toast, shuffled, sample, progressSteps } from '../ui.js';
+import { keySetupCard } from '../keysetup.js';
 import {
   state, cards, newCards, addCards, recordNewCard, recordTime,
   newCardsIntroducedToday, currentLanguage, persist, recordGrammarFeatures,
@@ -251,11 +252,20 @@ function renderGeneratePanel(container, { title, sub, backTo }) {
   const countSelect = el('select', { class: 'input' },
     [8, 12, 16, 20, 24].map((n) => el('option', { value: n, selected: n === 12 || undefined }, `${n} items`)));
 
+  const progressHost = el('div', { class: 'progress-host' });
   const generateBtn = el('button', {
     class: 'btn btn-primary', id: 'generateLessonBtn',
     onclick: async () => {
       generateBtn.disabled = true;
-      generateBtn.replaceChildren(el('span', { class: 'spinner' }), 'Generating…');
+      generateBtn.replaceChildren(el('span', { class: 'spinner' }), 'Working');
+      const model = (state.settings.model || ctx.config?.model || 'the model').split('/').pop();
+      const progress = progressSteps([
+        `Sending your topic to ${model}`,
+        `Writing ${countSelect.value} items at ${levelSelect.value} with your grammar targets`,
+        'Checking structure, examples, and pronunciation',
+        'Adding cards to your deck',
+      ], [1400, 14000, 5000]);
+      progressHost.replaceChildren(progress.root);
       try {
         const known = cards(lang).map((c) => c.target).slice(-120);
         const pack = await api.lesson({
@@ -267,13 +277,14 @@ function renderGeneratePanel(container, { title, sub, backTo }) {
         });
         const added = addCards(pack.items, pack.topic || topicInput.value.trim(), lang);
         recordGrammarFeatures(pack.grammar_features || [], lang);
+        progress.finish();
         if (pack.notice) toast(pack.notice, 'info', 6000);
-        toast(`${added} new card${added === 1 ? '' : 's'} added`, 'success');
-        render(container);
+        toast(`${added} new card${added === 1 ? '' : 's'} added to your deck`, 'success');
+        setTimeout(() => render(container), 600);
       } catch (err) {
-        toast(err instanceof ApiError && err.status === 503
-          ? 'No LLM configured - add OPENROUTER_API_KEY to .env (see Settings → About).'
-          : `Generation failed: ${err.message}`, 'error', 6000);
+        progress.fail(err instanceof ApiError && err.status === 503
+          ? 'No AI key configured yet. Connect one below.'
+          : `Generation failed: ${err.message}`);
         generateBtn.disabled = false;
         generateBtn.replaceChildren(icon('sparkles', 16), 'Generate lesson');
       }
@@ -299,14 +310,13 @@ function renderGeneratePanel(container, { title, sub, backTo }) {
       el('div', { class: 'card generate-card', id: 'generatePanel' },
         el('h2', {}, title),
         el('p', { class: 'muted' }, sub),
-        offline ? el('div', { class: 'notice' },
-          icon('zap', 16),
-          el('span', {}, 'Running offline - no API key found. The built-in starter content works fully; add OPENROUTER_API_KEY to .env for unlimited generation.')) : null,
+        offline ? keySetupCard({ onConnected: () => render(container) }) : null,
         el('label', { class: 'field' }, el('span', {}, 'Topic'), topicInput),
         el('div', { class: 'row gap' },
           el('label', { class: 'field grow' }, el('span', {}, 'Level (CEFR)'), levelSelect),
           el('label', { class: 'field grow' }, el('span', {}, 'Amount'), countSelect)),
         el('div', { class: 'row gap wrap', style: { marginTop: '6px' } },
           generateBtn, seedBtn,
-          backTo ? el('button', { class: 'btn btn-ghost', onclick: backTo }, 'Back') : null))));
+          backTo ? el('button', { class: 'btn btn-ghost', onclick: backTo }, 'Back') : null),
+        progressHost)));
 }

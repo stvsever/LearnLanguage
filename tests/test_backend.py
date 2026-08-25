@@ -154,6 +154,52 @@ class TestTTS(unittest.TestCase):
         self.assertIn(language.default_voice, {v.id for v in language.voices})
 
 
+class TestEmDashPolicy(unittest.TestCase):
+    def test_strip_em_dashes_walks_structures(self):
+        dirty = {"a": "one \u2014 two", "b": ["x\u2014y", {"c": "clean"}], "d": 5}
+        clean = content.strip_em_dashes(dirty)
+        self.assertEqual(clean["a"], "one - two")
+        self.assertEqual(clean["b"][0], "x-y")
+        self.assertEqual(clean["b"][1]["c"], "clean")
+        self.assertEqual(clean["d"], 5)
+
+    def test_no_em_dashes_in_seed_content(self):
+        for name in ("fr_core.json", "fr_composition.json"):
+            text = (config.SEED_DIR / name).read_text(encoding="utf-8")
+            self.assertNotIn("\u2014", text, name)
+
+
+class TestKeySetup(unittest.TestCase):
+    def setUp(self):
+        self._original = config.OPENROUTER_API_KEY
+
+    def tearDown(self):
+        config.OPENROUTER_API_KEY = self._original
+
+    def test_valid_key_written_and_other_lines_preserved(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            env_path = Path(tmp) / ".env"
+            env_path.write_text('OTHER_SETTING="keep me"\nOPENROUTER_API_KEY="sk-or-old"\n')
+            config.set_openrouter_key("sk-or-v1-" + "a" * 32, env_path=env_path)
+            text = env_path.read_text()
+            self.assertIn('OTHER_SETTING="keep me"', text)
+            self.assertNotIn("sk-or-old", text)
+            self.assertIn("sk-or-v1-" + "a" * 32, text)
+            self.assertEqual(config.active_provider(), "openrouter")
+            self.assertTrue(config.masked_key().startswith("sk-or-v1-"))
+            self.assertNotIn("a" * 32, config.masked_key())
+
+    def test_invalid_keys_rejected(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            env_path = Path(tmp) / ".env"
+            for bad in ("", "hello", "sk-something", "sk-or-short", "sk-or- with space " + "x" * 30):
+                with self.assertRaises(ValueError):
+                    config.set_openrouter_key(bad, env_path=env_path)
+            self.assertFalse(env_path.exists())
+
+
 class TestConfig(unittest.TestCase):
     def test_provider_chain_values(self):
         self.assertIn(config.active_provider(), {"openrouter", "openai", "offline"})

@@ -134,7 +134,7 @@ function retentionHistogram(lang) {
     else if (r < 95) buckets[3] += 1;
     else buckets[4] += 1;
   }
-  const labels = ['<60%', '60–75', '75–85', '85–95', '95%+'];
+  const labels = ['<60%', '60-75', '75-85', '85-95', '95%+'];
   const max = Math.max(...buckets, 1);
   return el('div', { class: 'hist' },
     buckets.map((b, i) => el('div', { class: 'hist-col' },

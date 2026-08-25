@@ -24,7 +24,7 @@ if str(CURRENT_DIR) not in sys.path:
 from backend import config, content, tts  # noqa: E402
 from backend.grammar import grammar_profile  # noqa: E402
 from backend.languages import public_language_payload  # noqa: E402
-from backend.llm import LLMUnavailable  # noqa: E402
+from backend.llm import LLMUnavailable, reset_client  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("learnlanguage")
@@ -36,6 +36,7 @@ def config_payload() -> dict:
         "version": config.APP_VERSION,
         "provider": config.active_provider(),
         "model": config.active_model(),
+        "keyMasked": config.masked_key(),
         "modelChoices": config.MODEL_CHOICES,
         "defaultLanguage": config.DEFAULT_LANGUAGE,
         "languages": public_language_payload(),
@@ -144,6 +145,12 @@ class TutorRequestHandler(BaseHTTPRequestHandler):
                     language_code=str(payload.get("language") or config.DEFAULT_LANGUAGE),
                     model=payload.get("model"),
                 ))
+                return
+            if path == "/api/setup/key":
+                config.set_openrouter_key(str(payload.get("key") or ""))
+                reset_client()
+                logger.info("OpenRouter key updated via in-app setup.")
+                self.send_json({"saved": True, **config_payload()})
                 return
             if path == "/api/tts":
                 self.send_json(tts.synthesize(

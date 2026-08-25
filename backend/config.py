@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+from typing import Optional
 
 from dotenv import load_dotenv
 
@@ -57,6 +58,43 @@ def active_provider() -> str:
     if OPENAI_API_KEY:
         return "openai"
     return "offline"
+
+
+ENV_PATH = APP_DIR / ".env"
+
+
+def masked_key() -> str:
+    """Display form of the stored OpenRouter key, safe to send to the UI."""
+    if not OPENROUTER_API_KEY:
+        return ""
+    return f"{OPENROUTER_API_KEY[:9]}...{OPENROUTER_API_KEY[-4:]}"
+
+
+def set_openrouter_key(key: str, env_path: Optional[Path] = None) -> None:
+    """Persist a new OpenRouter key to .env and activate it immediately.
+
+    Called from the in-app key setup so no restart is needed. Preserves any
+    other lines already present in the .env file.
+    """
+    global OPENROUTER_API_KEY
+    key = (key or "").strip().strip('"').strip("'")
+    if not key.startswith("sk-or-") or len(key) < 24 or any(c.isspace() for c in key):
+        raise ValueError("That does not look like an OpenRouter key (they start with sk-or-).")
+    path = env_path or ENV_PATH
+    lines = []
+    if path.exists():
+        lines = [
+            line for line in path.read_text(encoding="utf-8").splitlines()
+            if not line.strip().startswith("OPENROUTER_API_KEY")
+        ]
+    lines.append(f'OPENROUTER_API_KEY="{key}"')
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    try:
+        path.chmod(0o600)
+    except OSError:
+        pass
+    OPENROUTER_API_KEY = key
+    os.environ["OPENROUTER_API_KEY"] = key
 
 
 def active_model() -> str:

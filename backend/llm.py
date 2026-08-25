@@ -40,6 +40,13 @@ class LLMUnavailable(RuntimeError):
     """No LLM provider is configured or the provider call failed."""
 
 
+def reset_client() -> None:
+    """Drop the cached client, e.g. after the API key changed at runtime."""
+    global _client, _client_provider
+    _client = None
+    _client_provider = None
+
+
 def get_client() -> tuple[OpenAI, str, str]:
     """Return (client, provider, model) for the active provider."""
     global _client, _client_provider
@@ -110,6 +117,8 @@ def generate_structured(system_prompt: str, user_prompt: str, response_model: Ty
         "Respond with a single JSON object only - no markdown, no commentary.\n"
         "The object must be an INSTANCE conforming to the JSON Schema below - "
         "actual data values, never the schema itself, never 'properties'/'type' keys.\n"
+        "Never use the em dash character (\u2014) in any text you produce; "
+        "use a comma, colon, or plain hyphen instead.\n"
         f"JSON Schema:\n{schema}"
     )
     messages = [

@@ -6,7 +6,8 @@
 // a distinct neural voice per speaker), tap-any-word glosses, aligned
 // translations, grammar spotlights, and comprehension questions.
 
-import { el, icon, toast, sample } from '../ui.js';
+import { el, icon, toast, sample, progressSteps } from '../ui.js';
+import { keySetupCard } from '../keysetup.js';
 import {
   state, compositions, saveComposition, removeComposition, addCards,
   currentLanguage, recordTime,
@@ -106,11 +107,20 @@ function composeForm(container, prefill) {
     [['short', 'Short · ~8 segments'], ['medium', 'Medium · ~13'], ['long', 'Long · ~20']]
       .map(([v, label]) => el('option', { value: v, selected: v === 'medium' || undefined }, label)));
 
+  const progressHost = el('div', { class: 'progress-host' });
   const composeBtn = el('button', {
     class: 'btn btn-primary btn-lg', id: 'composeBtn',
     onclick: async () => {
       composeBtn.disabled = true;
-      composeBtn.replaceChildren(el('span', { class: 'spinner' }), 'Composing…');
+      composeBtn.replaceChildren(el('span', { class: 'spinner' }), 'Composing');
+      const model = (state.settings.model || ctx.config?.model || 'the model').split('/').pop();
+      const progress = progressSteps([
+        `Sending your request to ${model}`,
+        'Choosing the best format: dialogue, monologue, story, or article',
+        `Writing at your level (${levelSelect.value}) with grammar targets woven in`,
+        'Validating structure, glossary, spotlights, and questions',
+      ], [1500, 5000, 16000]);
+      progressHost.replaceChildren(progress.root);
       try {
         const pack = await api.compose({
           prompt: promptInput.value.trim(),
@@ -119,12 +129,14 @@ function composeForm(container, prefill) {
           length: lengthSelect.value,
         });
         saveComposition(pack, lang);
+        progress.finish();
         if (pack.notice) toast(pack.notice, 'info', 6000);
-        renderComposition(container, pack);
+        toast(`Composed a ${pack.format}: “${pack.title}”`, 'success');
+        setTimeout(() => renderComposition(container, pack), 500);
       } catch (err) {
-        toast(err instanceof ApiError && err.status === 503
-          ? 'No LLM configured - add OPENROUTER_API_KEY to .env to compose.'
-          : `Composition failed: ${err.message}`, 'error', 6000);
+        progress.fail(err instanceof ApiError && err.status === 503
+          ? 'No AI key configured yet. Connect one above.'
+          : `Composition failed: ${err.message}`);
         composeBtn.disabled = false;
         composeBtn.replaceChildren(icon('sparkles', 18), 'Compose');
       }
@@ -141,14 +153,14 @@ function composeForm(container, prefill) {
   }, icon('book', 16), 'Open starter piece') : null;
 
   return el('div', {},
-    offline && !hasSeed ? el('div', { class: 'notice' }, icon('zap', 16),
-      el('span', {}, 'Add OPENROUTER_API_KEY to .env to unlock composing.')) : null,
+    offline ? keySetupCard({ onConnected: () => render(container) }) : null,
     promptInput,
     exampleRow,
     el('div', { class: 'row gap wrap compose-controls' },
       el('label', { class: 'field grow' }, el('span', {}, 'Level'), levelSelect),
       el('label', { class: 'field grow' }, el('span', {}, 'Length'), lengthSelect),
-      el('div', { class: 'compose-actions' }, composeBtn, seedBtn)));
+      el('div', { class: 'compose-actions' }, composeBtn, seedBtn)),
+    progressHost);
 }
 
 // -- voices for dialogue speakers -------------------------------------------

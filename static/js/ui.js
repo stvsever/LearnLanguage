@@ -153,6 +153,57 @@ export function fmtInterval(days) {
   return `${(days / 365).toFixed(1).replace('.0', '')}y`;
 }
 
+// -- Staged progress (generation feedback) -----------------------------------
+/**
+ * Animated step checklist for long-running work. Steps advance on estimated
+ * timers up to (but never past) the final step, which completes only when the
+ * caller reports the real outcome via finish() or fail().
+ *
+ * progressSteps(['Contacting model', 'Writing', 'Validating'], [1500, 9000])
+ */
+export function progressSteps(labels, estimatesMs = []) {
+  const rows = labels.map((label, index) => el('div', { class: `pstep${index === 0 ? ' active' : ''}` },
+    el('span', { class: 'pstep-marker' },
+      el('span', { class: 'pstep-spinner' }),
+      icon('check', 12)),
+    el('span', { class: 'pstep-label' }, label)));
+  const root = el('div', { class: 'progress-steps', role: 'status', 'aria-live': 'polite' }, rows);
+
+  let current = 0;
+  const timers = [];
+  const setState = (index, state) => {
+    rows[index]?.classList.remove('active', 'done', 'failed');
+    if (state) rows[index]?.classList.add(state);
+  };
+  const advance = () => {
+    if (current >= labels.length - 1) return; // last step waits for reality
+    setState(current, 'done');
+    current += 1;
+    setState(current, 'active');
+  };
+  estimatesMs.forEach((ms, i) => {
+    timers.push(setTimeout(advance, estimatesMs.slice(0, i + 1).reduce((a, b) => a + b, 0)));
+  });
+
+  return {
+    root,
+    finish() {
+      timers.forEach(clearTimeout);
+      rows.forEach((_, i) => setState(i, 'done'));
+      root.classList.add('all-done');
+    },
+    fail(message) {
+      timers.forEach(clearTimeout);
+      setState(current, 'failed');
+      if (message) root.append(el('div', { class: 'pstep-error' }, message));
+    },
+    remove() {
+      timers.forEach(clearTimeout);
+      root.remove();
+    },
+  };
+}
+
 export function shuffled(array) {
   const copy = [...array];
   for (let i = copy.length - 1; i > 0; i--) {
