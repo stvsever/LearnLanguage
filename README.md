@@ -1,7 +1,9 @@
+<div align="center">
+
 # LearnLanguage
 
 [![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red)](https://github.com/stvsever/LearnLanguage)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Local First](https://img.shields.io/badge/Local-First-2ea44f)](https://github.com/stvsever/LearnLanguage#-privacy)
 [![LLM Agnostic](https://img.shields.io/badge/LLM-Agnostic-8A2BE2)](https://openrouter.ai/models)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](Dockerfile)
 
@@ -12,6 +14,8 @@ Spaced repetition, active recall, listening, speaking, free-form composed input,
 Built for 🇫🇷 **French** (default), 🇪🇸 **Spanish**, 🇷🇺 **Russian**, and 🇨🇳 **Mandarin**. The interface is in English.
 
 ![LearnLanguage dashboard](docs/images/learnlanguage-interface.png)
+
+</div>
 
 ## 🚀 Quickstart
 
