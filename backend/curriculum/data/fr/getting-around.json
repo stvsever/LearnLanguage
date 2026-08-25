@@ -1,0 +1,83 @@
+{
+  "directions": {
+    "grammar": ["fr-questions-basic", "fr-imperatif"],
+    "groups": [
+      {
+        "title": "Asking the way",
+        "items": [
+          {"target": "où est ... ?", "english": "where is ...?", "pronunciation": "/u ɛ/", "example": "Excusez-moi, où est la poste ?", "example_en": "Excuse me, where is the post office?", "note": "Always open with excusez-moi; a bare question sounds abrupt.", "tags": ["directions", "question"]},
+          {"target": "je cherche la gare", "english": "I'm looking for the station", "pronunciation": "/ʒə ʃɛʁʃ la ɡaʁ/", "example": "Bonjour, je cherche la gare du Nord.", "example_en": "Hello, I'm looking for Gare du Nord.", "note": "", "tags": ["directions", "phrase"]},
+          {"target": "c'est loin ?", "english": "is it far?", "pronunciation": "/sɛ lwɛ̃/", "example": "C'est loin d'ici à pied ?", "example_en": "Is it far from here on foot?", "note": "tout près means very near.", "tags": ["directions", "question"]},
+          {"target": "tout droit", "english": "straight ahead", "pronunciation": "/tu dʁwa/", "example": "Continuez tout droit jusqu'au feu.", "example_en": "Keep going straight ahead until the traffic light.", "note": "Do not confuse with à droite, to the right.", "tags": ["directions", "trap"]},
+          {"target": "à gauche", "english": "on the left, to the left", "pronunciation": "/a ɡoʃ/", "example": "Tournez à gauche après l'église.", "example_en": "Turn left after the church.", "note": "à droite is to the right.", "tags": ["directions"]},
+          {"target": "au coin de la rue", "english": "at the corner of the street", "pronunciation": "/o kwɛ̃ də la ʁy/", "example": "La pharmacie est au coin de la rue.", "example_en": "The pharmacy is at the corner of the street.", "note": "", "tags": ["directions", "phrase"]}
+        ]
+      },
+      {
+        "title": "Places in town",
+        "items": [
+          {"target": "la gare", "english": "the train station", "pronunciation": "/la ɡaʁ/", "example": "On se retrouve devant la gare.", "example_en": "Let's meet in front of the station.", "note": "The bus station is la gare routière.", "tags": ["places"]},
+          {"target": "la mairie", "english": "the town hall", "pronunciation": "/la mɛ.ʁi/", "example": "La mairie est fermée le lundi.", "example_en": "The town hall is closed on Mondays.", "note": "In big cities: l'hôtel de ville.", "tags": ["places"]},
+          {"target": "la boulangerie", "english": "the bakery", "pronunciation": "/la bu.lɑ̃.ʒʁi/", "example": "Il y a une boulangerie juste là.", "example_en": "There's a bakery right there.", "note": "The -erie ending marks shops: pâtisserie, épicerie, librairie.", "tags": ["places"]},
+          {"target": "la pharmacie", "english": "the pharmacy", "pronunciation": "/la faʁ.ma.si/", "example": "La pharmacie de garde est ouverte la nuit.", "example_en": "The on-duty pharmacy is open at night.", "note": "", "tags": ["places"]},
+          {"target": "le carrefour", "english": "the crossroads", "pronunciation": "/lə kaʁ.fuʁ/", "example": "Tournez au prochain carrefour.", "example_en": "Turn at the next crossroads.", "note": "A roundabout is un rond-point.", "tags": ["places"]},
+          {"target": "le quartier", "english": "the neighbourhood", "pronunciation": "/lə kaʁ.tje/", "example": "J'aime beaucoup ce quartier.", "example_en": "I really like this neighbourhood.", "note": "", "tags": ["places"]}
+        ]
+      }
+    ]
+  },
+  "transport": {
+    "grammar": ["fr-futur-proche", "fr-passe-compose"],
+    "groups": [
+      {
+        "title": "Tickets and platforms",
+        "items": [
+          {"target": "un aller-retour", "english": "a return ticket", "pronunciation": "/œ̃.n‿a.le ʁə.tuʁ/", "example": "Un aller-retour pour Lille, s'il vous plaît.", "example_en": "A return ticket to Lille, please.", "note": "One way is un aller simple.", "tags": ["tickets"]},
+          {"target": "le guichet", "english": "the ticket counter", "pronunciation": "/lə ɡi.ʃɛ/", "example": "Vous pouvez acheter au guichet ou en ligne.", "example_en": "You can buy at the counter or online.", "note": "", "tags": ["tickets"]},
+          {"target": "composter son billet", "english": "to validate your ticket", "pronunciation": "/kɔ̃.pɔs.te sɔ̃ bi.jɛ/", "example": "N'oubliez pas de composter votre billet.", "example_en": "Don't forget to validate your ticket.", "note": "An unvalidated paper ticket earns a fine.", "tags": ["tickets", "culture"]},
+          {"target": "le quai", "english": "the platform", "pronunciation": "/lə kɛ/", "example": "Le train part du quai numéro trois.", "example_en": "The train leaves from platform three.", "note": "In a metro station it is also le quai.", "tags": ["train"]},
+          {"target": "la correspondance", "english": "the connection, the transfer", "pronunciation": "/la kɔ.ʁɛs.pɔ̃.dɑ̃s/", "example": "J'ai une correspondance à Lyon.", "example_en": "I have a connection in Lyon.", "note": "Also means correspondence in writing.", "tags": ["train", "trap"]},
+          {"target": "prendre le métro", "english": "to take the metro", "pronunciation": "/pʁɑ̃.dʁə lə me.tʁo/", "example": "On prend le métro ligne quatre.", "example_en": "We'll take metro line four.", "note": "prendre covers all transport: prendre le bus, le train, l'avion.", "tags": ["transport", "phrase"]}
+        ]
+      },
+      {
+        "title": "When things go wrong",
+        "items": [
+          {"target": "le train a du retard", "english": "the train is delayed", "pronunciation": "/lə tʁɛ̃ a dy ʁə.taʁ/", "example": "Le train a vingt minutes de retard.", "example_en": "The train is twenty minutes late.", "note": "être en retard is for people, avoir du retard for services.", "tags": ["delays", "trap"]},
+          {"target": "la grève", "english": "the strike", "pronunciation": "/la ɡʁɛv/", "example": "Il y a une grève des transports demain.", "example_en": "There's a transport strike tomorrow.", "note": "A word worth knowing before travelling in France.", "tags": ["delays", "culture"]},
+          {"target": "annulé", "english": "cancelled", "pronunciation": "/a.ny.le/", "example": "Notre vol a été annulé.", "example_en": "Our flight was cancelled.", "note": "", "tags": ["delays"]},
+          {"target": "rater le train", "english": "to miss the train", "pronunciation": "/ʁa.te lə tʁɛ̃/", "example": "J'ai raté le dernier train.", "example_en": "I missed the last train.", "note": "manquer works too, but rater is more common in speech.", "tags": ["delays", "phrase"]},
+          {"target": "je me suis perdu", "english": "I got lost", "pronunciation": "/ʒə mə sɥi pɛʁ.dy/", "example": "Désolé, je me suis perdu en chemin.", "example_en": "Sorry, I got lost on the way.", "note": "Reflexive verbs take être in the past, and the participle agrees: perdue.", "tags": ["problems", "phrase"]},
+          {"target": "à quelle heure part le prochain ?", "english": "what time does the next one leave?", "pronunciation": "/a kɛ.l‿œʁ paʁ lə pʁɔ.ʃɛ̃/", "example": "À quelle heure part le prochain bus ?", "example_en": "What time does the next bus leave?", "note": "", "tags": ["transport", "question"]}
+        ]
+      }
+    ]
+  },
+  "travel-stay": {
+    "grammar": ["fr-conditionnel", "fr-relatifs"],
+    "groups": [
+      {
+        "title": "Booking and checking in",
+        "items": [
+          {"target": "j'ai une réservation", "english": "I have a reservation", "pronunciation": "/ʒe yn ʁe.zɛʁ.va.sjɔ̃/", "example": "Bonsoir, j'ai une réservation au nom de Dupont.", "example_en": "Good evening, I have a reservation under the name Dupont.", "note": "au nom de means under the name of.", "tags": ["hotel", "phrase"]},
+          {"target": "une chambre double", "english": "a double room", "pronunciation": "/yn ʃɑ̃bʁ dubl/", "example": "Une chambre double avec vue sur la mer.", "example_en": "A double room with a sea view.", "note": "une chambre simple is a single.", "tags": ["hotel"]},
+          {"target": "le petit-déjeuner est compris", "english": "breakfast is included", "pronunciation": "/lə pə.ti de.ʒø.ne ɛ kɔ̃.pʁi/", "example": "Est-ce que le petit-déjeuner est compris ?", "example_en": "Is breakfast included?", "note": "compris is the past participle of comprendre, which also means to include.", "tags": ["hotel", "trap"]},
+          {"target": "la clé de la chambre", "english": "the room key", "pronunciation": "/la kle də la ʃɑ̃bʁ/", "example": "Je vous laisse la clé de la chambre.", "example_en": "I'll leave you the room key.", "note": "Also spelled clef, same pronunciation.", "tags": ["hotel"]},
+          {"target": "à quelle heure faut-il libérer la chambre ?", "english": "what time is check-out?", "pronunciation": "/a kɛ.l‿œʁ fo.til li.be.ʁe la ʃɑ̃bʁ/", "example": "À quelle heure faut-il libérer la chambre demain ?", "example_en": "What time do we have to check out tomorrow?", "note": "il faut is the impersonal must, valid for everyone.", "tags": ["hotel", "question"]},
+          {"target": "je voudrais annuler ma réservation", "english": "I'd like to cancel my booking", "pronunciation": "/ʒə vu.dʁɛ a.ny.le ma ʁe.zɛʁ.va.sjɔ̃/", "example": "Je voudrais annuler ma réservation pour vendredi.", "example_en": "I'd like to cancel my booking for Friday.", "note": "The conditional keeps the request polite.", "tags": ["hotel", "phrase"]}
+        ]
+      },
+      {
+        "title": "Complaining politely",
+        "items": [
+          {"target": "il y a un problème avec", "english": "there's a problem with", "pronunciation": "/i.lj‿a œ̃ pʁɔ.blɛm a.vɛk/", "example": "Il y a un problème avec le chauffage.", "example_en": "There's a problem with the heating.", "note": "The neutral opening for any complaint.", "tags": ["complaints", "phrase"]},
+          {"target": "ça ne marche pas", "english": "it doesn't work", "pronunciation": "/sa nə maʁʃ pa/", "example": "La climatisation ne marche pas.", "example_en": "The air conditioning doesn't work.", "note": "marcher literally means to walk; for machines it means to work.", "tags": ["complaints", "trap"]},
+          {"target": "ce serait possible de", "english": "would it be possible to", "pronunciation": "/sə sə.ʁɛ pɔ.sibl də/", "example": "Ce serait possible de changer de chambre ?", "example_en": "Would it be possible to change rooms?", "note": "The conditional softens a demand into a request.", "tags": ["complaints", "phrase"]},
+          {"target": "les bagages", "english": "the luggage", "pronunciation": "/le ba.ɡaʒ/", "example": "On peut laisser les bagages à la réception ?", "example_en": "Can we leave our luggage at reception?", "note": "Plural in French where English is singular.", "tags": ["luggage", "trap"]},
+          {"target": "l'assurance voyage", "english": "travel insurance", "pronunciation": "/la.sy.ʁɑ̃s vwa.jaʒ/", "example": "Heureusement, j'avais une assurance voyage.", "example_en": "Luckily, I had travel insurance.", "note": "", "tags": ["travel"]},
+          {"target": "je vous remercie de votre compréhension", "english": "thank you for your understanding", "pronunciation": "/ʒə vu ʁə.mɛʁ.si də vɔtʁ kɔ̃.pʁe.ɑ̃.sjɔ̃/", "example": "Je vous remercie de votre compréhension.", "example_en": "Thank you for your understanding.", "note": "Formal closing that defuses most friction.", "tags": ["formal", "phrase"]}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "directions": {
+    "grammar": ["zh-zai-location", "zh-questions"],
+    "groups": [
+      {
+        "title": "Asking the way",
+        "items": [
+          {"target": "请问 ... 在哪儿？", "english": "excuse me, where is ...?", "pronunciation": "qǐngwèn ... zài nǎr", "example": "请问，火车站在哪儿？", "example_en": "Excuse me, where is the train station?", "note": "请问 opens any question to a stranger. In the south: 在哪里.", "tags": ["directions", "essential"]},
+          {"target": "我在找", "english": "I'm looking for", "pronunciation": "wǒ zài zhǎo", "example": "我在找地铁站。", "example_en": "I'm looking for the metro station.", "note": "在 before the verb marks the action in progress.", "tags": ["directions", "trap"]},
+          {"target": "远吗？", "english": "is it far?", "pronunciation": "yuǎn ma", "example": "走路去远吗？", "example_en": "Is it far on foot?", "note": "近 is near. 走路 means to go on foot.", "tags": ["directions", "question"]},
+          {"target": "一直走", "english": "go straight ahead", "pronunciation": "yìzhí zǒu", "example": "一直走到红绿灯。", "example_en": "Go straight ahead to the traffic light.", "note": "一直 also means all along or continuously.", "tags": ["directions", "trap"]},
+          {"target": "左转", "english": "turn left", "pronunciation": "zuǒ zhuǎn", "example": "过了教堂左转。", "example_en": "Turn left after the church.", "note": "右转 is turn right. 了 marks the completed passing.", "tags": ["directions", "trap"]},
+          {"target": "路口", "english": "intersection, junction", "pronunciation": "lùkǒu", "example": "在下一个路口右转。", "example_en": "Turn right at the next junction.", "note": "口 means opening or mouth: 路口, 门口, 出口.", "tags": ["directions", "trap"]}
+        ]
+      },
+      {
+        "title": "Places in town",
+        "items": [
+          {"target": "火车站", "english": "train station", "pronunciation": "huǒchēzhàn", "example": "我们在火车站前面见。", "example_en": "Let's meet in front of the train station.", "note": "站 means station or stop: 地铁站, 公交站.", "tags": ["places", "trap"]},
+          {"target": "地铁站", "english": "metro station", "pronunciation": "dìtiězhàn", "example": "最近的地铁站怎么走？", "example_en": "How do I get to the nearest metro station?", "note": "怎么走 literally means how to walk, used for any route question.", "tags": ["places", "trap"]},
+          {"target": "商店", "english": "shop", "pronunciation": "shāngdiàn", "example": "商店开到晚上十点。", "example_en": "The shop is open until ten at night.", "note": "店 marks businesses: 饭店, 书店, 花店.", "tags": ["places"]},
+          {"target": "药店", "english": "pharmacy", "pronunciation": "yàodiàn", "example": "旁边有一家药店。", "example_en": "There's a pharmacy next door.", "note": "家 is the measure word for shops and businesses.", "tags": ["places", "trap"]},
+          {"target": "银行", "english": "bank", "pronunciation": "yínháng", "example": "银行在马路对面。", "example_en": "The bank is across the road.", "note": "行 is háng here, not xíng. Same character, two readings.", "tags": ["places", "trap"]},
+          {"target": "小区", "english": "residential compound", "pronunciation": "xiǎoqū", "example": "我很喜欢这个小区。", "example_en": "I really like this neighbourhood.", "note": "The standard unit of Chinese urban housing, gated and self-contained.", "tags": ["places", "culture"]}
+        ]
+      }
+    ]
+  },
+  "transport": {
+    "grammar": ["zh-le-completed", "zh-direction-complements"],
+    "groups": [
+      {
+        "title": "Tickets and platforms",
+        "items": [
+          {"target": "往返票", "english": "return ticket", "pronunciation": "wǎngfǎn piào", "example": "买一张到上海的往返票。", "example_en": "Buy a return ticket to Shanghai.", "note": "张 is the measure word for tickets. 单程票 is one way.", "tags": ["tickets", "trap"]},
+          {"target": "售票处", "english": "ticket office", "pronunciation": "shòupiàochù", "example": "售票处在一楼。", "example_en": "The ticket office is on the ground floor.", "note": "In China 一楼 is the ground floor, as in American usage.", "tags": ["tickets", "trap"]},
+          {"target": "站台", "english": "platform", "pronunciation": "zhàntái", "example": "火车在三号站台。", "example_en": "The train is at platform three.", "note": "号 numbers things: 三号站台, 五号线.", "tags": ["train", "trap"]},
+          {"target": "换乘", "english": "to change lines, to transfer", "pronunciation": "huànchéng", "example": "在下一站换乘二号线。", "example_en": "Change to line two at the next stop.", "note": "You will hear this constantly in metro announcements.", "tags": ["train", "culture"]},
+          {"target": "坐地铁", "english": "to take the metro", "pronunciation": "zuò dìtiě", "example": "我们坐地铁去，四号线。", "example_en": "We'll take the metro, line four.", "note": "坐 for sitting transport, 骑 for bikes, 开 for driving.", "tags": ["transport", "trap"]},
+          {"target": "身份证", "english": "ID card", "pronunciation": "shēnfènzhèng", "example": "买票需要身份证。", "example_en": "You need ID to buy a ticket.", "note": "Chinese rail tickets are tied to an ID or passport.", "tags": ["transport", "culture"]}
+        ]
+      },
+      {
+        "title": "When things go wrong",
+        "items": [
+          {"target": "晚点", "english": "to be delayed (transport)", "pronunciation": "wǎndiǎn", "example": "火车晚点二十分钟。", "example_en": "The train is twenty minutes late.", "note": "迟到 is for people being late, 晚点 for services.", "tags": ["delays", "trap"]},
+          {"target": "取消", "english": "to cancel", "pronunciation": "qǔxiāo", "example": "我们的航班取消了。", "example_en": "Our flight has been cancelled.", "note": "了 marks the change of state.", "tags": ["delays", "trap"]},
+          {"target": "堵车", "english": "traffic jam", "pronunciation": "dǔchē", "example": "路上堵车，我会晚一点到。", "example_en": "There's a traffic jam, I'll be a bit late.", "note": "Literally blocked cars.", "tags": ["delays", "culture"]},
+          {"target": "错过", "english": "to miss (a train, a chance)", "pronunciation": "cuòguò", "example": "我错过了最后一班车。", "example_en": "I missed the last train.", "note": "A resultative compound: 错 wrong plus 过 pass.", "tags": ["delays", "trap"]},
+          {"target": "我迷路了", "english": "I got lost", "pronunciation": "wǒ mílù le", "example": "不好意思，我迷路了。", "example_en": "Sorry, I got lost.", "note": "迷 means confused, 路 road. 了 marks the new state.", "tags": ["problems", "trap"]},
+          {"target": "下一班几点？", "english": "what time is the next one?", "pronunciation": "xià yì bān jǐ diǎn", "example": "下一班公交车几点？", "example_en": "What time is the next bus?", "note": "班 is the measure word for scheduled services.", "tags": ["transport", "trap"]}
+        ]
+      }
+    ]
+  },
+  "travel-stay": {
+    "grammar": ["zh-shi-de", "zh-result-complements"],
+    "groups": [
+      {
+        "title": "Booking and checking in",
+        "items": [
+          {"target": "我订了房间", "english": "I have booked a room", "pronunciation": "wǒ dìng le fángjiān", "example": "您好，我订了房间，姓杜邦。", "example_en": "Hello, I've booked a room under the name Dupont.", "note": "了 after the verb marks completion.", "tags": ["hotel", "trap"]},
+          {"target": "双人房", "english": "double room", "pronunciation": "shuāngrén fáng", "example": "我要一间有海景的双人房。", "example_en": "I'd like a double room with a sea view.", "note": "间 is the measure word for rooms. 单人房 is a single.", "tags": ["hotel", "trap"]},
+          {"target": "包早餐吗？", "english": "is breakfast included?", "pronunciation": "bāo zǎocān ma", "example": "房价包早餐吗？", "example_en": "Does the room rate include breakfast?", "note": "包 here means to include.", "tags": ["hotel", "trap"]},
+          {"target": "房卡", "english": "room key card", "pronunciation": "fángkǎ", "example": "这是您的房卡。", "example_en": "Here is your room key card.", "note": "卡 is a phonetic loan from card.", "tags": ["hotel"]},
+          {"target": "几点退房？", "english": "what time is check-out?", "pronunciation": "jǐ diǎn tuìfáng", "example": "明天几点退房？", "example_en": "What time is check-out tomorrow?", "note": "入住 is check-in, 退房 is check-out.", "tags": ["hotel", "trap"]},
+          {"target": "我想取消预订", "english": "I'd like to cancel my booking", "pronunciation": "wǒ xiǎng qǔxiāo yùdìng", "example": "我想取消星期五的预订。", "example_en": "I'd like to cancel Friday's booking.", "note": "想 softens the request compared with 要.", "tags": ["hotel", "trap"]}
+        ]
+      },
+      {
+        "title": "Complaining politely",
+        "items": [
+          {"target": "有个问题", "english": "there's a problem", "pronunciation": "yǒu ge wèntí", "example": "房间的暖气有个问题。", "example_en": "There's a problem with the room's heating.", "note": "The neutral opening for any complaint.", "tags": ["complaints", "phrase"]},
+          {"target": "坏了", "english": "it's broken", "pronunciation": "huài le", "example": "空调坏了。", "example_en": "The air conditioning is broken.", "note": "了 marks the change from working to broken.", "tags": ["complaints", "trap"]},
+          {"target": "可以 ... 吗？", "english": "would it be possible to ...?", "pronunciation": "kěyǐ ... ma", "example": "可以换一个房间吗？", "example_en": "Could we change rooms?", "note": "可以 is the polite may I or could you.", "tags": ["complaints", "trap"]},
+          {"target": "行李", "english": "luggage", "pronunciation": "xíngli", "example": "行李可以寄存在前台吗？", "example_en": "Can we leave our luggage at reception?", "note": "寄存 means to leave in storage.", "tags": ["luggage"]},
+          {"target": "旅行保险", "english": "travel insurance", "pronunciation": "lǚxíng bǎoxiǎn", "example": "还好我买了旅行保险。", "example_en": "Luckily I bought travel insurance.", "note": "", "tags": ["travel"]},
+          {"target": "谢谢您的理解", "english": "thank you for your understanding", "pronunciation": "xièxie nín de lǐjiě", "example": "谢谢您的理解。", "example_en": "Thank you for your understanding.", "note": "您 keeps the register respectful.", "tags": ["formal", "phrase"]}
+        ]
+      }
+    ]
+  }
+}

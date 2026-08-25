@@ -1,0 +1,105 @@
+{
+  "greetings": {
+    "grammar": ["ru-cyrillic", "ru-present-conj"],
+    "groups": [
+      {
+        "title": "Meeting someone",
+        "items": [
+          {"target": "здравствуйте", "english": "hello (formal)", "pronunciation": "/ˈzdrastvujtʲe/", "example": "Здравствуйте, меня зовут Мария.", "example_en": "Hello, my name is Maria.", "note": "The first в is silent. The default greeting to anyone you address as вы.", "tags": ["greeting", "essential", "trap"]},
+          {"target": "привет", "english": "hi (informal)", "pronunciation": "/prʲɪˈvʲet/", "example": "Привет! Как дела?", "example_en": "Hi! How are things?", "note": "Only for friends, family, and children.", "tags": ["greeting", "informal"]},
+          {"target": "доброе утро", "english": "good morning", "pronunciation": "/ˈdobrəjə ˈutrə/", "example": "Доброе утро, вы уже завтракали?", "example_en": "Good morning, have you had breakfast?", "note": "добрый день and добрый вечер follow through the day.", "tags": ["greeting"]},
+          {"target": "как дела?", "english": "how are things?", "pronunciation": "/kak dʲɪˈla/", "example": "Как дела? Нормально, спасибо.", "example_en": "How are things? Fine, thanks.", "note": "нормально is the standard neutral answer, not lukewarm as in English.", "tags": ["greeting", "culture"]},
+          {"target": "как вас зовут?", "english": "what is your name? (formal)", "pronunciation": "/kak vas zɐˈvut/", "example": "Извините, как вас зовут?", "example_en": "Excuse me, what is your name?", "note": "Literally how do they call you. Informal: как тебя зовут?", "tags": ["greeting", "question"]},
+          {"target": "очень приятно", "english": "nice to meet you", "pronunciation": "/ˈotɕɪnʲ prʲɪˈjatnə/", "example": "Очень приятно, я Павел.", "example_en": "Very nice to meet you, I'm Pavel.", "note": "Literally very pleasant.", "tags": ["greeting", "phrase"]}
+        ]
+      },
+      {
+        "title": "Politeness that opens doors",
+        "items": [
+          {"target": "пожалуйста", "english": "please, you're welcome", "pronunciation": "/pɐˈʐalstə/", "example": "Один кофе, пожалуйста.", "example_en": "One coffee, please.", "note": "Does double duty as please and as you're welcome.", "tags": ["politeness", "essential", "trap"]},
+          {"target": "спасибо большое", "english": "thank you very much", "pronunciation": "/spɐˈsʲibə bɐlʲˈʂojə/", "example": "Спасибо большое за помощь.", "example_en": "Thank you very much for the help.", "note": "", "tags": ["politeness", "essential"]},
+          {"target": "извините", "english": "excuse me, sorry (formal)", "pronunciation": "/ɪzvʲɪˈnʲitʲe/", "example": "Извините, где вокзал?", "example_en": "Excuse me, where is the station?", "note": "Informal извини. Use it before asking a stranger anything.", "tags": ["politeness", "essential"]},
+          {"target": "простите", "english": "forgive me, pardon", "pronunciation": "/prɐˈsʲtʲitʲe/", "example": "Простите, я не расслышал.", "example_en": "Sorry, I didn't catch that.", "note": "Slightly weightier than извините.", "tags": ["politeness"]},
+          {"target": "ничего страшного", "english": "no problem, never mind", "pronunciation": "/nʲɪtɕɪˈvo ˈstraʂnəvə/", "example": "Извините! Ничего страшного.", "example_en": "Sorry! No problem.", "note": "Literally nothing terrible. In ничего, the г sounds like v.", "tags": ["politeness", "trap"]},
+          {"target": "будьте добры", "english": "would you be so kind", "pronunciation": "/ˈbutʲtʲe dɐˈbry/", "example": "Будьте добры, повторите ещё раз.", "example_en": "Would you be so kind as to repeat that.", "note": "The politest way to open a request to a stranger.", "tags": ["politeness", "formal"]}
+        ]
+      },
+      {
+        "title": "Leaving, and buying time",
+        "items": [
+          {"target": "до свидания", "english": "goodbye", "pronunciation": "/də svʲɪˈdanʲɪjə/", "example": "До свидания, до завтра!", "example_en": "Goodbye, see you tomorrow!", "note": "Literally until the meeting.", "tags": ["greeting", "essential"]},
+          {"target": "пока", "english": "bye (informal)", "pronunciation": "/pɐˈka/", "example": "Ладно, пока!", "example_en": "All right, bye!", "note": "Also means for now or while, depending on context.", "tags": ["greeting", "informal", "trap"]},
+          {"target": "я не понимаю", "english": "I don't understand", "pronunciation": "/ja nʲe pənʲɪˈmaju/", "example": "Простите, я не понимаю.", "example_en": "Sorry, I don't understand.", "note": "The single most useful sentence of your first week.", "tags": ["survival", "phrase"]},
+          {"target": "говорите медленнее, пожалуйста", "english": "please speak more slowly", "pronunciation": "/ɡəvɐˈrʲitʲe ˈmʲedlʲɪnʲɪje pɐˈʐalstə/", "example": "Говорите медленнее, пожалуйста.", "example_en": "Please speak more slowly.", "note": "The comparative ending -ее does the work of English more.", "tags": ["survival", "phrase"]},
+          {"target": "как по-русски ... ?", "english": "how do you say ... in Russian?", "pronunciation": "/kak pɐ ˈruskʲɪ/", "example": "Как по-русски window?", "example_en": "How do you say window in Russian?", "note": "по-русски is an adverb: in the Russian way.", "tags": ["survival", "question"]},
+          {"target": "я плохо говорю по-русски", "english": "I speak Russian badly", "pronunciation": "/ja ˈploxə ɡəvɐˈrʲu pɐ ˈruskʲɪ/", "example": "Извините, я плохо говорю по-русски.", "example_en": "Sorry, I speak Russian badly.", "note": "Said early, it makes everyone slow down for you.", "tags": ["survival", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "self-intro": {
+    "grammar": ["ru-present-conj", "ru-prepositional", "ru-u-menya"],
+    "groups": [
+      {
+        "title": "Who you are",
+        "items": [
+          {"target": "меня зовут", "english": "my name is", "pronunciation": "/mʲɪˈnʲa zɐˈvut/", "example": "Меня зовут Стейн, а вас?", "example_en": "My name is Stijn, and yours?", "note": "Literally they call me. меня is accusative.", "tags": ["identity", "trap"]},
+          {"target": "я из Бельгии", "english": "I'm from Belgium", "pronunciation": "/ja ɪz ˈbʲelʲɡʲɪɪ/", "example": "Я из Бельгии, но живу в Москве.", "example_en": "I'm from Belgium, but I live in Moscow.", "note": "из takes the genitive: Бельгия becomes Бельгии.", "tags": ["identity", "trap"]},
+          {"target": "я живу в", "english": "I live in", "pronunciation": "/ja ʐɨˈvu v/", "example": "Я живу в Санкт-Петербурге уже три года.", "example_en": "I've been living in Saint Petersburg for three years.", "note": "в plus prepositional for location: в Москве, в городе.", "tags": ["identity", "trap"]},
+          {"target": "мне тридцать лет", "english": "I am thirty years old", "pronunciation": "/mnʲe ˈtrʲitsətʲ lʲet/", "example": "Мне тридцать лет, а брату двадцать восемь.", "example_en": "I'm thirty, and my brother is twenty-eight.", "note": "Dative plus лет: literally to me are thirty years. 1 год, 2-4 года, 5+ лет.", "tags": ["identity", "trap"]},
+          {"target": "у меня есть", "english": "I have", "pronunciation": "/u mʲɪˈnʲa jesʲtʲ/", "example": "У меня есть сестра.", "example_en": "I have a sister.", "note": "Russian has no verb to have: literally by me there is.", "tags": ["identity", "trap"]},
+          {"target": "я женат", "english": "I am married (man)", "pronunciation": "/ja ʐɨˈnat/", "example": "Я женат уже десять лет.", "example_en": "I've been married for ten years.", "note": "A woman says я замужем. The two words are completely different.", "tags": ["identity", "trap"]}
+        ]
+      },
+      {
+        "title": "What you do",
+        "items": [
+          {"target": "я работаю", "english": "I work", "pronunciation": "/ja rɐˈbotəju/", "example": "Я работаю в школе.", "example_en": "I work at a school.", "note": "Regular first-conjugation verb.", "tags": ["work"]},
+          {"target": "я студент", "english": "I'm a student", "pronunciation": "/ja stuˈdʲent/", "example": "Я студент, изучаю биологию.", "example_en": "I'm a student, I study biology.", "note": "No verb to be in the present tense, and no article. Female: студентка.", "tags": ["work", "trap"]},
+          {"target": "кем вы работаете?", "english": "what do you do for a living?", "pronunciation": "/kʲem vɨ rɐˈbotəjɪtʲe/", "example": "А кем вы работаете?", "example_en": "And what do you do for a living?", "note": "Instrumental case: literally as whom do you work.", "tags": ["work", "question", "trap"]},
+          {"target": "я изучаю русский язык", "english": "I'm studying Russian", "pronunciation": "/ja ɪzuˈtɕaju ˈruskʲɪj jɪˈzɨk/", "example": "Я изучаю русский язык шесть месяцев.", "example_en": "I've been studying Russian for six months.", "note": "изучать is deliberate study; учиться is being a student somewhere.", "tags": ["language", "trap"]},
+          {"target": "немного", "english": "a little", "pronunciation": "/nʲɪˈmnoɡə/", "example": "Я немного говорю по-русски.", "example_en": "I speak a little Russian.", "note": "", "tags": ["language"]},
+          {"target": "вы говорите по-английски?", "english": "do you speak English?", "pronunciation": "/vɨ ɡəvɐˈrʲitʲe pə ɐnˈɡlʲijskʲɪ/", "example": "Извините, вы говорите по-английски?", "example_en": "Excuse me, do you speak English?", "note": "Word order stays the same; intonation makes it a question.", "tags": ["language", "question"]}
+        ]
+      }
+    ]
+  },
+  "numbers-time": {
+    "grammar": ["ru-gender", "ru-prepositional"],
+    "groups": [
+      {
+        "title": "Numbers you will actually use",
+        "items": [
+          {"target": "один, два, три", "english": "one, two, three", "pronunciation": "/ɐˈdʲin dva trʲi/", "example": "Три кофе, пожалуйста.", "example_en": "Three coffees, please.", "note": "один agrees in gender: один стол, одна книга, одно окно.", "tags": ["numbers", "trap"]},
+          {"target": "десять", "english": "ten", "pronunciation": "/ˈdʲesʲɪtʲ/", "example": "С вас десять рублей.", "example_en": "That'll be ten roubles.", "note": "After 5 and above, the counted noun goes into the genitive plural.", "tags": ["numbers", "trap"]},
+          {"target": "двадцать", "english": "twenty", "pronunciation": "/ˈdvatsətʲ/", "example": "Автобус придёт через двадцать минут.", "example_en": "The bus is coming in twenty minutes.", "note": "через plus accusative means in, after an interval.", "tags": ["numbers"]},
+          {"target": "сто", "english": "one hundred", "pronunciation": "/sto/", "example": "Билет стоит сто рублей.", "example_en": "The ticket costs a hundred roubles.", "note": "", "tags": ["numbers"]},
+          {"target": "тысяча", "english": "a thousand", "pronunciation": "/ˈtɨsʲɪtɕə/", "example": "Это стоило полторы тысячи.", "example_en": "That cost one and a half thousand.", "note": "Feminine noun, so it declines like one: тысячи, тысяче.", "tags": ["numbers", "trap"]},
+          {"target": "сколько стоит?", "english": "how much does it cost?", "pronunciation": "/ˈskolʲkə ˈstoɪt/", "example": "Сколько стоит эта сумка?", "example_en": "How much does this bag cost?", "note": "сколько always takes the genitive: сколько времени, сколько денег.", "tags": ["numbers", "question", "trap"]}
+        ]
+      },
+      {
+        "title": "Telling the time",
+        "items": [
+          {"target": "который час?", "english": "what time is it?", "pronunciation": "/kɐˈtorɨj tɕas/", "example": "Извините, который час?", "example_en": "Excuse me, what time is it?", "note": "Colloquially: сколько времени?", "tags": ["time", "question"]},
+          {"target": "восемь часов", "english": "eight o'clock", "pronunciation": "/ˈvosʲɪmʲ tɕɪˈsof/", "example": "Сейчас восемь часов утра.", "example_en": "It's eight in the morning.", "note": "час after 1, часа after 2-4, часов after 5 and up.", "tags": ["time", "trap"]},
+          {"target": "полдевятого", "english": "half past eight", "pronunciation": "/pəldʲɪˈvʲatəvə/", "example": "Поезд отходит в полдевятого.", "example_en": "The train leaves at half past eight.", "note": "Literally half of the ninth hour, so it means 8:30, not 9:30.", "tags": ["time", "trap"]},
+          {"target": "утром", "english": "in the morning", "pronunciation": "/ˈutrəm/", "example": "Утром я бегаю в парке.", "example_en": "In the morning I run in the park.", "note": "Instrumental case as an adverb: днём, вечером, ночью.", "tags": ["time", "trap"]},
+          {"target": "сегодня", "english": "today", "pronunciation": "/sʲɪˈvodnʲə/", "example": "Сегодня хорошая погода.", "example_en": "The weather is good today.", "note": "The д is pronounced as v, like in ничего.", "tags": ["time", "essential", "trap"]},
+          {"target": "сейчас", "english": "now, right now", "pronunciation": "/sʲɪjˈtɕas/", "example": "Я сейчас занят, перезвоню.", "example_en": "I'm busy right now, I'll call back.", "note": "Often reduced to something like щас in fast speech.", "tags": ["time"]}
+        ]
+      },
+      {
+        "title": "Days, months, dates",
+        "items": [
+          {"target": "в понедельник", "english": "on Monday", "pronunciation": "/f pənʲɪˈdʲelʲnʲɪk/", "example": "Увидимся в понедельник.", "example_en": "See you on Monday.", "note": "в plus accusative for days. Days are lowercase.", "tags": ["calendar", "trap"]},
+          {"target": "выходные", "english": "the weekend, days off", "pronunciation": "/vɨxɐdˈnɨje/", "example": "Что ты делаешь в выходные?", "example_en": "What are you doing at the weekend?", "note": "A plural adjective used as a noun: literally the days off.", "tags": ["calendar", "trap"]},
+          {"target": "январь", "english": "January", "pronunciation": "/jɪnˈvarʲ/", "example": "Мой день рождения в январе.", "example_en": "My birthday is in January.", "note": "в plus prepositional for months, and the stress shifts: январь becomes январе.", "tags": ["calendar", "trap"]},
+          {"target": "на следующей неделе", "english": "next week", "pronunciation": "/nə ˈslʲedujʉɕːɪj nʲɪˈdʲelʲe/", "example": "Обсудим на следующей неделе.", "example_en": "We'll discuss it next week.", "note": "Weeks take на, not в: на этой неделе, на прошлой неделе.", "tags": ["calendar", "trap"]},
+          {"target": "первое мая", "english": "the first of May", "pronunciation": "/ˈpʲervəje ˈmajə/", "example": "Магазины закрыты первого мая.", "example_en": "The shops are closed on the first of May.", "note": "Neuter ordinal plus genitive month. On that date: первого мая.", "tags": ["calendar", "trap"]},
+          {"target": "всегда", "english": "always", "pronunciation": "/fsʲɪɡˈda/", "example": "Я всегда завтракаю дома.", "example_en": "I always have breakfast at home.", "note": "Family: иногда, часто, редко, никогда.", "tags": ["frequency"]}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "cafe-bar": {
+    "grammar": ["es-gender-articles", "es-questions-negation"],
+    "groups": [
+      {
+        "title": "Ordering a drink",
+        "items": [
+          {"target": "quería", "english": "I'd like", "pronunciation": "/keˈɾi.a/", "example": "Quería un café con leche, por favor.", "example_en": "I'd like a white coffee, please.", "note": "The imperfect used as a polite softener. Quiero is blunter but fine.", "tags": ["ordering", "essential"]},
+          {"target": "un café solo", "english": "an espresso", "pronunciation": "/un kaˈfe ˈso.lo/", "example": "Un café solo y un vaso de agua.", "example_en": "An espresso and a glass of water.", "note": "solo means black, not alone, in a coffee order.", "tags": ["drinks", "trap"]},
+          {"target": "un café con leche", "english": "a coffee with milk", "pronunciation": "/un kaˈfe kon ˈle.tʃe/", "example": "Para mí, un café con leche.", "example_en": "For me, a coffee with milk.", "note": "A cortado is an espresso with a splash of milk.", "tags": ["drinks"]},
+          {"target": "una caña", "english": "a small draught beer", "pronunciation": "/ˈu.na ˈka.ɲa/", "example": "Dos cañas, por favor.", "example_en": "Two small beers, please.", "note": "The standard bar order in Spain, roughly 20cl.", "tags": ["drinks", "culture"]},
+          {"target": "un zumo de naranja", "english": "an orange juice", "pronunciation": "/un ˈsu.mo de naˈɾaŋ.xa/", "example": "Un zumo de naranja natural, por favor.", "example_en": "A fresh orange juice, please.", "note": "In Latin America: un jugo.", "tags": ["drinks", "trap"]},
+          {"target": "el agua del grifo", "english": "tap water", "pronunciation": "/el ˈa.ɣwa del ˈɡɾi.fo/", "example": "¿Me pone agua del grifo?", "example_en": "Could I have tap water?", "note": "agua is feminine but takes el in the singular, for the stressed a.", "tags": ["drinks", "trap"]}
+        ]
+      },
+      {
+        "title": "Snacks and paying",
+        "items": [
+          {"target": "una tapa", "english": "a small plate of food", "pronunciation": "/ˈu.na ˈta.pa/", "example": "Con la caña ponen una tapa gratis.", "example_en": "They give a free tapa with the beer.", "note": "In parts of Spain it comes free with a drink; elsewhere you pay.", "tags": ["food", "culture"]},
+          {"target": "una tostada", "english": "a slice of toast", "pronunciation": "/ˈu.na tosˈta.ða/", "example": "Una tostada con tomate y aceite.", "example_en": "A slice of toast with tomato and olive oil.", "note": "The classic Spanish breakfast.", "tags": ["food", "culture"]},
+          {"target": "¿para tomar aquí o para llevar?", "english": "eat in or take away?", "pronunciation": "/ˈpa.ɾa toˈmaɾ aˈki o ˈpa.ɾa ʝeˈβaɾ/", "example": "¿Para tomar aquí o para llevar? Aquí, gracias.", "example_en": "Eat in or take away? Here, thanks.", "note": "You will hear this at every counter.", "tags": ["ordering", "phrase"]},
+          {"target": "la cuenta, por favor", "english": "the bill, please", "pronunciation": "/la ˈkwen.ta poɾ faˈβoɾ/", "example": "Perdone, la cuenta, por favor.", "example_en": "Excuse me, the bill, please.", "note": "You have to ask; nobody brings it unprompted.", "tags": ["paying", "culture"]},
+          {"target": "¿cuánto es?", "english": "how much is it?", "pronunciation": "/ˈkwan.to es/", "example": "¿Cuánto es todo?", "example_en": "How much is that altogether?", "note": "", "tags": ["paying", "question"]},
+          {"target": "quédese con el cambio", "english": "keep the change", "pronunciation": "/ˈke.ðe.se kon el ˈkam.bjo/", "example": "Tenga, quédese con el cambio.", "example_en": "Here you go, keep the change.", "note": "Tipping is modest in Spain; rounding up is normal.", "tags": ["paying", "culture"]}
+        ]
+      }
+    ]
+  },
+  "restaurant": {
+    "grammar": ["es-clitics-intro", "es-ir-a"],
+    "groups": [
+      {
+        "title": "Getting a table",
+        "items": [
+          {"target": "reservar una mesa", "english": "to book a table", "pronunciation": "/re.seɾˈβaɾ ˈu.na ˈme.sa/", "example": "Quería reservar una mesa para cuatro.", "example_en": "I'd like to book a table for four.", "note": "", "tags": ["booking", "phrase"]},
+          {"target": "una mesa para dos", "english": "a table for two", "pronunciation": "/ˈu.na ˈme.sa ˈpa.ɾa dos/", "example": "Buenas noches, ¿una mesa para dos en la terraza?", "example_en": "Good evening, a table for two on the terrace?", "note": "", "tags": ["booking", "phrase"]},
+          {"target": "la carta", "english": "the menu", "pronunciation": "/la ˈkaɾ.ta/", "example": "¿Nos trae la carta, por favor?", "example_en": "Could you bring us the menu, please?", "note": "Classic trap: el menú is a fixed-price set meal, la carta is the list of dishes.", "tags": ["menu", "trap"]},
+          {"target": "el menú del día", "english": "the set lunch menu", "pronunciation": "/el meˈnu del ˈdi.a/", "example": "¿Qué lleva el menú del día?", "example_en": "What's in the set lunch menu?", "note": "Starter, main, dessert, bread and a drink for one price. The best value in Spain.", "tags": ["menu", "culture"]},
+          {"target": "el primero", "english": "the first course", "pronunciation": "/el pɾiˈme.ɾo/", "example": "De primero, una ensalada.", "example_en": "For the first course, a salad.", "note": "The set follows: el primero, el segundo, el postre.", "tags": ["menu"]},
+          {"target": "el postre", "english": "the dessert", "pronunciation": "/el ˈpos.tɾe/", "example": "¿Van a tomar postre?", "example_en": "Are you going to have dessert?", "note": "", "tags": ["menu"]}
+        ]
+      },
+      {
+        "title": "Ordering and reacting",
+        "items": [
+          {"target": "para mí", "english": "for me, I'll have", "pronunciation": "/ˈpa.ɾa mi/", "example": "Para mí, el pollo, por favor.", "example_en": "I'll have the chicken, please.", "note": "The most natural way to order in a group.", "tags": ["ordering", "phrase"]},
+          {"target": "al punto", "english": "medium (steak)", "pronunciation": "/al ˈpun.to/", "example": "Un filete al punto, por favor.", "example_en": "A medium steak, please.", "note": "The scale runs poco hecho, al punto, muy hecho.", "tags": ["ordering", "culture"]},
+          {"target": "soy vegetariano", "english": "I'm vegetarian", "pronunciation": "/soj be.xe.taˈɾja.no/", "example": "Soy vegetariana, ¿hay algún plato sin carne?", "example_en": "I'm vegetarian, is there a dish without meat?", "note": "Feminine vegetariana.", "tags": ["ordering", "phrase"]},
+          {"target": "soy alérgico a", "english": "I'm allergic to", "pronunciation": "/soj aˈleɾ.xi.ko a/", "example": "Soy alérgico al marisco.", "example_en": "I'm allergic to shellfish.", "note": "a plus el contracts to al.", "tags": ["ordering", "phrase"]},
+          {"target": "está buenísimo", "english": "it's delicious", "pronunciation": "/esˈta bweˈni.si.mo/", "example": "Gracias, estaba buenísimo.", "example_en": "Thank you, that was delicious.", "note": "The -ísimo ending is the everyday Spanish superlative.", "tags": ["reaction"]},
+          {"target": "¿podemos pagar por separado?", "english": "can we pay separately?", "pronunciation": "/poˈðe.mos paˈɣaɾ poɾ se.paˈɾa.ðo/", "example": "¿Podemos pagar por separado, por favor?", "example_en": "Can we pay separately, please?", "note": "", "tags": ["paying", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "cooking-groceries": {
+    "grammar": ["es-commands", "es-gender-articles"],
+    "groups": [
+      {
+        "title": "At the market",
+        "items": [
+          {"target": "hacer la compra", "english": "to do the grocery shopping", "pronunciation": "/aˈseɾ la ˈkom.pɾa/", "example": "Hago la compra los sábados.", "example_en": "I do the shopping on Saturdays.", "note": "ir de compras means going shopping for pleasure.", "tags": ["market", "trap"]},
+          {"target": "el pan", "english": "the bread", "pronunciation": "/el pan/", "example": "¿Puedes comprar pan?", "example_en": "Can you buy some bread?", "note": "No partitive article needed, unlike French.", "tags": ["food"]},
+          {"target": "un kilo de", "english": "a kilo of", "pronunciation": "/un ˈki.lo de/", "example": "Un kilo de tomates, por favor.", "example_en": "A kilo of tomatoes, please.", "note": "Also medio kilo, un cuarto.", "tags": ["quantities"]},
+          {"target": "las verduras", "english": "the vegetables", "pronunciation": "/las beɾˈðu.ɾas/", "example": "Estas verduras son de temporada.", "example_en": "These vegetables are in season.", "note": "las legumbres means pulses, not vegetables.", "tags": ["food", "trap"]},
+          {"target": "la fruta", "english": "the fruit", "pronunciation": "/la ˈfɾu.ta/", "example": "Compro fruta en el mercado.", "example_en": "I buy fruit at the market.", "note": "Usually singular and uncountable, like English.", "tags": ["food"]},
+          {"target": "¿está fresco?", "english": "is it fresh?", "pronunciation": "/esˈta ˈfɾes.ko/", "example": "El pescado, ¿está fresco hoy?", "example_en": "Is the fish fresh today?", "note": "estar because freshness is a condition, not an essence.", "tags": ["market", "trap"]}
+        ]
+      },
+      {
+        "title": "In the kitchen",
+        "items": [
+          {"target": "los ingredientes", "english": "the ingredients", "pronunciation": "/los in.ɡɾeˈðjen.tes/", "example": "Compra los ingredientes de la receta.", "example_en": "Buy the ingredients for the recipe.", "note": "la receta means both a cooking recipe and a medical prescription.", "tags": ["cooking", "trap"]},
+          {"target": "cortar", "english": "to cut, to chop", "pronunciation": "/koɾˈtaɾ/", "example": "Corta la cebolla en trozos pequeños.", "example_en": "Chop the onion into small pieces.", "note": "Recipes use the tú or usted imperative throughout.", "tags": ["cooking"]},
+          {"target": "cocer", "english": "to boil, to cook", "pronunciation": "/koˈseɾ/", "example": "Cuece la pasta diez minutos.", "example_en": "Boil the pasta for ten minutes.", "note": "Stem-changing: cuece. Do not confuse with coser, to sew.", "tags": ["cooking", "trap"]},
+          {"target": "añadir", "english": "to add", "pronunciation": "/a.ɲaˈðiɾ/", "example": "Añade una pizca de sal.", "example_en": "Add a pinch of salt.", "note": "", "tags": ["cooking"]},
+          {"target": "remover", "english": "to stir", "pronunciation": "/re.moˈβeɾ/", "example": "Remueve bien hasta que quede suave.", "example_en": "Stir well until it's smooth.", "note": "False friend: it does not mean to remove, which is quitar.", "tags": ["cooking", "trap"]},
+          {"target": "saber a", "english": "to taste of", "pronunciation": "/saˈβeɾ a/", "example": "Sabe un poco a limón.", "example_en": "It tastes slightly of lemon.", "note": "Same verb as to know, distinguished by the a and the context.", "tags": ["taste", "trap"]}
+        ]
+      }
+    ]
+  }
+}

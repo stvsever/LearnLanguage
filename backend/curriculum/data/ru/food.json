@@ -1,0 +1,83 @@
+{
+  "cafe-bar": {
+    "grammar": ["ru-accusative", "ru-gender"],
+    "groups": [
+      {
+        "title": "Ordering a drink",
+        "items": [
+          {"target": "я бы хотел", "english": "I would like", "pronunciation": "/ja bɨ xɐˈtʲel/", "example": "Я бы хотел кофе, пожалуйста.", "example_en": "I would like a coffee, please.", "note": "бы makes it conditional and polite. A woman says хотела.", "tags": ["ordering", "essential", "trap"]},
+          {"target": "кофе", "english": "coffee", "pronunciation": "/ˈkofʲe/", "example": "Один кофе и стакан воды.", "example_en": "One coffee and a glass of water.", "note": "Indeclinable and traditionally masculine, though neuter is now accepted.", "tags": ["drinks", "trap"]},
+          {"target": "чай", "english": "tea", "pronunciation": "/tɕaj/", "example": "Зелёный чай, пожалуйста.", "example_en": "Green tea, please.", "note": "The default Russian hot drink; usually black with lemon.", "tags": ["drinks", "culture"]},
+          {"target": "с молоком", "english": "with milk", "pronunciation": "/s məlɐˈkom/", "example": "Кофе с молоком, пожалуйста.", "example_en": "Coffee with milk, please.", "note": "с plus instrumental: с молоком, с сахаром.", "tags": ["drinks", "trap"]},
+          {"target": "разливное пиво", "english": "draught beer", "pronunciation": "/rəzlʲɪvˈnojə ˈpʲivə/", "example": "Два разливных пива, пожалуйста.", "example_en": "Two draught beers, please.", "note": "", "tags": ["drinks"]},
+          {"target": "вода без газа", "english": "still water", "pronunciation": "/vɐˈda bʲez ˈɡazə/", "example": "Мне воду без газа, пожалуйста.", "example_en": "Still water for me, please.", "note": "с газом is sparkling. без takes the genitive.", "tags": ["drinks", "trap"]}
+        ]
+      },
+      {
+        "title": "Snacks and paying",
+        "items": [
+          {"target": "бутерброд", "english": "open sandwich", "pronunciation": "/butʲɪrˈbrot/", "example": "Бутерброд с сыром, пожалуйста.", "example_en": "A cheese sandwich, please.", "note": "From German Butterbrot. Usually a single slice with a topping.", "tags": ["food", "culture"]},
+          {"target": "пирожок", "english": "small filled pastry", "pronunciation": "/pʲɪrɐˈʐok/", "example": "Пирожок с капустой, пожалуйста.", "example_en": "A cabbage pirozhok, please.", "note": "Sold everywhere. Fillings take с plus instrumental.", "tags": ["food", "culture"]},
+          {"target": "с собой", "english": "to take away", "pronunciation": "/s sɐˈboj/", "example": "Один кофе с собой, пожалуйста.", "example_en": "One coffee to go, please.", "note": "Literally with oneself. The counter phrase you will hear constantly.", "tags": ["ordering", "trap"]},
+          {"target": "счёт, пожалуйста", "english": "the bill, please", "pronunciation": "/ɕːot pɐˈʐalstə/", "example": "Извините, счёт, пожалуйста.", "example_en": "Excuse me, the bill, please.", "note": "Also the score in a game, and a bank account.", "tags": ["paying", "trap"]},
+          {"target": "сколько с меня?", "english": "how much do I owe?", "pronunciation": "/ˈskolʲkə s mʲɪˈnʲa/", "example": "Сколько с меня всего?", "example_en": "How much do I owe altogether?", "note": "Literally how much from me.", "tags": ["paying", "question"]},
+          {"target": "оплата картой", "english": "card payment", "pronunciation": "/ɐˈplatə ˈkartəj/", "example": "У вас есть оплата картой?", "example_en": "Do you take card payments?", "note": "наличными means in cash, in the instrumental.", "tags": ["paying"]}
+        ]
+      }
+    ]
+  },
+  "restaurant": {
+    "grammar": ["ru-accusative", "ru-future-budu"],
+    "groups": [
+      {
+        "title": "Getting a table",
+        "items": [
+          {"target": "забронировать столик", "english": "to book a table", "pronunciation": "/zəbrɐˈnʲirəvətʲ ˈstolʲɪk/", "example": "Я хочу забронировать столик на четверых.", "example_en": "I want to book a table for four.", "note": "столик is the diminutive of стол, standard for restaurant tables.", "tags": ["booking", "trap"]},
+          {"target": "столик на двоих", "english": "a table for two", "pronunciation": "/ˈstolʲɪk nə dvɐˈix/", "example": "Добрый вечер, столик на двоих?", "example_en": "Good evening, a table for two?", "note": "Collective numerals двоих, троих are used for people.", "tags": ["booking", "trap"]},
+          {"target": "меню", "english": "the menu", "pronunciation": "/mʲɪˈnʲu/", "example": "Можно меню, пожалуйста?", "example_en": "Could we have the menu, please?", "note": "Indeclinable neuter noun borrowed from French.", "tags": ["menu", "trap"]},
+          {"target": "закуска", "english": "starter, appetiser", "pronunciation": "/zɐˈkuskə/", "example": "На закуску возьмём салат.", "example_en": "We'll have a salad as a starter.", "note": "Central to Russian dining, especially alongside a drink.", "tags": ["menu", "culture"]},
+          {"target": "горячее", "english": "the main course", "pronunciation": "/ɡɐˈrʲatɕɪje/", "example": "Что вы будете на горячее?", "example_en": "What will you have for the main course?", "note": "Literally the hot thing: another adjective used as a noun.", "tags": ["menu", "trap"]},
+          {"target": "десерт", "english": "dessert", "pronunciation": "/dʲɪˈsʲert/", "example": "Будете десерт?", "example_en": "Will you have dessert?", "note": "", "tags": ["menu"]}
+        ]
+      },
+      {
+        "title": "Ordering and reacting",
+        "items": [
+          {"target": "я буду", "english": "I'll have", "pronunciation": "/ja ˈbudu/", "example": "Я буду курицу, пожалуйста.", "example_en": "I'll have the chicken, please.", "note": "The future of быть, used exactly as English I'll have.", "tags": ["ordering", "phrase"]},
+          {"target": "средней прожарки", "english": "medium (steak)", "pronunciation": "/ˈsrʲednʲɪj prɐˈʐarkʲɪ/", "example": "Стейк средней прожарки, пожалуйста.", "example_en": "A medium steak, please.", "note": "Genitive of description. The scale runs слабая, средняя, полная прожарка.", "tags": ["ordering", "trap"]},
+          {"target": "я вегетарианец", "english": "I'm vegetarian", "pronunciation": "/ja vʲɪɡʲɪtərʲɪˈanʲɪts/", "example": "Я вегетарианка, есть блюда без мяса?", "example_en": "I'm vegetarian, are there dishes without meat?", "note": "Female form: вегетарианка.", "tags": ["ordering", "trap"]},
+          {"target": "у меня аллергия на", "english": "I'm allergic to", "pronunciation": "/u mʲɪˈnʲa ɐlʲɪrˈɡʲijə na/", "example": "У меня аллергия на морепродукты.", "example_en": "I'm allergic to seafood.", "note": "на plus accusative for the allergen.", "tags": ["ordering", "trap"]},
+          {"target": "очень вкусно", "english": "very tasty", "pronunciation": "/ˈotɕɪnʲ ˈfkusnə/", "example": "Спасибо, было очень вкусно.", "example_en": "Thank you, that was delicious.", "note": "An impersonal adverb, not an adjective agreeing with the food.", "tags": ["reaction", "trap"]},
+          {"target": "можно раздельно?", "english": "can we pay separately?", "pronunciation": "/ˈmoʐnə rɐzˈdʲelʲnə/", "example": "Счёт, пожалуйста. Можно раздельно?", "example_en": "The bill, please. Can we pay separately?", "note": "", "tags": ["paying", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "cooking-groceries": {
+    "grammar": ["ru-genitive", "ru-imperative"],
+    "groups": [
+      {
+        "title": "At the market",
+        "items": [
+          {"target": "ходить за продуктами", "english": "to go grocery shopping", "pronunciation": "/xɐˈdʲitʲ zə prɐˈduktəmʲɪ/", "example": "Я хожу за продуктами по субботам.", "example_en": "I go grocery shopping on Saturdays.", "note": "за plus instrumental means going to fetch something.", "tags": ["market", "trap"]},
+          {"target": "хлеб", "english": "bread", "pronunciation": "/xlʲep/", "example": "Купи, пожалуйста, хлеб.", "example_en": "Please buy some bread.", "note": "No article and no partitive: the bare noun does the job.", "tags": ["food"]},
+          {"target": "килограмм", "english": "kilogram", "pronunciation": "/kʲɪlɐˈɡram/", "example": "Килограмм помидоров, пожалуйста.", "example_en": "A kilo of tomatoes, please.", "note": "The measured noun goes into the genitive plural: помидоров.", "tags": ["quantities", "trap"]},
+          {"target": "овощи", "english": "vegetables", "pronunciation": "/ˈovəɕːɪ/", "example": "Эти овощи сезонные.", "example_en": "These vegetables are in season.", "note": "Plural of овощ.", "tags": ["food"]},
+          {"target": "фрукты", "english": "fruit", "pronunciation": "/ˈfruktɨ/", "example": "Я покупаю фрукты на рынке.", "example_en": "I buy fruit at the market.", "note": "Countable plural in Russian, unlike English. Markets take на.", "tags": ["food", "trap"]},
+          {"target": "свежий", "english": "fresh", "pronunciation": "/ˈsvʲeʐɨj/", "example": "Рыба сегодня свежая?", "example_en": "Is the fish fresh today?", "note": "Agrees with the noun: свежий, свежая, свежее.", "tags": ["market"]}
+        ]
+      },
+      {
+        "title": "In the kitchen",
+        "items": [
+          {"target": "ингредиенты", "english": "ingredients", "pronunciation": "/ɪnɡrʲɪdʲɪˈjentɨ/", "example": "Купи все ингредиенты по рецепту.", "example_en": "Buy all the ingredients from the recipe.", "note": "рецепт means both a cooking recipe and a medical prescription.", "tags": ["cooking", "trap"]},
+          {"target": "нарезать", "english": "to slice, to chop", "pronunciation": "/nɐˈrʲezətʲ/", "example": "Нарежьте лук мелкими кусочками.", "example_en": "Chop the onion into small pieces.", "note": "Recipes use the вы imperative: нарежьте, добавьте.", "tags": ["cooking", "trap"]},
+          {"target": "варить", "english": "to boil, to cook in water", "pronunciation": "/vɐˈrʲitʲ/", "example": "Варите макароны десять минут.", "example_en": "Boil the pasta for ten minutes.", "note": "Russian splits cooking by method: варить, жарить, печь, тушить.", "tags": ["cooking", "trap"]},
+          {"target": "добавить", "english": "to add", "pronunciation": "/dɐˈbavʲɪtʲ/", "example": "Добавьте щепотку соли.", "example_en": "Add a pinch of salt.", "note": "Perfective; the imperfective is добавлять.", "tags": ["cooking"]},
+          {"target": "перемешать", "english": "to stir, to mix", "pronunciation": "/pʲɪrʲɪmʲɪˈʂatʲ/", "example": "Хорошо перемешайте до однородности.", "example_en": "Stir well until smooth.", "note": "", "tags": ["cooking"]},
+          {"target": "на вкус", "english": "in taste, tastes like", "pronunciation": "/nə fkus/", "example": "На вкус немного как лимон.", "example_en": "It tastes a bit like lemon.", "note": "вкус covers taste in food and taste in art alike.", "tags": ["taste", "trap"]}
+        ]
+      }
+    ]
+  }
+}

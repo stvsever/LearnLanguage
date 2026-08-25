@@ -1,0 +1,83 @@
+{
+  "cafe-bar": {
+    "grammar": ["zh-measure-ge", "zh-questions"],
+    "groups": [
+      {
+        "title": "Ordering a drink",
+        "items": [
+          {"target": "我要一杯", "english": "I'd like a cup of", "pronunciation": "wǒ yào yì bēi", "example": "我要一杯咖啡，谢谢。", "example_en": "I'd like a coffee, thank you.", "note": "杯 is the measure word for cups and glasses.", "tags": ["ordering", "essential", "trap"]},
+          {"target": "咖啡", "english": "coffee", "pronunciation": "kāfēi", "example": "一杯咖啡，不加糖。", "example_en": "One coffee, no sugar.", "note": "A phonetic loan. 不加 means without adding.", "tags": ["drinks"]},
+          {"target": "茶", "english": "tea", "pronunciation": "chá", "example": "来一壶绿茶。", "example_en": "A pot of green tea, please.", "note": "来 used for ordering means bring me. 壶 is the measure for pots.", "tags": ["drinks", "culture"]},
+          {"target": "加牛奶", "english": "with milk", "pronunciation": "jiā niúnǎi", "example": "咖啡加牛奶，谢谢。", "example_en": "Coffee with milk, thank you.", "note": "加 means to add: 加糖, 加冰, 加牛奶.", "tags": ["drinks", "trap"]},
+          {"target": "啤酒", "english": "beer", "pronunciation": "píjiǔ", "example": "两瓶啤酒，谢谢。", "example_en": "Two bottles of beer, thank you.", "note": "瓶 for bottles. 扎啤 is draught.", "tags": ["drinks", "trap"]},
+          {"target": "热水", "english": "hot water", "pronunciation": "rèshuǐ", "example": "请给我一杯热水。", "example_en": "Please give me a cup of hot water.", "note": "Plain hot water is a normal drink order in China.", "tags": ["drinks", "culture"]}
+        ]
+      },
+      {
+        "title": "Snacks and paying",
+        "items": [
+          {"target": "包子", "english": "steamed bun", "pronunciation": "bāozi", "example": "两个肉包子，谢谢。", "example_en": "Two meat buns, thank you.", "note": "个 is the default measure word when in doubt.", "tags": ["food", "culture"]},
+          {"target": "饺子", "english": "dumplings", "pronunciation": "jiǎozi", "example": "一份猪肉饺子。", "example_en": "One portion of pork dumplings.", "note": "份 is the measure word for portions.", "tags": ["food", "culture"]},
+          {"target": "打包", "english": "to take away, to pack up", "pronunciation": "dǎbāo", "example": "在这儿吃还是打包？", "example_en": "Eat in or take away?", "note": "还是 is or in a question; 或者 is or in a statement.", "tags": ["ordering", "trap"]},
+          {"target": "买单", "english": "to pay the bill", "pronunciation": "mǎidān", "example": "服务员，买单！", "example_en": "Excuse me, the bill please!", "note": "Also 结账. Calling out 服务员 is normal and not rude.", "tags": ["paying", "culture"]},
+          {"target": "一共多少钱？", "english": "how much in total?", "pronunciation": "yígòng duōshao qián", "example": "一共多少钱？", "example_en": "How much is it altogether?", "note": "", "tags": ["paying", "question"]},
+          {"target": "手机支付", "english": "mobile payment", "pronunciation": "shǒujī zhīfù", "example": "可以手机支付吗？", "example_en": "Can I pay with my phone?", "note": "The default payment method in mainland China.", "tags": ["paying", "culture"]}
+        ]
+      }
+    ]
+  },
+  "restaurant": {
+    "grammar": ["zh-ba", "zh-auxiliaries"],
+    "groups": [
+      {
+        "title": "Getting a table",
+        "items": [
+          {"target": "订位子", "english": "to book a table", "pronunciation": "dìng wèizi", "example": "我想订一个四人的位子。", "example_en": "I'd like to book a table for four.", "note": "位子 is a seat or place; 桌子 is the physical table.", "tags": ["booking", "trap"]},
+          {"target": "两位", "english": "two people (in a restaurant)", "pronunciation": "liǎng wèi", "example": "两位吗？请这边坐。", "example_en": "Two people? This way please.", "note": "位 is the polite measure word for people. Note 两, not 二.", "tags": ["booking", "trap"]},
+          {"target": "菜单", "english": "menu", "pronunciation": "càidān", "example": "请给我们菜单。", "example_en": "Please bring us the menu.", "note": "菜 is dish or vegetable; 单 is list.", "tags": ["menu", "trap"]},
+          {"target": "招牌菜", "english": "signature dish", "pronunciation": "zhāopái cài", "example": "你们的招牌菜是什么？", "example_en": "What's your signature dish?", "note": "The most useful question in a Chinese restaurant.", "tags": ["menu", "culture"]},
+          {"target": "凉菜", "english": "cold dish, starter", "pronunciation": "liángcài", "example": "先来两个凉菜。", "example_en": "Two cold dishes to start.", "note": "热菜 are the hot dishes. Everything is shared, not per person.", "tags": ["menu", "culture"]},
+          {"target": "米饭", "english": "cooked rice", "pronunciation": "mǐfàn", "example": "再来两碗米饭。", "example_en": "Two more bowls of rice, please.", "note": "再 plus 来 means bring more. 碗 is the measure for bowls.", "tags": ["menu", "trap"]}
+        ]
+      },
+      {
+        "title": "Ordering and reacting",
+        "items": [
+          {"target": "我点", "english": "I'll order", "pronunciation": "wǒ diǎn", "example": "我点一个宫保鸡丁。", "example_en": "I'll order a kung pao chicken.", "note": "点 for ordering food, 订 for booking a table in advance.", "tags": ["ordering", "trap"]},
+          {"target": "不要辣", "english": "not spicy", "pronunciation": "bú yào là", "example": "麻烦不要辣，谢谢。", "example_en": "Not spicy, please, thank you.", "note": "微辣 is mildly spicy, 特辣 is extra spicy.", "tags": ["ordering", "culture"]},
+          {"target": "我吃素", "english": "I'm vegetarian", "pronunciation": "wǒ chī sù", "example": "我吃素，有没有素菜？", "example_en": "I'm vegetarian, do you have vegetarian dishes?", "note": "Literally I eat plain. 有没有 is the verb-not-verb question form.", "tags": ["ordering", "trap"]},
+          {"target": "我对 ... 过敏", "english": "I'm allergic to ...", "pronunciation": "wǒ duì ... guòmǐn", "example": "我对海鲜过敏。", "example_en": "I'm allergic to seafood.", "note": "对 ... 过敏 is a fixed frame; the allergen sits in the middle.", "tags": ["ordering", "trap"]},
+          {"target": "很好吃", "english": "very tasty", "pronunciation": "hěn hǎochī", "example": "谢谢，非常好吃。", "example_en": "Thank you, it was delicious.", "note": "好吃 for food, 好喝 for drinks: Chinese splits the two.", "tags": ["reaction", "trap"]},
+          {"target": "我们分开付", "english": "we'll pay separately", "pronunciation": "wǒmen fēnkāi fù", "example": "我们分开付，可以吗？", "example_en": "We'll pay separately, is that OK?", "note": "Culturally unusual in China, where one person usually treats.", "tags": ["paying", "culture"]}
+        ]
+      }
+    ]
+  },
+  "cooking-groceries": {
+    "grammar": ["zh-measure-ge", "zh-ba"],
+    "groups": [
+      {
+        "title": "At the market",
+        "items": [
+          {"target": "买菜", "english": "to shop for groceries", "pronunciation": "mǎi cài", "example": "我周末去买菜。", "example_en": "I do the grocery shopping at the weekend.", "note": "Literally to buy vegetables, but it covers all food shopping.", "tags": ["market", "trap"]},
+          {"target": "面包", "english": "bread", "pronunciation": "miànbāo", "example": "帮我买点面包。", "example_en": "Buy me some bread.", "note": "点 here is short for 一点, a bit of.", "tags": ["food", "trap"]},
+          {"target": "一斤", "english": "half a kilo", "pronunciation": "yì jīn", "example": "一斤西红柿，谢谢。", "example_en": "Half a kilo of tomatoes, please.", "note": "Chinese markets sell by 斤 (500g), not by kilo. Essential to know.", "tags": ["quantities", "culture"]},
+          {"target": "蔬菜", "english": "vegetables", "pronunciation": "shūcài", "example": "这些蔬菜很新鲜。", "example_en": "These vegetables are very fresh.", "note": "The formal word; 菜 is the everyday one.", "tags": ["food", "trap"]},
+          {"target": "水果", "english": "fruit", "pronunciation": "shuǐguǒ", "example": "我在市场买水果。", "example_en": "I buy fruit at the market.", "note": "Literally water fruit.", "tags": ["food"]},
+          {"target": "新鲜吗？", "english": "is it fresh?", "pronunciation": "xīnxiān ma", "example": "今天的鱼新鲜吗？", "example_en": "Is today's fish fresh?", "note": "", "tags": ["market", "question"]}
+        ]
+      },
+      {
+        "title": "In the kitchen",
+        "items": [
+          {"target": "菜谱", "english": "recipe, cookbook", "pronunciation": "càipǔ", "example": "这是我奶奶的菜谱。", "example_en": "This is my grandmother's recipe.", "note": "", "tags": ["cooking"]},
+          {"target": "切", "english": "to cut, to slice", "pronunciation": "qiē", "example": "把洋葱切成小块。", "example_en": "Chop the onion into small pieces.", "note": "把 plus object plus verb plus result: the standard recipe pattern.", "tags": ["cooking", "trap"]},
+          {"target": "炒", "english": "to stir-fry", "pronunciation": "chǎo", "example": "用大火炒三分钟。", "example_en": "Stir-fry over high heat for three minutes.", "note": "Chinese names each cooking method: 炒, 煮, 蒸, 炸, 烤.", "tags": ["cooking", "culture"]},
+          {"target": "加盐", "english": "to add salt", "pronunciation": "jiā yán", "example": "最后加一点盐。", "example_en": "Add a little salt at the end.", "note": "", "tags": ["cooking"]},
+          {"target": "搅拌", "english": "to stir, to mix", "pronunciation": "jiǎobàn", "example": "搅拌到没有颗粒。", "example_en": "Stir until there are no lumps.", "note": "到 plus a result means until that state is reached.", "tags": ["cooking", "trap"]},
+          {"target": "味道", "english": "flavour, taste", "pronunciation": "wèidào", "example": "有一点柠檬的味道。", "example_en": "It has a hint of lemon flavour.", "note": "的 links the source of the flavour to 味道.", "tags": ["taste", "trap"]}
+        ]
+      }
+    ]
+  }
+}

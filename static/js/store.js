@@ -23,6 +23,7 @@ export const DEFAULT_SETTINGS = {
   showPronunciation: true,
   showExamples: true,
   accentToolbar: true,
+  topicLevelFilter: 'all',  // Topics library: 'all' | 'A1' | 'A2' | 'B1' | 'B2'
   tourDone: false,
   model: null,           // OpenRouter model override; null = server default
 };
@@ -67,6 +68,13 @@ function migrate(parsed) {
     delete parsed.stories;
   }
   if (!parsed.compositions) parsed.compositions = {};
+  // v2.1 identified compositions by title, which broke as soon as two pieces
+  // shared one. Backfill stable ids for anything saved before v2.2.
+  for (const list of Object.values(parsed.compositions)) {
+    (list || []).forEach((pack, index) => {
+      if (pack && !pack.id) pack.id = `legacy-${index}-${(pack.title || '').slice(0, 24)}`;
+    });
+  }
   if (!parsed.grammar) parsed.grammar = {};
   if (!SUPPORTED_LANGUAGES.includes(parsed.settings.language)) parsed.settings.language = 'fr';
   return parsed;
@@ -136,37 +144,83 @@ function cardId(target) {
   return target.toLowerCase().replace(/\s+/g, ' ').trim();
 }
 
-/** Add lesson items as cards; returns the number of genuinely new cards. */
-export function addCards(items, topic, lang = currentLanguage()) {
+/**
+ * Add lesson or curriculum items as cards.
+ *
+ * Defensive by design: a single malformed item from a model response must never
+ * take down a whole lesson, so bad entries are counted and skipped rather than
+ * thrown. Returns a report the caller can show the learner.
+ *
+ * @returns {{added: number, duplicates: number, skipped: number, ids: string[]}}
+ */
+export function addCards(items, topic, lang = currentLanguage(), meta = {}) {
   const d = deck(lang);
-  let added = 0;
+  const report = { added: 0, duplicates: 0, skipped: 0, ids: [] };
   const now = Date.now();
-  for (const item of items) {
-    const id = cardId(item.target);
-    if (!id || d.cards[id]) continue;
+  for (const item of Array.isArray(items) ? items : []) {
+    const target = typeof item?.target === 'string' ? item.target.trim() : '';
+    const english = typeof item?.english === 'string' ? item.english.trim() : '';
+    if (!target || !english) { report.skipped += 1; continue; }
+    const id = cardId(target);
+    if (!id) { report.skipped += 1; continue; }
+    if (d.cards[id]) {
+      report.duplicates += 1;
+      // Late-arriving provenance still improves library progress tracking.
+      if (!d.cards[id].unit && (item.unit || meta.unit)) d.cards[id].unit = item.unit || meta.unit;
+      continue;
+    }
     d.cards[id] = {
       id,
-      target: item.target.trim(),
-      english: (item.english || '').trim(),
-      pronunciation: (item.pronunciation || '').trim(),
-      example: (item.example || '').trim(),
-      exampleEn: (item.example_en || item.exampleEn || '').trim(),
-      note: (item.note || '').trim(),
-      tags: item.tags || [],
+      target,
+      english,
+      pronunciation: str(item.pronunciation),
+      example: str(item.example),
+      exampleEn: str(item.example_en ?? item.exampleEn),
+      note: str(item.note),
+      tags: Array.isArray(item.tags) ? item.tags.filter((t) => typeof t === 'string') : [],
       topic: topic || '',
+      unit: item.unit || meta.unit || '',
+      level: item.level || meta.level || '',
       addedAt: now,
       introduced: false, // becomes true once studied in Learn
       suspended: false,
       state: 'new',
       srs: newSrsState(now),
     };
-    added += 1;
+    report.added += 1;
+    report.ids.push(id);
   }
   if (topic && !d.topics.includes(topic)) d.topics.unshift(topic);
   d.topics = d.topics.slice(0, 20);
   persist();
   emit('deck', lang);
-  return added;
+  return report;
+}
+
+function str(value) {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+/** Per-unit deck coverage, for the Topics library progress bars. */
+export function unitCoverage(lang = currentLanguage()) {
+  const map = {};
+  for (const card of cards(lang)) {
+    if (!card.unit) continue;
+    if (!map[card.unit]) map[card.unit] = { inDeck: 0, learned: 0, mature: 0 };
+    map[card.unit].inDeck += 1;
+    if (card.state !== 'new') map[card.unit].learned += 1;
+    if (card.srs?.S >= 21) map[card.unit].mature += 1;
+  }
+  return map;
+}
+
+/** Targets already in the deck, as a Set of card ids, for fast lookups. */
+export function deckIndex(lang = currentLanguage()) {
+  return new Set(Object.keys(deck(lang).cards));
+}
+
+export function normalizeTarget(target) {
+  return cardId(String(target || ''));
 }
 
 export function removeCard(id, lang = currentLanguage()) {
@@ -275,20 +329,32 @@ export function accuracyOverDays(daysBack = 30, lang = currentLanguage()) {
 }
 
 // -- compositions ------------------------------------------------------------
+let compositionSeq = 0;
+
+/** Stable per-piece id so two compositions may legitimately share a title. */
+function compositionId() {
+  compositionSeq += 1;
+  return `c${Date.now().toString(36)}${compositionSeq.toString(36)}`;
+}
+
 export function saveComposition(pack, lang = currentLanguage()) {
   if (!state.compositions[lang]) state.compositions[lang] = [];
-  state.compositions[lang] = [pack, ...state.compositions[lang].filter((c) => c.title !== pack.title)].slice(0, 20);
-  recordGrammarFeatures((pack.grammar_spotlights || []).map((s) => s.feature), lang);
+  const stored = { ...pack, id: pack.id || compositionId(), savedAt: pack.savedAt || Date.now() };
+  state.compositions[lang] = [stored, ...state.compositions[lang].filter((c) => c.id !== stored.id)].slice(0, 40);
+  recordGrammarFeatures((stored.grammar_spotlights || []).map((s) => s.feature), lang);
   persist();
+  emit('compositions', lang);
+  return stored;
 }
 
 export function compositions(lang = currentLanguage()) {
   return state.compositions[lang] || [];
 }
 
-export function removeComposition(title, lang = currentLanguage()) {
-  state.compositions[lang] = (state.compositions[lang] || []).filter((c) => c.title !== title);
+export function removeComposition(id, lang = currentLanguage()) {
+  state.compositions[lang] = (state.compositions[lang] || []).filter((c) => c.id !== id);
   persist();
+  emit('compositions', lang);
 }
 
 // -- grammar coverage --------------------------------------------------------

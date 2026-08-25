@@ -1,0 +1,83 @@
+{
+  "family": {
+    "grammar": ["es-gender-articles", "es-ser-estar-basic"],
+    "groups": [
+      {
+        "title": "The household",
+        "items": [
+          {"target": "la familia", "english": "the family", "pronunciation": "/la faˈmi.lja/", "example": "Toda la familia estaba allí.", "example_en": "The whole family was there.", "note": "", "tags": ["family"]},
+          {"target": "los padres", "english": "the parents", "pronunciation": "/los ˈpa.ðɾes/", "example": "Mis padres viven en el campo.", "example_en": "My parents live in the countryside.", "note": "False friend risk: los parientes means relatives, not parents.", "tags": ["family", "trap"]},
+          {"target": "el hermano", "english": "the brother", "pronunciation": "/el eɾˈma.no/", "example": "Mi hermano es más joven que yo.", "example_en": "My brother is younger than me.", "note": "los hermanos covers brothers, or siblings in general.", "tags": ["family", "trap"]},
+          {"target": "el hijo", "english": "the son", "pronunciation": "/el ˈi.xo/", "example": "Su hijo empezó el colegio.", "example_en": "Their son started school.", "note": "los hijos means children, la hija is daughter.", "tags": ["family"]},
+          {"target": "los abuelos", "english": "the grandparents", "pronunciation": "/los aˈβwe.los/", "example": "Vamos a casa de mis abuelos el domingo.", "example_en": "We're going to my grandparents' on Sunday.", "note": "", "tags": ["family"]},
+          {"target": "el sobrino", "english": "the nephew", "pronunciation": "/el soˈβɾi.no/", "example": "Mi sobrino cumple cinco años.", "example_en": "My nephew is turning five.", "note": "la sobrina is niece; el primo and la prima are cousins.", "tags": ["family"]}
+        ]
+      },
+      {
+        "title": "Couples and close ties",
+        "items": [
+          {"target": "mi marido", "english": "my husband", "pronunciation": "/mi maˈɾi.ðo/", "example": "Mi marido cocina mejor que yo.", "example_en": "My husband cooks better than I do.", "note": "mi mujer or mi esposa is my wife.", "tags": ["family"]},
+          {"target": "mi pareja", "english": "my partner", "pronunciation": "/mi paˈɾe.xa/", "example": "Vivo con mi pareja desde el año pasado.", "example_en": "I've lived with my partner since last year.", "note": "Feminine noun regardless of the partner's gender.", "tags": ["family", "trap"]},
+          {"target": "soltero", "english": "single", "pronunciation": "/solˈte.ɾo/", "example": "Está soltero desde hace un año.", "example_en": "He's been single for a year.", "note": "estar soltero, not ser: it is a state that can change.", "tags": ["family", "trap"]},
+          {"target": "casado", "english": "married", "pronunciation": "/kaˈsa.ðo/", "example": "Están casados desde hace diez años.", "example_en": "They've been married for ten years.", "note": "Agrees: casada, casados, casadas.", "tags": ["family"]},
+          {"target": "un amigo íntimo", "english": "a close friend", "pronunciation": "/un aˈmi.ɣo ˈin.ti.mo/", "example": "Es un amigo íntimo de la familia.", "example_en": "He's a close friend of the family.", "note": "íntimo here means close, not intimate in a romantic sense.", "tags": ["friends", "trap"]},
+          {"target": "llevarse bien con", "english": "to get along well with", "pronunciation": "/ʝeˈβaɾ.se ˈbjen kon/", "example": "Me llevo muy bien con mi hermana.", "example_en": "I get along really well with my sister.", "note": "Reflexive, and the pronoun changes with the subject.", "tags": ["friends", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "describing-people": {
+    "grammar": ["es-ser-estar-basic", "es-gender-articles"],
+    "groups": [
+      {
+        "title": "Appearance",
+        "items": [
+          {"target": "alto", "english": "tall", "pronunciation": "/ˈal.to/", "example": "Es alta y delgada.", "example_en": "She's tall and slim.", "note": "Adjectives agree in gender and number: alta, altos, altas.", "tags": ["appearance"]},
+          {"target": "el pelo castaño", "english": "brown hair", "pronunciation": "/el ˈpe.lo kasˈta.ɲo/", "example": "Tiene el pelo castaño y corto.", "example_en": "He has short brown hair.", "note": "Spanish says he HAS the hair, with the definite article.", "tags": ["appearance", "trap"]},
+          {"target": "los ojos verdes", "english": "green eyes", "pronunciation": "/los ˈo.xos ˈbeɾ.ðes/", "example": "Tiene los ojos verdes como su madre.", "example_en": "She has green eyes like her mother.", "note": "", "tags": ["appearance"]},
+          {"target": "llevar gafas", "english": "to wear glasses", "pronunciation": "/ʝeˈβaɾ ˈɡa.fas/", "example": "Mi compañero lleva gafas redondas.", "example_en": "My colleague wears round glasses.", "note": "In Latin America: lentes or anteojos.", "tags": ["appearance"]},
+          {"target": "parecerse a", "english": "to look like", "pronunciation": "/pa.ɾeˈseɾ.se a/", "example": "Se parece mucho a su padre.", "example_en": "She looks a lot like her father.", "note": "Reflexive and always with a.", "tags": ["appearance", "trap"]},
+          {"target": "de mediana edad", "english": "middle-aged", "pronunciation": "/de meˈðja.na eˈðað/", "example": "Un señor de mediana edad preguntó por ti.", "example_en": "A middle-aged man asked for you.", "note": "de plus a quality describes people: de ojos claros, de buen humor.", "tags": ["appearance", "phrase"]}
+        ]
+      },
+      {
+        "title": "Character",
+        "items": [
+          {"target": "simpático", "english": "nice, friendly", "pronunciation": "/simˈpa.ti.ko/", "example": "El vecino es muy simpático.", "example_en": "The neighbour is very nice.", "note": "False friend: it does not mean sympathetic, which is comprensivo.", "tags": ["character", "trap"]},
+          {"target": "gracioso", "english": "funny", "pronunciation": "/ɡɾaˈsjo.so/", "example": "Tu hermano es muy gracioso.", "example_en": "Your brother is really funny.", "note": "False friend: not gracious. divertido also means fun.", "tags": ["character", "trap"]},
+          {"target": "trabajador", "english": "hard-working", "pronunciation": "/tɾa.βa.xaˈðoɾ/", "example": "Es un equipo muy trabajador.", "example_en": "It's a very hard-working team.", "note": "Feminine trabajadora.", "tags": ["character"]},
+          {"target": "testarudo", "english": "stubborn", "pronunciation": "/tes.taˈɾu.ðo/", "example": "Es testarudo como una mula.", "example_en": "He's as stubborn as a mule.", "note": "Also cabezota, more colloquial.", "tags": ["character"]},
+          {"target": "estar de buen humor", "english": "to be in a good mood", "pronunciation": "/esˈtaɾ de bwen uˈmoɾ/", "example": "Hoy está de buen humor.", "example_en": "She's in a good mood today.", "note": "estar for the passing mood; ser for the permanent character.", "tags": ["character", "trap"]},
+          {"target": "tener buen carácter", "english": "to be even-tempered", "pronunciation": "/teˈneɾ bwen kaˈɾak.teɾ/", "example": "A pesar de todo, tiene buen carácter.", "example_en": "In spite of everything, she's even-tempered.", "note": "un personaje is a character in a story.", "tags": ["character", "trap"]}
+        ]
+      }
+    ]
+  },
+  "feelings": {
+    "grammar": ["es-ser-estar-basic", "es-gustar"],
+    "groups": [
+      {
+        "title": "How you feel",
+        "items": [
+          {"target": "estar contento", "english": "to be happy, pleased", "pronunciation": "/esˈtaɾ konˈten.to/", "example": "Estoy contento de verte.", "example_en": "I'm happy to see you.", "note": "estar for mood, ser feliz for a settled disposition.", "tags": ["emotion", "trap"]},
+          {"target": "estar triste", "english": "to be sad", "pronunciation": "/esˈtaɾ ˈtɾis.te/", "example": "El final de la película es triste.", "example_en": "The end of the film is sad.", "note": "The film IS sad (ser); you ARE sad right now (estar).", "tags": ["emotion", "trap"]},
+          {"target": "estar cansado", "english": "to be tired", "pronunciation": "/esˈtaɾ kanˈsa.ðo/", "example": "Estoy cansada, me voy a dormir.", "example_en": "I'm tired, I'm going to sleep.", "note": "ser cansado would mean you are tiring for others.", "tags": ["emotion", "trap"]},
+          {"target": "tener miedo", "english": "to be afraid", "pronunciation": "/teˈneɾ ˈmje.ðo/", "example": "Tengo miedo de volar.", "example_en": "I'm afraid of flying.", "note": "Spanish HAS fear. Same pattern: tener hambre, sed, frío, calor, razón.", "tags": ["emotion", "trap"]},
+          {"target": "estar harto de", "english": "to be fed up with", "pronunciation": "/esˈtaɾ ˈaɾ.to de/", "example": "Estoy harto de este ruido.", "example_en": "I'm fed up with this noise.", "note": "Common in speech, a bit blunt but not rude.", "tags": ["emotion", "informal"]},
+          {"target": "me da rabia", "english": "it makes me angry", "pronunciation": "/me da ˈra.βja/", "example": "Me da rabia llegar tarde.", "example_en": "It makes me angry to arrive late.", "note": "Same backwards pattern as gustar: the thing is the subject.", "tags": ["emotion", "trap"]}
+        ]
+      },
+      {
+        "title": "Keeping the conversation alive",
+        "items": [
+          {"target": "¡no me digas!", "english": "you don't say! no way!", "pronunciation": "/no me ˈði.ɣas/", "example": "¿Ha dimitido? ¡No me digas!", "example_en": "He resigned? No way!", "note": "Negative command form, used purely as an exclamation.", "tags": ["reaction"]},
+          {"target": "¡qué bien!", "english": "how great!", "pronunciation": "/ke ˈbjen/", "example": "¿Aprobaste? ¡Qué bien!", "example_en": "You passed? How great!", "note": "qué plus adjective is the all-purpose exclamation.", "tags": ["reaction"]},
+          {"target": "menos mal", "english": "thank goodness", "pronunciation": "/ˈme.nos ˈmal/", "example": "Ya no llueve. Menos mal.", "example_en": "It stopped raining. Thank goodness.", "note": "Literally less bad.", "tags": ["reaction"]},
+          {"target": "depende", "english": "it depends", "pronunciation": "/deˈpen.de/", "example": "¿Vienes? Depende de la hora.", "example_en": "Are you coming? It depends on the time.", "note": "depender always takes de.", "tags": ["reaction", "phrase"]},
+          {"target": "¿y tú?", "english": "and you?", "pronunciation": "/i tu/", "example": "Yo bien, ¿y tú?", "example_en": "I'm fine, and you?", "note": "The cheapest way to keep a conversation going.", "tags": ["small talk"]},
+          {"target": "en fin", "english": "anyway, well", "pronunciation": "/en fin/", "example": "En fin, lo pasamos bien.", "example_en": "Anyway, we had a good time.", "note": "Wraps up a rambling story. Extremely common in speech.", "tags": ["small talk"]}
+        ]
+      }
+    ]
+  }
+}

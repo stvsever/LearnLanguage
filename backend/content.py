@@ -19,7 +19,7 @@ import json
 import logging
 from typing import List, Optional
 
-from . import config
+from . import config, curriculum
 from .grammar import feature_index, prompt_brief
 from .languages import get_language
 from .llm import LLMUnavailable, generate_structured
@@ -67,19 +67,52 @@ def _load_seed(name: str) -> Optional[dict]:
         return None
 
 
-def seed_lesson(language_code: str, count: int) -> Optional[dict]:
-    seed = _load_seed(f"{language_code}_core.json")
-    if not seed:
+def seed_lesson(language_code: str, count: int = 24) -> Optional[dict]:
+    """The curated cross-domain starter set for a language, no LLM involved."""
+    language = get_language(language_code)
+    pack = curriculum.starter_pack(language.code, max(4, count))
+    if not pack:
         return None
-    pack = dict(seed)
-    pack["items"] = seed.get("items", [])[: max(4, count)]
-    pack["source"] = "seed"
-    if config.active_provider() == "offline":
-        pack["notice"] = (
-            "Built-in starter deck. Add an OPENROUTER_API_KEY to .env to generate "
-            "unlimited lessons on any topic."
-        )
+    pack["notice"] = (
+        "Curated starter set. Browse Topics for the full library, or connect a "
+        "key to generate lessons on anything else."
+    )
     return pack
+
+
+def curriculum_lesson(language_code: str, unit_id: str) -> Optional[dict]:
+    """One curriculum unit, shaped exactly like a generated lesson pack."""
+    language = get_language(language_code)
+    return curriculum.unit_pack(language.code, unit_id)
+
+
+def _curriculum_fallback(language_code: str, topic: str, count: int) -> Optional[dict]:
+    """Best curated material for a free-form topic when generation is unavailable.
+
+    Tries a topic search first so "ordering coffee" lands on the cafe unit
+    rather than on the generic starter set.
+    """
+    unit_id = curriculum.best_unit_for_topic(language_code, topic) if topic else None
+    if unit_id:
+        pack = curriculum.unit_pack(language_code, unit_id)
+        if pack:
+            pack["notice"] = (
+                f"Generation is unavailable, so this is the curated "
+                f"\u201c{pack['topic']}\u201d unit from the library instead."
+            )
+            return pack
+    hits = curriculum.search(language_code, topic) if topic else {"units": [], "items": []}
+    if hits["items"]:
+        return {
+            "language": language_code,
+            "topic": topic,
+            "level": hits["items"][0].get("level", "A2"),
+            "items": hits["items"][:count],
+            "grammar_features": [],
+            "source": "curriculum",
+            "notice": "Generation is unavailable; these are matching items from the curated library.",
+        }
+    return seed_lesson(language_code, count)
 
 
 def seed_composition(language_code: str) -> Optional[dict]:
@@ -110,10 +143,34 @@ def _filter_features(features: List[str], language_code: str) -> List[str]:
 
 
 def generate_lesson(topic: str, language_code: str, level: str, count: int,
-                    known_words: Optional[list] = None, model: Optional[str] = None) -> dict:
+                    known_words: Optional[list] = None, model: Optional[str] = None,
+                    unit: Optional[str] = None) -> dict:
+    """Build a lesson pack.
+
+    Three sources, in order of preference:
+      1. a curriculum unit, when the learner picked one and generation is off
+         (or when they explicitly asked for the curated version),
+      2. the LLM, grounded in the unit or free-form topic,
+      3. curated fallback content, so this never returns nothing.
+    """
     language = get_language(language_code)
     level = normalize_level(level)
     count = max(4, min(int(count or 12), 24))
+    unit_meta = curriculum.unit_meta(unit) if unit else None
+
+    if unit_meta:
+        # A picked unit always has curated content behind it; without an LLM
+        # that IS the lesson, and with one it becomes the grounding brief.
+        curated = curriculum_lesson(language.code, unit)
+        if config.active_provider() == "offline":
+            if curated:
+                return curated
+            raise LLMUnavailable("No curated content for this unit yet, and no API key configured.")
+        topic = topic or f"{unit_meta['title']} ({unit_meta['goal']})"
+        level = unit_meta["level"]
+    else:
+        curated = None
+
     topic = (topic or "everyday conversation").strip()[:300]
     system_prompt = (
         "You are an expert language-course designer applying second-language-acquisition research. "
@@ -138,72 +195,178 @@ def generate_lesson(topic: str, language_code: str, level: str, count: int,
             "No duplicates. No numbering. No romanization in 'target' beyond the standard script.",
         ],
     }
-    if known_words:
-        payload["avoid_these_already_known_items"] = list(known_words)[:120]
+    if unit_meta:
+        payload["curriculum_unit"] = {
+            "title": unit_meta["title"],
+            "area": unit_meta["domainTitle"],
+            "can_do_goal": unit_meta["goal"],
+            "keywords": unit_meta["keywords"],
+        }
+        payload["rules"].append(
+            "This lesson EXTENDS a curated unit: stay strictly inside its scope and "
+            "produce material the learner does not have yet (see the avoid list)."
+        )
+    avoid = list(known_words or [])
+    if curated:
+        avoid = [item["target"] for item in curated["items"]] + avoid
+    if avoid:
+        payload["avoid_these_already_known_items"] = avoid[:160]
     try:
         pack = generate_structured(system_prompt, json.dumps(payload, ensure_ascii=False), LessonPack, model_override=model)
         result = pack.model_dump()
         result.update({"language": language.code, "topic": topic, "level": level, "source": config.active_provider()})
         result["items"] = result["items"][:count]
         result["grammar_features"] = _filter_features(result.get("grammar_features", []), language.code)
+        if unit:
+            result["unit"] = unit
         return strip_em_dashes(result)
     except LLMUnavailable as exc:
         logger.warning("Lesson generation unavailable: %s", exc)
-        seeded = seed_lesson(language.code, count)
-        if seeded:
-            return seeded
+        fallback = curated or _curriculum_fallback(language.code, topic, count)
+        if fallback:
+            return fallback
         raise
 
 
+COMPOSITION_FORMATS = ("dialogue", "monologue", "story", "article")
+
+REGISTERS = {
+    "casual": "Relaxed spoken register: contractions, everyday idiom, the informal address form.",
+    "neutral": "Standard everyday register, neither slangy nor stiff.",
+    "formal": "Careful, polite register: the formal address form, full forms, no slang.",
+}
+
+LENGTH_SEGMENTS = {"short": "6 to 9", "medium": "10 to 16", "long": "18 to 26"}
+
+
+def normalize_format(value: Optional[str]) -> Optional[str]:
+    """Explicit format wish, or None for 'let the model decide'."""
+    raw = str(value or "").strip().lower()
+    return raw if raw in COMPOSITION_FORMATS else None
+
+
 def generate_composition(prompt: str, language_code: str, level: str, length: str = "medium",
-                         model: Optional[str] = None) -> dict:
-    """One call: classify the right format for the learner's request AND write it."""
+                         model: Optional[str] = None, fmt: Optional[str] = None,
+                         register: Optional[str] = None, speakers: Optional[int] = None,
+                         focus: Optional[list] = None, vocabulary: Optional[list] = None,
+                         unit: Optional[str] = None) -> dict:
+    """Write a graded text.
+
+    Every knob is optional. With none of them set the model classifies the best
+    format from the free-form request, exactly as before. With them set, the
+    learner is in charge: format, register, number of speakers, the grammar
+    structures to exercise, and the vocabulary to weave in.
+    """
     language = get_language(language_code)
     level = normalize_level(level)
+    chosen_format = normalize_format(fmt)
+    register_key = str(register or "neutral").strip().lower()
+    if register_key not in REGISTERS:
+        register_key = "neutral"
+    segment_range = LENGTH_SEGMENTS.get(str(length or "medium").lower(), LENGTH_SEGMENTS["medium"])
+    speaker_count = max(2, min(int(speakers or 2), 4)) if chosen_format == "dialogue" else None
+
+    unit_meta = curriculum.unit_meta(unit) if unit else None
+    if unit_meta and not (prompt or "").strip():
+        prompt = f"A scene that naturally uses the language of {unit_meta['title'].lower()}: {unit_meta['goal']}"
     prompt = (prompt or "an everyday situation with a small, satisfying twist").strip()[:500]
-    segment_range = {"short": "6 to 9", "medium": "10 to 16", "long": "18 to 26"}.get(length, "10 to 16")
+
+    valid_features = _valid_feature_list(language.code, level)
+    focus_ids = [f for f in (focus or []) if f in feature_index(language.code)][:4]
+
+    if chosen_format:
+        classify_line = (
+            f"1) The learner has REQUESTED the format explicitly: write a {chosen_format}. "
+            "Set format to exactly that value. Do not substitute another format.\n"
+        )
+    else:
+        classify_line = (
+            "1) CLASSIFY the best presentation format for that request - dialogue (spoken exchange, "
+            "2-3 named speakers), monologue (one voice: speech, voicemail, inner thoughts, vlog), "
+            "story (narrated fiction), or article (expository/informational prose). Respect any "
+            "explicit format wish in the request; otherwise choose what serves the content best.\n"
+        )
     system_prompt = (
         "You are an expert author of graded learning texts (comprehensible input, i+1) and a "
         "careful applied linguist. The learner describes what they want in free form. You must:\n"
-        "1) CLASSIFY the best presentation format for that request - dialogue (spoken exchange, "
-        "2-3 named speakers), monologue (one voice: speech, voicemail, inner thoughts, vlog), "
-        "story (narrated fiction), or article (expository/informational prose). Respect any "
-        "explicit format wish in the request; otherwise choose what serves the content best.\n"
+        + classify_line +
         "2) WRITE it at exactly the learner's level: mostly language they own, a thin layer of "
         "inferable new material.\n"
         "3) Weave in the TARGET grammar structures listed in the grammar brief, and report which "
         "feature ids you actually used as grammar_spotlights with exact excerpts."
     )
+    rules = [
+        f"segments: {segment_range} segments. For dialogues: one speaker turn per segment (speaker = the name). "
+        "For prose: one sentence per segment (speaker = empty string).",
+        "text_en: exactly one faithful, natural English translation per segment.",
+        "Make it concrete and alive: names, places, small tension or insight, a satisfying ending.",
+        "scene: one short English line setting the scene.",
+        "glossary: 8-14 words/chunks from the text a learner at this level may not know, with concise contextual glosses.",
+        "grammar_spotlights: 2-4 entries; feature must be an id from grammar_feature_menu; excerpt must be copied verbatim from a segment.",
+        "questions: 4 comprehension questions in the target language requiring real understanding (inference welcome), "
+        "4 plausible choices each, exactly one correct, one-sentence English explanation. Vary the position of the correct choice.",
+        "title: short and evocative, in the target language.",
+    ]
+    if speaker_count:
+        rules.insert(2, f"Exactly {speaker_count} participants with simple, culturally fitting names; "
+                        "list them in participants, in order of first appearance.")
+    else:
+        rules.insert(2, "Dialogues: 2-3 participants with simple, culturally fitting names; list them in participants.")
+
     payload = {
         "learner_request": prompt,
         "target_language": language.prompt_name,
         "learner_level": f"CEFR {level}. {LEVEL_GUIDANCE[level]}",
+        "register": REGISTERS[register_key],
         "orthography": language.script_hint,
         "grammar_brief": prompt_brief(language.code, level),
-        "grammar_feature_menu": _valid_feature_list(language.code, level),
-        "rules": [
-            f"segments: {segment_range} segments. For dialogues: one speaker turn per segment (speaker = the name). "
-            "For prose: one sentence per segment (speaker = empty string).",
-            "text_en: exactly one faithful, natural English translation per segment.",
-            "Dialogues: 2-3 participants with simple, culturally fitting names; list them in participants.",
-            "Make it concrete and alive: names, places, small tension or insight, a satisfying ending.",
-            "scene: one short English line setting the scene.",
-            "glossary: 8-14 words/chunks from the text a learner at this level may not know, with concise contextual glosses.",
-            "grammar_spotlights: 2-4 entries; feature must be an id from grammar_feature_menu; excerpt must be copied verbatim from a segment.",
-            "questions: 4 comprehension questions in the target language requiring real understanding (inference welcome), "
-            "4 plausible choices each, exactly one correct, one-sentence English explanation. Vary the position of the correct choice.",
-            "title: short and evocative, in the target language.",
-        ],
+        "grammar_feature_menu": valid_features,
+        "rules": rules,
     }
+    if chosen_format:
+        payload["required_format"] = chosen_format
+    if focus_ids:
+        payload["must_exercise_these_features"] = focus_ids
+        rules.append("The features in must_exercise_these_features have to appear in the text "
+                     "AND in grammar_spotlights.")
+    if vocabulary:
+        payload["must_include_vocabulary"] = [str(v)[:60] for v in vocabulary][:24]
+        rules.append("Every entry in must_include_vocabulary has to appear naturally in the text, "
+                     "inflected as the sentence requires.")
+    if unit_meta:
+        payload["curriculum_unit"] = {
+            "title": unit_meta["title"],
+            "area": unit_meta["domainTitle"],
+            "can_do_goal": unit_meta["goal"],
+            "keywords": unit_meta["keywords"],
+        }
     try:
         pack = generate_structured(system_prompt, json.dumps(payload, ensure_ascii=False), CompositionPack, model_override=model)
         result = pack.model_dump()
         result.update({"language": language.code, "level": level, "source": config.active_provider()})
+        if chosen_format and result["format"] != chosen_format:
+            # The learner asked for a format; honour the request over the model's taste.
+            logger.info("Model returned %s, learner asked for %s - relabelling.", result["format"], chosen_format)
+            result["format"] = chosen_format
         result["grammar_spotlights"] = [
             s for s in result.get("grammar_spotlights", []) if s.get("feature") in feature_index(language.code)
         ]
         if result["format"] != "dialogue":
             result["participants"] = []
+        elif not result["participants"]:
+            # Recover speaker list from the segments so per-speaker voices work.
+            seen = []
+            for segment in result["segments"]:
+                name = (segment.get("speaker") or "").strip()
+                if name and name not in seen:
+                    seen.append(name)
+            result["participants"] = seen
+        if unit:
+            result["unit"] = unit
+        result["controls"] = {
+            "format": chosen_format or "auto", "register": register_key,
+            "length": length, "speakers": speaker_count, "focus": focus_ids,
+        }
         return strip_em_dashes(result)
     except LLMUnavailable as exc:
         logger.warning("Composition generation unavailable: %s", exc)

@@ -1,0 +1,83 @@
+{
+  "home": {
+    "grammar": ["zh-zai-location", "zh-measure-ge"],
+    "groups": [
+      {
+        "title": "Rooms and spaces",
+        "items": [
+          {"target": "公寓", "english": "flat, apartment", "pronunciation": "gōngyù", "example": "我们的公寓在三楼。", "example_en": "Our flat is on the third floor.", "note": "楼 is the measure for floors: 三楼 is the third floor.", "tags": ["housing", "trap"]},
+          {"target": "厨房", "english": "kitchen", "pronunciation": "chúfáng", "example": "我们总是在厨房吃饭。", "example_en": "We always eat in the kitchen.", "note": "房 recurs in room words: 厨房, 书房, 房间.", "tags": ["housing"]},
+          {"target": "卧室", "english": "bedroom", "pronunciation": "wòshì", "example": "卧室对着院子。", "example_en": "The bedroom faces the courtyard.", "note": "房间 is any room.", "tags": ["housing", "trap"]},
+          {"target": "洗手间", "english": "bathroom, toilet", "pronunciation": "xǐshǒujiān", "example": "洗手间在走廊尽头。", "example_en": "The toilet is at the end of the corridor.", "note": "Literally hand-washing room, the polite public term. 厕所 is blunter.", "tags": ["housing", "culture"]},
+          {"target": "客厅", "english": "living room", "pronunciation": "kètīng", "example": "我们在客厅看电影。", "example_en": "We're watching a film in the living room.", "note": "Literally guest hall.", "tags": ["housing"]},
+          {"target": "阳台", "english": "balcony", "pronunciation": "yángtái", "example": "阳台上有很多植物。", "example_en": "There are lots of plants on the balcony.", "note": "上 after a noun makes it a location: 阳台上.", "tags": ["housing", "trap"]}
+        ]
+      },
+      {
+        "title": "Things and where they are",
+        "items": [
+          {"target": "桌子", "english": "table", "pronunciation": "zhuōzi", "example": "钥匙在桌子上。", "example_en": "The keys are on the table.", "note": "在 plus place plus 上: the location suffix is obligatory.", "tags": ["furniture", "trap"]},
+          {"target": "床", "english": "bed", "pronunciation": "chuáng", "example": "猫在床下面睡觉。", "example_en": "The cat is sleeping under the bed.", "note": "Its measure word is 张: 一张床.", "tags": ["furniture", "trap"]},
+          {"target": "柜子", "english": "cupboard, wardrobe", "pronunciation": "guìzi", "example": "把外套挂在柜子里。", "example_en": "Hang the coat in the wardrobe.", "note": "把 moves the object before the verb when you dispose of it somehow.", "tags": ["furniture", "trap"]},
+          {"target": "旁边", "english": "next to, beside", "pronunciation": "pángbiān", "example": "台灯在沙发旁边。", "example_en": "The lamp is next to the sofa.", "note": "Position words follow the noun, unlike English prepositions.", "tags": ["location", "trap"]},
+          {"target": "对面", "english": "opposite", "pronunciation": "duìmiàn", "example": "面包店在我家对面。", "example_en": "The bakery is opposite my place.", "note": "", "tags": ["location", "trap"]},
+          {"target": "搬家", "english": "to move house", "pronunciation": "bānjiā", "example": "我们月底搬家。", "example_en": "We're moving at the end of the month.", "note": "Verb-object compound: 搬 to move plus 家 home.", "tags": ["housing", "trap"]}
+        ]
+      }
+    ]
+  },
+  "routines": {
+    "grammar": ["zh-zai-location", "zh-le-completed"],
+    "groups": [
+      {
+        "title": "An ordinary day",
+        "items": [
+          {"target": "起床", "english": "to get up", "pronunciation": "qǐchuáng", "example": "我七点起床。", "example_en": "I get up at seven.", "note": "The time goes before the verb: 七点起床, never 起床七点.", "tags": ["routine", "trap"]},
+          {"target": "醒", "english": "to wake up", "pronunciation": "xǐng", "example": "我常常六点就醒了。", "example_en": "I often wake up as early as six.", "note": "就 signals that the speaker finds it early or sooner than expected.", "tags": ["routine", "trap"]},
+          {"target": "洗澡", "english": "to shower, to bathe", "pronunciation": "xǐzǎo", "example": "我出门前洗澡。", "example_en": "I shower before going out.", "note": "前 comes after the clause it applies to: 出门前.", "tags": ["routine", "trap"]},
+          {"target": "穿衣服", "english": "to get dressed", "pronunciation": "chuān yīfu", "example": "快穿衣服，五分钟后出发。", "example_en": "Get dressed quickly, we're leaving in five minutes.", "note": "穿 for clothes and shoes; 戴 for glasses, hats, jewellery.", "tags": ["routine", "trap"]},
+          {"target": "上班", "english": "to go to work", "pronunciation": "shàngbān", "example": "我骑自行车上班。", "example_en": "I cycle to work.", "note": "下班 is to finish work. The means of transport comes first.", "tags": ["routine", "trap"]},
+          {"target": "睡觉", "english": "to go to sleep", "pronunciation": "shuìjiào", "example": "我大概十二点睡觉。", "example_en": "I go to bed around midnight.", "note": "Verb-object compound, so 睡了三个小时觉 splits it.", "tags": ["routine", "trap"]}
+        ]
+      },
+      {
+        "title": "Chores and frequency",
+        "items": [
+          {"target": "打扫", "english": "to clean, to sweep", "pronunciation": "dǎsǎo", "example": "我们星期六早上打扫房间。", "example_en": "We clean the flat on Saturday mornings.", "note": "", "tags": ["chores"]},
+          {"target": "洗碗", "english": "to wash the dishes", "pronunciation": "xǐwǎn", "example": "你做饭，我洗碗。", "example_en": "You cook, I'll wash the dishes.", "note": "碗 is a bowl, and stands in for dishes generally.", "tags": ["chores", "trap"]},
+          {"target": "洗衣服", "english": "to do the laundry", "pronunciation": "xǐ yīfu", "example": "我周日洗衣服。", "example_en": "I do the laundry on Sundays.", "note": "", "tags": ["chores"]},
+          {"target": "倒垃圾", "english": "to take out the rubbish", "pronunciation": "dào lājī", "example": "别忘了倒垃圾。", "example_en": "Don't forget to take out the rubbish.", "note": "别 plus verb is the everyday negative command.", "tags": ["chores", "trap"]},
+          {"target": "一般", "english": "usually, generally", "pronunciation": "yìbān", "example": "我一般十二点吃午饭。", "example_en": "I usually have lunch at twelve.", "note": "Goes before the verb, like all adverbs.", "tags": ["frequency", "trap"]},
+          {"target": "偶尔", "english": "occasionally", "pronunciation": "ǒu'ěr", "example": "我偶尔做运动。", "example_en": "I occasionally do some sport.", "note": "Family: 经常 often, 有时候 sometimes, 从来不 never.", "tags": ["frequency"]}
+        ]
+      }
+    ]
+  },
+  "shopping-money": {
+    "grammar": ["zh-ba", "zh-bi"],
+    "groups": [
+      {
+        "title": "In the shop",
+        "items": [
+          {"target": "我想找", "english": "I'm looking for", "pronunciation": "wǒ xiǎng zhǎo", "example": "我想找一件冬天的外套。", "example_en": "I'm looking for a winter coat.", "note": "件 is the measure word for clothes.", "tags": ["shopping", "trap"]},
+          {"target": "可以试试吗？", "english": "can I try it on?", "pronunciation": "kěyǐ shìshi ma", "example": "我喜欢这件毛衣，可以试试吗？", "example_en": "I like this jumper, can I try it on?", "note": "Doubling a verb softens it: 试试 means give it a quick try.", "tags": ["shopping", "trap"]},
+          {"target": "尺码", "english": "size", "pronunciation": "chǐmǎ", "example": "有大一号的尺码吗？", "example_en": "Do you have the next size up?", "note": "号 also works: 大号, 中号, 小号.", "tags": ["clothes"]},
+          {"target": "试衣间", "english": "fitting room", "pronunciation": "shìyījiān", "example": "试衣间在后面。", "example_en": "The fitting rooms are at the back.", "note": "间 marks rooms: 试衣间, 洗手间, 房间.", "tags": ["clothes", "trap"]},
+          {"target": "很合适", "english": "it fits well, it suits me", "pronunciation": "hěn héshì", "example": "这个颜色很合适。", "example_en": "This colour suits me well.", "note": "合适 is suitable; 适合 is the verb to suit.", "tags": ["clothes", "trap"]},
+          {"target": "我要这个", "english": "I'll take this one", "pronunciation": "wǒ yào zhège", "example": "很好，我要这个。", "example_en": "Great, I'll take this one.", "note": "要 covers want, will have, and need.", "tags": ["shopping", "trap"]}
+        ]
+      },
+      {
+        "title": "Money",
+        "items": [
+          {"target": "太贵了", "english": "too expensive", "pronunciation": "tài guì le", "example": "四十块太贵了。", "example_en": "Forty yuan is too expensive.", "note": "便宜 is cheap. 太 ... 了 is the standard frame.", "tags": ["money", "trap"]},
+          {"target": "打折", "english": "to give a discount", "pronunciation": "dǎzhé", "example": "这些都在打折。", "example_en": "These are all on sale.", "note": "打八折 means twenty percent OFF, not eighty. The number is what you pay.", "tags": ["money", "trap"]},
+          {"target": "刷卡", "english": "to pay by card", "pronunciation": "shuākǎ", "example": "可以刷卡吗？", "example_en": "Can I pay by card?", "note": "In practice most people pay by phone: 手机支付.", "tags": ["money", "culture"]},
+          {"target": "发票", "english": "official receipt, invoice", "pronunciation": "fāpiào", "example": "要发票吗？", "example_en": "Do you need an official receipt?", "note": "A tax document, distinct from 收据, a plain receipt.", "tags": ["money", "culture"]},
+          {"target": "找钱", "english": "to give change", "pronunciation": "zhǎoqián", "example": "不用找钱了。", "example_en": "Keep the change.", "note": "Same 找 as in to look for: the shop looks for your change.", "tags": ["money", "trap"]},
+          {"target": "存钱", "english": "to save money", "pronunciation": "cúnqián", "example": "我们在存钱去旅行。", "example_en": "We're saving money for a trip.", "note": "Also to deposit money at a bank.", "tags": ["money", "trap"]}
+        ]
+      }
+    ]
+  }
+}

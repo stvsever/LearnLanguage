@@ -133,7 +133,8 @@ function featureRow(feature, seenRecord, lang) {
       class: 'btn btn-soft btn-sm practice-btn', type: 'button',
       title: 'Compose a piece that practices this structure',
       onclick: () => {
-        ctx.composePrefill = `A short piece that naturally practices "${feature.name}" (${feature.tip}) - pick any fun scenario.`;
+        ctx.composePrefill = `A short, vivid scene that naturally needs "${feature.name}": ${feature.tip}`;
+        ctx.composeFocus = feature.id;
         ctx.navigate('compose');
       },
     }, icon('sparkles', 14), 'Practice'));

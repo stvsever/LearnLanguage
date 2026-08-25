@@ -76,6 +76,7 @@ export function render(container) {
   const currentStreak = streak(lang);
   const acc = accuracyOverDays(30, lang);
   const empty = counts.total === 0;
+  const stock = ctx.config?.curriculum?.[lang];
 
   container.replaceChildren(
     el('div', { class: 'view-inner dashboard' },
@@ -84,7 +85,7 @@ export function render(container) {
           el('h1', {}, `${greeting()} 👋`),
           el('p', { class: 'muted' },
             empty
-              ? `Let's build your first ${profile?.display || ''} deck.`
+              ? `Let's build your first ${profile?.display || ''} deck. The topic library is the fastest way in.`
               : due > 0
                 ? `${due} review${due === 1 ? '' : 's'} waiting - clearing them is today's highest-value minute.`
                 : newRemaining > 0
@@ -106,8 +107,16 @@ export function render(container) {
         actionCard({
           iconName: 'sparkles', view: 'learn', accent: due === 0 && newRemaining > 0,
           title: empty ? 'Start learning' : newRemaining > 0 ? `Learn ${newRemaining} new` : 'Daily new done',
-          sub: empty ? 'Generate your first lesson' : newRemaining > 0 ? 'Fresh items, fully guided' : 'Generate more or raise the limit',
+          sub: empty ? 'Pick a topic and go' : newRemaining > 0 ? 'Fresh items, fully guided' : 'Add material or raise the limit',
           cta: 'Learn',
+        }),
+        actionCard({
+          iconName: 'layers', view: 'topics', accent: empty,
+          title: 'Topic library',
+          sub: stock?.items
+            ? `${fmtInt(stock.items)} curated items in ${stock.units} topics`
+            : 'Browse the curriculum by area of life',
+          cta: 'Browse',
         }),
         actionCard({
           iconName: 'penLine', view: 'compose',
@@ -129,7 +138,7 @@ export function render(container) {
         el('section', { class: 'card' },
           el('h3', {}, `Deck · ${profile?.display || lang}`),
           counts.total === 0
-            ? el('p', { class: 'muted' }, 'No cards yet. Generate a lesson in Learn to begin.')
+            ? el('p', { class: 'muted' }, 'No cards yet. Pick a topic in the library, or generate a lesson in Learn.')
             : el('div', { class: 'pipeline' },
               pipelineRow('New', counts.new, 'p-new', counts.total),
               pipelineRow('Learning', counts.learning, 'p-learning', counts.total),
@@ -174,7 +183,8 @@ async function fillFocus(lang) {
         el('button', {
           class: 'btn btn-primary btn-sm',
           onclick: () => {
-            ctx.composePrefill = `A short piece that naturally practices "${feature.name}" (${feature.tip}) - pick any fun scenario.`;
+            ctx.composePrefill = `A short, vivid scene that naturally needs "${feature.name}": ${feature.tip}`;
+            ctx.composeFocus = feature.id;
             ctx.navigate('compose');
           },
         }, icon('sparkles', 14), 'Practice it'))));

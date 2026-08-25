@@ -1,0 +1,83 @@
+{
+  "body-basics": {
+    "grammar": ["fr-etre-avoir", "fr-articles-gender"],
+    "groups": [
+      {
+        "title": "The body",
+        "items": [
+          {"target": "la tête", "english": "the head", "pronunciation": "/la tɛt/", "example": "J'ai mal à la tête.", "example_en": "I have a headache.", "note": "avoir mal à plus body part is the standard pain formula.", "tags": ["body"]},
+          {"target": "la main", "english": "the hand", "pronunciation": "/la mɛ̃/", "example": "Donne-moi la main.", "example_en": "Give me your hand.", "note": "French uses the definite article where English uses a possessive.", "tags": ["body", "trap"]},
+          {"target": "le bras", "english": "the arm", "pronunciation": "/lə bʁa/", "example": "Il s'est cassé le bras.", "example_en": "He broke his arm.", "note": "Singular and plural are spelled the same.", "tags": ["body"]},
+          {"target": "la jambe", "english": "the leg", "pronunciation": "/la ʒɑ̃b/", "example": "J'ai mal aux jambes après la course.", "example_en": "My legs hurt after the run.", "note": "à plus les becomes aux.", "tags": ["body"]},
+          {"target": "le dos", "english": "the back", "pronunciation": "/lə do/", "example": "Mon dos me fait souffrir depuis hier.", "example_en": "My back has been hurting since yesterday.", "note": "", "tags": ["body"]},
+          {"target": "le ventre", "english": "the stomach, the belly", "pronunciation": "/lə vɑ̃tʁ/", "example": "J'ai mal au ventre.", "example_en": "I have a stomach ache.", "note": "l'estomac is the organ; le ventre is the everyday word.", "tags": ["body", "trap"]}
+        ]
+      },
+      {
+        "title": "Basic states and needs",
+        "items": [
+          {"target": "avoir faim", "english": "to be hungry", "pronunciation": "/a.vwaʁ fɛ̃/", "example": "J'ai faim, on mange quelque chose ?", "example_en": "I'm hungry, shall we eat something?", "note": "Never je suis faim. French HAS hunger.", "tags": ["needs", "trap"]},
+          {"target": "avoir soif", "english": "to be thirsty", "pronunciation": "/a.vwaʁ swaf/", "example": "Tu as soif ? Il y a de l'eau.", "example_en": "Are you thirsty? There's water.", "note": "", "tags": ["needs"]},
+          {"target": "avoir froid", "english": "to be cold", "pronunciation": "/a.vwaʁ fʁwa/", "example": "J'ai froid, tu peux fermer la fenêtre ?", "example_en": "I'm cold, can you close the window?", "note": "il fait froid describes the weather, j'ai froid describes you.", "tags": ["needs", "trap"]},
+          {"target": "avoir sommeil", "english": "to be sleepy", "pronunciation": "/a.vwaʁ sɔ.mɛj/", "example": "J'ai sommeil, je vais me coucher.", "example_en": "I'm sleepy, I'm going to bed.", "note": "Different from être fatigué, which is deeper tiredness.", "tags": ["needs"]},
+          {"target": "j'ai besoin de", "english": "I need", "pronunciation": "/ʒe bə.zwɛ̃ də/", "example": "J'ai besoin de me reposer.", "example_en": "I need to rest.", "note": "Always followed by de, even before an infinitive.", "tags": ["needs", "phrase"]},
+          {"target": "où sont les toilettes ?", "english": "where are the toilets?", "pronunciation": "/u sɔ̃ le twa.lɛt/", "example": "Excusez-moi, où sont les toilettes ?", "example_en": "Excuse me, where are the toilets?", "note": "Always plural in French.", "tags": ["needs", "trap"]}
+        ]
+      }
+    ]
+  },
+  "doctor-pharmacy": {
+    "grammar": ["fr-subjonctif-intro", "fr-imparfait-vs-pc"],
+    "groups": [
+      {
+        "title": "Describing symptoms",
+        "items": [
+          {"target": "je ne me sens pas bien", "english": "I don't feel well", "pronunciation": "/ʒə nə mə sɑ̃ pa bjɛ̃/", "example": "Depuis ce matin, je ne me sens pas bien.", "example_en": "Since this morning I haven't been feeling well.", "note": "se sentir plus adjective describes how you feel.", "tags": ["symptoms", "phrase"]},
+          {"target": "avoir de la fièvre", "english": "to have a fever", "pronunciation": "/a.vwaʁ də la fjɛvʁ/", "example": "Il a de la fièvre depuis deux jours.", "example_en": "He's had a fever for two days.", "note": "The partitive de la is required.", "tags": ["symptoms", "phrase"]},
+          {"target": "tousser", "english": "to cough", "pronunciation": "/tu.se/", "example": "Je tousse surtout la nuit.", "example_en": "I cough mostly at night.", "note": "The noun is la toux.", "tags": ["symptoms"]},
+          {"target": "être enrhumé", "english": "to have a cold", "pronunciation": "/ɛtʁ ɑ̃.ʁy.me/", "example": "Je suis un peu enrhumé.", "example_en": "I have a bit of a cold.", "note": "un rhume is the cold itself.", "tags": ["symptoms"]},
+          {"target": "ça fait mal", "english": "it hurts", "pronunciation": "/sa fɛ mal/", "example": "Ça fait mal quand j'appuie ici.", "example_en": "It hurts when I press here.", "note": "Alongside j'ai mal à, the two everyday pain phrasings.", "tags": ["symptoms", "phrase"]},
+          {"target": "depuis combien de temps ?", "english": "for how long?", "pronunciation": "/də.pɥi kɔ̃.bjɛ̃ də tɑ̃/", "example": "Vous avez ces douleurs depuis combien de temps ?", "example_en": "How long have you had this pain?", "note": "depuis plus the present covers English present perfect.", "tags": ["symptoms", "question"]}
+        ]
+      },
+      {
+        "title": "Getting treated",
+        "items": [
+          {"target": "prendre rendez-vous", "english": "to make an appointment", "pronunciation": "/pʁɑ̃.dʁə ʁɑ̃.de.vu/", "example": "Je voudrais prendre rendez-vous avec le docteur.", "example_en": "I'd like to make an appointment with the doctor.", "note": "un rendez-vous is any appointment, not only a date.", "tags": ["appointment", "trap"]},
+          {"target": "l'ordonnance", "english": "the prescription", "pronunciation": "/lɔʁ.dɔ.nɑ̃s/", "example": "Voici votre ordonnance pour la pharmacie.", "example_en": "Here's your prescription for the pharmacy.", "note": "Feminine. Not to be confused with une commande, an order.", "tags": ["prescription", "trap"]},
+          {"target": "un médicament", "english": "a medicine, a drug", "pronunciation": "/œ̃ me.di.ka.mɑ̃/", "example": "Ce médicament se prend après le repas.", "example_en": "This medicine is taken after meals.", "note": "The reflexive se prend expresses the passive: it is taken.", "tags": ["prescription"]},
+          {"target": "il faut que vous vous reposiez", "english": "you need to rest", "pronunciation": "/il fo kə vu vu ʁə.po.zje/", "example": "Il faut que vous vous reposiez trois jours.", "example_en": "You need to rest for three days.", "note": "il faut que triggers the subjunctive: reposiez, not reposez.", "tags": ["advice", "phrase"]},
+          {"target": "les urgences", "english": "the emergency room", "pronunciation": "/le.z‿yʁ.ʒɑ̃s/", "example": "On l'a emmené aux urgences hier soir.", "example_en": "We took him to the emergency room last night.", "note": "Plural. The emergency number in Europe is 112.", "tags": ["emergency", "culture"]},
+          {"target": "la carte vitale", "english": "the French health card", "pronunciation": "/la kaʁt vi.tal/", "example": "Vous avez votre carte vitale ?", "example_en": "Do you have your health card?", "note": "The green card that handles reimbursement in France.", "tags": ["culture"]}
+        ]
+      }
+    ]
+  },
+  "wellbeing-sport": {
+    "grammar": ["fr-y-en", "fr-conditionnel"],
+    "groups": [
+      {
+        "title": "Moving your body",
+        "items": [
+          {"target": "faire du sport", "english": "to do sport, to exercise", "pronunciation": "/fɛʁ dy spɔʁ/", "example": "Je fais du sport trois fois par semaine.", "example_en": "I exercise three times a week.", "note": "faire du plus activity is the general pattern: faire du vélo, de la natation.", "tags": ["sport", "phrase"]},
+          {"target": "courir", "english": "to run", "pronunciation": "/ku.ʁiʁ/", "example": "Je cours le long du canal.", "example_en": "I run along the canal.", "note": "Irregular: je cours, nous courons, j'ai couru.", "tags": ["sport"]},
+          {"target": "la salle de sport", "english": "the gym", "pronunciation": "/la sal də spɔʁ/", "example": "Je me suis inscrit à la salle de sport.", "example_en": "I signed up at the gym.", "note": "s'inscrire à means to sign up for.", "tags": ["sport"]},
+          {"target": "s'entraîner", "english": "to train", "pronunciation": "/sɑ̃.tʁɛ.ne/", "example": "Elle s'entraîne pour un marathon.", "example_en": "She's training for a marathon.", "note": "", "tags": ["sport"]},
+          {"target": "être en forme", "english": "to be in good shape", "pronunciation": "/ɛtʁ‿ɑ̃ fɔʁm/", "example": "Tu as l'air en pleine forme !", "example_en": "You look in great shape!", "note": "", "tags": ["fitness", "phrase"]},
+          {"target": "avoir des courbatures", "english": "to be sore, to ache", "pronunciation": "/a.vwaʁ de kuʁ.ba.tyʁ/", "example": "J'ai des courbatures partout aujourd'hui.", "example_en": "I ache all over today.", "note": "The specific word for post-exercise muscle soreness.", "tags": ["fitness"]}
+        ]
+      },
+      {
+        "title": "Rest and stress",
+        "items": [
+          {"target": "bien dormir", "english": "to sleep well", "pronunciation": "/bjɛ̃ dɔʁ.miʁ/", "example": "Je n'ai pas bien dormi cette nuit.", "example_en": "I didn't sleep well last night.", "note": "cette nuit means last night or tonight; tense decides.", "tags": ["sleep", "trap"]},
+          {"target": "se reposer", "english": "to rest", "pronunciation": "/sə ʁə.po.ze/", "example": "Repose-toi, tu en as besoin.", "example_en": "Rest, you need it.", "note": "en replaces de plus a thing: tu en as besoin, you need it.", "tags": ["rest"]},
+          {"target": "le stress", "english": "stress", "pronunciation": "/lə stʁɛs/", "example": "Le stress au travail m'épuise.", "example_en": "Stress at work exhausts me.", "note": "Masculine, borrowed straight from English.", "tags": ["stress"]},
+          {"target": "se détendre", "english": "to relax", "pronunciation": "/sə de.tɑ̃dʁ/", "example": "Le week-end, j'essaie de me détendre.", "example_en": "At the weekend I try to relax.", "note": "", "tags": ["stress"]},
+          {"target": "faire attention à soi", "english": "to take care of yourself", "pronunciation": "/fɛʁ a.tɑ̃.sjɔ̃ a swa/", "example": "Il faut faire attention à soi en hiver.", "example_en": "You have to take care of yourself in winter.", "note": "soi is the impersonal reflexive pronoun.", "tags": ["wellbeing", "phrase"]},
+          {"target": "prendre soin de", "english": "to look after", "pronunciation": "/pʁɑ̃.dʁə swɛ̃ də/", "example": "Prends soin de toi.", "example_en": "Take care of yourself.", "note": "A warm way to end a letter or a call.", "tags": ["wellbeing", "phrase"]}
+        ]
+      }
+    ]
+  }
+}

@@ -59,21 +59,24 @@ function shuffleLearningLast(queue) {
   return [...shuffled(review), ...shuffled(learning)];
 }
 
+/**
+ * Retrieval difficulty should grow with memory strength (a desirable
+ * difficulty), and the modality should vary so one skill does not carry the
+ * whole deck. Production stays the backbone; listening and cloze interleave.
+ */
 function pickMode(card) {
   if (card.srs.reps < 2) return 'recognize';
-  const rotation = [];
-  rotation.push('produce');
-  rotation.push('listen');
-  if (card.example) rotation.push('cloze');
-  rotation.push('produce');
-  return rotation[card.srs.reps % rotation.length];
+  const rotation = card.example
+    ? ['produce', 'listen', 'produce', 'cloze']
+    : ['produce', 'listen'];
+  return rotation[(card.srs.reps - 2) % rotation.length];
 }
 
 function renderEmpty(container, capLeft) {
   const nextDue = cards(currentLanguage())
     .filter((c) => c.state !== 'new' && !c.suspended)
     .sort((a, b) => a.srs.due - b.srs.due)[0];
-  let hint = 'Nothing scheduled. Learn new items or read a story.';
+  let hint = 'Nothing scheduled. Learn new items, or pick a topic from the library.';
   if (capLeft === 0) hint = 'You reached today\'s review cap - adjustable in Settings.';
   else if (nextDue) {
     const minutes = Math.max(1, Math.round((nextDue.srs.due - Date.now()) / 60000));
@@ -87,9 +90,10 @@ function renderEmpty(container, capLeft) {
         el('div', { class: 'start-icon success' }, icon('check', 28)),
         el('h2', {}, 'Queue clear'),
         el('p', { class: 'muted' }, hint),
-        el('div', { class: 'row gap center' },
+        el('div', { class: 'row gap center wrap' },
           el('button', { class: 'btn btn-primary', onclick: () => ctx.navigate('learn') }, icon('sparkles', 16), 'Learn new items'),
-          el('button', { class: 'btn btn-ghost', onclick: () => ctx.navigate('read') }, icon('book', 16), 'Read')))));
+          el('button', { class: 'btn btn-soft', onclick: () => ctx.navigate('topics') }, icon('layers', 16), 'Browse topics'),
+          el('button', { class: 'btn btn-ghost', onclick: () => ctx.navigate('compose') }, icon('book', 16), 'Compose')))));
 }
 
 function renderCard(container) {

@@ -1,0 +1,83 @@
+{
+  "home": {
+    "grammar": ["fr-articles-gender", "fr-etre-avoir"],
+    "groups": [
+      {
+        "title": "Rooms and spaces",
+        "items": [
+          {"target": "l'appartement", "english": "the flat, the apartment", "pronunciation": "/la.paʁ.tə.mɑ̃/", "example": "Notre appartement est au troisième étage.", "example_en": "Our flat is on the third floor.", "note": "Masculine, and the French third floor is the British third, one above the American.", "tags": ["housing"]},
+          {"target": "la cuisine", "english": "the kitchen, the cooking", "pronunciation": "/la kɥi.zin/", "example": "On mange toujours dans la cuisine.", "example_en": "We always eat in the kitchen.", "note": "Also means cuisine: la cuisine italienne.", "tags": ["housing", "trap"]},
+          {"target": "la chambre", "english": "the bedroom", "pronunciation": "/la ʃɑ̃bʁ/", "example": "Ma chambre donne sur la cour.", "example_en": "My bedroom looks out on the courtyard.", "note": "Not any room: a room in general is une pièce.", "tags": ["housing", "trap"]},
+          {"target": "la salle de bains", "english": "the bathroom", "pronunciation": "/la sal də bɛ̃/", "example": "La salle de bains est au fond du couloir.", "example_en": "The bathroom is at the end of the hall.", "note": "The toilet is separate and called les toilettes.", "tags": ["housing"]},
+          {"target": "le salon", "english": "the living room", "pronunciation": "/lə sa.lɔ̃/", "example": "On regarde un film au salon.", "example_en": "We're watching a film in the living room.", "note": "Also called le séjour.", "tags": ["housing"]},
+          {"target": "le jardin", "english": "the garden", "pronunciation": "/lə ʒaʁ.dɛ̃/", "example": "Il y a un petit jardin derrière.", "example_en": "There's a small garden at the back.", "note": "il y a means there is or there are, one form for both.", "tags": ["housing"]}
+        ]
+      },
+      {
+        "title": "Things and where they are",
+        "items": [
+          {"target": "la table", "english": "the table", "pronunciation": "/la tabl/", "example": "Les clés sont sur la table.", "example_en": "The keys are on the table.", "note": "", "tags": ["furniture"]},
+          {"target": "le lit", "english": "the bed", "pronunciation": "/lə li/", "example": "Le chat dort sous le lit.", "example_en": "The cat is sleeping under the bed.", "note": "Final t silent.", "tags": ["furniture"]},
+          {"target": "l'armoire", "english": "the wardrobe", "pronunciation": "/laʁ.mwaʁ/", "example": "Range ton manteau dans l'armoire.", "example_en": "Put your coat away in the wardrobe.", "note": "Feminine: une armoire.", "tags": ["furniture"]},
+          {"target": "à côté de", "english": "next to", "pronunciation": "/a ko.te də/", "example": "La lampe est à côté du canapé.", "example_en": "The lamp is next to the sofa.", "note": "de plus le contracts to du: à côté du lit.", "tags": ["location", "phrase"]},
+          {"target": "en face de", "english": "opposite, across from", "pronunciation": "/ɑ̃ fas də/", "example": "La boulangerie est en face de chez moi.", "example_en": "The bakery is opposite my place.", "note": "", "tags": ["location", "phrase"]},
+          {"target": "déménager", "english": "to move house", "pronunciation": "/de.me.na.ʒe/", "example": "On déménage à la fin du mois.", "example_en": "We're moving at the end of the month.", "note": "Moving within a room is déplacer; moving house is déménager.", "tags": ["housing", "trap"]}
+        ]
+      }
+    ]
+  },
+  "routines": {
+    "grammar": ["fr-present-er", "fr-imperatif"],
+    "groups": [
+      {
+        "title": "An ordinary day",
+        "items": [
+          {"target": "se réveiller", "english": "to wake up", "pronunciation": "/sə ʁe.ve.je/", "example": "Je me réveille à sept heures.", "example_en": "I wake up at seven.", "note": "Reflexive: the pronoun changes with the subject, je me, tu te, il se.", "tags": ["routine"]},
+          {"target": "se lever", "english": "to get up", "pronunciation": "/sə lə.ve/", "example": "Elle se lève tôt le samedi.", "example_en": "She gets up early on Saturdays.", "note": "Waking is one thing, getting out of bed is another verb.", "tags": ["routine"]},
+          {"target": "prendre une douche", "english": "to take a shower", "pronunciation": "/pʁɑ̃.dʁ‿yn duʃ/", "example": "Je prends une douche avant de partir.", "example_en": "I take a shower before leaving.", "note": "prendre also covers taking transport and having a drink.", "tags": ["routine", "phrase"]},
+          {"target": "s'habiller", "english": "to get dressed", "pronunciation": "/sa.bi.je/", "example": "Habille-toi, on part dans cinq minutes.", "example_en": "Get dressed, we're leaving in five minutes.", "note": "In the imperative the pronoun jumps behind: habille-toi.", "tags": ["routine"]},
+          {"target": "aller au travail", "english": "to go to work", "pronunciation": "/a.le o tʁa.vaj/", "example": "Je vais au travail à vélo.", "example_en": "I cycle to work.", "note": "à plus le becomes au.", "tags": ["routine", "phrase"]},
+          {"target": "se coucher", "english": "to go to bed", "pronunciation": "/sə ku.ʃe/", "example": "Je me couche vers minuit.", "example_en": "I go to bed around midnight.", "note": "", "tags": ["routine"]}
+        ]
+      },
+      {
+        "title": "Chores and frequency",
+        "items": [
+          {"target": "faire le ménage", "english": "to do the housework", "pronunciation": "/fɛʁ lə me.naʒ/", "example": "On fait le ménage le samedi matin.", "example_en": "We do the housework on Saturday mornings.", "note": "faire carries most household tasks: faire la vaisselle, la lessive, les courses.", "tags": ["chores", "phrase"]},
+          {"target": "faire la vaisselle", "english": "to do the dishes", "pronunciation": "/fɛʁ la vɛ.sɛl/", "example": "Tu cuisines, je fais la vaisselle.", "example_en": "You cook, I'll do the dishes.", "note": "", "tags": ["chores", "phrase"]},
+          {"target": "ranger", "english": "to tidy up, to put away", "pronunciation": "/ʁɑ̃.ʒe/", "example": "Range ta chambre avant de sortir.", "example_en": "Tidy your room before going out.", "note": "", "tags": ["chores"]},
+          {"target": "sortir la poubelle", "english": "to take out the bin", "pronunciation": "/sɔʁ.tiʁ la pu.bɛl/", "example": "N'oublie pas de sortir la poubelle.", "example_en": "Don't forget to take out the bin.", "note": "", "tags": ["chores", "phrase"]},
+          {"target": "d'habitude", "english": "usually", "pronunciation": "/da.bi.tyd/", "example": "D'habitude je déjeune à midi.", "example_en": "I usually have lunch at noon.", "note": "Sits naturally at the start of the sentence.", "tags": ["frequency"]},
+          {"target": "de temps en temps", "english": "from time to time", "pronunciation": "/də tɑ̃.z‿ɑ̃ tɑ̃/", "example": "Je fais du sport de temps en temps.", "example_en": "I do some sport from time to time.", "note": "Family: souvent, parfois, rarement, jamais.", "tags": ["frequency", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "shopping-money": {
+    "grammar": ["fr-object-pronouns", "fr-comparatives"],
+    "groups": [
+      {
+        "title": "In the shop",
+        "items": [
+          {"target": "je cherche", "english": "I'm looking for", "pronunciation": "/ʒə ʃɛʁʃ/", "example": "Je cherche un manteau chaud.", "example_en": "I'm looking for a warm coat.", "note": "chercher needs no preposition: never chercher pour.", "tags": ["shopping", "trap"]},
+          {"target": "je peux essayer ?", "english": "can I try it on?", "pronunciation": "/ʒə pø e.se.je/", "example": "J'aime bien ce pull, je peux l'essayer ?", "example_en": "I like this jumper, can I try it on?", "note": "l' is the object pronoun for it, sitting before the verb.", "tags": ["shopping", "phrase"]},
+          {"target": "la taille", "english": "the size", "pronunciation": "/la taj/", "example": "Vous avez la taille au-dessus ?", "example_en": "Do you have the next size up?", "note": "Shoes use la pointure, not la taille.", "tags": ["clothes", "trap"]},
+          {"target": "la cabine d'essayage", "english": "the fitting room", "pronunciation": "/la ka.bin de.se.jaʒ/", "example": "Les cabines d'essayage sont au fond.", "example_en": "The fitting rooms are at the back.", "note": "", "tags": ["clothes"]},
+          {"target": "ça me va bien", "english": "it suits me, it fits me", "pronunciation": "/sa mə va bjɛ̃/", "example": "Cette couleur me va bien, je crois.", "example_en": "This colour suits me, I think.", "note": "Same phrase covers both fit and flattery.", "tags": ["clothes", "phrase"]},
+          {"target": "je vais le prendre", "english": "I'll take it", "pronunciation": "/ʒə vɛ lə pʁɑ̃dʁ/", "example": "C'est parfait, je vais le prendre.", "example_en": "It's perfect, I'll take it.", "note": "aller plus infinitive is the everyday future.", "tags": ["shopping", "phrase"]}
+        ]
+      },
+      {
+        "title": "Money",
+        "items": [
+          {"target": "c'est trop cher", "english": "it's too expensive", "pronunciation": "/sɛ tʁo ʃɛʁ/", "example": "Quarante euros, c'est trop cher pour moi.", "example_en": "Forty euros is too expensive for me.", "note": "Opposite: pas cher, bon marché.", "tags": ["money", "phrase"]},
+          {"target": "en solde", "english": "on sale", "pronunciation": "/ɑ̃ sɔld/", "example": "Tout le rayon est en solde.", "example_en": "The whole section is on sale.", "note": "les soldes are the two official sale periods in France.", "tags": ["money"]},
+          {"target": "payer par carte", "english": "to pay by card", "pronunciation": "/pe.je paʁ kaʁt/", "example": "Je peux payer par carte ?", "example_en": "Can I pay by card?", "note": "en espèces means in cash.", "tags": ["money", "phrase"]},
+          {"target": "le reçu", "english": "the receipt", "pronunciation": "/lə ʁə.sy/", "example": "Vous voulez le reçu ?", "example_en": "Would you like the receipt?", "note": "In a restaurant the bill is l'addition.", "tags": ["money"]},
+          {"target": "rembourser", "english": "to refund, to pay back", "pronunciation": "/ʁɑ̃.buʁ.se/", "example": "Ils m'ont remboursé la semaine dernière.", "example_en": "They refunded me last week.", "note": "", "tags": ["money"]},
+          {"target": "faire des économies", "english": "to save money", "pronunciation": "/fɛʁ de.z‿e.kɔ.nɔ.mi/", "example": "On fait des économies pour un voyage.", "example_en": "We're saving up for a trip.", "note": "Saving money is économiser; sauver is saving a life.", "tags": ["money", "trap"]}
+        ]
+      }
+    ]
+  }
+}

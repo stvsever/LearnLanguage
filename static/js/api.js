@@ -43,6 +43,11 @@ export const api = {
   config: () => request('/api/config'),
   setupKey: (key) => request('/api/setup/key', { method: 'POST', body: { key }, timeout: 15000 }),
   grammar: (language) => request(`/api/grammar?language=${encodeURIComponent(language)}`),
+  curriculum: (language) => request(`/api/curriculum?language=${encodeURIComponent(language)}`),
+  curriculumUnit: (language, unit) =>
+    request(`/api/curriculum/unit?language=${encodeURIComponent(language)}&unit=${encodeURIComponent(unit)}`),
+  curriculumSearch: (language, query) =>
+    request(`/api/curriculum/search?language=${encodeURIComponent(language)}&q=${encodeURIComponent(query)}`, { timeout: 15000 }),
   lesson: (payload) => request('/api/lesson', { method: 'POST', body: withModel(payload), timeout: 180000 }),
   compose: (payload) => request('/api/compose', { method: 'POST', body: withModel(payload), timeout: 300000 }),
   gloss: (payload) => request('/api/gloss', { method: 'POST', body: withModel(payload), timeout: 90000 }),

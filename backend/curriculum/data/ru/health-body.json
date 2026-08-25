@@ -1,0 +1,83 @@
+{
+  "body-basics": {
+    "grammar": ["ru-dative-exp", "ru-u-menya"],
+    "groups": [
+      {
+        "title": "The body",
+        "items": [
+          {"target": "голова", "english": "head", "pronunciation": "/ɡəlɐˈva/", "example": "У меня болит голова.", "example_en": "I have a headache.", "note": "The hurting part is the subject: болит голова, болят ноги.", "tags": ["body", "trap"]},
+          {"target": "рука", "english": "hand, arm", "pronunciation": "/ruˈka/", "example": "Дай руку.", "example_en": "Give me your hand.", "note": "One word for hand and arm; нога likewise covers leg and foot.", "tags": ["body", "trap"]},
+          {"target": "нога", "english": "leg, foot", "pronunciation": "/nɐˈɡa/", "example": "У меня болят ноги после бега.", "example_en": "My legs hurt after running.", "note": "Plural ноги with a stress shift.", "tags": ["body", "trap"]},
+          {"target": "спина", "english": "back", "pronunciation": "/spʲɪˈna/", "example": "Спина болит со вчерашнего дня.", "example_en": "My back has hurt since yesterday.", "note": "", "tags": ["body"]},
+          {"target": "живот", "english": "stomach, belly", "pronunciation": "/ʐɨˈvot/", "example": "У ребёнка болит живот.", "example_en": "The child has a stomach ache.", "note": "желудок is the organ; живот is the everyday word.", "tags": ["body", "trap"]},
+          {"target": "горло", "english": "throat", "pronunciation": "/ˈɡorlə/", "example": "У меня болит горло.", "example_en": "I have a sore throat.", "note": "", "tags": ["body"]}
+        ]
+      },
+      {
+        "title": "Basic states and needs",
+        "items": [
+          {"target": "я хочу есть", "english": "I'm hungry", "pronunciation": "/ja xɐˈtɕu jesʲtʲ/", "example": "Я хочу есть, поедим что-нибудь?", "example_en": "I'm hungry, shall we eat something?", "note": "Literally I want to eat. There is no direct equivalent of to be hungry.", "tags": ["needs", "trap"]},
+          {"target": "я хочу пить", "english": "I'm thirsty", "pronunciation": "/ja xɐˈtɕu pʲitʲ/", "example": "Хочешь пить? В холодильнике вода.", "example_en": "Are you thirsty? There's water in the fridge.", "note": "Literally I want to drink.", "tags": ["needs", "trap"]},
+          {"target": "мне холодно", "english": "I'm cold", "pronunciation": "/mnʲe ˈxolədnə/", "example": "Мне холодно, закрой окно, пожалуйста.", "example_en": "I'm cold, please close the window.", "note": "Dative plus an impersonal adverb. холодно alone means it is cold outside.", "tags": ["needs", "trap"]},
+          {"target": "мне хочется спать", "english": "I feel sleepy", "pronunciation": "/mnʲe ˈxotɕɪtsə spatʲ/", "example": "Мне хочется спать, пойду лягу.", "example_en": "I feel sleepy, I'm going to lie down.", "note": "мне хочется is softer than я хочу: it just comes over you.", "tags": ["needs", "trap"]},
+          {"target": "мне нужно", "english": "I need", "pronunciation": "/mnʲe ˈnuʐnə/", "example": "Мне нужно отдохнуть.", "example_en": "I need to rest.", "note": "Dative plus нужно plus infinitive. With a noun it agrees: мне нужна помощь.", "tags": ["needs", "trap"]},
+          {"target": "где туалет?", "english": "where is the toilet?", "pronunciation": "/ɡdʲe tuɐˈlʲet/", "example": "Извините, где туалет?", "example_en": "Excuse me, where is the toilet?", "note": "Singular in Russian, unlike French.", "tags": ["needs", "essential"]}
+        ]
+      }
+    ]
+  },
+  "doctor-pharmacy": {
+    "grammar": ["ru-aspect-core", "ru-dative-full"],
+    "groups": [
+      {
+        "title": "Describing symptoms",
+        "items": [
+          {"target": "я плохо себя чувствую", "english": "I don't feel well", "pronunciation": "/ja ˈploxə sʲɪˈbʲa ˈtɕustvuju/", "example": "С утра я плохо себя чувствую.", "example_en": "I haven't been feeling well since this morning.", "note": "чувствовать себя plus adverb: to feel a certain way. The в is silent.", "tags": ["symptoms", "trap"]},
+          {"target": "у меня температура", "english": "I have a fever", "pronunciation": "/u mʲɪˈnʲa tʲɪmpʲɪrɐˈturə/", "example": "У него температура уже два дня.", "example_en": "He's had a fever for two days.", "note": "температура alone implies a raised one.", "tags": ["symptoms", "trap"]},
+          {"target": "кашель", "english": "cough", "pronunciation": "/ˈkaʂɨlʲ/", "example": "Кашель усиливается ночью.", "example_en": "The cough gets worse at night.", "note": "The verb is кашлять.", "tags": ["symptoms"]},
+          {"target": "я простудился", "english": "I caught a cold", "pronunciation": "/ja prəstuˈdʲilsə/", "example": "Кажется, я простудился.", "example_en": "I think I've caught a cold.", "note": "Past tense agrees: простудился, простудилась.", "tags": ["symptoms", "trap"]},
+          {"target": "здесь больно", "english": "it hurts here", "pronunciation": "/zdʲesʲ ˈbolʲnə/", "example": "Здесь больно, когда нажимаю.", "example_en": "It hurts here when I press.", "note": "An impersonal adverb again, not an adjective.", "tags": ["symptoms", "trap"]},
+          {"target": "как давно?", "english": "how long ago? since when?", "pronunciation": "/kak dɐˈvno/", "example": "Как давно у вас эти боли?", "example_en": "How long have you had this pain?", "note": "", "tags": ["symptoms", "question"]}
+        ]
+      },
+      {
+        "title": "Getting treated",
+        "items": [
+          {"target": "записаться к врачу", "english": "to make a doctor's appointment", "pronunciation": "/zəpʲɪˈsatsə k vrɐˈtɕu/", "example": "Я хочу записаться к врачу.", "example_en": "I'd like to make an appointment with the doctor.", "note": "Literally to write oneself in. к plus dative: к врачу.", "tags": ["appointment", "trap"]},
+          {"target": "рецепт", "english": "prescription", "pronunciation": "/rʲɪˈtsept/", "example": "Вот рецепт, купите в аптеке.", "example_en": "Here's the prescription, buy it at the pharmacy.", "note": "The same word as a cooking recipe.", "tags": ["prescription", "trap"]},
+          {"target": "лекарство", "english": "medicine", "pronunciation": "/lʲɪˈkarstvə/", "example": "Это лекарство принимают после еды.", "example_en": "This medicine is taken after meals.", "note": "The third-person plural without a subject expresses the passive.", "tags": ["prescription", "trap"]},
+          {"target": "вам нужно отдохнуть", "english": "you need to rest", "pronunciation": "/vam ˈnuʐnə ɐdɐxˈnutʲ/", "example": "Вам нужно отдохнуть три дня.", "example_en": "You need to rest for three days.", "note": "Dative вам plus нужно plus perfective infinitive.", "tags": ["advice", "trap"]},
+          {"target": "скорая помощь", "english": "ambulance, emergency service", "pronunciation": "/ˈskorəjə ˈpoməɕː/", "example": "Мы вызвали скорую вчера вечером.", "example_en": "We called an ambulance last night.", "note": "Usually shortened to скорая. The emergency number in Russia is 112.", "tags": ["emergency", "culture"]},
+          {"target": "поликлиника", "english": "local health centre", "pronunciation": "/pəlʲɪˈklʲinʲɪkə/", "example": "Приём в поликлинике до восьми.", "example_en": "The health centre is open until eight.", "note": "The first stop for non-emergencies in the Russian system.", "tags": ["culture"]}
+        ]
+      }
+    ]
+  },
+  "wellbeing-sport": {
+    "grammar": ["ru-instrumental", "ru-aspect-core"],
+    "groups": [
+      {
+        "title": "Moving your body",
+        "items": [
+          {"target": "заниматься спортом", "english": "to do sport, to exercise", "pronunciation": "/zənʲɪˈmatsə ˈsportəm/", "example": "Я занимаюсь спортом три раза в неделю.", "example_en": "I exercise three times a week.", "note": "заниматься takes the instrumental: спортом, музыкой, языками.", "tags": ["sport", "trap"]},
+          {"target": "бегать", "english": "to run (regularly)", "pronunciation": "/ˈbʲeɡətʲ/", "example": "Я бегаю вдоль канала.", "example_en": "I run along the canal.", "note": "бегать is habitual or multidirectional; бежать is one run in one direction.", "tags": ["sport", "trap"]},
+          {"target": "спортзал", "english": "gym", "pronunciation": "/sport͡ˈzal/", "example": "Я записался в спортзал.", "example_en": "I signed up at the gym.", "note": "Short for спортивный зал.", "tags": ["sport"]},
+          {"target": "тренироваться", "english": "to train", "pronunciation": "/trʲɪnʲɪrɐˈvatsə/", "example": "Она тренируется к марафону.", "example_en": "She's training for a marathon.", "note": "к plus dative for the goal you are training towards.", "tags": ["sport", "trap"]},
+          {"target": "в хорошей форме", "english": "in good shape", "pronunciation": "/f xɐˈroʂɨj ˈformʲe/", "example": "Ты отлично выглядишь, в хорошей форме!", "example_en": "You look great, in good shape!", "note": "", "tags": ["fitness", "phrase"]},
+          {"target": "мышцы болят", "english": "my muscles ache", "pronunciation": "/ˈmɨʂtsɨ bɐˈlʲat/", "example": "Сегодня мышцы болят везде.", "example_en": "My muscles ache everywhere today.", "note": "The muscles are the subject of болеть.", "tags": ["fitness", "trap"]}
+        ]
+      },
+      {
+        "title": "Rest and stress",
+        "items": [
+          {"target": "хорошо спать", "english": "to sleep well", "pronunciation": "/xərɐˈʂo spatʲ/", "example": "Я плохо спал этой ночью.", "example_en": "I slept badly last night.", "note": "этой ночью is instrumental, used adverbially for time.", "tags": ["sleep", "trap"]},
+          {"target": "отдыхать", "english": "to rest, to have a holiday", "pronunciation": "/ɐdːɨˈxatʲ/", "example": "Отдохни, тебе это нужно.", "example_en": "Rest, you need it.", "note": "Also means to be on holiday: мы отдыхали в Сочи.", "tags": ["rest", "trap"]},
+          {"target": "стресс", "english": "stress", "pronunciation": "/strʲes/", "example": "Стресс на работе меня выматывает.", "example_en": "Stress at work wears me out.", "note": "Borrowed straight from English.", "tags": ["stress"]},
+          {"target": "расслабляться", "english": "to relax", "pronunciation": "/rəslɐˈblʲatsə/", "example": "На выходных я стараюсь расслабляться.", "example_en": "At the weekend I try to relax.", "note": "Perfective расслабиться.", "tags": ["stress"]},
+          {"target": "беречь себя", "english": "to look after yourself", "pronunciation": "/bʲɪˈrʲetɕ sʲɪˈbʲa/", "example": "Зимой нужно беречь себя.", "example_en": "In winter you have to look after yourself.", "note": "", "tags": ["wellbeing"]},
+          {"target": "береги себя", "english": "take care", "pronunciation": "/bʲɪrʲɪˈɡʲi sʲɪˈbʲa/", "example": "Пока, береги себя!", "example_en": "Bye, take care!", "note": "A warm way to end a call or a message.", "tags": ["wellbeing", "phrase"]}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "directions": {
+    "grammar": ["es-questions-negation", "es-commands"],
+    "groups": [
+      {
+        "title": "Asking the way",
+        "items": [
+          {"target": "¿dónde está ... ?", "english": "where is ...?", "pronunciation": "/ˈdon.de esˈta/", "example": "Perdone, ¿dónde está la estación?", "example_en": "Excuse me, where is the station?", "note": "Location always uses estar, never ser.", "tags": ["directions", "trap"]},
+          {"target": "estoy buscando la estación", "english": "I'm looking for the station", "pronunciation": "/esˈtoj busˈkan.do la es.taˈsjon/", "example": "Hola, estoy buscando la estación de tren.", "example_en": "Hello, I'm looking for the train station.", "note": "", "tags": ["directions", "phrase"]},
+          {"target": "¿está lejos?", "english": "is it far?", "pronunciation": "/esˈta ˈle.xos/", "example": "¿Está lejos de aquí a pie?", "example_en": "Is it far from here on foot?", "note": "cerca means near.", "tags": ["directions", "question"]},
+          {"target": "todo recto", "english": "straight ahead", "pronunciation": "/ˈto.ðo ˈrek.to/", "example": "Siga todo recto hasta el semáforo.", "example_en": "Keep going straight ahead until the traffic light.", "note": "In Latin America: derecho, which is confusingly close to derecha.", "tags": ["directions", "trap"]},
+          {"target": "a la izquierda", "english": "on the left, to the left", "pronunciation": "/a la isˈkjeɾ.ða/", "example": "Gire a la izquierda después de la iglesia.", "example_en": "Turn left after the church.", "note": "a la derecha is to the right.", "tags": ["directions"]},
+          {"target": "en la esquina", "english": "on the corner", "pronunciation": "/en la esˈki.na/", "example": "La farmacia está en la esquina.", "example_en": "The pharmacy is on the corner.", "note": "el rincón is an inside corner of a room.", "tags": ["directions", "trap"]}
+        ]
+      },
+      {
+        "title": "Places in town",
+        "items": [
+          {"target": "la estación", "english": "the station", "pronunciation": "/la es.taˈsjon/", "example": "Quedamos delante de la estación.", "example_en": "Let's meet in front of the station.", "note": "Also means season of the year.", "tags": ["places", "trap"]},
+          {"target": "el ayuntamiento", "english": "the town hall", "pronunciation": "/el a.ʝun.taˈmjen.to/", "example": "El ayuntamiento cierra los lunes.", "example_en": "The town hall is closed on Mondays.", "note": "", "tags": ["places"]},
+          {"target": "la panadería", "english": "the bakery", "pronunciation": "/la pa.na.ðeˈɾi.a/", "example": "Hay una panadería justo ahí.", "example_en": "There's a bakery right there.", "note": "The -ería ending marks shops: carnicería, frutería, librería.", "tags": ["places"]},
+          {"target": "la farmacia", "english": "the pharmacy", "pronunciation": "/la faɾˈma.sja/", "example": "La farmacia de guardia abre toda la noche.", "example_en": "The on-duty pharmacy is open all night.", "note": "", "tags": ["places"]},
+          {"target": "la plaza", "english": "the square", "pronunciation": "/la ˈpla.sa/", "example": "Nos vemos en la plaza mayor.", "example_en": "See you in the main square.", "note": "The heart of any Spanish town.", "tags": ["places", "culture"]},
+          {"target": "el barrio", "english": "the neighbourhood", "pronunciation": "/el ˈba.rjo/", "example": "Me gusta mucho este barrio.", "example_en": "I really like this neighbourhood.", "note": "", "tags": ["places"]}
+        ]
+      }
+    ]
+  },
+  "transport": {
+    "grammar": ["es-ir-a", "es-indefinido"],
+    "groups": [
+      {
+        "title": "Tickets and platforms",
+        "items": [
+          {"target": "un billete de ida y vuelta", "english": "a return ticket", "pronunciation": "/un biˈʝe.te de ˈi.ða i ˈbwel.ta/", "example": "Un billete de ida y vuelta a Sevilla, por favor.", "example_en": "A return ticket to Seville, please.", "note": "One way is de ida or sencillo. In Latin America: un boleto.", "tags": ["tickets", "trap"]},
+          {"target": "la taquilla", "english": "the ticket office", "pronunciation": "/la taˈki.ʝa/", "example": "Puede comprar en la taquilla o por internet.", "example_en": "You can buy at the ticket office or online.", "note": "", "tags": ["tickets"]},
+          {"target": "el andén", "english": "the platform", "pronunciation": "/el anˈden/", "example": "El tren sale del andén número tres.", "example_en": "The train leaves from platform three.", "note": "", "tags": ["train"]},
+          {"target": "hacer transbordo", "english": "to change trains, to transfer", "pronunciation": "/aˈseɾ tɾansˈboɾ.ðo/", "example": "Hay que hacer transbordo en Atocha.", "example_en": "You have to change at Atocha.", "note": "hay que expresses an impersonal must.", "tags": ["train", "phrase"]},
+          {"target": "coger el metro", "english": "to take the metro", "pronunciation": "/koˈxeɾ el ˈme.tɾo/", "example": "Cogemos el metro, línea cuatro.", "example_en": "We'll take metro line four.", "note": "In much of Latin America, coger is vulgar. Use tomar there.", "tags": ["transport", "trap"]},
+          {"target": "el horario", "english": "the timetable", "pronunciation": "/el oˈɾa.ɾjo/", "example": "Mira el horario en la aplicación.", "example_en": "Check the timetable on the app.", "note": "", "tags": ["transport"]}
+        ]
+      },
+      {
+        "title": "When things go wrong",
+        "items": [
+          {"target": "el tren lleva retraso", "english": "the train is delayed", "pronunciation": "/el tɾen ˈʝe.βa reˈtɾa.so/", "example": "El tren lleva veinte minutos de retraso.", "example_en": "The train is twenty minutes late.", "note": "llegar tarde is for people, llevar retraso for services.", "tags": ["delays", "trap"]},
+          {"target": "la huelga", "english": "the strike", "pronunciation": "/la ˈwel.ɣa/", "example": "Mañana hay huelga de transportes.", "example_en": "There's a transport strike tomorrow.", "note": "Worth recognising on a station board.", "tags": ["delays", "culture"]},
+          {"target": "cancelado", "english": "cancelled", "pronunciation": "/kan.seˈla.ðo/", "example": "Nuestro vuelo fue cancelado.", "example_en": "Our flight was cancelled.", "note": "", "tags": ["delays"]},
+          {"target": "perder el tren", "english": "to miss the train", "pronunciation": "/peɾˈðeɾ el tɾen/", "example": "Perdí el último tren.", "example_en": "I missed the last train.", "note": "perder covers both losing and missing.", "tags": ["delays", "trap"]},
+          {"target": "me he perdido", "english": "I got lost", "pronunciation": "/me e peɾˈði.ðo/", "example": "Perdona, me he perdido por el camino.", "example_en": "Sorry, I got lost on the way.", "note": "Present perfect is the default past for today's events in Spain.", "tags": ["problems", "trap"]},
+          {"target": "¿a qué hora sale el próximo?", "english": "what time does the next one leave?", "pronunciation": "/a ke ˈo.ɾa ˈsa.le el ˈpɾok.si.mo/", "example": "¿A qué hora sale el próximo autobús?", "example_en": "What time does the next bus leave?", "note": "", "tags": ["transport", "question"]}
+        ]
+      }
+    ]
+  },
+  "travel-stay": {
+    "grammar": ["es-subj-present", "es-por-para"],
+    "groups": [
+      {
+        "title": "Booking and checking in",
+        "items": [
+          {"target": "tengo una reserva", "english": "I have a reservation", "pronunciation": "/ˈteŋ.ɡo ˈu.na reˈseɾ.βa/", "example": "Buenas noches, tengo una reserva a nombre de Dupont.", "example_en": "Good evening, I have a reservation under the name Dupont.", "note": "a nombre de means under the name of.", "tags": ["hotel", "phrase"]},
+          {"target": "una habitación doble", "english": "a double room", "pronunciation": "/ˈu.na a.βi.taˈsjon ˈdo.βle/", "example": "Una habitación doble con vistas al mar.", "example_en": "A double room with a sea view.", "note": "individual is a single room.", "tags": ["hotel"]},
+          {"target": "¿el desayuno está incluido?", "english": "is breakfast included?", "pronunciation": "/el de.saˈʝu.no esˈta in.kluˈi.ðo/", "example": "¿El desayuno está incluido en el precio?", "example_en": "Is breakfast included in the price?", "note": "", "tags": ["hotel", "question"]},
+          {"target": "la llave de la habitación", "english": "the room key", "pronunciation": "/la ˈʝa.βe de la a.βi.taˈsjon/", "example": "Le dejo la llave de la habitación.", "example_en": "I'll leave you the room key.", "note": "", "tags": ["hotel"]},
+          {"target": "¿a qué hora hay que dejar la habitación?", "english": "what time is check-out?", "pronunciation": "/a ke ˈo.ɾa aj ke deˈxaɾ la a.βi.taˈsjon/", "example": "¿A qué hora hay que dejar la habitación mañana?", "example_en": "What time do we have to check out tomorrow?", "note": "hay que plus infinitive: an impersonal obligation.", "tags": ["hotel", "question"]},
+          {"target": "quisiera cancelar mi reserva", "english": "I'd like to cancel my booking", "pronunciation": "/ki.ˈsje.ɾa kan.seˈlaɾ mi reˈseɾ.βa/", "example": "Quisiera cancelar mi reserva del viernes.", "example_en": "I'd like to cancel my booking for Friday.", "note": "quisiera is the most polite way to ask for anything.", "tags": ["hotel", "phrase"]}
+        ]
+      },
+      {
+        "title": "Complaining politely",
+        "items": [
+          {"target": "hay un problema con", "english": "there's a problem with", "pronunciation": "/aj un pɾoˈβle.ma kon/", "example": "Hay un problema con la calefacción.", "example_en": "There's a problem with the heating.", "note": "problema is masculine despite the -a ending.", "tags": ["complaints", "trap"]},
+          {"target": "no funciona", "english": "it doesn't work", "pronunciation": "/no fuŋˈsjo.na/", "example": "El aire acondicionado no funciona.", "example_en": "The air conditioning doesn't work.", "note": "", "tags": ["complaints", "phrase"]},
+          {"target": "¿sería posible ... ?", "english": "would it be possible to ...?", "pronunciation": "/seˈɾi.a poˈsi.βle/", "example": "¿Sería posible cambiar de habitación?", "example_en": "Would it be possible to change rooms?", "note": "The conditional softens a demand into a request.", "tags": ["complaints", "phrase"]},
+          {"target": "el equipaje", "english": "the luggage", "pronunciation": "/el e.kiˈpa.xe/", "example": "¿Podemos dejar el equipaje en recepción?", "example_en": "Can we leave our luggage at reception?", "note": "Singular and uncountable, like English.", "tags": ["luggage"]},
+          {"target": "el seguro de viaje", "english": "travel insurance", "pronunciation": "/el seˈɣu.ɾo de ˈbja.xe/", "example": "Menos mal que tenía seguro de viaje.", "example_en": "Luckily I had travel insurance.", "note": "seguro as an adjective means safe or sure.", "tags": ["travel", "trap"]},
+          {"target": "espero que lo entienda", "english": "I hope you understand", "pronunciation": "/esˈpe.ɾo ke lo enˈtjen.da/", "example": "Espero que lo entienda, muchas gracias.", "example_en": "I hope you understand, thank you very much.", "note": "esperar que triggers the subjunctive: entienda, not entiende.", "tags": ["formal", "trap"]}
+        ]
+      }
+    ]
+  }
+}

@@ -146,13 +146,15 @@
 .hero-stat strong { font-size: 17px; }
 .hero-stat span { color: var(--text-faint); font-size: 12.5px; }
 
+/* Four actions in a 1060px column: two across keeps each card wide enough for
+   its title, subtitle, and call to action to stay on one line each. */
 .action-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
   margin-bottom: 22px;
 }
-@media (max-width: 860px) { .action-row { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .action-row { grid-template-columns: 1fr; } }
 .action-card {
   display: flex; align-items: center; gap: 14px;
   text-align: left;
@@ -175,7 +177,10 @@
 }
 .action-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
 .action-text strong { font-size: 15px; }
-.action-text span { color: var(--text-muted); font-size: 12.5px; }
+.action-text span {
+  color: var(--text-muted); font-size: 12.5px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
 .action-cta {
   display: flex; align-items: center; gap: 4px;
   color: var(--accent); font-weight: 600; font-size: 13.5px;
@@ -465,7 +470,7 @@
 .prompt-chip:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
 .compose-controls { align-items: flex-end; margin-top: 8px; }
 .compose-controls .field { margin-bottom: 0; max-width: 220px; }
-.compose-actions { display: flex; gap: 10px; margin-left: auto; }
+.compose-actions { display: flex; gap: 10px; margin-top: 14px; }
 
 .library-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
 .library-grid {
@@ -476,13 +481,11 @@
 .library-item {
   display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
   text-align: left;
-  padding: 14px 16px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--surface-2);
   transition: all 0.15s;
 }
-.library-item:hover { border-color: var(--accent); transform: translateY(-1px); }
 .library-item strong { font-size: 14.5px; line-height: 1.3; }
 
 .format-badge {

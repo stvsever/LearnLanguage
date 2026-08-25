@@ -1,0 +1,105 @@
+{
+  "greetings": {
+    "grammar": ["zh-pinyin-tones", "zh-questions"],
+    "groups": [
+      {
+        "title": "Meeting someone",
+        "items": [
+          {"target": "你好", "english": "hello", "pronunciation": "nǐ hǎo", "example": "你好，我叫玛丽。", "example_en": "Hello, my name is Mary.", "note": "Two third tones in a row: the first becomes a rising tone, so it sounds like ní hǎo.", "tags": ["greeting", "essential", "trap"]},
+          {"target": "您好", "english": "hello (polite)", "pronunciation": "nín hǎo", "example": "您好，请问您找谁？", "example_en": "Hello, who are you looking for?", "note": "您 is the respectful you, for elders, customers, and officials.", "tags": ["greeting", "formal"]},
+          {"target": "早上好", "english": "good morning", "pronunciation": "zǎoshang hǎo", "example": "早上好，吃了吗？", "example_en": "Good morning, have you eaten?", "note": "Among friends, just 早 works.", "tags": ["greeting"]},
+          {"target": "你好吗？", "english": "how are you?", "pronunciation": "nǐ hǎo ma", "example": "好久不见，你好吗？", "example_en": "Long time no see, how are you?", "note": "Textbook Chinese. Natives more often ask 最近怎么样？", "tags": ["greeting", "culture"]},
+          {"target": "你叫什么名字？", "english": "what is your name?", "pronunciation": "nǐ jiào shénme míngzi", "example": "你好，你叫什么名字？", "example_en": "Hello, what is your name?", "note": "Question words stay where the answer goes; no word order change.", "tags": ["greeting", "question", "trap"]},
+          {"target": "很高兴认识你", "english": "nice to meet you", "pronunciation": "hěn gāoxìng rènshi nǐ", "example": "很高兴认识你，我是保罗。", "example_en": "Nice to meet you, I'm Paul.", "note": "Literally very happy to know you.", "tags": ["greeting", "phrase"]}
+        ]
+      },
+      {
+        "title": "Politeness that opens doors",
+        "items": [
+          {"target": "请", "english": "please", "pronunciation": "qǐng", "example": "请给我一杯咖啡。", "example_en": "Please give me a coffee.", "note": "Goes at the start of the request, not the end.", "tags": ["politeness", "essential", "trap"]},
+          {"target": "谢谢", "english": "thank you", "pronunciation": "xièxie", "example": "谢谢你的帮助。", "example_en": "Thank you for your help.", "note": "The second syllable is unstressed and toneless.", "tags": ["politeness", "essential"]},
+          {"target": "不客气", "english": "you're welcome", "pronunciation": "bú kèqi", "example": "谢谢！不客气。", "example_en": "Thanks! You're welcome.", "note": "不 changes from bù to bú before a fourth tone.", "tags": ["politeness", "trap"]},
+          {"target": "对不起", "english": "I'm sorry", "pronunciation": "duìbuqǐ", "example": "对不起，我迟到了。", "example_en": "Sorry, I'm late.", "note": "A real apology, heavier than 不好意思.", "tags": ["politeness"]},
+          {"target": "不好意思", "english": "excuse me, sorry (light)", "pronunciation": "bù hǎoyìsi", "example": "不好意思，请问洗手间在哪儿？", "example_en": "Excuse me, where is the toilet?", "note": "The everyday way to get attention or apologise for a small thing.", "tags": ["politeness", "culture"]},
+          {"target": "麻烦你了", "english": "sorry to trouble you", "pronunciation": "máfan nǐ le", "example": "麻烦你了，谢谢。", "example_en": "Sorry for the trouble, thank you.", "note": "Said after someone has done you a favour.", "tags": ["politeness", "culture"]}
+        ]
+      },
+      {
+        "title": "Leaving, and buying time",
+        "items": [
+          {"target": "再见", "english": "goodbye", "pronunciation": "zàijiàn", "example": "再见，明天见！", "example_en": "Goodbye, see you tomorrow!", "note": "Literally again see. 明天见 is see you tomorrow.", "tags": ["greeting", "essential"]},
+          {"target": "拜拜", "english": "bye bye", "pronunciation": "báibái", "example": "好，拜拜！", "example_en": "OK, bye bye!", "note": "Borrowed from English, very common in speech and messages.", "tags": ["greeting", "informal"]},
+          {"target": "我听不懂", "english": "I don't understand (what I hear)", "pronunciation": "wǒ tīng bu dǒng", "example": "对不起，我听不懂。", "example_en": "Sorry, I don't understand.", "note": "A potential complement: 听得懂 means able to understand by listening.", "tags": ["survival", "trap"]},
+          {"target": "请说慢一点", "english": "please speak a bit more slowly", "pronunciation": "qǐng shuō màn yìdiǎn", "example": "请说慢一点，谢谢。", "example_en": "Please speak a bit more slowly, thank you.", "note": "一点 after an adjective means a bit more of it.", "tags": ["survival", "trap"]},
+          {"target": "这个用中文怎么说？", "english": "how do you say this in Chinese?", "pronunciation": "zhège yòng Zhōngwén zěnme shuō", "example": "这个用中文怎么说？", "example_en": "How do you say this in Chinese?", "note": "用 plus a language means using that language.", "tags": ["survival", "question"]},
+          {"target": "我的中文不太好", "english": "my Chinese isn't very good", "pronunciation": "wǒ de Zhōngwén bú tài hǎo", "example": "不好意思，我的中文不太好。", "example_en": "Sorry, my Chinese isn't very good.", "note": "不太 softens a negative: not very, rather than not at all.", "tags": ["survival", "trap"]}
+        ]
+      }
+    ]
+  },
+  "self-intro": {
+    "grammar": ["zh-svo", "zh-negation"],
+    "groups": [
+      {
+        "title": "Who you are",
+        "items": [
+          {"target": "我叫", "english": "my name is", "pronunciation": "wǒ jiào", "example": "我叫斯泰恩，你呢？", "example_en": "My name is Stijn, and you?", "note": "Literally I am called. 我姓 gives the surname only.", "tags": ["identity", "trap"]},
+          {"target": "我是比利时人", "english": "I am Belgian", "pronunciation": "wǒ shì Bǐlìshí rén", "example": "我是比利时人，但住在法国。", "example_en": "I'm Belgian, but I live in France.", "note": "Country plus 人 makes the nationality. No article, no plural.", "tags": ["identity", "trap"]},
+          {"target": "我从 ... 来", "english": "I come from ...", "pronunciation": "wǒ cóng ... lái", "example": "我从根特来。", "example_en": "I come from Ghent.", "note": "从 marks the origin and goes before the verb, unlike English.", "tags": ["identity", "trap"]},
+          {"target": "我住在", "english": "I live in", "pronunciation": "wǒ zhù zài", "example": "我住在北京三年了。", "example_en": "I've been living in Beijing for three years.", "note": "了 at the end signals a state continuing up to now.", "tags": ["identity", "trap"]},
+          {"target": "我三十岁", "english": "I am thirty years old", "pronunciation": "wǒ sānshí suì", "example": "我三十岁，我弟弟二十八岁。", "example_en": "I'm thirty, my younger brother is twenty-eight.", "note": "No verb at all with ages: subject plus number plus 岁.", "tags": ["identity", "trap"]},
+          {"target": "我有一个姐姐", "english": "I have an older sister", "pronunciation": "wǒ yǒu yí ge jiějie", "example": "我有一个姐姐和一个弟弟。", "example_en": "I have an older sister and a younger brother.", "note": "Chinese distinguishes older and younger siblings lexically.", "tags": ["identity", "culture"]}
+        ]
+      },
+      {
+        "title": "What you do",
+        "items": [
+          {"target": "我在 ... 工作", "english": "I work at ...", "pronunciation": "wǒ zài ... gōngzuò", "example": "我在一所学校工作。", "example_en": "I work at a school.", "note": "在 plus place comes before the verb: the place frames the action.", "tags": ["work", "trap"]},
+          {"target": "我是学生", "english": "I'm a student", "pronunciation": "wǒ shì xuésheng", "example": "我是学生，学生物。", "example_en": "I'm a student, I study biology.", "note": "No article. 是 is required with a noun, unlike with adjectives.", "tags": ["work", "trap"]},
+          {"target": "你做什么工作？", "english": "what work do you do?", "pronunciation": "nǐ zuò shénme gōngzuò", "example": "你呢，你做什么工作？", "example_en": "And you, what do you do?", "note": "The natural way to ask about someone's job.", "tags": ["work", "question"]},
+          {"target": "我在学中文", "english": "I'm learning Chinese", "pronunciation": "wǒ zài xué Zhōngwén", "example": "我在学中文，学了六个月了。", "example_en": "I'm learning Chinese, I've been at it six months.", "note": "在 before a verb marks an action in progress.", "tags": ["language", "trap"]},
+          {"target": "一点点", "english": "a little bit", "pronunciation": "yìdiǎndiǎn", "example": "我会说一点点中文。", "example_en": "I can speak a little bit of Chinese.", "note": "会 expresses a learned ability, unlike 能 or 可以.", "tags": ["language", "trap"]},
+          {"target": "你会说英文吗？", "english": "can you speak English?", "pronunciation": "nǐ huì shuō Yīngwén ma", "example": "不好意思，你会说英文吗？", "example_en": "Excuse me, can you speak English?", "note": "吗 turns any statement into a yes-no question.", "tags": ["language", "question"]}
+        ]
+      }
+    ]
+  },
+  "numbers-time": {
+    "grammar": ["zh-measure-ge", "zh-questions"],
+    "groups": [
+      {
+        "title": "Numbers you will actually use",
+        "items": [
+          {"target": "一、二、三", "english": "one, two, three", "pronunciation": "yī, èr, sān", "example": "三杯咖啡，谢谢。", "example_en": "Three coffees, thank you.", "note": "二 counts, 两 is used before a measure word: 两杯, not 二杯.", "tags": ["numbers", "trap"]},
+          {"target": "十", "english": "ten", "pronunciation": "shí", "example": "一共十块。", "example_en": "Ten yuan in total.", "note": "Numbers 11 to 19 are 十一, 十二 and so on: perfectly regular.", "tags": ["numbers"]},
+          {"target": "二十", "english": "twenty", "pronunciation": "èrshí", "example": "公交车二十分钟以后到。", "example_en": "The bus arrives in twenty minutes.", "note": "Literally two tens. The whole system is built this way.", "tags": ["numbers"]},
+          {"target": "一百", "english": "one hundred", "pronunciation": "yìbǎi", "example": "这张票一百块。", "example_en": "This ticket is a hundred yuan.", "note": "一 shifts tone before other tones: yìbǎi, yí ge.", "tags": ["numbers", "trap"]},
+          {"target": "一万", "english": "ten thousand", "pronunciation": "yíwàn", "example": "这台电脑一万多。", "example_en": "This computer costs over ten thousand.", "note": "Chinese groups by ten thousands, not thousands. 十万 is a hundred thousand.", "tags": ["numbers", "trap"]},
+          {"target": "多少钱？", "english": "how much does it cost?", "pronunciation": "duōshao qián", "example": "这个包多少钱？", "example_en": "How much is this bag?", "note": "多少 for open quantities, 几 when the answer is under about ten.", "tags": ["numbers", "question", "trap"]}
+        ]
+      },
+      {
+        "title": "Telling the time",
+        "items": [
+          {"target": "现在几点？", "english": "what time is it?", "pronunciation": "xiànzài jǐ diǎn", "example": "不好意思，现在几点？", "example_en": "Excuse me, what time is it?", "note": "几 expects a small number, which clock hours always are.", "tags": ["time", "question", "trap"]},
+          {"target": "八点", "english": "eight o'clock", "pronunciation": "bā diǎn", "example": "现在八点一刻。", "example_en": "It's a quarter past eight.", "note": "点 is the measure word for the hour.", "tags": ["time"]},
+          {"target": "八点半", "english": "half past eight", "pronunciation": "bā diǎn bàn", "example": "火车八点半开。", "example_en": "The train leaves at half past eight.", "note": "半 is half. 一刻 is a quarter, 差一刻 is a quarter to.", "tags": ["time"]},
+          {"target": "早上", "english": "morning", "pronunciation": "zǎoshang", "example": "我早上在公园跑步。", "example_en": "I run in the park in the morning.", "note": "The time expression comes before the verb, never after.", "tags": ["time", "trap"]},
+          {"target": "今天", "english": "today", "pronunciation": "jīntiān", "example": "今天天气很好。", "example_en": "The weather is nice today.", "note": "昨天 yesterday, 明天 tomorrow. All built on 天.", "tags": ["time", "essential"]},
+          {"target": "以后", "english": "after, later", "pronunciation": "yǐhòu", "example": "我下班以后给你打电话。", "example_en": "I'll call you after work.", "note": "Comes AFTER the clause it applies to, the mirror image of English.", "tags": ["time", "trap"]}
+        ]
+      },
+      {
+        "title": "Days, months, dates",
+        "items": [
+          {"target": "星期一", "english": "Monday", "pronunciation": "xīngqīyī", "example": "我们星期一见。", "example_en": "See you on Monday.", "note": "Literally week one. Sunday is 星期天 or 星期日.", "tags": ["calendar", "trap"]},
+          {"target": "周末", "english": "weekend", "pronunciation": "zhōumò", "example": "这个周末你做什么？", "example_en": "What are you doing this weekend?", "note": "", "tags": ["calendar"]},
+          {"target": "一月", "english": "January", "pronunciation": "yīyuè", "example": "我的生日在一月。", "example_en": "My birthday is in January.", "note": "Months are simply number plus 月: 一月, 二月, 十二月.", "tags": ["calendar", "trap"]},
+          {"target": "下个星期", "english": "next week", "pronunciation": "xià ge xīngqī", "example": "下个星期再讨论吧。", "example_en": "Let's discuss it again next week.", "note": "下 is next, 上 is last: 上个星期 was last week.", "tags": ["calendar", "trap"]},
+          {"target": "五月一号", "english": "the first of May", "pronunciation": "wǔyuè yī hào", "example": "五月一号商店关门。", "example_en": "The shops are closed on the first of May.", "note": "Big to small: year, month, day. 号 in speech, 日 in writing.", "tags": ["calendar", "trap"]},
+          {"target": "总是", "english": "always", "pronunciation": "zǒngshì", "example": "我总是在家吃早饭。", "example_en": "I always have breakfast at home.", "note": "Adverbs go before the verb: 总是吃, never 吃总是.", "tags": ["frequency", "trap"]}
+        ]
+      }
+    ]
+  }
+}

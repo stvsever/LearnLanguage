@@ -1,0 +1,83 @@
+{
+  "jobs": {
+    "grammar": ["zh-svo", "zh-zai-location"],
+    "groups": [
+      {
+        "title": "What people do",
+        "items": [
+          {"target": "工作", "english": "work, job; to work", "pronunciation": "gōngzuò", "example": "工作九点开始。", "example_en": "Work starts at nine.", "note": "Both noun and verb, with no change of form.", "tags": ["work", "trap"]},
+          {"target": "职位", "english": "position, post", "pronunciation": "zhíwèi", "example": "她拿到了深圳的一个职位。", "example_en": "She got a position in Shenzhen.", "note": "拿到 is a result complement: got hold of.", "tags": ["work", "trap"]},
+          {"target": "老师", "english": "teacher", "pronunciation": "lǎoshī", "example": "我爸爸是老师。", "example_en": "My father is a teacher.", "note": "Also a respectful form of address for any teacher or expert.", "tags": ["jobs", "culture"]},
+          {"target": "护士", "english": "nurse", "pronunciation": "hùshi", "example": "她在医院当夜班护士。", "example_en": "She works as a night nurse at the hospital.", "note": "当 plus a profession means to work as.", "tags": ["jobs", "trap"]},
+          {"target": "工程师", "english": "engineer", "pronunciation": "gōngchéngshī", "example": "他是建筑工程师。", "example_en": "He's a construction engineer.", "note": "师 marks skilled professions: 老师, 律师, 工程师.", "tags": ["jobs", "trap"]},
+          {"target": "自由职业", "english": "freelance work", "pronunciation": "zìyóu zhíyè", "example": "我做自由职业已经五年了。", "example_en": "I've been freelancing for five years.", "note": "已经 ... 了 frames a continuing state.", "tags": ["work", "trap"]}
+        ]
+      },
+      {
+        "title": "Conditions and colleagues",
+        "items": [
+          {"target": "同事", "english": "colleague", "pronunciation": "tóngshì", "example": "我的同事都很友好。", "example_en": "My colleagues are all friendly.", "note": "都 before the verb means all, referring back to the subject.", "tags": ["colleagues", "trap"]},
+          {"target": "老板", "english": "boss", "pronunciation": "lǎobǎn", "example": "老板今天早上想见我们。", "example_en": "The boss wants to see us this morning.", "note": "Also how you address a shop owner or restaurant owner.", "tags": ["colleagues", "culture"]},
+          {"target": "全职", "english": "full-time", "pronunciation": "quánzhí", "example": "我是全职工作。", "example_en": "I work full-time.", "note": "兼职 is part-time.", "tags": ["schedule", "trap"]},
+          {"target": "请假", "english": "to ask for leave", "pronunciation": "qǐngjià", "example": "我下周要请假。", "example_en": "I'm taking leave next week.", "note": "假 here is jià (leave), not jiǎ (false).", "tags": ["schedule", "trap"]},
+          {"target": "加班", "english": "to work overtime", "pronunciation": "jiābān", "example": "这个星期我天天加班。", "example_en": "I worked overtime every day this week.", "note": "Doubling 天天 means every single day.", "tags": ["schedule", "culture"]},
+          {"target": "工资", "english": "salary, wages", "pronunciation": "gōngzī", "example": "这里的工资还不错。", "example_en": "The salary here is pretty good.", "note": "还不错 means not bad, a common understated compliment.", "tags": ["work", "trap"]}
+        ]
+      }
+    ]
+  },
+  "office-email": {
+    "grammar": ["zh-shi-de", "zh-conjunction-pairs"],
+    "groups": [
+      {
+        "title": "Phone and meetings",
+        "items": [
+          {"target": "喂", "english": "hello (on the phone)", "pronunciation": "wéi", "example": "喂？对，是我。", "example_en": "Hello? Yes, speaking.", "note": "Pronounced with a rising second tone on the phone, not the usual fourth.", "tags": ["phone", "trap"]},
+          {"target": "我帮您转接", "english": "I'll transfer you", "pronunciation": "wǒ bāng nín zhuǎnjiē", "example": "稍等，我帮您转接技术部。", "example_en": "One moment, I'll transfer you to technical support.", "note": "帮 plus person plus verb means to do something for someone.", "tags": ["phone", "trap"]},
+          {"target": "请稍等", "english": "please hold, one moment", "pronunciation": "qǐng shāo děng", "example": "请稍等，我查一下。", "example_en": "Please hold, I'll check.", "note": "稍 means slightly, so 稍等 is wait just a moment.", "tags": ["phone", "trap"]},
+          {"target": "开会", "english": "to have a meeting", "pronunciation": "kāihuì", "example": "会议改到星期四了。", "example_en": "The meeting has been moved to Thursday.", "note": "开会 is the verb, 会议 the noun. 改到 means changed to.", "tags": ["meetings", "trap"]},
+          {"target": "议程", "english": "agenda", "pronunciation": "yìchéng", "example": "这一项不在议程上。", "example_en": "That item isn't on the agenda.", "note": "项 is the measure word for items on a list.", "tags": ["meetings", "trap"]},
+          {"target": "跟进", "english": "to follow up", "pronunciation": "gēnjìn", "example": "我们下周一跟进。", "example_en": "We'll follow up next Monday.", "note": "Standard Chinese office vocabulary.", "tags": ["meetings"]}
+        ]
+      },
+      {
+        "title": "Writing an email",
+        "items": [
+          {"target": "尊敬的", "english": "dear (formal)", "pronunciation": "zūnjìng de", "example": "尊敬的王经理：您好。", "example_en": "Dear Manager Wang, hello.", "note": "Chinese business letters address people by surname plus title.", "tags": ["email", "culture"]},
+          {"target": "关于", "english": "regarding, about", "pronunciation": "guānyú", "example": "关于三月的发票，我有一个问题。", "example_en": "Regarding the March invoice, I have a question.", "note": "Comes at the front of the sentence.", "tags": ["email", "trap"]},
+          {"target": "附件", "english": "attachment", "pronunciation": "fùjiàn", "example": "附件是我的简历。", "example_en": "Attached is my CV.", "note": "简历 is a CV or resume.", "tags": ["email"]},
+          {"target": "期待您的回复", "english": "looking forward to your reply", "pronunciation": "qīdài nín de huífù", "example": "期待您的回复，谢谢。", "example_en": "Looking forward to your reply, thank you.", "note": "", "tags": ["email", "formal"]},
+          {"target": "此致敬礼", "english": "yours sincerely", "pronunciation": "cǐzhì jìnglǐ", "example": "此致敬礼，李明。", "example_en": "Yours sincerely, Li Ming.", "note": "The traditional formal closing, written on two lines in letters.", "tags": ["email", "culture"]},
+          {"target": "麻烦您了", "english": "sorry to trouble you", "pronunciation": "máfan nín le", "example": "麻烦您了，非常感谢。", "example_en": "Sorry to trouble you, many thanks.", "note": "A courteous closing that softens any request.", "tags": ["email", "culture"]}
+        ]
+      }
+    ]
+  },
+  "study-tech": {
+    "grammar": ["zh-potential", "zh-result-complements"],
+    "groups": [
+      {
+        "title": "Studying",
+        "items": [
+          {"target": "背下来", "english": "to learn by heart", "pronunciation": "bèi xiàlai", "example": "这些生词都要背下来。", "example_en": "All these new words have to be learnt by heart.", "note": "Same character as 背 back (bèi); 下来 marks the words as fixed in memory.", "tags": ["study", "trap"]},
+          {"target": "复习", "english": "to revise, to review", "pronunciation": "fùxí", "example": "我在复习星期五的考试。", "example_en": "I'm revising for Friday's exam.", "note": "预习 is to preview material before class.", "tags": ["study", "trap"]},
+          {"target": "考试", "english": "exam; to sit an exam", "pronunciation": "kǎoshì", "example": "我明天考试。", "example_en": "I have an exam tomorrow.", "note": "Both noun and verb.", "tags": ["study", "trap"]},
+          {"target": "考上", "english": "to pass and get in", "pronunciation": "kǎoshàng", "example": "她考上了北大。", "example_en": "She got into Peking University.", "note": "上 as a result complement: the exam achieved its purpose. Failing is 没考上.", "tags": ["study", "trap"]},
+          {"target": "课", "english": "class, lesson", "pronunciation": "kè", "example": "课两点开始。", "example_en": "The class starts at two.", "note": "上课 is to attend class, 下课 is class ending.", "tags": ["study", "trap"]},
+          {"target": "记笔记", "english": "to take notes", "pronunciation": "jì bǐjì", "example": "我用电脑记笔记。", "example_en": "I take notes on my computer.", "note": "用 plus tool comes before the verb.", "tags": ["study", "trap"]}
+        ]
+      },
+      {
+        "title": "Screens and problems",
+        "items": [
+          {"target": "电脑", "english": "computer", "pronunciation": "diànnǎo", "example": "我的电脑很慢。", "example_en": "My computer is very slow.", "note": "Literally electric brain.", "tags": ["technology", "culture"]},
+          {"target": "密码", "english": "password", "pronunciation": "mìmǎ", "example": "我忘了密码。", "example_en": "I forgot my password.", "note": "Literally secret code.", "tags": ["technology"]},
+          {"target": "下载", "english": "to download", "pronunciation": "xiàzài", "example": "开会前下载文件。", "example_en": "Download the file before the meeting.", "note": "上传 is to upload. 载 is zài here, not zǎi.", "tags": ["technology", "trap"]},
+          {"target": "文件", "english": "file, document", "pronunciation": "wénjiàn", "example": "文件打不开。", "example_en": "The file won't open.", "note": "打不开 is a negative potential complement: cannot be opened.", "tags": ["technology", "trap"]},
+          {"target": "卡了", "english": "it froze, it's lagging", "pronunciation": "kǎ le", "example": "网站从早上就卡了。", "example_en": "The site has been lagging since this morning.", "note": "Informal but universal. Same 卡 as in card, but here it means stuck.", "tags": ["problems", "trap"]},
+          {"target": "重启", "english": "to restart, to reboot", "pronunciation": "chóngqǐ", "example": "试试重启设备。", "example_en": "Try restarting the device.", "note": "重 is chóng (again) here, not zhòng (heavy).", "tags": ["problems", "trap"]}
+        ]
+      }
+    ]
+  }
+}

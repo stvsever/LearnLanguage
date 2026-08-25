@@ -1,0 +1,83 @@
+{
+  "weather-nature": {
+    "grammar": ["fr-etre-avoir", "fr-futur-proche"],
+    "groups": [
+      {
+        "title": "Talking about the weather",
+        "items": [
+          {"target": "il fait beau", "english": "the weather is nice", "pronunciation": "/il fɛ bo/", "example": "Il fait beau, on mange dehors ?", "example_en": "The weather's nice, shall we eat outside?", "note": "Weather uses impersonal il fait, never il est.", "tags": ["weather", "trap"]},
+          {"target": "il pleut", "english": "it's raining", "pronunciation": "/il plø/", "example": "Il pleut depuis ce matin.", "example_en": "It's been raining since this morning.", "note": "pleuvoir exists only in the third person singular.", "tags": ["weather"]},
+          {"target": "il neige", "english": "it's snowing", "pronunciation": "/il nɛʒ/", "example": "Il neige dans les Alpes.", "example_en": "It's snowing in the Alps.", "note": "", "tags": ["weather"]},
+          {"target": "il fait froid", "english": "it's cold", "pronunciation": "/il fɛ fʁwa/", "example": "Il fait froid ce matin, mets un manteau.", "example_en": "It's cold this morning, put on a coat.", "note": "j'ai froid is about you, il fait froid about the air.", "tags": ["weather", "trap"]},
+          {"target": "le temps", "english": "the weather, the time", "pronunciation": "/lə tɑ̃/", "example": "Quel temps fait-il chez vous ?", "example_en": "What's the weather like where you are?", "note": "One word for both weather and time; context separates them.", "tags": ["weather", "trap"]},
+          {"target": "la météo", "english": "the weather forecast", "pronunciation": "/la me.te.o/", "example": "D'après la météo, il va pleuvoir demain.", "example_en": "According to the forecast it's going to rain tomorrow.", "note": "", "tags": ["weather"]}
+        ]
+      },
+      {
+        "title": "Seasons and landscape",
+        "items": [
+          {"target": "le printemps", "english": "spring", "pronunciation": "/lə pʁɛ̃.tɑ̃/", "example": "Au printemps, tout refleurit.", "example_en": "In spring everything blooms again.", "note": "Only spring takes au; the others take en: en été, en automne, en hiver.", "tags": ["seasons", "trap"]},
+          {"target": "l'été", "english": "summer", "pronunciation": "/le.te/", "example": "On part à la mer en été.", "example_en": "We go to the seaside in summer.", "note": "Masculine.", "tags": ["seasons"]},
+          {"target": "la montagne", "english": "the mountain, the mountains", "pronunciation": "/la mɔ̃.taɲ/", "example": "On va à la montagne cet hiver.", "example_en": "We're going to the mountains this winter.", "note": "Singular in French where English uses the plural.", "tags": ["nature", "trap"]},
+          {"target": "la mer", "english": "the sea", "pronunciation": "/la mɛʁ/", "example": "La mer est calme aujourd'hui.", "example_en": "The sea is calm today.", "note": "Homophone of la mère, mother, and le maire, mayor.", "tags": ["nature", "trap"]},
+          {"target": "la forêt", "english": "the forest", "pronunciation": "/la fɔ.ʁɛ/", "example": "On se promène dans la forêt le dimanche.", "example_en": "We walk in the forest on Sundays.", "note": "The circumflex marks a vanished s: forest.", "tags": ["nature"]},
+          {"target": "le réchauffement climatique", "english": "global warming", "pronunciation": "/lə ʁe.ʃof.mɑ̃ kli.ma.tik/", "example": "Le réchauffement climatique change les saisons.", "example_en": "Global warming is changing the seasons.", "note": "", "tags": ["climate"]}
+        ]
+      }
+    ]
+  },
+  "culture-media": {
+    "grammar": ["fr-relatifs", "fr-imparfait-vs-pc"],
+    "groups": [
+      {
+        "title": "Films, books, music",
+        "items": [
+          {"target": "un film", "english": "a film", "pronunciation": "/œ̃ film/", "example": "C'est un film que j'ai vu trois fois.", "example_en": "It's a film I've seen three times.", "note": "que is the relative pronoun for objects, qui for subjects.", "tags": ["film"]},
+          {"target": "en version originale", "english": "in the original language", "pronunciation": "/ɑ̃ vɛʁ.sjɔ̃ ɔ.ʁi.ʒi.nal/", "example": "Je regarde toujours les films en version originale.", "example_en": "I always watch films in the original language.", "note": "Abbreviated VO on cinema listings; VF means dubbed into French.", "tags": ["film", "culture"]},
+          {"target": "les sous-titres", "english": "the subtitles", "pronunciation": "/le su.titʁ/", "example": "Mets les sous-titres en français.", "example_en": "Put the subtitles in French.", "note": "Watching with target-language subtitles is excellent practice.", "tags": ["film"]},
+          {"target": "un roman", "english": "a novel", "pronunciation": "/œ̃ ʁɔ.mɑ̃/", "example": "J'ai commencé un roman policier.", "example_en": "I started a crime novel.", "note": "False friend: not romance, which is une histoire d'amour.", "tags": ["books", "trap"]},
+          {"target": "ça vaut le coup", "english": "it's worth it", "pronunciation": "/sa vo lə ku/", "example": "La série est longue mais ça vaut le coup.", "example_en": "The series is long but it's worth it.", "note": "Very common spoken idiom.", "tags": ["opinion", "phrase"]},
+          {"target": "je te le recommande", "english": "I recommend it to you", "pronunciation": "/ʒə tə lə ʁə.kɔ.mɑ̃d/", "example": "Ce livre, je te le recommande vraiment.", "example_en": "This book, I really recommend it to you.", "note": "Two pronouns stack before the verb in a fixed order: te le.", "tags": ["opinion", "phrase"]}
+        ]
+      },
+      {
+        "title": "Free time",
+        "items": [
+          {"target": "avoir envie de", "english": "to feel like", "pronunciation": "/a.vwaʁ ɑ̃.vi də/", "example": "J'ai envie de sortir ce soir.", "example_en": "I feel like going out tonight.", "note": "Followed by de plus infinitive or a noun.", "tags": ["hobbies", "phrase"]},
+          {"target": "sortir avec des amis", "english": "to go out with friends", "pronunciation": "/sɔʁ.tiʁ a.vɛk de.z‿a.mi/", "example": "Je sors avec des amis vendredi.", "example_en": "I'm going out with friends on Friday.", "note": "sortir avec quelqu'un alone can mean to date someone.", "tags": ["hobbies", "trap"]},
+          {"target": "un passe-temps", "english": "a hobby", "pronunciation": "/œ̃ pas.tɑ̃/", "example": "La photo est mon passe-temps préféré.", "example_en": "Photography is my favourite hobby.", "note": "Invariable in the plural: des passe-temps.", "tags": ["hobbies"]},
+          {"target": "faire la fête", "english": "to party", "pronunciation": "/fɛʁ la fɛt/", "example": "On a fait la fête jusqu'à trois heures.", "example_en": "We partied until three.", "note": "", "tags": ["hobbies", "phrase"]},
+          {"target": "ça te dit ?", "english": "does that appeal to you?", "pronunciation": "/sa tə di/", "example": "Un ciné ce soir, ça te dit ?", "example_en": "A film tonight, fancy it?", "note": "The natural way to float an invitation.", "tags": ["hobbies", "phrase"]},
+          {"target": "on se retrouve où ?", "english": "where shall we meet?", "pronunciation": "/ɔ̃ sə ʁə.tʁuv u/", "example": "On se retrouve où et à quelle heure ?", "example_en": "Where and when shall we meet?", "note": "se retrouver is meeting up by arrangement; se rencontrer is meeting for the first time.", "tags": ["hobbies", "trap"]}
+        ]
+      }
+    ]
+  },
+  "opinions-debate": {
+    "grammar": ["fr-subjonctif-full", "fr-connecteurs", "fr-si-clauses"],
+    "groups": [
+      {
+        "title": "Stating a position",
+        "items": [
+          {"target": "à mon avis", "english": "in my opinion", "pronunciation": "/a mɔ̃.n‿a.vi/", "example": "À mon avis, c'est une mauvaise idée.", "example_en": "In my opinion, that's a bad idea.", "note": "Neutral and safe in any register.", "tags": ["opinion", "phrase"]},
+          {"target": "je trouve que", "english": "I find that, I think that", "pronunciation": "/ʒə tʁuv kə/", "example": "Je trouve que le débat manque de nuance.", "example_en": "I find the debate lacks nuance.", "note": "Affirmative je trouve que takes the indicative; negative je ne trouve pas que takes the subjunctive.", "tags": ["opinion", "trap"]},
+          {"target": "il me semble que", "english": "it seems to me that", "pronunciation": "/il mə sɑ̃bl kə/", "example": "Il me semble que la situation a changé.", "example_en": "It seems to me the situation has changed.", "note": "Softer than je pense, useful when you want room to be wrong.", "tags": ["opinion", "phrase"]},
+          {"target": "je suis convaincu que", "english": "I'm convinced that", "pronunciation": "/ʒə sɥi kɔ̃.vɛ̃.ky kə/", "example": "Je suis convaincu que cela va marcher.", "example_en": "I'm convinced it will work.", "note": "", "tags": ["opinion", "phrase"]},
+          {"target": "cela dit", "english": "that said", "pronunciation": "/sə.la di/", "example": "Cela dit, le coût reste un problème.", "example_en": "That said, the cost is still a problem.", "note": "Signals the concession that follows.", "tags": ["connectors"]},
+          {"target": "en revanche", "english": "on the other hand", "pronunciation": "/ɑ̃ ʁə.vɑ̃ʃ/", "example": "C'est cher; en revanche, ça dure longtemps.", "example_en": "It's expensive; on the other hand, it lasts a long time.", "note": "par contre is the more informal equivalent.", "tags": ["connectors"]}
+        ]
+      },
+      {
+        "title": "Agreeing, conceding, pushing back",
+        "items": [
+          {"target": "je suis d'accord avec toi", "english": "I agree with you", "pronunciation": "/ʒə sɥi da.kɔʁ a.vɛk twa/", "example": "Je suis d'accord avec toi sur ce point.", "example_en": "I agree with you on that point.", "note": "être d'accord, never je accorde.", "tags": ["agreement", "trap"]},
+          {"target": "je ne suis pas convaincu", "english": "I'm not convinced", "pronunciation": "/ʒə nə sɥi pa kɔ̃.vɛ̃.ky/", "example": "Franchement, je ne suis pas convaincu.", "example_en": "Frankly, I'm not convinced.", "note": "Polite disagreement without confrontation.", "tags": ["argument", "phrase"]},
+          {"target": "certes, mais", "english": "granted, but", "pronunciation": "/sɛʁt mɛ/", "example": "Certes, c'est risqué, mais l'inaction l'est aussi.", "example_en": "Granted, it's risky, but so is doing nothing.", "note": "The classic French concession move in an argument.", "tags": ["argument", "phrase"]},
+          {"target": "il faut que nous soyons réalistes", "english": "we need to be realistic", "pronunciation": "/il fo kə nu swa.jɔ̃ ʁe.a.list/", "example": "Il faut que nous soyons réalistes sur le calendrier.", "example_en": "We need to be realistic about the timeline.", "note": "il faut que forces the subjunctive: soyons, not sommes.", "tags": ["argument", "phrase"]},
+          {"target": "si j'avais le choix, je ferais autrement", "english": "if I had the choice, I'd do it differently", "pronunciation": "/si ʒa.vɛ lə ʃwa ʒə fə.ʁɛ o.tʁə.mɑ̃/", "example": "Si j'avais le choix, je ferais autrement.", "example_en": "If I had the choice, I'd do it differently.", "note": "si plus imparfait pairs with the conditional. Never si je ferais.", "tags": ["argument", "trap"]},
+          {"target": "quoi qu'il en soit", "english": "be that as it may", "pronunciation": "/kwa ki.l‿ɑ̃ swa/", "example": "Quoi qu'il en soit, il faut décider aujourd'hui.", "example_en": "Be that as it may, we have to decide today.", "note": "Fixed subjunctive expression, high register but common.", "tags": ["connectors", "phrase"]}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "greetings": {
+    "grammar": ["fr-etre-avoir", "fr-questions-basic"],
+    "groups": [
+      {
+        "title": "Meeting someone",
+        "items": [
+          {"target": "bonjour", "english": "hello, good day", "pronunciation": "/bɔ̃.ʒuʁ/", "example": "Bonjour, je m'appelle Marie.", "example_en": "Hello, my name is Marie.", "note": "The default greeting until about 18h; after that use bonsoir.", "tags": ["greeting", "essential"]},
+          {"target": "bonsoir", "english": "good evening", "pronunciation": "/bɔ̃.swaʁ/", "example": "Bonsoir, une table pour deux ?", "example_en": "Good evening, a table for two?", "note": "", "tags": ["greeting"]},
+          {"target": "salut", "english": "hi, bye (informal)", "pronunciation": "/sa.ly/", "example": "Salut, ça va ?", "example_en": "Hi, how's it going?", "note": "Works both as hello and goodbye, but only with people you tutoie.", "tags": ["greeting", "informal"]},
+          {"target": "ça va ?", "english": "how are you? / I'm fine", "pronunciation": "/sa va/", "example": "Ça va ? Oui, ça va, et toi ?", "example_en": "How are you? Yes, I'm fine, and you?", "note": "Question and answer use the same two words; the intonation does the work.", "tags": ["greeting", "phrase"]},
+          {"target": "comment allez-vous ?", "english": "how are you? (formal)", "pronunciation": "/kɔ.mɑ̃ ta.le vu/", "example": "Bonjour madame, comment allez-vous ?", "example_en": "Hello madam, how are you?", "note": "Inversion plus vous: the polite register for strangers and professionals.", "tags": ["greeting", "formal"]},
+          {"target": "enchanté", "english": "nice to meet you", "pronunciation": "/ɑ̃.ʃɑ̃.te/", "example": "Enchanté, moi c'est Paul.", "example_en": "Nice to meet you, I'm Paul.", "note": "A woman writes and says enchantée; the extra e is silent.", "tags": ["greeting", "phrase"]}
+        ]
+      },
+      {
+        "title": "Politeness that opens doors",
+        "items": [
+          {"target": "s'il vous plaît", "english": "please (formal)", "pronunciation": "/sil vu plɛ/", "example": "Un café, s'il vous plaît.", "example_en": "A coffee, please.", "note": "Informal version: s'il te plaît.", "tags": ["politeness", "essential"]},
+          {"target": "merci beaucoup", "english": "thank you very much", "pronunciation": "/mɛʁ.si bo.ku/", "example": "Merci beaucoup pour votre aide.", "example_en": "Thank you very much for your help.", "note": "", "tags": ["politeness", "essential"]},
+          {"target": "de rien", "english": "you're welcome", "pronunciation": "/də ʁjɛ̃/", "example": "Merci ! De rien.", "example_en": "Thanks! You're welcome.", "note": "Literally of nothing. Je vous en prie is the formal version.", "tags": ["politeness"]},
+          {"target": "excusez-moi", "english": "excuse me", "pronunciation": "/ɛk.sky.ze mwa/", "example": "Excusez-moi, où est la gare ?", "example_en": "Excuse me, where is the station?", "note": "Use it to get someone's attention before asking anything.", "tags": ["politeness", "essential"]},
+          {"target": "pardon", "english": "sorry, pardon", "pronunciation": "/paʁ.dɔ̃/", "example": "Pardon, je n'ai pas compris.", "example_en": "Sorry, I didn't understand.", "note": "Short apology, also used to squeeze through a crowd.", "tags": ["politeness"]},
+          {"target": "je suis désolé", "english": "I am sorry", "pronunciation": "/ʒə sɥi de.zɔ.le/", "example": "Je suis désolé, je suis en retard.", "example_en": "I'm sorry, I'm late.", "note": "A real apology, heavier than pardon. Women say désolée.", "tags": ["politeness", "phrase"]}
+        ]
+      },
+      {
+        "title": "Leaving, and buying time",
+        "items": [
+          {"target": "au revoir", "english": "goodbye", "pronunciation": "/o ʁə.vwaʁ/", "example": "Au revoir, à demain !", "example_en": "Goodbye, see you tomorrow!", "note": "", "tags": ["greeting", "essential"]},
+          {"target": "à bientôt", "english": "see you soon", "pronunciation": "/a bjɛ̃.to/", "example": "Merci pour tout, à bientôt !", "example_en": "Thanks for everything, see you soon!", "note": "Family: à demain, à lundi, à tout à l'heure.", "tags": ["greeting"]},
+          {"target": "bonne journée", "english": "have a good day", "pronunciation": "/bɔn ʒuʁ.ne/", "example": "Au revoir, bonne journée !", "example_en": "Goodbye, have a good day!", "note": "Said when leaving, never when arriving.", "tags": ["greeting", "phrase"]},
+          {"target": "je ne comprends pas", "english": "I don't understand", "pronunciation": "/ʒə nə kɔ̃.pʁɑ̃ pa/", "example": "Désolé, je ne comprends pas bien.", "example_en": "Sorry, I don't understand well.", "note": "The single most useful sentence of your first week.", "tags": ["survival", "phrase"]},
+          {"target": "vous pouvez répéter ?", "english": "can you repeat?", "pronunciation": "/vu pu.ve ʁe.pe.te/", "example": "Pardon, vous pouvez répéter plus lentement ?", "example_en": "Sorry, can you repeat more slowly?", "note": "Add s'il vous plaît and you sound perfectly polite.", "tags": ["survival", "phrase"]},
+          {"target": "je ne parle pas bien français", "english": "I don't speak French well", "pronunciation": "/ʒə nə paʁl pa bjɛ̃ fʁɑ̃.sɛ/", "example": "Excusez-moi, je ne parle pas bien français.", "example_en": "Excuse me, I don't speak French well.", "note": "Said early, it makes everyone slow down for you.", "tags": ["survival", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "self-intro": {
+    "grammar": ["fr-present-er", "fr-etre-avoir", "fr-questions-basic"],
+    "groups": [
+      {
+        "title": "Who you are",
+        "items": [
+          {"target": "je m'appelle", "english": "my name is", "pronunciation": "/ʒə ma.pɛl/", "example": "Je m'appelle Stijn, et vous ?", "example_en": "My name is Stijn, and you?", "note": "Literally I call myself: a reflexive verb.", "tags": ["identity", "phrase"]},
+          {"target": "comment vous appelez-vous ?", "english": "what is your name? (formal)", "pronunciation": "/kɔ.mɑ̃ vu.za.ple vu/", "example": "Bonjour, comment vous appelez-vous ?", "example_en": "Hello, what is your name?", "note": "Informal: comment tu t'appelles ?", "tags": ["identity", "question"]},
+          {"target": "je suis belge", "english": "I am Belgian", "pronunciation": "/ʒə sɥi bɛlʒ/", "example": "Je suis belge, mais j'habite en France.", "example_en": "I'm Belgian, but I live in France.", "note": "Nationalities take no article and no capital letter in French.", "tags": ["identity"]},
+          {"target": "je viens de", "english": "I come from", "pronunciation": "/ʒə vjɛ̃ də/", "example": "Je viens de Gand, en Belgique.", "example_en": "I come from Ghent, in Belgium.", "note": "de + city, but du/de la + country: je viens du Maroc.", "tags": ["identity", "phrase"]},
+          {"target": "j'habite à", "english": "I live in", "pronunciation": "/ʒa.bit a/", "example": "J'habite à Lyon depuis trois ans.", "example_en": "I've lived in Lyon for three years.", "note": "à + city, en + feminine country, au + masculine country.", "tags": ["identity", "phrase"]},
+          {"target": "j'ai trente ans", "english": "I am thirty years old", "pronunciation": "/ʒe tʁɑ̃t ɑ̃/", "example": "J'ai trente ans et mon frère a vingt-huit ans.", "example_en": "I'm thirty and my brother is twenty-eight.", "note": "French HAS years, it does not BE them. Never je suis trente.", "tags": ["identity", "trap"]}
+        ]
+      },
+      {
+        "title": "What you do",
+        "items": [
+          {"target": "je travaille dans", "english": "I work in", "pronunciation": "/ʒə tʁa.vaj dɑ̃/", "example": "Je travaille dans une école.", "example_en": "I work in a school.", "note": "", "tags": ["work", "phrase"]},
+          {"target": "je suis étudiant", "english": "I am a student", "pronunciation": "/ʒə sɥi.ze.ty.djɑ̃/", "example": "Je suis étudiant en biologie.", "example_en": "I'm a biology student.", "note": "Professions drop the article after être: je suis médecin, not un médecin.", "tags": ["work", "trap"]},
+          {"target": "qu'est-ce que vous faites dans la vie ?", "english": "what do you do for a living?", "pronunciation": "/kɛs kə vu fɛt dɑ̃ la vi/", "example": "Et vous, qu'est-ce que vous faites dans la vie ?", "example_en": "And you, what do you do for a living?", "note": "The natural French way to ask about someone's job.", "tags": ["work", "question"]},
+          {"target": "j'apprends le français", "english": "I am learning French", "pronunciation": "/ʒa.pʁɑ̃ lə fʁɑ̃.sɛ/", "example": "J'apprends le français depuis six mois.", "example_en": "I've been learning French for six months.", "note": "Languages take the article le: le français, l'espagnol.", "tags": ["language"]},
+          {"target": "je parle un peu", "english": "I speak a little", "pronunciation": "/ʒə paʁl œ̃ pø/", "example": "Je parle un peu français et bien anglais.", "example_en": "I speak a little French and good English.", "note": "", "tags": ["language", "phrase"]},
+          {"target": "vous parlez anglais ?", "english": "do you speak English?", "pronunciation": "/vu paʁ.le ɑ̃.ɡlɛ/", "example": "Excusez-moi, vous parlez anglais ?", "example_en": "Excuse me, do you speak English?", "note": "Rising intonation alone turns a statement into a question.", "tags": ["language", "question"]}
+        ]
+      }
+    ]
+  },
+  "numbers-time": {
+    "grammar": ["fr-articles-gender", "fr-questions-basic"],
+    "groups": [
+      {
+        "title": "Numbers you will actually use",
+        "items": [
+          {"target": "un, deux, trois", "english": "one, two, three", "pronunciation": "/œ̃ dø tʁwa/", "example": "Trois cafés, s'il vous plaît.", "example_en": "Three coffees, please.", "note": "", "tags": ["numbers"]},
+          {"target": "dix", "english": "ten", "pronunciation": "/dis/", "example": "Ça fait dix euros.", "example_en": "That comes to ten euros.", "note": "The final s sounds alone (dis) but goes silent before a consonant: dix francs /di/.", "tags": ["numbers", "trap"]},
+          {"target": "vingt", "english": "twenty", "pronunciation": "/vɛ̃/", "example": "Le bus part dans vingt minutes.", "example_en": "The bus leaves in twenty minutes.", "note": "The t is silent alone, but sounds in vingt-deux /vɛ̃t.dø/.", "tags": ["numbers"]},
+          {"target": "cent", "english": "one hundred", "pronunciation": "/sɑ̃/", "example": "Ce billet coûte cent euros.", "example_en": "This ticket costs a hundred euros.", "note": "No un before cent or mille: cent euros, mille euros.", "tags": ["numbers", "trap"]},
+          {"target": "quatre-vingt-dix", "english": "ninety", "pronunciation": "/ka.tʁə.vɛ̃.dis/", "example": "Il a quatre-vingt-dix ans.", "example_en": "He is ninety years old.", "note": "Literally four twenties ten. Belgium and Switzerland say nonante instead.", "tags": ["numbers", "trap"]},
+          {"target": "combien ça coûte ?", "english": "how much does it cost?", "pronunciation": "/kɔ̃.bjɛ̃ sa kut/", "example": "Combien ça coûte, ce sac ?", "example_en": "How much does this bag cost?", "note": "", "tags": ["numbers", "question"]}
+        ]
+      },
+      {
+        "title": "Telling the time",
+        "items": [
+          {"target": "quelle heure est-il ?", "english": "what time is it?", "pronunciation": "/kɛ.l‿œʁ ɛ.til/", "example": "Excusez-moi, quelle heure est-il ?", "example_en": "Excuse me, what time is it?", "note": "Informally: il est quelle heure ?", "tags": ["time", "question"]},
+          {"target": "il est huit heures", "english": "it is eight o'clock", "pronunciation": "/i.lɛ ɥi.tœʁ/", "example": "Il est huit heures et quart.", "example_en": "It's a quarter past eight.", "note": "The word heures is never dropped the way o'clock can be in English.", "tags": ["time", "phrase"]},
+          {"target": "et demie", "english": "half past", "pronunciation": "/e də.mi/", "example": "Le train part à dix heures et demie.", "example_en": "The train leaves at half past ten.", "note": "Also moins le quart for quarter to.", "tags": ["time"]},
+          {"target": "le matin", "english": "the morning, in the morning", "pronunciation": "/lə ma.tɛ̃/", "example": "Je cours le matin avant le travail.", "example_en": "I run in the mornings before work.", "note": "l'après-midi, le soir, la nuit complete the set.", "tags": ["time"]},
+          {"target": "aujourd'hui", "english": "today", "pronunciation": "/o.ʒuʁ.dɥi/", "example": "Aujourd'hui, il fait beau.", "example_en": "Today the weather is nice.", "note": "hier is yesterday, demain is tomorrow.", "tags": ["time", "essential"]},
+          {"target": "tout à l'heure", "english": "in a little while, earlier today", "pronunciation": "/tu.t‿a lœʁ/", "example": "Je te rappelle tout à l'heure.", "example_en": "I'll call you back in a little while.", "note": "Points forwards or backwards within the same day; the tense tells you which.", "tags": ["time", "trap"]}
+        ]
+      },
+      {
+        "title": "Days, months, dates",
+        "items": [
+          {"target": "lundi", "english": "Monday", "pronunciation": "/lœ̃.di/", "example": "On se voit lundi ?", "example_en": "Shall we meet on Monday?", "note": "Days are lowercase. Bare lundi means this Monday; le lundi means every Monday.", "tags": ["calendar", "trap"]},
+          {"target": "le week-end", "english": "the weekend", "pronunciation": "/lə wi.kɛnd/", "example": "Qu'est-ce que tu fais ce week-end ?", "example_en": "What are you doing this weekend?", "note": "", "tags": ["calendar"]},
+          {"target": "janvier", "english": "January", "pronunciation": "/ʒɑ̃.vje/", "example": "Mon anniversaire est en janvier.", "example_en": "My birthday is in January.", "note": "Months are lowercase too, and take en: en mars, en août.", "tags": ["calendar"]},
+          {"target": "la semaine prochaine", "english": "next week", "pronunciation": "/la sə.mɛn pʁɔ.ʃɛn/", "example": "On en reparle la semaine prochaine.", "example_en": "We'll talk about it again next week.", "note": "dernière is last: la semaine dernière.", "tags": ["calendar", "phrase"]},
+          {"target": "le premier mai", "english": "the first of May", "pronunciation": "/lə pʁə.mje mɛ/", "example": "Les magasins ferment le premier mai.", "example_en": "The shops close on the first of May.", "note": "Only the first is ordinal; every other date is plain: le deux mai.", "tags": ["calendar", "trap"]},
+          {"target": "toujours", "english": "always, still", "pronunciation": "/tu.ʒuʁ/", "example": "Il habite toujours à Paris.", "example_en": "He still lives in Paris.", "note": "Means both always and still; context decides.", "tags": ["frequency", "trap"]}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "jobs": {
+    "grammar": ["fr-present-er", "fr-questions-basic"],
+    "groups": [
+      {
+        "title": "What people do",
+        "items": [
+          {"target": "le travail", "english": "the work, the job", "pronunciation": "/lə tʁa.vaj/", "example": "Le travail commence à neuf heures.", "example_en": "Work starts at nine.", "note": "Plural is irregular: les travaux, which usually means roadworks.", "tags": ["work", "trap"]},
+          {"target": "un emploi", "english": "a job, a position", "pronunciation": "/œ̃.n‿ɑ̃.plwa/", "example": "Elle a trouvé un emploi à Bordeaux.", "example_en": "She found a job in Bordeaux.", "note": "un boulot is the informal word.", "tags": ["work"]},
+          {"target": "un enseignant", "english": "a teacher", "pronunciation": "/œ̃.n‿ɑ̃.sɛ.ɲɑ̃/", "example": "Mon père est enseignant.", "example_en": "My father is a teacher.", "note": "No article after être with a profession.", "tags": ["jobs", "trap"]},
+          {"target": "un infirmier", "english": "a nurse", "pronunciation": "/œ̃.n‿ɛ̃.fiʁ.mje/", "example": "Elle travaille comme infirmière de nuit.", "example_en": "She works as a night nurse.", "note": "Feminine infirmière.", "tags": ["jobs"]},
+          {"target": "un ingénieur", "english": "an engineer", "pronunciation": "/œ̃.n‿ɛ̃.ʒe.njœʁ/", "example": "Il est ingénieur dans le bâtiment.", "example_en": "He's an engineer in construction.", "note": "", "tags": ["jobs"]},
+          {"target": "à mon compte", "english": "self-employed", "pronunciation": "/a mɔ̃ kɔ̃t/", "example": "Je travaille à mon compte depuis 2020.", "example_en": "I've been self-employed since 2020.", "note": "Literally on my own account.", "tags": ["work", "phrase"]}
+        ]
+      },
+      {
+        "title": "Conditions and colleagues",
+        "items": [
+          {"target": "un collègue", "english": "a colleague", "pronunciation": "/œ̃ kɔ.lɛɡ/", "example": "Mes collègues sont sympas.", "example_en": "My colleagues are nice.", "note": "", "tags": ["colleagues"]},
+          {"target": "le patron", "english": "the boss", "pronunciation": "/lə pa.tʁɔ̃/", "example": "Le patron veut nous voir ce matin.", "example_en": "The boss wants to see us this morning.", "note": "Feminine la patronne. In corporate speech: le responsable.", "tags": ["colleagues"]},
+          {"target": "à temps plein", "english": "full-time", "pronunciation": "/a tɑ̃ plɛ̃/", "example": "Je travaille à temps plein.", "example_en": "I work full-time.", "note": "à temps partiel is part-time.", "tags": ["schedule", "phrase"]},
+          {"target": "les congés", "english": "the holidays, the leave", "pronunciation": "/le kɔ̃.ʒe/", "example": "Je suis en congé la semaine prochaine.", "example_en": "I'm on leave next week.", "note": "les vacances is holiday in general; les congés is time off work.", "tags": ["schedule", "trap"]},
+          {"target": "faire des heures supplémentaires", "english": "to work overtime", "pronunciation": "/fɛʁ de.z‿œʁ sy.ple.mɑ̃.tɛʁ/", "example": "J'ai fait des heures supplémentaires toute la semaine.", "example_en": "I worked overtime all week.", "note": "Often shortened to des heures sup.", "tags": ["schedule", "phrase"]},
+          {"target": "le salaire", "english": "the salary", "pronunciation": "/lə sa.lɛʁ/", "example": "Le salaire est correct pour la région.", "example_en": "The salary is decent for the region.", "note": "", "tags": ["work"]}
+        ]
+      }
+    ]
+  },
+  "office-email": {
+    "grammar": ["fr-conditionnel", "fr-subjonctif-intro"],
+    "groups": [
+      {
+        "title": "Phone and meetings",
+        "items": [
+          {"target": "allô ?", "english": "hello? (on the phone)", "pronunciation": "/a.lo/", "example": "Allô ? Oui, c'est moi.", "example_en": "Hello? Yes, it's me.", "note": "Only used on the phone, never face to face.", "tags": ["phone", "trap"]},
+          {"target": "je vous passe", "english": "I'll put you through to", "pronunciation": "/ʒə vu pas/", "example": "Un instant, je vous passe le service technique.", "example_en": "One moment, I'll put you through to technical support.", "note": "", "tags": ["phone", "phrase"]},
+          {"target": "ne quittez pas", "english": "hold the line", "pronunciation": "/nə ki.te pa/", "example": "Ne quittez pas, je vérifie.", "example_en": "Hold the line, I'll check.", "note": "Literally do not leave.", "tags": ["phone", "phrase"]},
+          {"target": "la réunion", "english": "the meeting", "pronunciation": "/la ʁe.y.njɔ̃/", "example": "La réunion est reportée à jeudi.", "example_en": "The meeting has been moved to Thursday.", "note": "reporter means to postpone, not to report.", "tags": ["meetings", "trap"]},
+          {"target": "l'ordre du jour", "english": "the agenda", "pronunciation": "/lɔʁ.dʁə dy ʒuʁ/", "example": "Ce point n'est pas à l'ordre du jour.", "example_en": "That item isn't on the agenda.", "note": "un agenda is a diary or planner, a classic false friend.", "tags": ["meetings", "trap"]},
+          {"target": "faire le point", "english": "to take stock, to review progress", "pronunciation": "/fɛʁ lə pwɛ̃/", "example": "On fait le point lundi matin ?", "example_en": "Shall we review progress on Monday morning?", "note": "Very common in French office life.", "tags": ["meetings", "phrase"]}
+        ]
+      },
+      {
+        "title": "Writing an email",
+        "items": [
+          {"target": "Madame, Monsieur,", "english": "Dear Sir or Madam,", "pronunciation": "/ma.dam mə.sjø/", "example": "Madame, Monsieur, je me permets de vous écrire.", "example_en": "Dear Sir or Madam, I am writing to you.", "note": "The standard opening when you do not know the recipient.", "tags": ["email", "formal"]},
+          {"target": "je me permets de vous contacter", "english": "I am writing to contact you", "pronunciation": "/ʒə mə pɛʁ.mɛ də vu kɔ̃.tak.te/", "example": "Je me permets de vous contacter au sujet de votre annonce.", "example_en": "I am writing to you regarding your advert.", "note": "Formal French emails open with a self-effacing formula.", "tags": ["email", "formal"]},
+          {"target": "veuillez trouver ci-joint", "english": "please find attached", "pronunciation": "/vø.je tʁu.ve si.ʒwɛ̃/", "example": "Veuillez trouver ci-joint mon curriculum vitae.", "example_en": "Please find attached my CV.", "note": "veuillez is the polite imperative of vouloir.", "tags": ["email", "formal"]},
+          {"target": "dans l'attente de votre réponse", "english": "looking forward to your reply", "pronunciation": "/dɑ̃ la.tɑ̃t də vɔtʁ ʁe.pɔ̃s/", "example": "Dans l'attente de votre réponse, je reste à votre disposition.", "example_en": "Looking forward to your reply, I remain at your disposal.", "note": "", "tags": ["email", "formal"]},
+          {"target": "cordialement", "english": "kind regards", "pronunciation": "/kɔʁ.djal.mɑ̃/", "example": "Cordialement, Marie Lefebvre.", "example_en": "Kind regards, Marie Lefebvre.", "note": "The safe default sign-off. Bien à vous is warmer, Amicalement informal.", "tags": ["email"]},
+          {"target": "je reviens vers vous", "english": "I'll get back to you", "pronunciation": "/ʒə ʁə.vjɛ̃ vɛʁ vu/", "example": "Je reviens vers vous dès que possible.", "example_en": "I'll get back to you as soon as possible.", "note": "Office idiom, now everywhere in French business mail.", "tags": ["email", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "study-tech": {
+    "grammar": ["fr-relatifs", "fr-futur-simple"],
+    "groups": [
+      {
+        "title": "Studying",
+        "items": [
+          {"target": "apprendre par coeur", "english": "to learn by heart", "pronunciation": "/a.pʁɑ̃.dʁə paʁ kœʁ/", "example": "Il faut apprendre ces verbes par coeur.", "example_en": "You have to learn these verbs by heart.", "note": "", "tags": ["study", "phrase"]},
+          {"target": "réviser", "english": "to revise, to study for an exam", "pronunciation": "/ʁe.vi.ze/", "example": "Je révise pour l'examen de vendredi.", "example_en": "I'm revising for Friday's exam.", "note": "Not to revise a text; that is réécrire or corriger.", "tags": ["study", "trap"]},
+          {"target": "passer un examen", "english": "to sit an exam", "pronunciation": "/pa.se œ̃.n‿ɛɡ.za.mɛ̃/", "example": "Je passe mon examen demain.", "example_en": "I'm sitting my exam tomorrow.", "note": "Big trap: passer means to sit it, réussir means to pass it.", "tags": ["study", "trap"]},
+          {"target": "réussir", "english": "to succeed, to pass", "pronunciation": "/ʁe.y.siʁ/", "example": "Elle a réussi son examen du premier coup.", "example_en": "She passed her exam on the first try.", "note": "Failing is rater or échouer à.", "tags": ["study"]},
+          {"target": "le cours", "english": "the class, the course", "pronunciation": "/lə kuʁ/", "example": "Le cours commence à quatorze heures.", "example_en": "The class starts at two p.m.", "note": "Do not confuse with la cour, the courtyard, or court, short.", "tags": ["study", "trap"]},
+          {"target": "prendre des notes", "english": "to take notes", "pronunciation": "/pʁɑ̃.dʁə de nɔt/", "example": "Je prends des notes sur mon ordinateur.", "example_en": "I take notes on my computer.", "note": "", "tags": ["study", "phrase"]}
+        ]
+      },
+      {
+        "title": "Screens and problems",
+        "items": [
+          {"target": "l'ordinateur", "english": "the computer", "pronunciation": "/lɔʁ.di.na.tœʁ/", "example": "Mon ordinateur est très lent.", "example_en": "My computer is very slow.", "note": "Shortened to l'ordi in speech.", "tags": ["technology"]},
+          {"target": "le mot de passe", "english": "the password", "pronunciation": "/lə mo də pas/", "example": "J'ai oublié mon mot de passe.", "example_en": "I forgot my password.", "note": "", "tags": ["technology"]},
+          {"target": "télécharger", "english": "to download", "pronunciation": "/te.le.ʃaʁ.ʒe/", "example": "Téléchargez le fichier avant la réunion.", "example_en": "Download the file before the meeting.", "note": "Uploading is téléverser or, in practice, envoyer.", "tags": ["technology"]},
+          {"target": "le fichier", "english": "the file", "pronunciation": "/lə fi.ʃje/", "example": "Le fichier ne s'ouvre pas.", "example_en": "The file won't open.", "note": "A physical folder is un dossier, which is also a digital folder.", "tags": ["technology"]},
+          {"target": "ça bug", "english": "it's glitching", "pronunciation": "/sa bœɡ/", "example": "Le site bug depuis ce matin.", "example_en": "The site has been glitching since this morning.", "note": "Informal but universal. The formal word is un dysfonctionnement.", "tags": ["problems", "informal"]},
+          {"target": "redémarrer", "english": "to restart, to reboot", "pronunciation": "/ʁə.de.ma.ʁe/", "example": "Essayez de redémarrer l'appareil.", "example_en": "Try restarting the device.", "note": "The universal answer to every technical question.", "tags": ["problems"]}
+        ]
+      }
+    ]
+  }
+}

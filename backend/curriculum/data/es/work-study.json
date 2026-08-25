@@ -1,0 +1,83 @@
+{
+  "jobs": {
+    "grammar": ["es-present-regular", "es-ser-estar-basic"],
+    "groups": [
+      {
+        "title": "What people do",
+        "items": [
+          {"target": "el trabajo", "english": "the work, the job", "pronunciation": "/el tɾaˈβa.xo/", "example": "El trabajo empieza a las nueve.", "example_en": "Work starts at nine.", "note": "el curro is the very informal Spanish equivalent.", "tags": ["work"]},
+          {"target": "el empleo", "english": "employment, a job", "pronunciation": "/el emˈple.o/", "example": "Encontró un empleo en Bilbao.", "example_en": "She found a job in Bilbao.", "note": "", "tags": ["work"]},
+          {"target": "el profesor", "english": "the teacher", "pronunciation": "/el pɾo.feˈsoɾ/", "example": "Mi padre es profesor.", "example_en": "My father is a teacher.", "note": "No article after ser with a profession.", "tags": ["jobs", "trap"]},
+          {"target": "el enfermero", "english": "the nurse", "pronunciation": "/el em.feɾˈme.ɾo/", "example": "Trabaja de enfermera de noche.", "example_en": "She works as a night nurse.", "note": "trabajar de plus a profession means to work as.", "tags": ["jobs"]},
+          {"target": "el ingeniero", "english": "the engineer", "pronunciation": "/el iŋ.xeˈnje.ɾo/", "example": "Es ingeniero de caminos.", "example_en": "He's a civil engineer.", "note": "", "tags": ["jobs"]},
+          {"target": "ser autónomo", "english": "to be self-employed", "pronunciation": "/seɾ awˈto.no.mo/", "example": "Soy autónomo desde 2020.", "example_en": "I've been self-employed since 2020.", "note": "The official Spanish status for freelancers.", "tags": ["work", "culture"]}
+        ]
+      },
+      {
+        "title": "Conditions and colleagues",
+        "items": [
+          {"target": "el compañero de trabajo", "english": "the colleague", "pronunciation": "/el kom.paˈɲe.ɾo de tɾaˈβa.xo/", "example": "Mis compañeros son muy majos.", "example_en": "My colleagues are really nice.", "note": "el colega is common in Spain too, but also just means mate.", "tags": ["colleagues", "trap"]},
+          {"target": "el jefe", "english": "the boss", "pronunciation": "/el ˈxe.fe/", "example": "El jefe quiere vernos esta mañana.", "example_en": "The boss wants to see us this morning.", "note": "Feminine la jefa.", "tags": ["colleagues"]},
+          {"target": "a jornada completa", "english": "full-time", "pronunciation": "/a xoɾˈna.ða komˈple.ta/", "example": "Trabajo a jornada completa.", "example_en": "I work full-time.", "note": "a media jornada is part-time.", "tags": ["schedule", "phrase"]},
+          {"target": "las vacaciones", "english": "the holidays", "pronunciation": "/las ba.kaˈsjo.nes/", "example": "Estoy de vacaciones la semana que viene.", "example_en": "I'm on holiday next week.", "note": "Always plural in Spanish.", "tags": ["schedule", "trap"]},
+          {"target": "hacer horas extra", "english": "to work overtime", "pronunciation": "/aˈseɾ ˈo.ɾas ˈeks.tɾa/", "example": "He hecho horas extra toda la semana.", "example_en": "I worked overtime all week.", "note": "", "tags": ["schedule", "phrase"]},
+          {"target": "el sueldo", "english": "the salary", "pronunciation": "/el ˈswel.do/", "example": "El sueldo está bien para la zona.", "example_en": "The salary is decent for the area.", "note": "Also el salario, slightly more formal.", "tags": ["work"]}
+        ]
+      }
+    ]
+  },
+  "office-email": {
+    "grammar": ["es-subj-present", "es-commands"],
+    "groups": [
+      {
+        "title": "Phone and meetings",
+        "items": [
+          {"target": "¿dígame?", "english": "hello? (answering the phone)", "pronunciation": "/ˈdi.ɣa.me/", "example": "¿Dígame? Sí, soy yo.", "example_en": "Hello? Yes, speaking.", "note": "The Spanish way to answer a landline. In Latin America: ¿aló? or ¿bueno?", "tags": ["phone", "culture"]},
+          {"target": "le paso con", "english": "I'll put you through to", "pronunciation": "/le ˈpa.so kon/", "example": "Un momento, le paso con soporte técnico.", "example_en": "One moment, I'll put you through to technical support.", "note": "", "tags": ["phone", "phrase"]},
+          {"target": "no cuelgue", "english": "hold the line", "pronunciation": "/no ˈkwel.ɣe/", "example": "No cuelgue, ahora mismo lo compruebo.", "example_en": "Hold the line, I'll check right now.", "note": "Negative usted command of colgar, to hang up.", "tags": ["phone", "trap"]},
+          {"target": "la reunión", "english": "the meeting", "pronunciation": "/la re.uˈnjon/", "example": "La reunión se ha aplazado al jueves.", "example_en": "The meeting has been postponed to Thursday.", "note": "aplazar means to postpone.", "tags": ["meetings"]},
+          {"target": "el orden del día", "english": "the agenda", "pronunciation": "/el ˈoɾ.ðen del ˈdi.a/", "example": "Ese punto no está en el orden del día.", "example_en": "That item isn't on the agenda.", "note": "la orden (feminine) means an order or command; el orden is sequence.", "tags": ["meetings", "trap"]},
+          {"target": "hacer un seguimiento", "english": "to follow up", "pronunciation": "/aˈseɾ un se.ɣiˈmjen.to/", "example": "Hacemos un seguimiento el lunes.", "example_en": "We'll follow up on Monday.", "note": "", "tags": ["meetings", "phrase"]}
+        ]
+      },
+      {
+        "title": "Writing an email",
+        "items": [
+          {"target": "Estimado señor:", "english": "Dear Sir,", "pronunciation": "/es.tiˈma.ðo seˈɲoɾ/", "example": "Estimada señora: le escribo en relación con su anuncio.", "example_en": "Dear Madam, I am writing regarding your advert.", "note": "Spanish formal letters use a colon, not a comma, after the greeting.", "tags": ["email", "trap"]},
+          {"target": "le escribo en relación con", "english": "I am writing regarding", "pronunciation": "/le esˈkɾi.βo en re.laˈsjon kon/", "example": "Le escribo en relación con la factura de marzo.", "example_en": "I am writing regarding the March invoice.", "note": "", "tags": ["email", "formal"]},
+          {"target": "adjunto le envío", "english": "please find attached", "pronunciation": "/aðˈxun.to le emˈbi.o/", "example": "Adjunto le envío mi currículum.", "example_en": "Please find my CV attached.", "note": "el adjunto is the attachment itself.", "tags": ["email", "formal"]},
+          {"target": "quedo a la espera de su respuesta", "english": "I look forward to your reply", "pronunciation": "/ˈke.ðo a la esˈpe.ɾa de su resˈpwes.ta/", "example": "Quedo a la espera de su respuesta.", "example_en": "I look forward to your reply.", "note": "", "tags": ["email", "formal"]},
+          {"target": "un saludo", "english": "kind regards", "pronunciation": "/un saˈlu.ðo/", "example": "Un saludo, María Lefebvre.", "example_en": "Kind regards, María Lefebvre.", "note": "Atentamente is the most formal sign-off; un abrazo is warm and personal.", "tags": ["email"]},
+          {"target": "te comento", "english": "let me fill you in", "pronunciation": "/te koˈmen.to/", "example": "Te comento: hemos cambiado la fecha.", "example_en": "Let me fill you in: we've changed the date.", "note": "Everywhere in Spanish office mail as an opener.", "tags": ["email", "informal"]}
+        ]
+      }
+    ]
+  },
+  "study-tech": {
+    "grammar": ["es-relative-advanced", "es-subj-present"],
+    "groups": [
+      {
+        "title": "Studying",
+        "items": [
+          {"target": "aprender de memoria", "english": "to learn by heart", "pronunciation": "/a.pɾenˈdeɾ de meˈmo.ɾja/", "example": "Hay que aprender estos verbos de memoria.", "example_en": "You have to learn these verbs by heart.", "note": "", "tags": ["study", "phrase"]},
+          {"target": "repasar", "english": "to revise, to go over", "pronunciation": "/re.paˈsaɾ/", "example": "Estoy repasando para el examen del viernes.", "example_en": "I'm revising for Friday's exam.", "note": "", "tags": ["study"]},
+          {"target": "hacer un examen", "english": "to sit an exam", "pronunciation": "/aˈseɾ un ekˈsa.men/", "example": "Hago el examen mañana.", "example_en": "I'm sitting my exam tomorrow.", "note": "Trap: hacer is to sit it, aprobar is to pass it.", "tags": ["study", "trap"]},
+          {"target": "aprobar", "english": "to pass (an exam)", "pronunciation": "/a.pɾoˈβaɾ/", "example": "Aprobó a la primera.", "example_en": "She passed on the first try.", "note": "Failing is suspender in Spain, reprobar in Latin America.", "tags": ["study", "trap"]},
+          {"target": "la asignatura", "english": "the school subject", "pronunciation": "/la a.siɣ.naˈtu.ɾa/", "example": "Mi asignatura favorita era historia.", "example_en": "My favourite subject was history.", "note": "el sujeto is a grammatical subject, not a school one.", "tags": ["study", "trap"]},
+          {"target": "tomar apuntes", "english": "to take notes", "pronunciation": "/toˈmaɾ aˈpun.tes/", "example": "Tomo apuntes en el ordenador.", "example_en": "I take notes on my computer.", "note": "", "tags": ["study", "phrase"]}
+        ]
+      },
+      {
+        "title": "Screens and problems",
+        "items": [
+          {"target": "el ordenador", "english": "the computer", "pronunciation": "/el oɾ.ðe.naˈðoɾ/", "example": "Mi ordenador va muy lento.", "example_en": "My computer is very slow.", "note": "In Latin America: la computadora or el computador.", "tags": ["technology", "trap"]},
+          {"target": "la contraseña", "english": "the password", "pronunciation": "/la kon.tɾaˈse.ɲa/", "example": "He olvidado mi contraseña.", "example_en": "I've forgotten my password.", "note": "", "tags": ["technology"]},
+          {"target": "descargar", "english": "to download", "pronunciation": "/des.kaɾˈɣaɾ/", "example": "Descarga el archivo antes de la reunión.", "example_en": "Download the file before the meeting.", "note": "Uploading is subir.", "tags": ["technology"]},
+          {"target": "el archivo", "english": "the file", "pronunciation": "/el aɾˈtʃi.βo/", "example": "El archivo no se abre.", "example_en": "The file won't open.", "note": "la carpeta is the folder.", "tags": ["technology"]},
+          {"target": "se ha colgado", "english": "it has crashed, it has frozen", "pronunciation": "/se a kolˈɣa.ðo/", "example": "El programa se ha colgado otra vez.", "example_en": "The program has crashed again.", "note": "Same verb as hanging up a phone.", "tags": ["problems", "trap"]},
+          {"target": "reiniciar", "english": "to restart, to reboot", "pronunciation": "/rei.niˈsjaɾ/", "example": "Prueba a reiniciar el dispositivo.", "example_en": "Try restarting the device.", "note": "The universal answer to every technical question.", "tags": ["problems"]}
+        ]
+      }
+    ]
+  }
+}

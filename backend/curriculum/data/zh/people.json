@@ -1,0 +1,83 @@
+{
+  "family": {
+    "grammar": ["zh-measure-ge", "zh-svo"],
+    "groups": [
+      {
+        "title": "The household",
+        "items": [
+          {"target": "家人", "english": "family members", "pronunciation": "jiārén", "example": "全家人都在。", "example_en": "The whole family was there.", "note": "家 alone means home or family as an institution.", "tags": ["family", "trap"]},
+          {"target": "父母", "english": "parents", "pronunciation": "fùmǔ", "example": "我父母住在乡下。", "example_en": "My parents live in the countryside.", "note": "Formal compound. Spoken: 爸爸妈妈.", "tags": ["family", "trap"]},
+          {"target": "哥哥", "english": "older brother", "pronunciation": "gēge", "example": "我哥哥比我大三岁。", "example_en": "My older brother is three years older than me.", "note": "弟弟 is younger brother. Chinese never says just brother.", "tags": ["family", "culture"]},
+          {"target": "妹妹", "english": "younger sister", "pronunciation": "mèimei", "example": "我妹妹在上大学。", "example_en": "My younger sister is at university.", "note": "姐姐 is older sister.", "tags": ["family", "culture"]},
+          {"target": "儿子", "english": "son", "pronunciation": "érzi", "example": "他们的儿子开始上学了。", "example_en": "Their son has started school.", "note": "女儿 is daughter. 孩子 is child.", "tags": ["family"]},
+          {"target": "爷爷奶奶", "english": "paternal grandparents", "pronunciation": "yéye nǎinai", "example": "星期天我们去爷爷奶奶家。", "example_en": "On Sunday we're going to my grandparents'.", "note": "Maternal grandparents are 外公外婆: the two sides have separate words.", "tags": ["family", "culture"]}
+        ]
+      },
+      {
+        "title": "Couples and close ties",
+        "items": [
+          {"target": "老公", "english": "husband (informal)", "pronunciation": "lǎogōng", "example": "我老公做饭比我好。", "example_en": "My husband cooks better than I do.", "note": "老婆 is wife. Formally: 丈夫 and 妻子.", "tags": ["family", "culture"]},
+          {"target": "男朋友", "english": "boyfriend", "pronunciation": "nánpéngyou", "example": "今晚我和男朋友出去。", "example_en": "I'm going out with my boyfriend tonight.", "note": "女朋友 is girlfriend. 男的朋友 with 的 means a male friend.", "tags": ["family", "trap"]},
+          {"target": "单身", "english": "single", "pronunciation": "dānshēn", "example": "他单身一年了。", "example_en": "He's been single for a year.", "note": "No 是 needed; it behaves like an adjective.", "tags": ["family", "trap"]},
+          {"target": "结婚", "english": "to get married", "pronunciation": "jiéhūn", "example": "他们结婚十年了。", "example_en": "They've been married for ten years.", "note": "A verb-object compound: you cannot say 结婚他.", "tags": ["family", "trap"]},
+          {"target": "好朋友", "english": "good friend", "pronunciation": "hǎo péngyou", "example": "他是我们家的好朋友。", "example_en": "He's a good friend of our family.", "note": "", "tags": ["friends"]},
+          {"target": "相处得好", "english": "to get along well", "pronunciation": "xiāngchǔ de hǎo", "example": "我跟姐姐相处得很好。", "example_en": "I get along really well with my older sister.", "note": "得 links a verb to how well it is done.", "tags": ["friends", "trap"]}
+        ]
+      }
+    ]
+  },
+  "describing-people": {
+    "grammar": ["zh-bi", "zh-svo"],
+    "groups": [
+      {
+        "title": "Appearance",
+        "items": [
+          {"target": "高", "english": "tall", "pronunciation": "gāo", "example": "她很高，也很瘦。", "example_en": "She's tall and slim.", "note": "Adjectives need no 是, but usually take 很 as a neutral filler.", "tags": ["appearance", "trap"]},
+          {"target": "头发", "english": "hair", "pronunciation": "tóufa", "example": "他的头发又短又黑。", "example_en": "His hair is short and black.", "note": "又 ... 又 ... links two qualities: both ... and ...", "tags": ["appearance", "trap"]},
+          {"target": "眼睛", "english": "eyes", "pronunciation": "yǎnjing", "example": "她的眼睛很大。", "example_en": "She has big eyes.", "note": "眼镜 (yǎnjìng) means glasses: same sounds, different tone and character.", "tags": ["appearance", "trap"]},
+          {"target": "戴眼镜", "english": "to wear glasses", "pronunciation": "dài yǎnjìng", "example": "我同事戴圆眼镜。", "example_en": "My colleague wears round glasses.", "note": "戴 for accessories, 穿 for clothes and shoes.", "tags": ["appearance", "trap"]},
+          {"target": "看起来", "english": "to look, to seem", "pronunciation": "kànqǐlai", "example": "你看起来很累。", "example_en": "You look tired.", "note": "A directional complement used figuratively.", "tags": ["appearance", "trap"]},
+          {"target": "长得像", "english": "to look like", "pronunciation": "zhǎng de xiàng", "example": "她长得很像她爸爸。", "example_en": "She looks a lot like her father.", "note": "长 here is zhǎng (to grow), not cháng (long).", "tags": ["appearance", "trap"]}
+        ]
+      },
+      {
+        "title": "Character",
+        "items": [
+          {"target": "友好", "english": "friendly", "pronunciation": "yǒuhǎo", "example": "邻居对我们很友好。", "example_en": "The neighbours are very friendly to us.", "note": "对 marks who the attitude is directed at.", "tags": ["character", "trap"]},
+          {"target": "幽默", "english": "humorous", "pronunciation": "yōumò", "example": "你哥哥很幽默。", "example_en": "Your older brother is very funny.", "note": "A phonetic loan from English humour.", "tags": ["character"]},
+          {"target": "努力", "english": "hard-working", "pronunciation": "nǔlì", "example": "这是一个很努力的团队。", "example_en": "This is a very hard-working team.", "note": "的 links an adjective to the noun it modifies.", "tags": ["character", "trap"]},
+          {"target": "固执", "english": "stubborn", "pronunciation": "gùzhí", "example": "他这个人很固执。", "example_en": "He's a very stubborn person.", "note": "这个人 after the subject adds a slightly critical flavour.", "tags": ["character", "culture"]},
+          {"target": "心情好", "english": "in a good mood", "pronunciation": "xīnqíng hǎo", "example": "她今天心情很好。", "example_en": "She's in a good mood today.", "note": "心情不好 is the opposite.", "tags": ["character"]},
+          {"target": "脾气好", "english": "even-tempered", "pronunciation": "píqi hǎo", "example": "虽然很忙，她脾气还是很好。", "example_en": "Even though she's busy, she stays even-tempered.", "note": "脾气 is temper; 发脾气 means to lose your temper.", "tags": ["character", "trap"]}
+        ]
+      }
+    ]
+  },
+  "feelings": {
+    "grammar": ["zh-le-completed", "zh-negation"],
+    "groups": [
+      {
+        "title": "How you feel",
+        "items": [
+          {"target": "高兴", "english": "happy, glad", "pronunciation": "gāoxìng", "example": "我很高兴见到你。", "example_en": "I'm very happy to see you.", "note": "开心 is the more casual equivalent.", "tags": ["emotion"]},
+          {"target": "难过", "english": "sad", "pronunciation": "nánguò", "example": "听到这个消息我很难过。", "example_en": "I'm very sad to hear this news.", "note": "Literally hard to pass through.", "tags": ["emotion"]},
+          {"target": "累", "english": "tired", "pronunciation": "lèi", "example": "我很累，要去睡觉了。", "example_en": "I'm tired, I'm going to sleep.", "note": "了 at the end signals a change or an imminent one.", "tags": ["emotion", "trap"]},
+          {"target": "害怕", "english": "to be afraid", "pronunciation": "hàipà", "example": "我害怕坐飞机。", "example_en": "I'm afraid of flying.", "note": "A verb, so it needs no 很 and no 是.", "tags": ["emotion", "trap"]},
+          {"target": "受不了", "english": "can't stand it", "pronunciation": "shòubuliǎo", "example": "这个噪音我受不了。", "example_en": "I can't stand this noise.", "note": "A potential complement. The positive is 受得了.", "tags": ["emotion", "trap"]},
+          {"target": "压力大", "english": "stressed, under pressure", "pronunciation": "yālì dà", "example": "最近工作压力很大。", "example_en": "Work has been very stressful lately.", "note": "Literally the pressure is big.", "tags": ["emotion", "trap"]}
+        ]
+      },
+      {
+        "title": "Keeping the conversation alive",
+        "items": [
+          {"target": "真的吗？", "english": "really?", "pronunciation": "zhēnde ma", "example": "他辞职了？真的吗？", "example_en": "He quit? Really?", "note": "", "tags": ["reaction"]},
+          {"target": "太好了", "english": "that's great", "pronunciation": "tài hǎo le", "example": "你通过了？太好了！", "example_en": "You passed? That's great!", "note": "太 ... 了 is a fixed frame for exclamations.", "tags": ["reaction", "trap"]},
+          {"target": "还好", "english": "not bad, luckily", "pronunciation": "hái hǎo", "example": "还好没下雨。", "example_en": "Luckily it didn't rain.", "note": "Also answers 你好吗 with a mild fine.", "tags": ["reaction", "trap"]},
+          {"target": "看情况", "english": "it depends", "pronunciation": "kàn qíngkuàng", "example": "你来吗？看情况。", "example_en": "Are you coming? It depends.", "note": "Literally look at the situation.", "tags": ["reaction", "trap"]},
+          {"target": "你呢？", "english": "and you?", "pronunciation": "nǐ ne", "example": "我还好，你呢？", "example_en": "I'm fine, and you?", "note": "呢 bounces a question back without repeating it.", "tags": ["small talk", "trap"]},
+          {"target": "总之", "english": "anyway, in short", "pronunciation": "zǒngzhī", "example": "总之，我们玩得很开心。", "example_en": "Anyway, we had a great time.", "note": "Wraps up a rambling story.", "tags": ["small talk"]}
+        ]
+      }
+    ]
+  }
+}

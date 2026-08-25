@@ -1,0 +1,83 @@
+{
+  "weather-nature": {
+    "grammar": ["ru-future-budu", "ru-prepositional"],
+    "groups": [
+      {
+        "title": "Talking about the weather",
+        "items": [
+          {"target": "хорошая погода", "english": "good weather", "pronunciation": "/xɐˈroʂəjə pɐˈɡodə/", "example": "Хорошая погода, поедим на улице?", "example_en": "The weather's nice, shall we eat outside?", "note": "Russian states it plainly, with no impersonal verb.", "tags": ["weather", "trap"]},
+          {"target": "идёт дождь", "english": "it's raining", "pronunciation": "/ɪˈdʲot doʂtʲ/", "example": "Дождь идёт с самого утра.", "example_en": "It's been raining since first thing.", "note": "Literally the rain goes. Same verb as walking.", "tags": ["weather", "trap"]},
+          {"target": "идёт снег", "english": "it's snowing", "pronunciation": "/ɪˈdʲot snʲek/", "example": "В горах идёт снег.", "example_en": "It's snowing in the mountains.", "note": "Same construction as with rain.", "tags": ["weather", "trap"]},
+          {"target": "холодно", "english": "it's cold", "pronunciation": "/ˈxolədnə/", "example": "Сегодня холодно, надень пальто.", "example_en": "It's cold today, put on a coat.", "note": "Impersonal adverb. мне холодно means I am cold.", "tags": ["weather", "trap"]},
+          {"target": "погода", "english": "weather", "pronunciation": "/pɐˈɡodə/", "example": "Какая у вас погода?", "example_en": "What's the weather like where you are?", "note": "Unlike French and Spanish, weather and time are different words.", "tags": ["weather"]},
+          {"target": "прогноз погоды", "english": "weather forecast", "pronunciation": "/prɐɡˈnos pɐˈɡodɨ/", "example": "По прогнозу завтра будет дождь.", "example_en": "According to the forecast it'll rain tomorrow.", "note": "будет is the future of быть, needed because the present has no copula.", "tags": ["weather", "trap"]}
+        ]
+      },
+      {
+        "title": "Seasons and landscape",
+        "items": [
+          {"target": "весной", "english": "in spring", "pronunciation": "/vʲɪsˈnoj/", "example": "Весной всё расцветает.", "example_en": "In spring everything blooms.", "note": "Seasons take the instrumental as an adverb: летом, осенью, зимой.", "tags": ["seasons", "trap"]},
+          {"target": "лето", "english": "summer", "pronunciation": "/ˈlʲetə/", "example": "Летом мы ездим на море.", "example_en": "In summer we go to the seaside.", "note": "Neuter noun.", "tags": ["seasons"]},
+          {"target": "горы", "english": "mountains", "pronunciation": "/ˈɡorɨ/", "example": "Этой зимой мы едем в горы.", "example_en": "We're going to the mountains this winter.", "note": "Plural of гора, with the stress moving to the first syllable.", "tags": ["nature", "trap"]},
+          {"target": "море", "english": "sea", "pronunciation": "/ˈmorʲe/", "example": "Море сегодня спокойное.", "example_en": "The sea is calm today.", "note": "Going to the sea takes на: на море.", "tags": ["nature", "trap"]},
+          {"target": "лес", "english": "forest, wood", "pronunciation": "/lʲes/", "example": "По воскресеньям мы гуляем в лесу.", "example_en": "On Sundays we walk in the forest.", "note": "Special locative form: в лесу, not в лесе.", "tags": ["nature", "trap"]},
+          {"target": "изменение климата", "english": "climate change", "pronunciation": "/ɪzmʲɪˈnʲenʲɪje ˈklʲiməte/", "example": "Изменение климата меняет сезоны.", "example_en": "Climate change is altering the seasons.", "note": "", "tags": ["climate"]}
+        ]
+      }
+    ]
+  },
+  "culture-media": {
+    "grammar": ["ru-aspect-core", "ru-dative-full"],
+    "groups": [
+      {
+        "title": "Films, books, music",
+        "items": [
+          {"target": "фильм", "english": "film", "pronunciation": "/fʲilʲm/", "example": "Это фильм, который я смотрел три раза.", "example_en": "It's a film I've watched three times.", "note": "который declines like an adjective and agrees with what it refers to.", "tags": ["film", "trap"]},
+          {"target": "в оригинале", "english": "in the original language", "pronunciation": "/v ərʲɪɡʲɪˈnalʲe/", "example": "Я всегда смотрю фильмы в оригинале.", "example_en": "I always watch films in the original language.", "note": "Russia dubs heavily, so this is worth asking for.", "tags": ["film", "culture"]},
+          {"target": "субтитры", "english": "subtitles", "pronunciation": "/supˈtʲitrɨ/", "example": "Включи русские субтитры.", "example_en": "Turn on the Russian subtitles.", "note": "Watching with target-language subtitles is excellent practice.", "tags": ["film"]},
+          {"target": "роман", "english": "novel", "pronunciation": "/rɐˈman/", "example": "Я начал детективный роман.", "example_en": "I started a crime novel.", "note": "Also a romance, and the given name Roman. Context decides.", "tags": ["books", "trap"]},
+          {"target": "стоит посмотреть", "english": "it's worth watching", "pronunciation": "/ˈstoɪt pəsmɐˈtrʲetʲ/", "example": "Сериал длинный, но стоит посмотреть.", "example_en": "The series is long, but it's worth watching.", "note": "Impersonal стоит plus infinitive. Same verb as to cost.", "tags": ["opinion", "trap"]},
+          {"target": "я тебе советую", "english": "I recommend it to you", "pronunciation": "/ja tʲɪˈbʲe sɐˈvʲetuju/", "example": "Эту книгу я тебе очень советую.", "example_en": "I really recommend this book to you.", "note": "советовать takes the dative for the person advised.", "tags": ["opinion", "trap"]}
+        ]
+      },
+      {
+        "title": "Free time",
+        "items": [
+          {"target": "мне хочется", "english": "I feel like", "pronunciation": "/mnʲe ˈxotɕɪtsə/", "example": "Мне хочется куда-нибудь сходить вечером.", "example_en": "I feel like going out somewhere tonight.", "note": "Softer than я хочу: the desire simply arises.", "tags": ["hobbies", "trap"]},
+          {"target": "встретиться с друзьями", "english": "to meet up with friends", "pronunciation": "/ˈfstrʲetʲɪtsə z druˈzʲjamʲɪ/", "example": "В пятницу встречаюсь с друзьями.", "example_en": "I'm meeting friends on Friday.", "note": "с plus instrumental. друзьями is an irregular plural.", "tags": ["hobbies", "trap"]},
+          {"target": "хобби", "english": "hobby", "pronunciation": "/ˈxobʲɪ/", "example": "Фотография моё любимое хобби.", "example_en": "Photography is my favourite hobby.", "note": "Indeclinable neuter noun.", "tags": ["hobbies", "trap"]},
+          {"target": "отмечать", "english": "to celebrate, to mark", "pronunciation": "/ətmʲɪˈtɕatʲ/", "example": "Мы отмечали до трёх часов ночи.", "example_en": "We celebrated until three in the morning.", "note": "The everyday word for celebrating a birthday or a holiday.", "tags": ["hobbies"]},
+          {"target": "как насчёт ... ?", "english": "how about ...?", "pronunciation": "/kak nɐˈɕːot/", "example": "Как насчёт кино сегодня вечером?", "example_en": "How about a film tonight?", "note": "Takes the genitive: как насчёт кофе?", "tags": ["hobbies", "trap"]},
+          {"target": "где встречаемся?", "english": "where shall we meet?", "pronunciation": "/ɡdʲe fstrʲɪˈtɕajɪmsʲə/", "example": "Где встречаемся и во сколько?", "example_en": "Where and when shall we meet?", "note": "The present tense covers the near-future arrangement.", "tags": ["hobbies", "trap"]}
+        ]
+      }
+    ]
+  },
+  "opinions-debate": {
+    "grammar": ["ru-conditional", "ru-subordination", "ru-particles"],
+    "groups": [
+      {
+        "title": "Stating a position",
+        "items": [
+          {"target": "по-моему", "english": "in my opinion", "pronunciation": "/pɐˈmojɪmu/", "example": "По-моему, это плохая идея.", "example_en": "In my opinion, that's a bad idea.", "note": "Neutral and everywhere. More formal: на мой взгляд.", "tags": ["opinion"]},
+          {"target": "мне кажется, что", "english": "it seems to me that", "pronunciation": "/mnʲe ˈkaʐɨtsə ʂto/", "example": "Мне кажется, что ситуация изменилась.", "example_en": "It seems to me the situation has changed.", "note": "Russian punctuation puts a comma before что, always.", "tags": ["opinion", "trap"]},
+          {"target": "я считаю, что", "english": "I consider that, I hold that", "pronunciation": "/ja ɕːɪˈtaju ʂto/", "example": "Я считаю, что дебатам не хватает нюансов.", "example_en": "I think the debate lacks nuance.", "note": "Stronger than думаю: a considered position.", "tags": ["opinion", "trap"]},
+          {"target": "я уверен, что", "english": "I'm sure that", "pronunciation": "/ja ʊˈvʲerʲɪn ʂto/", "example": "Я уверен, что это сработает.", "example_en": "I'm sure this will work.", "note": "Short adjective: уверен, уверена, уверены.", "tags": ["opinion", "trap"]},
+          {"target": "тем не менее", "english": "nevertheless", "pronunciation": "/tʲem nʲe ˈmʲenʲɪje/", "example": "Тем не менее, стоимость остаётся проблемой.", "example_en": "Nevertheless, the cost is still a problem.", "note": "Signals the concession that follows.", "tags": ["connectors"]},
+          {"target": "с другой стороны", "english": "on the other hand", "pronunciation": "/z druˈɡoj stərɐˈnɨ/", "example": "Это дорого; с другой стороны, служит долго.", "example_en": "It's expensive; on the other hand, it lasts a long time.", "note": "Pairs with с одной стороны, on the one hand.", "tags": ["connectors"]}
+        ]
+      },
+      {
+        "title": "Agreeing, conceding, pushing back",
+        "items": [
+          {"target": "я с тобой согласен", "english": "I agree with you", "pronunciation": "/ja s tɐˈboj sɐˈɡlasʲɪn/", "example": "Я с тобой согласен в этом вопросе.", "example_en": "I agree with you on this question.", "note": "Short adjective agreeing with the speaker: согласен, согласна.", "tags": ["agreement", "trap"]},
+          {"target": "меня это не убеждает", "english": "that doesn't convince me", "pronunciation": "/mʲɪˈnʲa ˈetə nʲe ʊbʲɪˈʐdajɪt/", "example": "Честно говоря, меня это не убеждает.", "example_en": "Honestly, that doesn't convince me.", "note": "Polite disagreement without confrontation.", "tags": ["argument", "phrase"]},
+          {"target": "конечно, но", "english": "of course, but", "pronunciation": "/kɐˈnʲeʂnə no/", "example": "Конечно, это рискованно, но бездействие тоже.", "example_en": "Of course it's risky, but so is doing nothing.", "note": "In конечно the ч sounds like sh.", "tags": ["argument", "trap"]},
+          {"target": "нужно быть реалистами", "english": "we need to be realistic", "pronunciation": "/ˈnuʐnə bɨtʲ rʲɪɐˈlʲistəmʲɪ/", "example": "Нужно быть реалистами насчёт сроков.", "example_en": "We need to be realistic about the deadlines.", "note": "быть in the infinitive takes an instrumental complement: реалистами.", "tags": ["argument", "trap"]},
+          {"target": "если бы у меня был выбор", "english": "if I had a choice", "pronunciation": "/ˈjeslʲɪ bɨ u mʲɪˈnʲa bɨl ˈvɨbər/", "example": "Если бы у меня был выбор, я бы сделал иначе.", "example_en": "If I had a choice, I'd do it differently.", "note": "The Russian conditional is one form: past tense plus бы in both halves.", "tags": ["argument", "trap"]},
+          {"target": "как бы то ни было", "english": "be that as it may", "pronunciation": "/kaɡ bɨ tə nʲɪ ˈbɨlə/", "example": "Как бы то ни было, решать надо сегодня.", "example_en": "Be that as it may, we have to decide today.", "note": "A fixed high-register expression, common in written argument.", "tags": ["connectors", "phrase"]}
+        ]
+      }
+    ]
+  }
+}

@@ -155,7 +155,7 @@ function summary(container) {
         el('div', { class: 'start-icon success' }, icon('check', 28)),
         el('h2', {}, `Average score ${avg}%`),
         el('p', { class: 'muted' }, avg >= 85
-          ? 'Excellent articulation. Try longer sentences from the Read view next.'
+          ? 'Excellent articulation. Try a longer text in Compose next.'
           : 'Recognition scores are a proxy, not a judge - repeat the tricky phrases after the slow audio and the score will follow.'),
         el('div', { class: 'row gap center' },
           el('button', { class: 'btn btn-primary', onclick: () => render(container) }, 'Another round'),

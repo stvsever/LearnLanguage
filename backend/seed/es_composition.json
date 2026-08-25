@@ -1,0 +1,62 @@
+{
+  "language": "es",
+  "format": "dialogue",
+  "title": "La llave equivocada",
+  "level": "A2",
+  "scene": "A tenant and her neighbour work out why her key no longer opens the door.",
+  "participants": ["Lucía", "Don Ramón"],
+  "segments": [
+    { "speaker": "Lucía", "text": "Buenas tardes, don Ramón. ¿Puedo preguntarle una cosa?", "text_en": "Good afternoon, don Ramón. Can I ask you something?" },
+    { "speaker": "Don Ramón", "text": "Claro, dime. ¿Qué te pasa?", "text_en": "Of course, tell me. What's wrong?" },
+    { "speaker": "Lucía", "text": "Mi llave no abre la puerta de abajo. La he probado tres veces.", "text_en": "My key doesn't open the downstairs door. I've tried it three times." },
+    { "speaker": "Don Ramón", "text": "Ah, es que cambiaron la cerradura el lunes por la mañana.", "text_en": "Ah, the thing is they changed the lock on Monday morning." },
+    { "speaker": "Lucía", "text": "¿En serio? Nadie me dijo nada.", "text_en": "Seriously? Nobody told me anything." },
+    { "speaker": "Don Ramón", "text": "Pusieron un aviso en el ascensor, pero se cayó el mismo día.", "text_en": "They put a notice in the lift, but it fell down the same day." },
+    { "speaker": "Lucía", "text": "Qué desastre. ¿Y dónde recojo la llave nueva?", "text_en": "What a disaster. And where do I pick up the new key?" },
+    { "speaker": "Don Ramón", "text": "En la portería, hasta las siete. Ve ahora, que cierran pronto.", "text_en": "At the porter's desk, until seven. Go now, they close early." },
+    { "speaker": "Lucía", "text": "Voy corriendo. Muchísimas gracias, de verdad.", "text_en": "I'm running there. Thank you so much, really." },
+    { "speaker": "Don Ramón", "text": "De nada, mujer. Para eso estamos los vecinos.", "text_en": "You're welcome. That's what neighbours are for." }
+  ],
+  "glossary": [
+    { "word": "la cerradura", "gloss": "the lock" },
+    { "word": "la llave", "gloss": "the key" },
+    { "word": "el aviso", "gloss": "the notice, the warning" },
+    { "word": "el ascensor", "gloss": "the lift, the elevator" },
+    { "word": "se cayó", "gloss": "it fell down (from caerse)" },
+    { "word": "recojo", "gloss": "I pick up (from recoger)" },
+    { "word": "la portería", "gloss": "the porter's desk, the concierge office" },
+    { "word": "qué desastre", "gloss": "what a disaster (very common reaction)" },
+    { "word": "voy corriendo", "gloss": "I'm going right now (literally: I'm going running)" },
+    { "word": "para eso estamos", "gloss": "that's what we're here for" }
+  ],
+  "grammar_spotlights": [
+    { "feature": "es-indefinido", "excerpt": "cambiaron la cerradura el lunes", "explanation": "Preterite for a finished event with a closed time frame: they changed it, done." },
+    { "feature": "es-commands", "excerpt": "Ve ahora, que cierran pronto", "explanation": "Irregular affirmative tú command of ir, used for friendly urging." }
+  ],
+  "questions": [
+    {
+      "question": "¿Por qué la llave de Lucía no funciona?",
+      "choices": ["Porque perdió la llave", "Porque cambiaron la cerradura", "Porque la puerta está rota", "Porque vive en otro edificio"],
+      "correct_choice": 1,
+      "explanation": "Don Ramón explains that the lock was changed on Monday morning."
+    },
+    {
+      "question": "¿Por qué Lucía no sabía nada del cambio?",
+      "choices": ["Estaba de viaje", "No lee los avisos", "El aviso se cayó el mismo día", "Nadie escribió un aviso"],
+      "correct_choice": 2,
+      "explanation": "There was a notice in the lift, but it fell down the same day."
+    },
+    {
+      "question": "¿Dónde puede recoger la llave nueva?",
+      "choices": ["En la portería", "En el ascensor", "En casa de don Ramón", "En una tienda del barrio"],
+      "correct_choice": 0,
+      "explanation": "Don Ramón says the new key is at la portería until seven."
+    },
+    {
+      "question": "¿Qué actitud muestra don Ramón al final?",
+      "choices": ["Está molesto con Lucía", "Prefiere no ayudar", "Se muestra amable y solidario", "No entiende el problema"],
+      "correct_choice": 2,
+      "explanation": "He brushes off the thanks with para eso estamos los vecinos, a warm and neighbourly line."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "language": "zh",
+  "format": "dialogue",
+  "title": "多要了一碗面",
+  "level": "A2",
+  "scene": "A customer and a noodle shop owner sort out an order that arrived twice.",
+  "participants": ["小林", "老板"],
+  "segments": [
+    { "speaker": "小林", "text": "老板，我刚才点了一碗牛肉面。", "text_en": "Boss, I ordered a bowl of beef noodles just now." },
+    { "speaker": "老板", "text": "对，已经给你送过去了。", "text_en": "Right, it's already been taken over to you." },
+    { "speaker": "小林", "text": "问题是，桌上现在有两碗。", "text_en": "The problem is, there are two bowls on the table now." },
+    { "speaker": "老板", "text": "两碗？我看看单子。", "text_en": "Two bowls? Let me look at the order slip." },
+    { "speaker": "小林", "text": "我只吃得下一碗，真的。", "text_en": "I can only manage one bowl, honestly." },
+    { "speaker": "老板", "text": "不好意思，我们写了两次。你不用付第二碗的钱。", "text_en": "Sorry, we wrote it down twice. You don't have to pay for the second bowl." },
+    { "speaker": "小林", "text": "那太不好意思了。要不我带回家吧？", "text_en": "That's really too kind. How about I take it home then?" },
+    { "speaker": "老板", "text": "好啊，我给你打包。晚上热一下就行。", "text_en": "Sure, I'll pack it up for you. Just heat it up in the evening." },
+    { "speaker": "小林", "text": "谢谢老板，下次我还来。", "text_en": "Thanks, boss, I'll come again next time." },
+    { "speaker": "老板", "text": "慢走，路上小心。", "text_en": "Take care, be careful on the way." }
+  ],
+  "glossary": [
+    { "word": "点", "gloss": "to order (food)" },
+    { "word": "碗", "gloss": "bowl; also the measure word for bowls of food" },
+    { "word": "牛肉面", "gloss": "beef noodles" },
+    { "word": "单子", "gloss": "order slip, list" },
+    { "word": "吃得下", "gloss": "able to eat (potential complement)" },
+    { "word": "不好意思", "gloss": "sorry, embarrassed" },
+    { "word": "付钱", "gloss": "to pay" },
+    { "word": "打包", "gloss": "to pack up, to take away" },
+    { "word": "热一下", "gloss": "to heat up briefly" },
+    { "word": "慢走", "gloss": "take care (said to someone leaving)" }
+  ],
+  "grammar_spotlights": [
+    { "feature": "zh-measure-ge", "excerpt": "一碗牛肉面", "explanation": "碗 works as the measure word here: number plus measure word plus noun, never number plus noun alone." },
+    { "feature": "zh-le-completed", "excerpt": "我刚才点了一碗牛肉面", "explanation": "了 after the verb marks the ordering as a completed action." }
+  ],
+  "questions": [
+    {
+      "question": "小林遇到了什么问题？",
+      "choices": ["面太辣了", "桌上有两碗面", "老板忘了他的单子", "他没有带钱"],
+      "correct_choice": 1,
+      "explanation": "He says there are two bowls on the table when he only ordered one."
+    },
+    {
+      "question": "问题是怎么发生的？",
+      "choices": ["小林点了两次", "店里写了两次单子", "另一位客人点错了", "厨房做多了"],
+      "correct_choice": 1,
+      "explanation": "The owner admits 我们写了两次, they wrote the order down twice."
+    },
+    {
+      "question": "第二碗面最后怎么处理？",
+      "choices": ["老板拿回厨房", "小林打包带回家", "送给别的客人", "小林付钱买下"],
+      "correct_choice": 1,
+      "explanation": "Xiao Lin suggests taking it home and the owner packs it up."
+    },
+    {
+      "question": "老板对小林的态度怎么样？",
+      "choices": ["很生气", "不太在乎", "客气又大方", "怀疑他说谎"],
+      "correct_choice": 2,
+      "explanation": "He apologises, waives the charge, packs the food, and wishes him a safe trip home."
+    }
+  ]
+}

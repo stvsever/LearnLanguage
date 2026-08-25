@@ -21,9 +21,9 @@ CURRENT_DIR = Path(__file__).resolve().parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
 
-from backend import config, content, tts  # noqa: E402
+from backend import config, content, curriculum, tts  # noqa: E402
 from backend.grammar import grammar_profile  # noqa: E402
-from backend.languages import public_language_payload  # noqa: E402
+from backend.languages import LANGUAGES, normalize_language_code, public_language_payload  # noqa: E402
 from backend.llm import LLMUnavailable, reset_client  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -41,9 +41,9 @@ def config_payload() -> dict:
         "defaultLanguage": config.DEFAULT_LANGUAGE,
         "languages": public_language_payload(),
         "levels": list(content.CEFR_LEVELS),
-        "seedLanguages": sorted(
-            p.name.split("_")[0] for p in config.SEED_DIR.glob("*_core.json")
-        ),
+        # How much curated, LLM-free material each language ships with. The UI
+        # uses this to decide whether to offer the library as a first-class path.
+        "curriculum": {code: curriculum.summary(code) for code in LANGUAGES},
     }
 
 
@@ -93,9 +93,34 @@ class TutorRequestHandler(BaseHTTPRequestHandler):
         if path == "/api/config":
             self.send_json(config_payload())
             return
+        query = parse_qs(urlparse(self.path).query)
+
+        def q(name: str, default: str = "") -> str:
+            return str((query.get(name) or [default])[0])
+
         if path == "/api/grammar":
-            query = parse_qs(urlparse(self.path).query)
-            self.send_json(grammar_profile(str((query.get("language") or [config.DEFAULT_LANGUAGE])[0])))
+            self.send_json(grammar_profile(q("language", config.DEFAULT_LANGUAGE)))
+            return
+        if path == "/api/curriculum":
+            lang = normalize_language_code(q("language", config.DEFAULT_LANGUAGE))
+            self.send_json({
+                "language": lang,
+                "summary": curriculum.summary(lang),
+                "path": curriculum.learning_path(),
+                "domains": curriculum.tree(lang),
+            })
+            return
+        if path == "/api/curriculum/unit":
+            lang = normalize_language_code(q("language", config.DEFAULT_LANGUAGE))
+            detail = curriculum.unit_detail(lang, q("unit"))
+            if detail is None:
+                self.send_json({"error": "not_found", "detail": "No such unit for this language."}, status=404)
+            else:
+                self.send_json(detail)
+            return
+        if path == "/api/curriculum/search":
+            lang = normalize_language_code(q("language", config.DEFAULT_LANGUAGE))
+            self.send_json(curriculum.search(lang, q("q")))
             return
         if path.startswith("/static/"):
             target = (config.STATIC_DIR / path.removeprefix("/static/")).resolve()
@@ -115,9 +140,9 @@ class TutorRequestHandler(BaseHTTPRequestHandler):
         try:
             payload = self.read_json()
             if path == "/api/lesson":
+                lang = str(payload.get("language") or config.DEFAULT_LANGUAGE)
                 if payload.get("seed"):
-                    lang = str(payload.get("language") or config.DEFAULT_LANGUAGE)
-                    seeded = content.seed_lesson(lang, 999)
+                    seeded = content.seed_lesson(lang, int(payload.get("count") or 24))
                     if seeded is None:
                         self.send_json({"error": "no_seed", "detail": "No starter deck for this language."}, status=404)
                     else:
@@ -125,11 +150,12 @@ class TutorRequestHandler(BaseHTTPRequestHandler):
                     return
                 self.send_json(content.generate_lesson(
                     topic=str(payload.get("topic") or ""),
-                    language_code=str(payload.get("language") or config.DEFAULT_LANGUAGE),
+                    language_code=lang,
                     level=str(payload.get("level") or "A2"),
                     count=int(payload.get("count") or 12),
                     known_words=payload.get("knownWords") or None,
                     model=payload.get("model"),
+                    unit=payload.get("unit") or None,
                 ))
                 return
             if path == "/api/compose":
@@ -139,6 +165,12 @@ class TutorRequestHandler(BaseHTTPRequestHandler):
                     level=str(payload.get("level") or "A2"),
                     length=str(payload.get("length") or "medium"),
                     model=payload.get("model"),
+                    fmt=payload.get("format"),
+                    register=payload.get("register"),
+                    speakers=payload.get("speakers"),
+                    focus=payload.get("focus") or None,
+                    vocabulary=payload.get("vocabulary") or None,
+                    unit=payload.get("unit") or None,
                 ))
                 return
             if path == "/api/gloss":

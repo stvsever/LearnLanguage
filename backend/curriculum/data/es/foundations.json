@@ -1,0 +1,105 @@
+{
+  "greetings": {
+    "grammar": ["es-ser-estar-basic", "es-questions-negation"],
+    "groups": [
+      {
+        "title": "Meeting someone",
+        "items": [
+          {"target": "hola", "english": "hello, hi", "pronunciation": "/ˈo.la/", "example": "Hola, ¿qué tal?", "example_en": "Hi, how's it going?", "note": "The h is always silent in Spanish.", "tags": ["greeting", "essential"]},
+          {"target": "buenos días", "english": "good morning", "pronunciation": "/ˈbwe.nos ˈdi.as/", "example": "Buenos días, ¿en qué puedo ayudarle?", "example_en": "Good morning, how can I help you?", "note": "Plural in Spanish. Switches to buenas tardes after lunch.", "tags": ["greeting", "trap"]},
+          {"target": "buenas tardes", "english": "good afternoon, good evening", "pronunciation": "/ˈbwe.nas ˈtaɾ.des/", "example": "Buenas tardes, una mesa para dos.", "example_en": "Good afternoon, a table for two.", "note": "Used from after lunch until dark, then buenas noches.", "tags": ["greeting"]},
+          {"target": "¿qué tal?", "english": "how's it going?", "pronunciation": "/ke ˈtal/", "example": "¡Hola! ¿Qué tal el fin de semana?", "example_en": "Hi! How was the weekend?", "note": "Opening and closing question marks are obligatory in writing.", "tags": ["greeting", "question"]},
+          {"target": "¿cómo está usted?", "english": "how are you? (formal)", "pronunciation": "/ˈko.mo esˈta usˈted/", "example": "Buenos días, ¿cómo está usted?", "example_en": "Good morning, how are you?", "note": "usted takes third-person verb forms, which trips up every beginner.", "tags": ["greeting", "formal", "trap"]},
+          {"target": "mucho gusto", "english": "nice to meet you", "pronunciation": "/ˈmu.tʃo ˈɡus.to/", "example": "Mucho gusto, soy Ana.", "example_en": "Nice to meet you, I'm Ana.", "note": "Encantado (m) or encantada (f) works just as well.", "tags": ["greeting", "phrase"]}
+        ]
+      },
+      {
+        "title": "Politeness that opens doors",
+        "items": [
+          {"target": "por favor", "english": "please", "pronunciation": "/poɾ faˈβoɾ/", "example": "Un café, por favor.", "example_en": "A coffee, please.", "note": "", "tags": ["politeness", "essential"]},
+          {"target": "muchas gracias", "english": "thank you very much", "pronunciation": "/ˈmu.tʃas ˈɡɾa.sjas/", "example": "Muchas gracias por su ayuda.", "example_en": "Thank you very much for your help.", "note": "", "tags": ["politeness", "essential"]},
+          {"target": "de nada", "english": "you're welcome", "pronunciation": "/de ˈna.da/", "example": "Gracias. De nada, hombre.", "example_en": "Thanks. You're welcome.", "note": "In Latin America you will also hear con gusto or no hay de qué.", "tags": ["politeness"]},
+          {"target": "perdone", "english": "excuse me (formal)", "pronunciation": "/peɾˈdo.ne/", "example": "Perdone, ¿dónde está la salida?", "example_en": "Excuse me, where is the exit?", "note": "Informal: perdona. Use it to get attention.", "tags": ["politeness"]},
+          {"target": "lo siento", "english": "I'm sorry", "pronunciation": "/lo ˈsjen.to/", "example": "Lo siento, llego tarde.", "example_en": "I'm sorry, I'm late.", "note": "A real apology; perdón is the lighter bump-into-you version.", "tags": ["politeness", "phrase"]},
+          {"target": "con permiso", "english": "excuse me (passing by)", "pronunciation": "/kon peɾˈmi.so/", "example": "Con permiso, voy a pasar.", "example_en": "Excuse me, I'm coming through.", "note": "Said when squeezing past someone or leaving a table.", "tags": ["politeness", "culture"]}
+        ]
+      },
+      {
+        "title": "Leaving, and buying time",
+        "items": [
+          {"target": "adiós", "english": "goodbye", "pronunciation": "/aˈðjos/", "example": "Adiós, hasta mañana.", "example_en": "Goodbye, see you tomorrow.", "note": "", "tags": ["greeting", "essential"]},
+          {"target": "hasta luego", "english": "see you later", "pronunciation": "/ˈas.ta ˈlwe.ɣo/", "example": "Me voy ya, ¡hasta luego!", "example_en": "I'm off now, see you later!", "note": "The default casual goodbye in Spain, even for people you will never see again.", "tags": ["greeting", "culture"]},
+          {"target": "no entiendo", "english": "I don't understand", "pronunciation": "/no enˈtjen.do/", "example": "Perdone, no entiendo bien.", "example_en": "Sorry, I don't understand well.", "note": "entender is a stem-changing verb: e becomes ie when stressed.", "tags": ["survival", "phrase"]},
+          {"target": "¿puede repetir?", "english": "can you repeat?", "pronunciation": "/ˈpwe.ðe re.peˈtiɾ/", "example": "¿Puede repetir más despacio, por favor?", "example_en": "Can you repeat more slowly, please?", "note": "", "tags": ["survival", "phrase"]},
+          {"target": "¿cómo se dice ... ?", "english": "how do you say ...?", "pronunciation": "/ˈko.mo se ˈdi.se/", "example": "¿Cómo se dice window en español?", "example_en": "How do you say window in Spanish?", "note": "The impersonal se: how does one say it.", "tags": ["survival", "question"]},
+          {"target": "hablo un poco de español", "english": "I speak a little Spanish", "pronunciation": "/ˈa.βlo un ˈpo.ko de es.paˈɲol/", "example": "Hablo un poco de español, pero despacio.", "example_en": "I speak a little Spanish, but slowly.", "note": "Said early, it makes everyone slow down for you.", "tags": ["survival", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "self-intro": {
+    "grammar": ["es-present-regular", "es-ser-estar-basic"],
+    "groups": [
+      {
+        "title": "Who you are",
+        "items": [
+          {"target": "me llamo", "english": "my name is", "pronunciation": "/me ˈʝa.mo/", "example": "Me llamo Stijn, ¿y tú?", "example_en": "My name is Stijn, and you?", "note": "Literally I call myself: a reflexive verb.", "tags": ["identity", "phrase"]},
+          {"target": "¿cómo te llamas?", "english": "what's your name? (informal)", "pronunciation": "/ˈko.mo te ˈʝa.mas/", "example": "Hola, ¿cómo te llamas?", "example_en": "Hi, what's your name?", "note": "Formal: ¿cómo se llama usted?", "tags": ["identity", "question"]},
+          {"target": "soy belga", "english": "I am Belgian", "pronunciation": "/soj ˈbel.ɣa/", "example": "Soy belga, pero vivo en España.", "example_en": "I'm Belgian, but I live in Spain.", "note": "Nationalities are lowercase and take no article after ser.", "tags": ["identity", "trap"]},
+          {"target": "soy de", "english": "I'm from", "pronunciation": "/soj de/", "example": "Soy de Gante, en Bélgica.", "example_en": "I'm from Ghent, in Belgium.", "note": "Origin is always ser, never estar.", "tags": ["identity", "trap"]},
+          {"target": "vivo en", "english": "I live in", "pronunciation": "/ˈbi.βo en/", "example": "Vivo en Valencia desde hace tres años.", "example_en": "I've lived in Valencia for three years.", "note": "desde hace plus a period covers the English present perfect.", "tags": ["identity", "phrase"]},
+          {"target": "tengo treinta años", "english": "I am thirty years old", "pronunciation": "/ˈteŋ.ɡo ˈtɾejn.ta ˈa.ɲos/", "example": "Tengo treinta años y mi hermana veinte.", "example_en": "I'm thirty and my sister is twenty.", "note": "Spanish HAS years. Never soy treinta.", "tags": ["identity", "trap"]}
+        ]
+      },
+      {
+        "title": "What you do",
+        "items": [
+          {"target": "trabajo en", "english": "I work in, I work at", "pronunciation": "/tɾaˈβa.xo en/", "example": "Trabajo en un colegio.", "example_en": "I work at a school.", "note": "", "tags": ["work", "phrase"]},
+          {"target": "soy estudiante", "english": "I'm a student", "pronunciation": "/soj es.tuˈðjan.te/", "example": "Soy estudiante de biología.", "example_en": "I'm a biology student.", "note": "Professions drop the article after ser: soy médico, not soy un médico.", "tags": ["work", "trap"]},
+          {"target": "¿a qué te dedicas?", "english": "what do you do for a living?", "pronunciation": "/a ke te ðeˈði.kas/", "example": "Y tú, ¿a qué te dedicas?", "example_en": "And you, what do you do for a living?", "note": "The natural Spanish way to ask about someone's job.", "tags": ["work", "question"]},
+          {"target": "estoy aprendiendo español", "english": "I'm learning Spanish", "pronunciation": "/esˈtoj a.pɾenˈdjen.do es.paˈɲol/", "example": "Estoy aprendiendo español desde enero.", "example_en": "I've been learning Spanish since January.", "note": "estar plus gerund: the action in progress. Origin uses ser, activity uses estar.", "tags": ["language", "trap"]},
+          {"target": "me gusta", "english": "I like", "pronunciation": "/me ˈɡus.ta/", "example": "Me gusta mucho la música española.", "example_en": "I really like Spanish music.", "note": "Backwards from English: the thing liked is the subject, so plural means gustan.", "tags": ["opinion", "trap"]},
+          {"target": "¿hablas inglés?", "english": "do you speak English?", "pronunciation": "/ˈa.βlas iŋˈɡles/", "example": "Perdona, ¿hablas inglés?", "example_en": "Sorry, do you speak English?", "note": "Word order stays the same; only intonation and the marks change.", "tags": ["language", "question"]}
+        ]
+      }
+    ]
+  },
+  "numbers-time": {
+    "grammar": ["es-gender-articles", "es-questions-negation"],
+    "groups": [
+      {
+        "title": "Numbers you will actually use",
+        "items": [
+          {"target": "uno, dos, tres", "english": "one, two, three", "pronunciation": "/ˈu.no dos tɾes/", "example": "Tres cafés, por favor.", "example_en": "Three coffees, please.", "note": "uno becomes un before a masculine noun: un café.", "tags": ["numbers", "trap"]},
+          {"target": "diez", "english": "ten", "pronunciation": "/djes/", "example": "Son diez euros en total.", "example_en": "That's ten euros in total.", "note": "", "tags": ["numbers"]},
+          {"target": "veinte", "english": "twenty", "pronunciation": "/ˈbejn.te/", "example": "El autobús sale en veinte minutos.", "example_en": "The bus leaves in twenty minutes.", "note": "21 to 29 are written as one word: veintiuno, veintidós.", "tags": ["numbers", "trap"]},
+          {"target": "cien", "english": "one hundred", "pronunciation": "/sjen/", "example": "El billete cuesta cien euros.", "example_en": "The ticket costs a hundred euros.", "note": "cien on its own, ciento when followed by more: ciento veinte.", "tags": ["numbers", "trap"]},
+          {"target": "mil", "english": "a thousand", "pronunciation": "/mil/", "example": "Costó mil quinientos euros.", "example_en": "It cost fifteen hundred euros.", "note": "Never un mil. Spanish uses a comma for decimals and a dot for thousands.", "tags": ["numbers", "trap"]},
+          {"target": "¿cuánto cuesta?", "english": "how much does it cost?", "pronunciation": "/ˈkwan.to ˈkwes.ta/", "example": "¿Cuánto cuesta este bolso?", "example_en": "How much does this bag cost?", "note": "Plural things: ¿cuánto cuestan?", "tags": ["numbers", "question"]}
+        ]
+      },
+      {
+        "title": "Telling the time",
+        "items": [
+          {"target": "¿qué hora es?", "english": "what time is it?", "pronunciation": "/ke ˈo.ɾa es/", "example": "Perdona, ¿qué hora es?", "example_en": "Sorry, what time is it?", "note": "", "tags": ["time", "question"]},
+          {"target": "son las ocho", "english": "it's eight o'clock", "pronunciation": "/son las ˈo.tʃo/", "example": "Son las ocho y cuarto.", "example_en": "It's a quarter past eight.", "note": "Plural son las, except one o'clock: es la una.", "tags": ["time", "trap"]},
+          {"target": "y media", "english": "half past", "pronunciation": "/i ˈme.ðja/", "example": "El tren sale a las diez y media.", "example_en": "The train leaves at half past ten.", "note": "menos cuarto is quarter to.", "tags": ["time"]},
+          {"target": "por la mañana", "english": "in the morning", "pronunciation": "/poɾ la maˈɲa.na/", "example": "Corro por la mañana antes del trabajo.", "example_en": "I run in the morning before work.", "note": "With a clock time it switches to de: a las ocho de la mañana.", "tags": ["time", "trap"]},
+          {"target": "hoy", "english": "today", "pronunciation": "/oj/", "example": "Hoy hace muy buen tiempo.", "example_en": "The weather is lovely today.", "note": "ayer is yesterday, mañana is tomorrow and also morning.", "tags": ["time", "essential"]},
+          {"target": "ahora mismo", "english": "right now", "pronunciation": "/aˈo.ɾa ˈmiz.mo/", "example": "Voy ahora mismo.", "example_en": "I'm going right now.", "note": "In Spain, ahora can also mean in a little while.", "tags": ["time", "trap"]}
+        ]
+      },
+      {
+        "title": "Days, months, dates",
+        "items": [
+          {"target": "el lunes", "english": "on Monday", "pronunciation": "/el ˈlu.nes/", "example": "Nos vemos el lunes.", "example_en": "See you on Monday.", "note": "The article replaces English on. los lunes means every Monday.", "tags": ["calendar", "trap"]},
+          {"target": "el fin de semana", "english": "the weekend", "pronunciation": "/el fin de seˈma.na/", "example": "¿Qué haces este fin de semana?", "example_en": "What are you doing this weekend?", "note": "", "tags": ["calendar"]},
+          {"target": "enero", "english": "January", "pronunciation": "/eˈne.ɾo/", "example": "Mi cumpleaños es en enero.", "example_en": "My birthday is in January.", "note": "Months are lowercase and take en.", "tags": ["calendar", "trap"]},
+          {"target": "la semana que viene", "english": "next week", "pronunciation": "/la seˈma.na ke ˈbje.ne/", "example": "Lo hablamos la semana que viene.", "example_en": "We'll talk about it next week.", "note": "Also la próxima semana. Last week is la semana pasada.", "tags": ["calendar", "phrase"]},
+          {"target": "el uno de mayo", "english": "the first of May", "pronunciation": "/el ˈu.no de ˈma.ʝo/", "example": "Las tiendas cierran el uno de mayo.", "example_en": "The shops close on the first of May.", "note": "Dates use plain numbers, not ordinals, in most of the Spanish-speaking world.", "tags": ["calendar", "trap"]},
+          {"target": "siempre", "english": "always", "pronunciation": "/ˈsjem.pɾe/", "example": "Siempre desayuno en casa.", "example_en": "I always have breakfast at home.", "note": "Family: nunca, a veces, casi nunca, todos los días.", "tags": ["frequency"]}
+        ]
+      }
+    ]
+  }
+}

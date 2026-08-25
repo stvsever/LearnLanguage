@@ -1,0 +1,83 @@
+{
+  "cafe-bar": {
+    "grammar": ["fr-articles-gender", "fr-questions-basic"],
+    "groups": [
+      {
+        "title": "Ordering a drink",
+        "items": [
+          {"target": "je voudrais", "english": "I would like", "pronunciation": "/ʒə vu.dʁɛ/", "example": "Je voudrais un café, s'il vous plaît.", "example_en": "I would like a coffee, please.", "note": "The conditional of vouloir. Je veux sounds blunt in a shop.", "tags": ["ordering", "essential"]},
+          {"target": "un café", "english": "an espresso", "pronunciation": "/œ̃ ka.fe/", "example": "Un café et un verre d'eau, merci.", "example_en": "An espresso and a glass of water, thanks.", "note": "Plain un café means a small black espresso, not a mug of filter coffee.", "tags": ["drinks", "trap"]},
+          {"target": "un café au lait", "english": "a coffee with milk", "pronunciation": "/œ̃ ka.fe o lɛ/", "example": "Pour moi, un café au lait.", "example_en": "For me, a coffee with milk.", "note": "In a cafe you often ask for un crème instead.", "tags": ["drinks"]},
+          {"target": "un thé", "english": "a tea", "pronunciation": "/œ̃ te/", "example": "Un thé vert, s'il vous plaît.", "example_en": "A green tea, please.", "note": "", "tags": ["drinks"]},
+          {"target": "une bière pression", "english": "a draught beer", "pronunciation": "/yn bjɛʁ pʁɛ.sjɔ̃/", "example": "Deux bières pression, s'il vous plaît.", "example_en": "Two draught beers, please.", "note": "Order un demi for the standard 25cl glass.", "tags": ["drinks"]},
+          {"target": "une carafe d'eau", "english": "a jug of tap water", "pronunciation": "/yn ka.ʁaf do/", "example": "Vous pouvez apporter une carafe d'eau ?", "example_en": "Could you bring a jug of tap water?", "note": "Free by law with a meal in France. Bottled water costs money.", "tags": ["drinks", "culture"]}
+        ]
+      },
+      {
+        "title": "Snacks and paying",
+        "items": [
+          {"target": "un croissant", "english": "a croissant", "pronunciation": "/œ̃ kʁwa.sɑ̃/", "example": "Un croissant et un pain au chocolat.", "example_en": "A croissant and a pain au chocolat.", "note": "", "tags": ["food"]},
+          {"target": "un sandwich jambon-beurre", "english": "a ham and butter sandwich", "pronunciation": "/œ̃ sɑ̃d.witʃ ʒɑ̃.bɔ̃ bœʁ/", "example": "Je prends un jambon-beurre à emporter.", "example_en": "I'll take a ham and butter sandwich to go.", "note": "The classic French lunch on the run.", "tags": ["food", "culture"]},
+          {"target": "sur place ou à emporter ?", "english": "eat in or take away?", "pronunciation": "/syʁ plas u a ɑ̃.pɔʁ.te/", "example": "Sur place ou à emporter ? Sur place, merci.", "example_en": "Eat in or take away? Eat in, thanks.", "note": "You will hear this at every counter.", "tags": ["ordering", "phrase"]},
+          {"target": "l'addition, s'il vous plaît", "english": "the bill, please", "pronunciation": "/la.di.sjɔ̃ sil vu plɛ/", "example": "L'addition, s'il vous plaît !", "example_en": "The bill, please!", "note": "In France you ask for it; the waiter will not bring it unprompted.", "tags": ["paying", "culture"]},
+          {"target": "ça fait combien ?", "english": "how much is that?", "pronunciation": "/sa fɛ kɔ̃.bjɛ̃/", "example": "Ça fait combien en tout ?", "example_en": "How much is that in total?", "note": "", "tags": ["paying", "question"]},
+          {"target": "gardez la monnaie", "english": "keep the change", "pronunciation": "/ɡaʁ.de la mɔ.nɛ/", "example": "Voilà, gardez la monnaie.", "example_en": "Here you go, keep the change.", "note": "la monnaie is change, l'argent is money.", "tags": ["paying", "trap"]}
+        ]
+      }
+    ]
+  },
+  "restaurant": {
+    "grammar": ["fr-object-pronouns", "fr-futur-proche"],
+    "groups": [
+      {
+        "title": "Getting a table",
+        "items": [
+          {"target": "réserver une table", "english": "to book a table", "pronunciation": "/ʁe.zɛʁ.ve yn tabl/", "example": "Je voudrais réserver une table pour quatre.", "example_en": "I'd like to book a table for four.", "note": "", "tags": ["booking", "phrase"]},
+          {"target": "une table pour deux", "english": "a table for two", "pronunciation": "/yn tabl puʁ dø/", "example": "Bonsoir, une table pour deux en terrasse ?", "example_en": "Good evening, a table for two on the terrace?", "note": "", "tags": ["booking", "phrase"]},
+          {"target": "la carte", "english": "the menu", "pronunciation": "/la kaʁt/", "example": "On peut voir la carte ?", "example_en": "Could we see the menu?", "note": "Classic false friend: le menu is a fixed-price set meal, la carte is the list of dishes.", "tags": ["menu", "trap"]},
+          {"target": "le plat du jour", "english": "the dish of the day", "pronunciation": "/lə pla dy ʒuʁ/", "example": "Quel est le plat du jour ?", "example_en": "What's the dish of the day?", "note": "Usually the best value at lunch.", "tags": ["menu", "culture"]},
+          {"target": "l'entrée", "english": "the starter", "pronunciation": "/lɑ̃.tʁe/", "example": "En entrée, je prends la soupe.", "example_en": "For a starter, I'll have the soup.", "note": "Not the main course as in American English. The main is le plat.", "tags": ["menu", "trap"]},
+          {"target": "le dessert", "english": "the dessert", "pronunciation": "/lə de.sɛʁ/", "example": "Vous prendrez un dessert ?", "example_en": "Will you be having a dessert?", "note": "", "tags": ["menu"]}
+        ]
+      },
+      {
+        "title": "Ordering and reacting",
+        "items": [
+          {"target": "je prends", "english": "I'll have", "pronunciation": "/ʒə pʁɑ̃/", "example": "Je prends le poulet, s'il vous plaît.", "example_en": "I'll have the chicken, please.", "note": "Present tense, not future: the everyday way to order.", "tags": ["ordering", "phrase"]},
+          {"target": "à point", "english": "medium (steak)", "pronunciation": "/a pwɛ̃/", "example": "Un steak à point, s'il vous plaît.", "example_en": "A medium steak, please.", "note": "The scale runs bleu, saignant, à point, bien cuit.", "tags": ["ordering", "culture"]},
+          {"target": "je suis végétarien", "english": "I am vegetarian", "pronunciation": "/ʒə sɥi ve.ʒe.ta.ʁjɛ̃/", "example": "Je suis végétarien, il y a un plat sans viande ?", "example_en": "I'm vegetarian, is there a dish without meat?", "note": "Feminine végétarienne.", "tags": ["ordering", "phrase"]},
+          {"target": "je suis allergique à", "english": "I am allergic to", "pronunciation": "/ʒə sɥi.z‿a.lɛʁ.ʒik a/", "example": "Je suis allergique aux fruits de mer.", "example_en": "I'm allergic to seafood.", "note": "à plus les becomes aux.", "tags": ["ordering", "phrase"]},
+          {"target": "c'est délicieux", "english": "it's delicious", "pronunciation": "/sɛ de.li.sjø/", "example": "Merci, c'était délicieux.", "example_en": "Thank you, that was delicious.", "note": "", "tags": ["reaction"]},
+          {"target": "on peut payer séparément ?", "english": "can we pay separately?", "pronunciation": "/ɔ̃ pø pe.je se.pa.ʁe.mɑ̃/", "example": "On peut payer séparément, s'il vous plaît ?", "example_en": "Can we pay separately, please?", "note": "on replaces nous in almost all spoken French.", "tags": ["paying", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "cooking-groceries": {
+    "grammar": ["fr-articles-gender", "fr-imperatif"],
+    "groups": [
+      {
+        "title": "At the market",
+        "items": [
+          {"target": "faire les courses", "english": "to do the grocery shopping", "pronunciation": "/fɛʁ le kuʁs/", "example": "Je fais les courses le samedi.", "example_en": "I do the shopping on Saturdays.", "note": "une course alone is a race or an errand.", "tags": ["market", "phrase"]},
+          {"target": "du pain", "english": "some bread", "pronunciation": "/dy pɛ̃/", "example": "Tu peux acheter du pain ?", "example_en": "Can you buy some bread?", "note": "The partitive du/de la/des is obligatory where English says nothing.", "tags": ["food", "trap"]},
+          {"target": "un kilo de", "english": "a kilo of", "pronunciation": "/œ̃ ki.lo də/", "example": "Un kilo de tomates, s'il vous plaît.", "example_en": "A kilo of tomatoes, please.", "note": "After a quantity the partitive collapses to plain de.", "tags": ["quantities", "trap"]},
+          {"target": "les légumes", "english": "the vegetables", "pronunciation": "/le le.ɡym/", "example": "Ces légumes sont de saison.", "example_en": "These vegetables are in season.", "note": "Masculine: un légume.", "tags": ["food"]},
+          {"target": "les fruits", "english": "the fruit", "pronunciation": "/le fʁɥi/", "example": "J'achète des fruits au marché.", "example_en": "I buy fruit at the market.", "note": "Countable in French, so the plural is normal.", "tags": ["food"]},
+          {"target": "c'est frais ?", "english": "is it fresh?", "pronunciation": "/sɛ fʁɛ/", "example": "Le poisson, c'est frais aujourd'hui ?", "example_en": "Is the fish fresh today?", "note": "Feminine fraîche.", "tags": ["market", "question"]}
+        ]
+      },
+      {
+        "title": "In the kitchen",
+        "items": [
+          {"target": "la recette", "english": "the recipe", "pronunciation": "/la ʁə.sɛt/", "example": "C'est la recette de ma grand-mère.", "example_en": "It's my grandmother's recipe.", "note": "False friend: a receipt is un reçu.", "tags": ["cooking", "trap"]},
+          {"target": "couper", "english": "to cut, to chop", "pronunciation": "/ku.pe/", "example": "Coupez les oignons en petits morceaux.", "example_en": "Chop the onions into small pieces.", "note": "Recipes use the vous imperative throughout.", "tags": ["cooking"]},
+          {"target": "faire cuire", "english": "to cook (something)", "pronunciation": "/fɛʁ kɥiʁ/", "example": "Faites cuire les pâtes dix minutes.", "example_en": "Cook the pasta for ten minutes.", "note": "cuisiner is the activity, faire cuire is applying heat.", "tags": ["cooking", "trap"]},
+          {"target": "ajouter", "english": "to add", "pronunciation": "/a.ʒu.te/", "example": "Ajoutez une pincée de sel.", "example_en": "Add a pinch of salt.", "note": "", "tags": ["cooking"]},
+          {"target": "mélanger", "english": "to mix, to stir", "pronunciation": "/me.lɑ̃.ʒe/", "example": "Mélangez bien jusqu'à obtenir une pâte lisse.", "example_en": "Mix well until you get a smooth batter.", "note": "", "tags": ["cooking"]},
+          {"target": "avoir un goût de", "english": "to taste of", "pronunciation": "/a.vwaʁ œ̃ ɡu də/", "example": "Ça a un petit goût de citron.", "example_en": "It has a slight taste of lemon.", "note": "goûter is to taste something deliberately.", "tags": ["taste", "phrase"]}
+        ]
+      }
+    ]
+  }
+}

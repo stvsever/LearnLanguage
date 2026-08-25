@@ -1,0 +1,83 @@
+{
+  "home": {
+    "grammar": ["ru-prepositional", "ru-gender"],
+    "groups": [
+      {
+        "title": "Rooms and spaces",
+        "items": [
+          {"target": "квартира", "english": "flat, apartment", "pronunciation": "/kvɐrˈtʲirə/", "example": "Наша квартира на третьем этаже.", "example_en": "Our flat is on the third floor.", "note": "на plus prepositional for floors: на этаже.", "tags": ["housing", "trap"]},
+          {"target": "кухня", "english": "kitchen", "pronunciation": "/ˈkuxnʲə/", "example": "Мы всегда едим на кухне.", "example_en": "We always eat in the kitchen.", "note": "The kitchen takes на, not в. A Russian oddity worth memorising.", "tags": ["housing", "trap"]},
+          {"target": "спальня", "english": "bedroom", "pronunciation": "/ˈspalʲnʲə/", "example": "Спальня выходит во двор.", "example_en": "The bedroom looks onto the courtyard.", "note": "From спать, to sleep.", "tags": ["housing"]},
+          {"target": "ванная", "english": "bathroom", "pronunciation": "/ˈvanːəjə/", "example": "Ванная в конце коридора.", "example_en": "The bathroom is at the end of the corridor.", "note": "An adjective used as a noun. The toilet is separate: туалет.", "tags": ["housing", "trap"]},
+          {"target": "гостиная", "english": "living room", "pronunciation": "/ɡɐˈsʲtʲinəjə/", "example": "Мы смотрим фильм в гостиной.", "example_en": "We're watching a film in the living room.", "note": "From гость, guest: the room for receiving guests.", "tags": ["housing"]},
+          {"target": "дача", "english": "summer house, country cottage", "pronunciation": "/ˈdatɕə/", "example": "На выходные мы едем на дачу.", "example_en": "We're going to the dacha for the weekend.", "note": "A cultural institution, not simply a second home.", "tags": ["housing", "culture"]}
+        ]
+      },
+      {
+        "title": "Things and where they are",
+        "items": [
+          {"target": "стол", "english": "table", "pronunciation": "/stol/", "example": "Ключи на столе.", "example_en": "The keys are on the table.", "note": "на plus prepositional: на столе. Stress shifts to the ending.", "tags": ["furniture", "trap"]},
+          {"target": "кровать", "english": "bed", "pronunciation": "/krɐˈvatʲ/", "example": "Кот спит под кроватью.", "example_en": "The cat sleeps under the bed.", "note": "Feminine despite ending in a consonant, because of the soft sign.", "tags": ["furniture", "trap"]},
+          {"target": "шкаф", "english": "wardrobe, cupboard", "pronunciation": "/ʂkaf/", "example": "Повесь пальто в шкаф.", "example_en": "Hang the coat in the wardrobe.", "note": "Motion into takes the accusative: в шкаф. Position inside takes в шкафу.", "tags": ["furniture", "trap"]},
+          {"target": "рядом с", "english": "next to", "pronunciation": "/ˈrʲadəm s/", "example": "Лампа рядом с диваном.", "example_en": "The lamp is next to the sofa.", "note": "с plus instrumental: с диваном.", "tags": ["location", "trap"]},
+          {"target": "напротив", "english": "opposite", "pronunciation": "/nɐˈprotʲɪf/", "example": "Булочная напротив моего дома.", "example_en": "The bakery is opposite my building.", "note": "Takes the genitive: напротив дома.", "tags": ["location", "trap"]},
+          {"target": "переезжать", "english": "to move house", "pronunciation": "/pʲɪrʲɪɪˈʐʐatʲ/", "example": "Мы переезжаем в конце месяца.", "example_en": "We're moving at the end of the month.", "note": "A prefixed verb of motion: пере- means across or over.", "tags": ["housing"]}
+        ]
+      }
+    ]
+  },
+  "routines": {
+    "grammar": ["ru-present-conj", "ru-aspect-core"],
+    "groups": [
+      {
+        "title": "An ordinary day",
+        "items": [
+          {"target": "просыпаться", "english": "to wake up", "pronunciation": "/prəsɨˈpatsə/", "example": "Я просыпаюсь в семь часов.", "example_en": "I wake up at seven.", "note": "Imperfective for the habit; проснуться (perfective) for one occasion.", "tags": ["routine", "trap"]},
+          {"target": "вставать", "english": "to get up", "pronunciation": "/fstɐˈvatʲ/", "example": "Она встаёт рано по субботам.", "example_en": "She gets up early on Saturdays.", "note": "Perfective встать. по plus dative means on recurring days.", "tags": ["routine", "trap"]},
+          {"target": "принимать душ", "english": "to take a shower", "pronunciation": "/prʲɪnʲɪˈmatʲ duʂ/", "example": "Я принимаю душ перед выходом.", "example_en": "I take a shower before leaving.", "note": "", "tags": ["routine", "phrase"]},
+          {"target": "одеваться", "english": "to get dressed", "pronunciation": "/ɐdʲɪˈvatsə/", "example": "Одевайся, выходим через пять минут.", "example_en": "Get dressed, we're leaving in five minutes.", "note": "Reflexive: the -ся ending means dressing oneself.", "tags": ["routine", "trap"]},
+          {"target": "идти на работу", "english": "to go to work", "pronunciation": "/ɪdˈtʲi nə rɐˈbotu/", "example": "Я езжу на работу на велосипеде.", "example_en": "I cycle to work.", "note": "идти is on foot, ехать is by vehicle. Work takes на, not в.", "tags": ["routine", "trap"]},
+          {"target": "ложиться спать", "english": "to go to bed", "pronunciation": "/lɐˈʐɨtsə spatʲ/", "example": "Я ложусь спать около полуночи.", "example_en": "I go to bed around midnight.", "note": "Perfective лечь: я лягу спать.", "tags": ["routine", "trap"]}
+        ]
+      },
+      {
+        "title": "Chores and frequency",
+        "items": [
+          {"target": "убираться", "english": "to clean up, to tidy", "pronunciation": "/ʊbʲɪˈratsə/", "example": "Мы убираемся в субботу утром.", "example_en": "We clean on Saturday mornings.", "note": "Also убирать квартиру, without the reflexive.", "tags": ["chores"]},
+          {"target": "мыть посуду", "english": "to wash the dishes", "pronunciation": "/mɨtʲ pɐˈsudu/", "example": "Ты готовишь, я мою посуду.", "example_en": "You cook, I'll wash the dishes.", "note": "посуда is a collective singular: crockery.", "tags": ["chores", "trap"]},
+          {"target": "стирать", "english": "to do the laundry", "pronunciation": "/sʲtʲɪˈratʲ/", "example": "Я стираю по воскресеньям.", "example_en": "I do laundry on Sundays.", "note": "Washing clothes is стирать; washing dishes or yourself is мыть.", "tags": ["chores", "trap"]},
+          {"target": "выносить мусор", "english": "to take out the rubbish", "pronunciation": "/vɨnɐˈsʲitʲ ˈmusər/", "example": "Не забудь вынести мусор.", "example_en": "Don't forget to take out the rubbish.", "note": "", "tags": ["chores", "phrase"]},
+          {"target": "обычно", "english": "usually", "pronunciation": "/ɐˈbɨtɕnə/", "example": "Обычно я обедаю в час.", "example_en": "I usually have lunch at one.", "note": "Sits naturally at the start of the sentence.", "tags": ["frequency"]},
+          {"target": "время от времени", "english": "from time to time", "pronunciation": "/ˈvrʲemʲə ɐt ˈvrʲemʲɪnʲɪ/", "example": "Время от времени я занимаюсь спортом.", "example_en": "From time to time I do some sport.", "note": "время is a neuter noun with an irregular declension.", "tags": ["frequency", "trap"]}
+        ]
+      }
+    ]
+  },
+  "shopping-money": {
+    "grammar": ["ru-accusative", "ru-genitive"],
+    "groups": [
+      {
+        "title": "In the shop",
+        "items": [
+          {"target": "я ищу", "english": "I'm looking for", "pronunciation": "/ja ɪˈɕːu/", "example": "Я ищу тёплое пальто.", "example_en": "I'm looking for a warm coat.", "note": "искать has an irregular stem: ищу, ищешь.", "tags": ["shopping", "trap"]},
+          {"target": "можно померить?", "english": "can I try it on?", "pronunciation": "/ˈmoʐnə pɐˈmʲerʲɪtʲ/", "example": "Мне нравится этот свитер, можно померить?", "example_en": "I like this jumper, can I try it on?", "note": "можно plus infinitive is the everyday may I.", "tags": ["shopping", "phrase"]},
+          {"target": "размер", "english": "size", "pronunciation": "/rɐzˈmʲer/", "example": "У вас есть размер побольше?", "example_en": "Do you have a bigger size?", "note": "по- on a comparative softens it: a bit bigger.", "tags": ["clothes", "trap"]},
+          {"target": "примерочная", "english": "fitting room", "pronunciation": "/prʲɪˈmʲerətɕnəjə/", "example": "Примерочные в конце зала.", "example_en": "The fitting rooms are at the end of the hall.", "note": "Another adjective used as a noun.", "tags": ["clothes"]},
+          {"target": "мне идёт", "english": "it suits me", "pronunciation": "/mnʲe ɪˈdʲot/", "example": "Кажется, этот цвет мне идёт.", "example_en": "I think this colour suits me.", "note": "Literally it goes to me: dative plus идти.", "tags": ["clothes", "trap"]},
+          {"target": "я беру", "english": "I'll take it", "pronunciation": "/ja bʲɪˈru/", "example": "Отлично, я беру.", "example_en": "Great, I'll take it.", "note": "Present tense of брать, used for the decision.", "tags": ["shopping", "phrase"]}
+        ]
+      },
+      {
+        "title": "Money",
+        "items": [
+          {"target": "это слишком дорого", "english": "that's too expensive", "pronunciation": "/ˈetə ˈslʲiʂkəm ˈdorəɡə/", "example": "Сорок евро, это слишком дорого.", "example_en": "Forty euros, that's too expensive.", "note": "Opposite: дёшево.", "tags": ["money", "phrase"]},
+          {"target": "скидка", "english": "discount", "pronunciation": "/ˈskʲitkə/", "example": "На всю коллекцию скидка тридцать процентов.", "example_en": "There's thirty percent off the whole collection.", "note": "распродажа is a sale event.", "tags": ["money"]},
+          {"target": "платить картой", "english": "to pay by card", "pronunciation": "/plɐˈtʲitʲ ˈkartəj/", "example": "Можно заплатить картой?", "example_en": "Can I pay by card?", "note": "The means takes the instrumental: картой, наличными.", "tags": ["money", "trap"]},
+          {"target": "чек", "english": "receipt", "pronunciation": "/tɕek/", "example": "Вам нужен чек?", "example_en": "Do you need the receipt?", "note": "Also a bank cheque, but the receipt sense is far more common.", "tags": ["money", "trap"]},
+          {"target": "сдача", "english": "change (money back)", "pronunciation": "/ˈzdatɕə/", "example": "Сдачи не надо.", "example_en": "Keep the change.", "note": "The genitive сдачи after не надо: negation pulls the genitive.", "tags": ["money", "trap"]},
+          {"target": "копить деньги", "english": "to save money", "pronunciation": "/kɐˈpʲitʲ ˈdʲenʲɡʲɪ/", "example": "Мы копим деньги на поездку.", "example_en": "We're saving money for a trip.", "note": "деньги is plural only. на plus accusative for the purpose.", "tags": ["money", "trap"]}
+        ]
+      }
+    ]
+  }
+}

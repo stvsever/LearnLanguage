@@ -1,0 +1,83 @@
+{
+  "body-basics": {
+    "grammar": ["zh-svo", "zh-negation"],
+    "groups": [
+      {
+        "title": "The body",
+        "items": [
+          {"target": "头", "english": "head", "pronunciation": "tóu", "example": "我头疼。", "example_en": "I have a headache.", "note": "Body part plus 疼: the part is the topic and 疼 the comment.", "tags": ["body", "trap"]},
+          {"target": "手", "english": "hand", "pronunciation": "shǒu", "example": "把手给我。", "example_en": "Give me your hand.", "note": "手臂 is arm. 把 fronts the object before the verb.", "tags": ["body", "trap"]},
+          {"target": "腿", "english": "leg", "pronunciation": "tuǐ", "example": "跑完步腿很酸。", "example_en": "My legs ache after running.", "note": "脚 is the foot. 完 marks the finished action.", "tags": ["body", "trap"]},
+          {"target": "背", "english": "back", "pronunciation": "bèi", "example": "我的背从昨天开始疼。", "example_en": "My back has hurt since yesterday.", "note": "从 ... 开始 means starting from.", "tags": ["body", "trap"]},
+          {"target": "肚子", "english": "stomach, belly", "pronunciation": "dùzi", "example": "我肚子疼。", "example_en": "I have a stomach ache.", "note": "胃 is the organ; 肚子 is the everyday word.", "tags": ["body", "trap"]},
+          {"target": "嗓子", "english": "throat", "pronunciation": "sǎngzi", "example": "我嗓子疼，说话很难。", "example_en": "My throat hurts, it's hard to talk.", "note": "", "tags": ["body"]}
+        ]
+      },
+      {
+        "title": "Basic states and needs",
+        "items": [
+          {"target": "饿", "english": "hungry", "pronunciation": "è", "example": "我很饿，吃点东西吧。", "example_en": "I'm hungry, let's eat something.", "note": "An adjective, so no 是: 我很饿, never 我是饿.", "tags": ["needs", "trap"]},
+          {"target": "渴", "english": "thirsty", "pronunciation": "kě", "example": "你渴吗？冰箱里有水。", "example_en": "Are you thirsty? There's water in the fridge.", "note": "", "tags": ["needs", "trap"]},
+          {"target": "热", "english": "hot", "pronunciation": "rè", "example": "我很热，能开窗户吗？", "example_en": "I'm hot, can you open the window?", "note": "One word covers both you and the weather: 我很热 and 天气很热.", "tags": ["needs", "trap"]},
+          {"target": "困", "english": "sleepy", "pronunciation": "kùn", "example": "我很困，去睡了。", "example_en": "I'm sleepy, I'm off to bed.", "note": "累 is physically tired, 困 is sleepy.", "tags": ["needs", "trap"]},
+          {"target": "我需要", "english": "I need", "pronunciation": "wǒ xūyào", "example": "我需要休息一下。", "example_en": "I need to rest for a bit.", "note": "一下 after a verb means briefly, just a little.", "tags": ["needs", "trap"]},
+          {"target": "洗手间在哪儿？", "english": "where is the toilet?", "pronunciation": "xǐshǒujiān zài nǎr", "example": "不好意思，洗手间在哪儿？", "example_en": "Excuse me, where is the toilet?", "note": "The polite term in any public place.", "tags": ["needs", "essential"]}
+        ]
+      }
+    ]
+  },
+  "doctor-pharmacy": {
+    "grammar": ["zh-result-complements", "zh-le-nuance"],
+    "groups": [
+      {
+        "title": "Describing symptoms",
+        "items": [
+          {"target": "我不舒服", "english": "I don't feel well", "pronunciation": "wǒ bù shūfu", "example": "从早上开始我就不舒服。", "example_en": "I've felt unwell since this morning.", "note": "舒服 is comfortable; 不舒服 covers everything from unwell to uneasy.", "tags": ["symptoms", "trap"]},
+          {"target": "发烧", "english": "to have a fever", "pronunciation": "fāshāo", "example": "他发烧两天了。", "example_en": "He's had a fever for two days.", "note": "Duration goes after the verb, with 了 at the end for ongoing.", "tags": ["symptoms", "trap"]},
+          {"target": "咳嗽", "english": "to cough", "pronunciation": "késou", "example": "我晚上咳嗽得厉害。", "example_en": "I cough badly at night.", "note": "得 introduces how the action is done.", "tags": ["symptoms", "trap"]},
+          {"target": "感冒", "english": "to catch a cold, a cold", "pronunciation": "gǎnmào", "example": "我有点感冒。", "example_en": "I have a bit of a cold.", "note": "Both the verb and the noun. 有点 means somewhat, with a negative flavour.", "tags": ["symptoms", "trap"]},
+          {"target": "这里疼", "english": "it hurts here", "pronunciation": "zhèli téng", "example": "按的时候这里疼。", "example_en": "It hurts here when you press.", "note": "的时候 marks when, and follows the clause.", "tags": ["symptoms", "trap"]},
+          {"target": "多久了？", "english": "for how long?", "pronunciation": "duō jiǔ le", "example": "这种疼多久了？", "example_en": "How long have you had this pain?", "note": "多 plus adjective asks about degree: 多久, 多远, 多大.", "tags": ["symptoms", "trap"]}
+        ]
+      },
+      {
+        "title": "Getting treated",
+        "items": [
+          {"target": "挂号", "english": "to register (at a hospital)", "pronunciation": "guàhào", "example": "先去挂号，然后等叫号。", "example_en": "Register first, then wait to be called.", "note": "The first step at any Chinese hospital, before seeing a doctor.", "tags": ["appointment", "culture"]},
+          {"target": "预约", "english": "to make an appointment", "pronunciation": "yùyuē", "example": "我想预约明天的门诊。", "example_en": "I'd like to book tomorrow's outpatient clinic.", "note": "", "tags": ["appointment"]},
+          {"target": "处方", "english": "prescription", "pronunciation": "chǔfāng", "example": "这是您的处方，去药房拿药。", "example_en": "Here's your prescription, collect the medicine at the pharmacy.", "note": "药方 is also used.", "tags": ["prescription"]},
+          {"target": "吃药", "english": "to take medicine", "pronunciation": "chī yào", "example": "这个药饭后吃。", "example_en": "Take this medicine after meals.", "note": "Chinese EATS medicine, it does not take it.", "tags": ["prescription", "trap"]},
+          {"target": "你需要休息", "english": "you need to rest", "pronunciation": "nǐ xūyào xiūxi", "example": "你需要休息三天。", "example_en": "You need to rest for three days.", "note": "Duration follows the verb: 休息三天.", "tags": ["advice", "trap"]},
+          {"target": "急诊", "english": "emergency department", "pronunciation": "jízhěn", "example": "昨天晚上我们去了急诊。", "example_en": "We went to A and E last night.", "note": "The emergency number in mainland China is 120 for an ambulance.", "tags": ["emergency", "culture"]}
+        ]
+      }
+    ]
+  },
+  "wellbeing-sport": {
+    "grammar": ["zh-duration-order", "zh-potential"],
+    "groups": [
+      {
+        "title": "Moving your body",
+        "items": [
+          {"target": "做运动", "english": "to exercise", "pronunciation": "zuò yùndòng", "example": "我一周做三次运动。", "example_en": "I exercise three times a week.", "note": "Frequency goes before the verb: 一周三次.", "tags": ["sport", "trap"]},
+          {"target": "跑步", "english": "to run, to jog", "pronunciation": "pǎobù", "example": "我沿着河跑步。", "example_en": "I run along the river.", "note": "Verb-object compound: 跑了半个小时步 splits it.", "tags": ["sport", "trap"]},
+          {"target": "健身房", "english": "gym", "pronunciation": "jiànshēnfáng", "example": "我办了健身房的卡。", "example_en": "I got a gym membership.", "note": "办卡 means to get a membership card.", "tags": ["sport", "culture"]},
+          {"target": "锻炼", "english": "to work out, to train", "pronunciation": "duànliàn", "example": "她每天早上锻炼。", "example_en": "She works out every morning.", "note": "Slightly more formal than 做运动.", "tags": ["sport"]},
+          {"target": "身体好", "english": "to be in good health", "pronunciation": "shēntǐ hǎo", "example": "你看起来身体很好！", "example_en": "You look really healthy!", "note": "身体 covers both body and general health.", "tags": ["fitness", "trap"]},
+          {"target": "肌肉酸", "english": "muscles are sore", "pronunciation": "jīròu suān", "example": "今天全身肌肉都很酸。", "example_en": "My whole body aches today.", "note": "酸 literally means sour, and is the standard word for muscle ache.", "tags": ["fitness", "trap"]}
+        ]
+      },
+      {
+        "title": "Rest and stress",
+        "items": [
+          {"target": "睡得好", "english": "to sleep well", "pronunciation": "shuì de hǎo", "example": "我昨晚没睡好。", "example_en": "I didn't sleep well last night.", "note": "The negative of 得 complements uses 没: 没睡好.", "tags": ["sleep", "trap"]},
+          {"target": "休息", "english": "to rest", "pronunciation": "xiūxi", "example": "休息一下吧，你需要。", "example_en": "Take a rest, you need it.", "note": "吧 softens a suggestion into a friendly nudge.", "tags": ["rest", "trap"]},
+          {"target": "压力", "english": "pressure, stress", "pronunciation": "yālì", "example": "工作压力让我很疲惫。", "example_en": "Work stress leaves me exhausted.", "note": "让 plus person plus adjective: makes someone feel something.", "tags": ["stress", "trap"]},
+          {"target": "放松", "english": "to relax", "pronunciation": "fàngsōng", "example": "周末我想好好放松。", "example_en": "I want to properly relax at the weekend.", "note": "好好 before a verb means properly, thoroughly.", "tags": ["stress", "trap"]},
+          {"target": "照顾自己", "english": "to look after yourself", "pronunciation": "zhàogù zìjǐ", "example": "冬天要照顾好自己。", "example_en": "You have to look after yourself in winter.", "note": "好 as a result complement: look after well.", "tags": ["wellbeing", "trap"]},
+          {"target": "保重", "english": "take care", "pronunciation": "bǎozhòng", "example": "路上保重！", "example_en": "Take care on your way!", "note": "A warm parting word, especially for a longer separation.", "tags": ["wellbeing", "culture"]}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "home": {
+    "grammar": ["es-gender-articles", "es-ser-estar-basic"],
+    "groups": [
+      {
+        "title": "Rooms and spaces",
+        "items": [
+          {"target": "el piso", "english": "the flat, the floor", "pronunciation": "/el ˈpi.so/", "example": "Nuestro piso está en el tercero.", "example_en": "Our flat is on the third floor.", "note": "In Spain a flat; in much of Latin America el departamento.", "tags": ["housing", "trap"]},
+          {"target": "la cocina", "english": "the kitchen, the cooking", "pronunciation": "/la koˈsi.na/", "example": "Siempre comemos en la cocina.", "example_en": "We always eat in the kitchen.", "note": "Also cuisine: la cocina italiana.", "tags": ["housing", "trap"]},
+          {"target": "el dormitorio", "english": "the bedroom", "pronunciation": "/el doɾ.miˈto.ɾjo/", "example": "El dormitorio da al patio.", "example_en": "The bedroom looks out on the courtyard.", "note": "Also la habitación, which means room in general too.", "tags": ["housing"]},
+          {"target": "el cuarto de baño", "english": "the bathroom", "pronunciation": "/el ˈkwaɾ.to de ˈba.ɲo/", "example": "El baño está al fondo del pasillo.", "example_en": "The bathroom is at the end of the hall.", "note": "Usually shortened to el baño.", "tags": ["housing"]},
+          {"target": "el salón", "english": "the living room", "pronunciation": "/el saˈlon/", "example": "Vemos una película en el salón.", "example_en": "We're watching a film in the living room.", "note": "In Latin America: la sala.", "tags": ["housing"]},
+          {"target": "el jardín", "english": "the garden", "pronunciation": "/el xaɾˈðin/", "example": "Hay un jardín pequeño detrás.", "example_en": "There's a small garden at the back.", "note": "hay means both there is and there are.", "tags": ["housing", "trap"]}
+        ]
+      },
+      {
+        "title": "Things and where they are",
+        "items": [
+          {"target": "la mesa", "english": "the table", "pronunciation": "/la ˈme.sa/", "example": "Las llaves están sobre la mesa.", "example_en": "The keys are on the table.", "note": "", "tags": ["furniture"]},
+          {"target": "la cama", "english": "the bed", "pronunciation": "/la ˈka.ma/", "example": "El gato duerme debajo de la cama.", "example_en": "The cat sleeps under the bed.", "note": "", "tags": ["furniture"]},
+          {"target": "el armario", "english": "the wardrobe, the cupboard", "pronunciation": "/el aɾˈma.ɾjo/", "example": "Guarda el abrigo en el armario.", "example_en": "Put the coat away in the wardrobe.", "note": "", "tags": ["furniture"]},
+          {"target": "al lado de", "english": "next to", "pronunciation": "/al ˈla.ðo de/", "example": "La lámpara está al lado del sofá.", "example_en": "The lamp is next to the sofa.", "note": "de plus el contracts to del.", "tags": ["location", "trap"]},
+          {"target": "enfrente de", "english": "opposite, across from", "pronunciation": "/enˈfɾen.te de/", "example": "La panadería está enfrente de mi casa.", "example_en": "The bakery is opposite my house.", "note": "", "tags": ["location", "phrase"]},
+          {"target": "mudarse", "english": "to move house", "pronunciation": "/muˈðaɾ.se/", "example": "Nos mudamos a final de mes.", "example_en": "We're moving at the end of the month.", "note": "Reflexive. mover is moving an object, mudarse is moving home.", "tags": ["housing", "trap"]}
+        ]
+      }
+    ]
+  },
+  "routines": {
+    "grammar": ["es-reflexives", "es-present-regular"],
+    "groups": [
+      {
+        "title": "An ordinary day",
+        "items": [
+          {"target": "despertarse", "english": "to wake up", "pronunciation": "/des.peɾˈtaɾ.se/", "example": "Me despierto a las siete.", "example_en": "I wake up at seven.", "note": "Reflexive and stem-changing: me despierto, nos despertamos.", "tags": ["routine", "trap"]},
+          {"target": "levantarse", "english": "to get up", "pronunciation": "/le.βanˈtaɾ.se/", "example": "Se levanta temprano los sábados.", "example_en": "She gets up early on Saturdays.", "note": "Waking is one verb, getting out of bed another.", "tags": ["routine"]},
+          {"target": "ducharse", "english": "to have a shower", "pronunciation": "/duˈtʃaɾ.se/", "example": "Me ducho antes de salir.", "example_en": "I shower before going out.", "note": "", "tags": ["routine"]},
+          {"target": "vestirse", "english": "to get dressed", "pronunciation": "/besˈtiɾ.se/", "example": "Vístete, salimos en cinco minutos.", "example_en": "Get dressed, we're leaving in five minutes.", "note": "In a command the pronoun attaches to the end: vístete.", "tags": ["routine", "trap"]},
+          {"target": "ir al trabajo", "english": "to go to work", "pronunciation": "/iɾ al tɾaˈβa.xo/", "example": "Voy al trabajo en bici.", "example_en": "I cycle to work.", "note": "a plus el becomes al.", "tags": ["routine", "phrase"]},
+          {"target": "acostarse", "english": "to go to bed", "pronunciation": "/a.kosˈtaɾ.se/", "example": "Me acuesto sobre las doce.", "example_en": "I go to bed around midnight.", "note": "Stem-changing: me acuesto, nos acostamos.", "tags": ["routine"]}
+        ]
+      },
+      {
+        "title": "Chores and frequency",
+        "items": [
+          {"target": "hacer la limpieza", "english": "to do the cleaning", "pronunciation": "/aˈseɾ la limˈpje.sa/", "example": "Hacemos la limpieza el sábado por la mañana.", "example_en": "We clean on Saturday mornings.", "note": "Also limpiar la casa.", "tags": ["chores", "phrase"]},
+          {"target": "fregar los platos", "english": "to wash the dishes", "pronunciation": "/fɾeˈɣaɾ los ˈpla.tos/", "example": "Tú cocinas, yo friego los platos.", "example_en": "You cook, I'll wash the dishes.", "note": "In Latin America: lavar los platos.", "tags": ["chores", "phrase"]},
+          {"target": "ordenar", "english": "to tidy up", "pronunciation": "/oɾ.ðeˈnaɾ/", "example": "Ordena tu cuarto antes de salir.", "example_en": "Tidy your room before going out.", "note": "In Spain, recoger is just as common.", "tags": ["chores"]},
+          {"target": "sacar la basura", "english": "to take out the rubbish", "pronunciation": "/saˈkaɾ la baˈsu.ɾa/", "example": "No olvides sacar la basura.", "example_en": "Don't forget to take out the rubbish.", "note": "", "tags": ["chores", "phrase"]},
+          {"target": "normalmente", "english": "usually", "pronunciation": "/noɾ.malˈmen.te/", "example": "Normalmente como a las dos.", "example_en": "I usually eat at two.", "note": "Adverbs are the feminine adjective plus -mente.", "tags": ["frequency"]},
+          {"target": "de vez en cuando", "english": "from time to time", "pronunciation": "/de bes en ˈkwan.do/", "example": "Hago deporte de vez en cuando.", "example_en": "I do some sport from time to time.", "note": "Family: a menudo, a veces, casi nunca.", "tags": ["frequency", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "shopping-money": {
+    "grammar": ["es-clitics-intro", "es-gustar"],
+    "groups": [
+      {
+        "title": "In the shop",
+        "items": [
+          {"target": "estoy buscando", "english": "I'm looking for", "pronunciation": "/esˈtoj busˈkan.do/", "example": "Estoy buscando un abrigo de invierno.", "example_en": "I'm looking for a winter coat.", "note": "buscar needs no preposition: never buscar por.", "tags": ["shopping", "trap"]},
+          {"target": "¿me lo puedo probar?", "english": "can I try it on?", "pronunciation": "/me lo ˈpwe.ðo pɾoˈβaɾ/", "example": "Me gusta este jersey, ¿me lo puedo probar?", "example_en": "I like this jumper, can I try it on?", "note": "Two pronouns stack before the verb, indirect before direct: me lo.", "tags": ["shopping", "trap"]},
+          {"target": "la talla", "english": "the size (clothing)", "pronunciation": "/la ˈta.ʝa/", "example": "¿Tiene una talla más grande?", "example_en": "Do you have a bigger size?", "note": "Shoes use el número, not la talla.", "tags": ["clothes", "trap"]},
+          {"target": "el probador", "english": "the fitting room", "pronunciation": "/el pɾo.βaˈðoɾ/", "example": "Los probadores están al fondo.", "example_en": "The fitting rooms are at the back.", "note": "", "tags": ["clothes"]},
+          {"target": "me queda bien", "english": "it fits me, it suits me", "pronunciation": "/me ˈke.ða ˈbjen/", "example": "Creo que este color me queda bien.", "example_en": "I think this colour suits me.", "note": "Same backwards structure as gustar.", "tags": ["clothes", "trap"]},
+          {"target": "me lo llevo", "english": "I'll take it", "pronunciation": "/me lo ˈʝe.βo/", "example": "Perfecto, me lo llevo.", "example_en": "Perfect, I'll take it.", "note": "The fixed phrase every shop assistant expects.", "tags": ["shopping", "phrase"]}
+        ]
+      },
+      {
+        "title": "Money",
+        "items": [
+          {"target": "es demasiado caro", "english": "it's too expensive", "pronunciation": "/es de.maˈsja.ðo ˈka.ɾo/", "example": "Cuarenta euros es demasiado caro para mí.", "example_en": "Forty euros is too expensive for me.", "note": "Opposite: barato.", "tags": ["money", "phrase"]},
+          {"target": "estar de rebajas", "english": "to be on sale", "pronunciation": "/esˈtaɾ de reˈβa.xas/", "example": "Toda la sección está de rebajas.", "example_en": "The whole section is on sale.", "note": "las rebajas are the official sale periods in Spain.", "tags": ["money", "culture"]},
+          {"target": "pagar con tarjeta", "english": "to pay by card", "pronunciation": "/paˈɣaɾ kon taɾˈxe.ta/", "example": "¿Puedo pagar con tarjeta?", "example_en": "Can I pay by card?", "note": "en efectivo means in cash.", "tags": ["money", "phrase"]},
+          {"target": "el recibo", "english": "the receipt", "pronunciation": "/el reˈsi.βo/", "example": "¿Quiere el recibo?", "example_en": "Would you like the receipt?", "note": "In a restaurant the bill is la cuenta.", "tags": ["money", "trap"]},
+          {"target": "devolver", "english": "to return, to give back", "pronunciation": "/de.βolˈβeɾ/", "example": "Quiero devolver esta camisa.", "example_en": "I want to return this shirt.", "note": "Returning yourself is volver; returning an object is devolver.", "tags": ["money", "trap"]},
+          {"target": "ahorrar", "english": "to save money", "pronunciation": "/a.oˈraɾ/", "example": "Estamos ahorrando para un viaje.", "example_en": "We're saving up for a trip.", "note": "salvar is saving a life, not money.", "tags": ["money", "trap"]}
+        ]
+      }
+    ]
+  }
+}

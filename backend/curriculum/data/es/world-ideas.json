@@ -1,0 +1,83 @@
+{
+  "weather-nature": {
+    "grammar": ["es-ser-estar-basic", "es-ir-a"],
+    "groups": [
+      {
+        "title": "Talking about the weather",
+        "items": [
+          {"target": "hace buen tiempo", "english": "the weather is nice", "pronunciation": "/ˈa.se bwen ˈtjem.po/", "example": "Hace buen tiempo, ¿comemos fuera?", "example_en": "The weather's nice, shall we eat outside?", "note": "Weather uses impersonal hacer, never ser or estar.", "tags": ["weather", "trap"]},
+          {"target": "está lloviendo", "english": "it's raining", "pronunciation": "/esˈta ʝoˈβjen.do/", "example": "Está lloviendo desde esta mañana.", "example_en": "It's been raining since this morning.", "note": "llover is impersonal: only llueve, never yo lluevo.", "tags": ["weather", "trap"]},
+          {"target": "nieva", "english": "it snows, it's snowing", "pronunciation": "/ˈnje.βa/", "example": "Nieva en los Pirineos.", "example_en": "It's snowing in the Pyrenees.", "note": "Stem-changing: nevar becomes nieva.", "tags": ["weather"]},
+          {"target": "hace frío", "english": "it's cold", "pronunciation": "/ˈa.se ˈfɾi.o/", "example": "Hace frío esta mañana, ponte un abrigo.", "example_en": "It's cold this morning, put on a coat.", "note": "tengo frío is about you, hace frío about the air.", "tags": ["weather", "trap"]},
+          {"target": "el tiempo", "english": "the weather, the time", "pronunciation": "/el ˈtjem.po/", "example": "¿Qué tiempo hace ahí?", "example_en": "What's the weather like there?", "note": "One word for both weather and time. la hora is clock time.", "tags": ["weather", "trap"]},
+          {"target": "la previsión", "english": "the forecast", "pronunciation": "/la pɾe.βiˈsjon/", "example": "Según la previsión, mañana va a llover.", "example_en": "According to the forecast, it's going to rain tomorrow.", "note": "", "tags": ["weather"]}
+        ]
+      },
+      {
+        "title": "Seasons and landscape",
+        "items": [
+          {"target": "la primavera", "english": "spring", "pronunciation": "/la pɾi.maˈβe.ɾa/", "example": "En primavera todo vuelve a florecer.", "example_en": "In spring everything blooms again.", "note": "Seasons take en, without an article: en verano, en invierno.", "tags": ["seasons", "trap"]},
+          {"target": "el verano", "english": "summer", "pronunciation": "/el beˈɾa.no/", "example": "Vamos al mar en verano.", "example_en": "We go to the sea in summer.", "note": "", "tags": ["seasons"]},
+          {"target": "la montaña", "english": "the mountain", "pronunciation": "/la monˈta.ɲa/", "example": "Vamos a la montaña este invierno.", "example_en": "We're going to the mountains this winter.", "note": "Singular in Spanish where English uses the plural.", "tags": ["nature", "trap"]},
+          {"target": "el mar", "english": "the sea", "pronunciation": "/el maɾ/", "example": "El mar está tranquilo hoy.", "example_en": "The sea is calm today.", "note": "Usually masculine, but la mar in poetic and sailors' usage.", "tags": ["nature", "trap"]},
+          {"target": "el bosque", "english": "the forest, the wood", "pronunciation": "/el ˈbos.ke/", "example": "Paseamos por el bosque los domingos.", "example_en": "We walk in the forest on Sundays.", "note": "", "tags": ["nature"]},
+          {"target": "el cambio climático", "english": "climate change", "pronunciation": "/el ˈkam.bjo kliˈma.ti.ko/", "example": "El cambio climático está alterando las estaciones.", "example_en": "Climate change is altering the seasons.", "note": "", "tags": ["climate"]}
+        ]
+      }
+    ]
+  },
+  "culture-media": {
+    "grammar": ["es-relative-advanced", "es-aspect-contrast"],
+    "groups": [
+      {
+        "title": "Films, books, music",
+        "items": [
+          {"target": "la película", "english": "the film", "pronunciation": "/la peˈli.ku.la/", "example": "Es una película que he visto tres veces.", "example_en": "It's a film I've seen three times.", "note": "que is the workhorse relative pronoun for both people and things.", "tags": ["film"]},
+          {"target": "en versión original", "english": "in the original language", "pronunciation": "/en beɾˈsjon o.ɾi.xiˈnal/", "example": "Siempre veo las películas en versión original.", "example_en": "I always watch films in the original language.", "note": "Marked VO or VOSE on Spanish cinema listings; Spain dubs heavily.", "tags": ["film", "culture"]},
+          {"target": "los subtítulos", "english": "the subtitles", "pronunciation": "/los suβˈti.tu.los/", "example": "Pon los subtítulos en español.", "example_en": "Put the subtitles in Spanish.", "note": "Watching with target-language subtitles is excellent practice.", "tags": ["film"]},
+          {"target": "la novela", "english": "the novel", "pronunciation": "/la noˈβe.la/", "example": "Empecé una novela policíaca.", "example_en": "I started a crime novel.", "note": "Also a soap opera in Latin America: la telenovela.", "tags": ["books", "trap"]},
+          {"target": "merece la pena", "english": "it's worth it", "pronunciation": "/meˈɾe.se la ˈpe.na/", "example": "La serie es larga pero merece la pena.", "example_en": "The series is long but it's worth it.", "note": "In Latin America: vale la pena.", "tags": ["opinion", "phrase"]},
+          {"target": "te lo recomiendo", "english": "I recommend it to you", "pronunciation": "/te lo re.koˈmjen.do/", "example": "Este libro te lo recomiendo de verdad.", "example_en": "This book, I really recommend it to you.", "note": "Two pronouns stack in a fixed order: te lo.", "tags": ["opinion", "trap"]}
+        ]
+      },
+      {
+        "title": "Free time",
+        "items": [
+          {"target": "tener ganas de", "english": "to feel like", "pronunciation": "/teˈneɾ ˈɡa.nas de/", "example": "Tengo ganas de salir esta noche.", "example_en": "I feel like going out tonight.", "note": "Followed by de plus infinitive.", "tags": ["hobbies", "phrase"]},
+          {"target": "salir con amigos", "english": "to go out with friends", "pronunciation": "/saˈliɾ kon aˈmi.ɣos/", "example": "Salgo con amigos el viernes.", "example_en": "I'm going out with friends on Friday.", "note": "salir con alguien alone can mean to be dating someone.", "tags": ["hobbies", "trap"]},
+          {"target": "el pasatiempo", "english": "the hobby", "pronunciation": "/el pa.saˈtjem.po/", "example": "La fotografía es mi pasatiempo favorito.", "example_en": "Photography is my favourite hobby.", "note": "Also la afición, which suits sport and fandom better.", "tags": ["hobbies"]},
+          {"target": "salir de fiesta", "english": "to go out partying", "pronunciation": "/saˈliɾ de ˈfjes.ta/", "example": "Salimos de fiesta hasta las tres.", "example_en": "We partied until three.", "note": "In Spain, that is an early night.", "tags": ["hobbies", "culture"]},
+          {"target": "¿te apetece?", "english": "do you fancy it?", "pronunciation": "/te a.peˈte.se/", "example": "Un cine esta noche, ¿te apetece?", "example_en": "A film tonight, do you fancy it?", "note": "Backwards like gustar. In Latin America: ¿tienes ganas?", "tags": ["hobbies", "trap"]},
+          {"target": "¿dónde quedamos?", "english": "where shall we meet?", "pronunciation": "/ˈdon.de keˈða.mos/", "example": "¿Dónde quedamos y a qué hora?", "example_en": "Where and when shall we meet?", "note": "quedar means to arrange to meet, a very Spanish use of the verb.", "tags": ["hobbies", "trap"]}
+        ]
+      }
+    ]
+  },
+  "opinions-debate": {
+    "grammar": ["es-subj-full", "es-discourse", "es-conjecture"],
+    "groups": [
+      {
+        "title": "Stating a position",
+        "items": [
+          {"target": "en mi opinión", "english": "in my opinion", "pronunciation": "/en mi o.piˈnjon/", "example": "En mi opinión, es una mala idea.", "example_en": "In my opinion, that's a bad idea.", "note": "Neutral and safe in any register.", "tags": ["opinion", "phrase"]},
+          {"target": "creo que", "english": "I think that", "pronunciation": "/ˈkɾe.o ke/", "example": "Creo que el debate carece de matices.", "example_en": "I think the debate lacks nuance.", "note": "Affirmative creo que takes the indicative; no creo que takes the subjunctive.", "tags": ["opinion", "trap"]},
+          {"target": "me parece que", "english": "it seems to me that", "pronunciation": "/me paˈɾe.se ke/", "example": "Me parece que la situación ha cambiado.", "example_en": "It seems to me the situation has changed.", "note": "Softer than creo, useful when you want room to be wrong.", "tags": ["opinion", "phrase"]},
+          {"target": "estoy convencido de que", "english": "I'm convinced that", "pronunciation": "/esˈtoj kom.benˈsi.ðo de ke/", "example": "Estoy convencido de que va a funcionar.", "example_en": "I'm convinced it's going to work.", "note": "The de is obligatory; dropping it is a common native error too.", "tags": ["opinion", "trap"]},
+          {"target": "dicho esto", "english": "that said", "pronunciation": "/ˈdi.tʃo ˈes.to/", "example": "Dicho esto, el coste sigue siendo un problema.", "example_en": "That said, the cost is still a problem.", "note": "Signals the concession that follows.", "tags": ["connectors"]},
+          {"target": "en cambio", "english": "on the other hand", "pronunciation": "/en ˈkam.bjo/", "example": "Es caro; en cambio, dura muchos años.", "example_en": "It's expensive; on the other hand, it lasts for years.", "note": "sin embargo is the more formal however.", "tags": ["connectors"]}
+        ]
+      },
+      {
+        "title": "Agreeing, conceding, pushing back",
+        "items": [
+          {"target": "estoy de acuerdo contigo", "english": "I agree with you", "pronunciation": "/esˈtoj de aˈkweɾ.ðo konˈti.ɣo/", "example": "Estoy de acuerdo contigo en eso.", "example_en": "I agree with you on that.", "note": "estar de acuerdo, and contigo is a single fused word.", "tags": ["agreement", "trap"]},
+          {"target": "no me convence", "english": "it doesn't convince me", "pronunciation": "/no me komˈben.se/", "example": "Sinceramente, no me convence.", "example_en": "Honestly, it doesn't convince me.", "note": "Polite disagreement without confrontation.", "tags": ["argument", "phrase"]},
+          {"target": "es cierto que ..., pero", "english": "it's true that ..., but", "pronunciation": "/es ˈsjeɾ.to ke ˈpe.ɾo/", "example": "Es cierto que hay riesgo, pero no hacer nada también lo tiene.", "example_en": "It's true there's risk, but doing nothing has risk too.", "note": "The classic concession move in an argument.", "tags": ["argument", "phrase"]},
+          {"target": "es necesario que seamos realistas", "english": "we need to be realistic", "pronunciation": "/es ne.seˈsa.ɾjo ke ˈse.a.mos re.aˈlis.tas/", "example": "Es necesario que seamos realistas con los plazos.", "example_en": "We need to be realistic about the deadlines.", "note": "Impersonal es necesario que forces the subjunctive: seamos.", "tags": ["argument", "trap"]},
+          {"target": "si pudiera elegir, lo haría de otra manera", "english": "if I could choose, I'd do it differently", "pronunciation": "/si puˈðje.ɾa e.leˈxiɾ lo aˈɾi.a de ˈo.tɾa maˈne.ɾa/", "example": "Si pudiera elegir, lo haría de otra manera.", "example_en": "If I could choose, I'd do it differently.", "note": "si plus past subjunctive pairs with the conditional. Never si podría.", "tags": ["argument", "trap"]},
+          {"target": "sea como sea", "english": "be that as it may", "pronunciation": "/ˈse.a ˈko.mo ˈse.a/", "example": "Sea como sea, hay que decidir hoy.", "example_en": "Be that as it may, we have to decide today.", "note": "A fixed doubled-subjunctive expression, common in speech and writing.", "tags": ["connectors", "phrase"]}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "language": "ru",
+  "format": "story",
+  "title": "Забытый зонт",
+  "level": "A2",
+  "scene": "A woman leaves her umbrella on the tram and gets it back from an unexpected place.",
+  "participants": [],
+  "segments": [
+    { "speaker": "", "text": "Вчера утром Аня ехала на работу на трамвае.", "text_en": "Yesterday morning Anya was riding the tram to work." },
+    { "speaker": "", "text": "На улице шёл сильный дождь, и все пассажиры держали зонты.", "text_en": "It was raining hard outside, and all the passengers were holding umbrellas." },
+    { "speaker": "", "text": "Аня читала книгу и не заметила свою остановку.", "text_en": "Anya was reading a book and did not notice her stop." },
+    { "speaker": "", "text": "Она быстро вышла и только на улице поняла, что забыла зонт.", "text_en": "She got off quickly and only outside realised that she had forgotten her umbrella." },
+    { "speaker": "", "text": "Вечером она позвонила в бюро находок, но там ничего не было.", "text_en": "In the evening she called the lost property office, but there was nothing there." },
+    { "speaker": "", "text": "На следующий день Аня пришла в свою кофейню на углу.", "text_en": "The next day Anya came to her coffee shop on the corner." },
+    { "speaker": "", "text": "Бариста улыбнулся и показал на синий зонт около кассы.", "text_en": "The barista smiled and pointed at a blue umbrella near the till." },
+    { "speaker": "", "text": "Оказалось, что водитель трамвая тоже пьёт здесь кофе каждое утро.", "text_en": "It turned out that the tram driver also drinks coffee here every morning." }
+  ],
+  "glossary": [
+    { "word": "зонт", "gloss": "umbrella" },
+    { "word": "остановка", "gloss": "stop (bus, tram)" },
+    { "word": "заметить", "gloss": "to notice (perfective)" },
+    { "word": "выйти", "gloss": "to get off, to go out (perfective of выходить)" },
+    { "word": "бюро находок", "gloss": "lost property office" },
+    { "word": "на следующий день", "gloss": "the next day" },
+    { "word": "показать на", "gloss": "to point at" },
+    { "word": "около кассы", "gloss": "near the till, by the counter" },
+    { "word": "оказалось", "gloss": "it turned out" },
+    { "word": "каждое утро", "gloss": "every morning" }
+  ],
+  "grammar_spotlights": [
+    { "feature": "ru-past", "excerpt": "Аня читала книгу и не заметила свою остановку", "explanation": "Imperfective читала for the ongoing background, perfective заметила for the single missed event." },
+    { "feature": "ru-motion-basic", "excerpt": "ехала на работу на трамвае", "explanation": "ехать for travelling by vehicle in one direction, with на plus prepositional for the means." }
+  ],
+  "questions": [
+    {
+      "question": "Почему Аня не заметила свою остановку?",
+      "choices": ["Она спала", "Она читала книгу", "Она разговаривала по телефону", "В трамвае было темно"],
+      "correct_choice": 1,
+      "explanation": "The text says she was reading a book and did not notice her stop."
+    },
+    {
+      "question": "Что Аня забыла в трамвае?",
+      "choices": ["Книгу", "Сумку", "Зонт", "Телефон"],
+      "correct_choice": 2,
+      "explanation": "Only outside did she realise she had forgotten her umbrella."
+    },
+    {
+      "question": "Что ответили в бюро находок?",
+      "choices": ["Что зонт у них", "Что ничего нет", "Что надо прийти завтра", "Что зонт забрал водитель"],
+      "correct_choice": 1,
+      "explanation": "She called in the evening, but there was nothing there."
+    },
+    {
+      "question": "Как зонт попал в кофейню?",
+      "choices": ["Аня сама его там оставила", "Его принёс водитель трамвая", "Бариста купил такой же", "Его нашёл другой пассажир на улице"],
+      "correct_choice": 1,
+      "explanation": "The last sentence implies the tram driver, who drinks coffee there every morning, brought it."
+    }
+  ]
+}

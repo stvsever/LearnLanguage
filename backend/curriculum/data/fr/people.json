@@ -1,0 +1,83 @@
+{
+  "family": {
+    "grammar": ["fr-articles-gender", "fr-etre-avoir"],
+    "groups": [
+      {
+        "title": "The household",
+        "items": [
+          {"target": "la famille", "english": "the family", "pronunciation": "/la fa.mij/", "example": "Toute la famille était là.", "example_en": "The whole family was there.", "note": "The double l sounds like a y.", "tags": ["family"]},
+          {"target": "les parents", "english": "the parents, the relatives", "pronunciation": "/le pa.ʁɑ̃/", "example": "Mes parents habitent à la campagne.", "example_en": "My parents live in the countryside.", "note": "Also means relatives in general: un parent éloigné, a distant relative.", "tags": ["family", "trap"]},
+          {"target": "le frère", "english": "the brother", "pronunciation": "/lə fʁɛʁ/", "example": "Mon frère est plus jeune que moi.", "example_en": "My brother is younger than me.", "note": "la soeur is sister.", "tags": ["family"]},
+          {"target": "le fils", "english": "the son", "pronunciation": "/lə fis/", "example": "Leur fils a commencé l'école.", "example_en": "Their son has started school.", "note": "The l is silent and the s sounds: /fis/, not /fil/.", "tags": ["family", "trap"]},
+          {"target": "la fille", "english": "the daughter, the girl", "pronunciation": "/la fij/", "example": "Sa fille a huit ans.", "example_en": "His daughter is eight.", "note": "Means both daughter and girl; ma fille is only daughter.", "tags": ["family", "trap"]},
+          {"target": "les grands-parents", "english": "the grandparents", "pronunciation": "/le ɡʁɑ̃.pa.ʁɑ̃/", "example": "On va chez mes grands-parents dimanche.", "example_en": "We're going to my grandparents' on Sunday.", "note": "chez plus a person means at their place.", "tags": ["family"]}
+        ]
+      },
+      {
+        "title": "Couples and close ties",
+        "items": [
+          {"target": "mon mari", "english": "my husband", "pronunciation": "/mɔ̃ ma.ʁi/", "example": "Mon mari cuisine mieux que moi.", "example_en": "My husband cooks better than I do.", "note": "ma femme is my wife, and also means woman.", "tags": ["family"]},
+          {"target": "mon copain", "english": "my boyfriend, my mate", "pronunciation": "/mɔ̃ kɔ.pɛ̃/", "example": "Je sors avec mon copain ce soir.", "example_en": "I'm going out with my boyfriend tonight.", "note": "With mon/ma it means partner; with un it just means a friend.", "tags": ["family", "trap"]},
+          {"target": "célibataire", "english": "single", "pronunciation": "/se.li.ba.tɛʁ/", "example": "Il est célibataire depuis un an.", "example_en": "He's been single for a year.", "note": "Same form for men and women.", "tags": ["family"]},
+          {"target": "marié", "english": "married", "pronunciation": "/ma.ʁje/", "example": "Ils sont mariés depuis dix ans.", "example_en": "They've been married for ten years.", "note": "Agrees: mariée, mariés, mariées.", "tags": ["family"]},
+          {"target": "un ami proche", "english": "a close friend", "pronunciation": "/œ̃.n‿a.mi pʁɔʃ/", "example": "C'est un ami proche de la famille.", "example_en": "He's a close friend of the family.", "note": "", "tags": ["friends"]},
+          {"target": "s'entendre bien avec", "english": "to get along well with", "pronunciation": "/sɑ̃.tɑ̃.dʁə bjɛ̃ a.vɛk/", "example": "Je m'entends bien avec ma soeur.", "example_en": "I get along well with my sister.", "note": "Literally to hear each other well.", "tags": ["friends", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "describing-people": {
+    "grammar": ["fr-comparatives", "fr-articles-gender"],
+    "groups": [
+      {
+        "title": "Appearance",
+        "items": [
+          {"target": "grand", "english": "tall, big", "pronunciation": "/ɡʁɑ̃/", "example": "Elle est grande et mince.", "example_en": "She is tall and slim.", "note": "Before the noun it means great: un grand homme, a great man.", "tags": ["appearance", "trap"]},
+          {"target": "les cheveux bruns", "english": "brown hair", "pronunciation": "/le ʃə.vø bʁœ̃/", "example": "Il a les cheveux bruns et courts.", "example_en": "He has short brown hair.", "note": "French says he HAS the hair, with the definite article.", "tags": ["appearance", "trap"]},
+          {"target": "les yeux verts", "english": "green eyes", "pronunciation": "/le.z‿jø vɛʁ/", "example": "Elle a les yeux verts comme sa mère.", "example_en": "She has green eyes like her mother.", "note": "Singular is un oeil, an irregular pair worth memorising.", "tags": ["appearance"]},
+          {"target": "porter des lunettes", "english": "to wear glasses", "pronunciation": "/pɔʁ.te de ly.nɛt/", "example": "Mon collègue porte des lunettes rondes.", "example_en": "My colleague wears round glasses.", "note": "porter covers both wearing and carrying.", "tags": ["appearance", "phrase"]},
+          {"target": "avoir l'air", "english": "to look, to seem", "pronunciation": "/a.vwaʁ lɛʁ/", "example": "Tu as l'air fatigué.", "example_en": "You look tired.", "note": "Followed directly by an adjective, no comme.", "tags": ["appearance", "phrase"]},
+          {"target": "ressembler à", "english": "to look like", "pronunciation": "/ʁə.sɑ̃.ble a/", "example": "Elle ressemble beaucoup à son père.", "example_en": "She looks a lot like her father.", "note": "Always with à, never a direct object.", "tags": ["appearance", "trap"]}
+        ]
+      },
+      {
+        "title": "Character",
+        "items": [
+          {"target": "gentil", "english": "kind, nice", "pronunciation": "/ʒɑ̃.ti/", "example": "Le voisin est très gentil avec nous.", "example_en": "The neighbour is very kind to us.", "note": "Feminine gentille, with the l sounded.", "tags": ["character"]},
+          {"target": "drôle", "english": "funny", "pronunciation": "/dʁol/", "example": "Ton frère est vraiment drôle.", "example_en": "Your brother is really funny.", "note": "Before the noun it means odd: une drôle d'histoire.", "tags": ["character", "trap"]},
+          {"target": "travailleur", "english": "hard-working", "pronunciation": "/tʁa.va.jœʁ/", "example": "C'est une équipe travailleuse.", "example_en": "It's a hard-working team.", "note": "Feminine travailleuse.", "tags": ["character"]},
+          {"target": "têtu", "english": "stubborn", "pronunciation": "/tɛ.ty/", "example": "Il est têtu comme une mule.", "example_en": "He's as stubborn as a mule.", "note": "", "tags": ["character"]},
+          {"target": "de bonne humeur", "english": "in a good mood", "pronunciation": "/də bɔ.n‿y.mœʁ/", "example": "Elle est de bonne humeur aujourd'hui.", "example_en": "She's in a good mood today.", "note": "Opposite: de mauvaise humeur.", "tags": ["character", "phrase"]},
+          {"target": "avoir bon caractère", "english": "to be even-tempered", "pronunciation": "/a.vwaʁ bɔ̃ ka.ʁak.tɛʁ/", "example": "Malgré tout, elle a bon caractère.", "example_en": "In spite of everything, she's even-tempered.", "note": "caractère is temperament, not a person in a story (that is un personnage).", "tags": ["character", "trap"]}
+        ]
+      }
+    ]
+  },
+  "feelings": {
+    "grammar": ["fr-etre-avoir", "fr-object-pronouns"],
+    "groups": [
+      {
+        "title": "How you feel",
+        "items": [
+          {"target": "content", "english": "happy, pleased", "pronunciation": "/kɔ̃.tɑ̃/", "example": "Je suis content de te voir.", "example_en": "I'm happy to see you.", "note": "Everyday word for happy; heureux is deeper.", "tags": ["emotion"]},
+          {"target": "triste", "english": "sad", "pronunciation": "/tʁist/", "example": "La fin du film est triste.", "example_en": "The end of the film is sad.", "note": "Same form for both genders.", "tags": ["emotion"]},
+          {"target": "fatigué", "english": "tired", "pronunciation": "/fa.ti.ɡe/", "example": "Je suis fatigué, je vais me coucher.", "example_en": "I'm tired, I'm going to bed.", "note": "", "tags": ["emotion"]},
+          {"target": "avoir peur", "english": "to be afraid", "pronunciation": "/a.vwaʁ pœʁ/", "example": "J'ai peur de prendre l'avion.", "example_en": "I'm afraid of flying.", "note": "French HAS fear. Same pattern: avoir faim, soif, froid, chaud, raison.", "tags": ["emotion", "trap"]},
+          {"target": "en avoir marre", "english": "to be fed up", "pronunciation": "/ɑ̃.n‿a.vwaʁ maʁ/", "example": "J'en ai marre de ce bruit.", "example_en": "I'm fed up with this noise.", "note": "Very common in speech, informal but not rude.", "tags": ["emotion", "informal"]},
+          {"target": "ça me stresse", "english": "that stresses me out", "pronunciation": "/sa mə stʁɛs/", "example": "Les réunions le matin, ça me stresse.", "example_en": "Morning meetings stress me out.", "note": "The pronoun me lands before the verb, as always.", "tags": ["emotion", "phrase"]}
+        ]
+      },
+      {
+        "title": "Keeping the conversation alive",
+        "items": [
+          {"target": "ça alors !", "english": "well I never!", "pronunciation": "/sa a.lɔʁ/", "example": "Tu as gagné ? Ça alors !", "example_en": "You won? Well I never!", "note": "Mild, friendly surprise.", "tags": ["reaction"]},
+          {"target": "c'est pas vrai !", "english": "no way!", "pronunciation": "/sɛ pa vʁɛ/", "example": "Il a démissionné ? C'est pas vrai !", "example_en": "He quit? No way!", "note": "Spoken French drops the ne: c'est pas rather than ce n'est pas.", "tags": ["reaction", "informal"]},
+          {"target": "tant mieux", "english": "so much the better", "pronunciation": "/tɑ̃ mjø/", "example": "Il ne pleut plus ? Tant mieux.", "example_en": "It stopped raining? So much the better.", "note": "Opposite: tant pis, too bad.", "tags": ["reaction"]},
+          {"target": "ça dépend", "english": "it depends", "pronunciation": "/sa de.pɑ̃/", "example": "Tu viens ? Ça dépend de l'heure.", "example_en": "Are you coming? It depends on the time.", "note": "dépendre always takes de.", "tags": ["reaction", "phrase"]},
+          {"target": "et toi ?", "english": "and you?", "pronunciation": "/e twa/", "example": "Moi ça va, et toi ?", "example_en": "I'm fine, and you?", "note": "The cheapest way to keep a conversation going.", "tags": ["small talk"]},
+          {"target": "bref", "english": "anyway, in short", "pronunciation": "/bʁɛf/", "example": "Bref, on s'est bien amusés.", "example_en": "Anyway, we had a good time.", "note": "Wraps up a rambling story. Extremely common in speech.", "tags": ["small talk", "informal"]}
+        ]
+      }
+    ]
+  }
+}

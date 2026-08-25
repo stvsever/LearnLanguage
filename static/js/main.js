@@ -10,6 +10,7 @@ import { openSettings } from './views/settings.js';
 import { stopAudio } from './audio.js';
 
 import * as dashboard from './views/dashboard.js';
+import * as topics from './views/topics.js';
 import * as learn from './views/learn.js';
 import * as review from './views/review.js';
 import * as listen from './views/listen.js';
@@ -19,33 +20,48 @@ import * as grammar from './views/grammar.js';
 import * as progress from './views/progress.js';
 
 const VIEWS = {
-  dashboard: { module: dashboard, label: 'Home', icon: 'home' },
-  learn: { module: learn, label: 'Learn', icon: 'sparkles' },
-  review: { module: review, label: 'Review', icon: 'refresh' },
-  listen: { module: listen, label: 'Listen', icon: 'headphones' },
-  speak: { module: speak, label: 'Speak', icon: 'mic' },
-  compose: { module: compose, label: 'Compose', icon: 'penLine' },
-  grammar: { module: grammar, label: 'Grammar', icon: 'book' },
-  progress: { module: progress, label: 'Progress', icon: 'chart' },
+  dashboard: { module: dashboard, label: 'Home', icon: 'home', title: 'Today' },
+  topics: { module: topics, label: 'Topics', icon: 'layers', title: 'Topic library' },
+  learn: { module: learn, label: 'Learn', icon: 'sparkles', title: 'Learn new items' },
+  review: { module: review, label: 'Review', icon: 'refresh', title: 'Review queue' },
+  listen: { module: listen, label: 'Listen', icon: 'headphones', title: 'Listening lab' },
+  speak: { module: speak, label: 'Speak', icon: 'mic', title: 'Speaking lab' },
+  compose: { module: compose, label: 'Compose', icon: 'penLine', title: 'Compose' },
+  grammar: { module: grammar, label: 'Grammar', icon: 'book', title: 'Grammar map' },
+  progress: { module: progress, label: 'Progress', icon: 'chart', title: 'Progress' },
 };
 
-// Old bookmarks/hashes from v2.0
-const ROUTE_ALIASES = { read: 'compose', stats: 'progress' };
+// Old bookmarks/hashes from earlier versions
+const ROUTE_ALIASES = { read: 'compose', stats: 'progress', library: 'topics' };
 
 let currentView = null;
 let mainEl = null;
 
-function navigate(name) {
-  name = ROUTE_ALIASES[name] || name;
-  const target = VIEWS[name] ? name : 'dashboard';
-  if (location.hash !== `#/${target}`) {
-    location.hash = `#/${target}`;
-    return; // hashchange handler re-enters
-  }
-  renderView(target);
+/** Build the hash for a route. Extra segments become view parameters. */
+function routeHash(name, params = []) {
+  const clean = params.filter((p) => p !== null && p !== undefined && p !== '');
+  return `#/${[name, ...clean.map(encodeURIComponent)].join('/')}`;
 }
 
-function renderView(name) {
+export function navigate(name, ...params) {
+  const resolved = ROUTE_ALIASES[name] || name;
+  const target = VIEWS[resolved] ? resolved : 'dashboard';
+  const hash = routeHash(target, params);
+  if (location.hash === hash) {
+    renderView(target, params); // same hash: re-render explicitly, no hashchange
+    return;
+  }
+  location.hash = hash; // hashchange handler re-enters
+}
+
+function resolveRoute() {
+  const raw = location.hash.replace(/^#\/?/, '');
+  const parts = raw.split('/').filter(Boolean).map(decodeURIComponent);
+  const name = ROUTE_ALIASES[parts[0]] || parts[0];
+  return { name: name in VIEWS ? name : 'dashboard', params: parts.slice(1) };
+}
+
+function renderView(name, params = []) {
   VIEWS[currentView]?.module.cleanup?.();
   stopAudio();
   currentView = name;
@@ -53,9 +69,30 @@ function renderView(name) {
     b.classList.toggle('active', b.dataset.view === name);
   });
   mainEl.dataset.view = name;
-  VIEWS[name].module.render(mainEl);
+  const titleEl = document.querySelector('#topbarTitle');
+  if (titleEl) titleEl.textContent = VIEWS[name].title || VIEWS[name].label;
+  try {
+    VIEWS[name].module.render(mainEl, params);
+  } catch (err) {
+    console.error(`View "${name}" failed to render`, err);
+    renderCrash(name, err);
+  }
   refreshBadges();
   mainEl.focus({ preventScroll: true });
+}
+
+/** A view that throws must not leave a blank screen with no way forward. */
+function renderCrash(name, err) {
+  mainEl.replaceChildren(
+    el('div', { class: 'view-inner narrow' },
+      el('div', { class: 'card start-card' },
+        el('div', { class: 'start-icon' }, icon('x', 26)),
+        el('h2', {}, 'This view hit an error'),
+        el('p', { class: 'muted' }, `${name}: ${err?.message || err}`),
+        el('p', { class: 'muted small' }, 'Your data is safe in this browser. Try another view, or reload the page.'),
+        el('div', { class: 'row gap center' },
+          el('button', { class: 'btn btn-primary', onclick: () => navigate('dashboard') }, 'Go to Home'),
+          el('button', { class: 'btn btn-ghost', onclick: () => location.reload() }, 'Reload')))));
 }
 
 function refreshBadges() {
@@ -105,6 +142,7 @@ function buildChrome(root) {
 
   const langBtn = el('button', {
     class: 'lang-switcher', id: 'langSwitcher', type: 'button', dataset: { tour: 'lang' },
+    'aria-haspopup': 'true',
     onclick: openLanguageMenu,
   },
     el('span', { class: 'lang-flag' }, '🌐'),
@@ -122,25 +160,41 @@ function buildChrome(root) {
   root.append(sidebar, el('div', { class: 'content-column' }, topbar, mainEl));
 }
 
+/** Switch target language. Selecting the current one is a no-op, not a reset. */
+function selectLanguage(code, menu) {
+  menu?.remove();
+  if (code === currentLanguage()) return; // already here: never wipe the open view
+  updateSettings({ language: code });
+  refreshBadges();
+  // Drop any view parameters: unit ids and the like belong to the old language.
+  navigate(currentView || 'dashboard');
+  const profile = languageProfile(code);
+  toast(`Switched to ${profile?.display || code}`, 'success');
+}
+
 function openLanguageMenu(event) {
   const existing = document.querySelector('.lang-menu');
   if (existing) { existing.remove(); return; }
-  const rect = event.currentTarget.getBoundingClientRect();
-  const menu = el('div', { class: 'lang-menu' },
-    (ctx.config?.languages || []).map((l) => el('button', {
-      class: `lang-option${l.code === currentLanguage() ? ' active' : ''}`, type: 'button',
-      onclick: () => {
-        updateSettings({ language: l.code });
-        menu.remove();
-        refreshBadges();
-        renderView(currentView || 'dashboard');
-        toast(`Switched to ${l.display}`, 'success');
+  const trigger = event.currentTarget;
+  const rect = trigger.getBoundingClientRect();
+  const menu = el('div', { class: 'lang-menu', role: 'menu' },
+    (ctx.config?.languages || []).map((l) => {
+      const active = l.code === currentLanguage();
+      return el('button', {
+        class: `lang-option${active ? ' active' : ''}`, type: 'button', role: 'menuitem',
+        'aria-current': active ? 'true' : null,
+        onclick: () => selectLanguage(l.code, menu),
       },
-    }, el('span', {}, l.flag), el('span', {}, l.display), el('small', {}, l.nativeName))));
+        el('span', { class: 'lang-option-flag' }, l.flag),
+        el('span', { class: 'lang-option-text' },
+          el('strong', {}, l.display),
+          el('small', {}, l.nativeName)),
+        active ? icon('check', 15) : null);
+    }));
   Object.assign(menu.style, { top: `${rect.bottom + 8}px`, right: `${window.innerWidth - rect.right}px` });
   document.body.append(menu);
   const dismiss = (e) => {
-    if (!menu.contains(e.target) && e.target !== event.currentTarget) {
+    if (!menu.contains(e.target) && e.target !== trigger) {
       menu.remove();
       document.removeEventListener('mousedown', dismiss);
     }
@@ -149,17 +203,28 @@ function openLanguageMenu(event) {
 }
 
 // -- global keyboard nav (g + key) ------------------------------------------
+const GOTO_KEYS = {
+  d: 'dashboard', t: 'topics', l: 'learn', r: 'review',
+  i: 'listen', s: 'speak', c: 'compose', g: 'grammar', p: 'progress',
+};
+
 let pendingG = false;
+let pendingTimer = null;
 document.addEventListener('keydown', (e) => {
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.metaKey || e.ctrlKey) return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
   if (pendingG) {
     pendingG = false;
-    const map = { d: 'dashboard', l: 'learn', r: 'review', c: 'compose', g: 'grammar', p: 'progress' };
-    if (map[e.key.toLowerCase()]) { e.preventDefault(); navigate(map[e.key.toLowerCase()]); }
+    clearTimeout(pendingTimer);
+    const target = GOTO_KEYS[e.key.toLowerCase()];
+    if (target) { e.preventDefault(); navigate(target); }
     return;
   }
-  if (e.key.toLowerCase() === 'g') pendingG = true;
-  setTimeout(() => { pendingG = false; }, 900);
+  if (e.key.toLowerCase() === 'g') {
+    pendingG = true;
+    clearTimeout(pendingTimer);
+    pendingTimer = setTimeout(() => { pendingG = false; }, 1200);
+  }
 });
 
 // -- boot --------------------------------------------------------------------
@@ -168,11 +233,16 @@ async function boot() {
   const root = document.querySelector('#app');
   ctx.navigate = navigate;
   ctx.refreshChrome = () => { refreshBadges(); };
+  // Route parameters belong to the old language, so a repaint drops them.
+  ctx.rerenderView = () => { renderView(currentView || 'dashboard'); };
 
   try {
     ctx.config = await api.config();
   } catch {
-    ctx.config = { languages: [], levels: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'], provider: 'offline', seedLanguages: [] };
+    ctx.config = {
+      languages: [], levels: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+      provider: 'offline', curriculum: {},
+    };
     toast('Could not load server config - is app.py running?', 'error', 8000);
   }
 
@@ -181,15 +251,14 @@ async function boot() {
 
   on('deck', refreshBadges);
   on('stats', refreshBadges);
-  on('imported', () => { refreshBadges(); renderView(currentView || 'dashboard'); });
+  on('imported', () => { refreshBadges(); navigate('dashboard'); });
 
-  const resolveHash = () => {
-    const raw = location.hash.replace('#/', '');
-    const name = ROUTE_ALIASES[raw] || raw;
-    return name in VIEWS ? name : 'dashboard';
-  };
-  window.addEventListener('hashchange', () => renderView(resolveHash()));
-  renderView(resolveHash());
+  window.addEventListener('hashchange', () => {
+    const route = resolveRoute();
+    renderView(route.name, route.params);
+  });
+  const initial = resolveRoute();
+  renderView(initial.name, initial.params);
 
   // Re-check due counts periodically (learning steps come due within minutes)
   setInterval(refreshBadges, 30000);

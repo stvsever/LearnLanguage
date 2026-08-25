@@ -1,0 +1,83 @@
+{
+  "weather-nature": {
+    "grammar": ["zh-le-nuance", "zh-zai-location"],
+    "groups": [
+      {
+        "title": "Talking about the weather",
+        "items": [
+          {"target": "天气好", "english": "the weather is nice", "pronunciation": "tiānqì hǎo", "example": "今天天气很好，我们在外面吃吧。", "example_en": "The weather's nice today, let's eat outside.", "note": "No verb to be with adjectives; 很 fills the gap.", "tags": ["weather", "trap"]},
+          {"target": "下雨", "english": "to rain", "pronunciation": "xiàyǔ", "example": "从早上就一直下雨。", "example_en": "It's been raining since this morning.", "note": "Literally the rain descends. Same pattern for 下雪.", "tags": ["weather", "trap"]},
+          {"target": "下雪", "english": "to snow", "pronunciation": "xiàxuě", "example": "山上在下雪。", "example_en": "It's snowing in the mountains.", "note": "", "tags": ["weather", "trap"]},
+          {"target": "冷", "english": "cold", "pronunciation": "lěng", "example": "今天早上很冷，穿外套吧。", "example_en": "It's cold this morning, put on a coat.", "note": "天气很冷 is about the air, 我很冷 about you.", "tags": ["weather", "trap"]},
+          {"target": "天气", "english": "weather", "pronunciation": "tiānqì", "example": "你们那儿天气怎么样？", "example_en": "What's the weather like where you are?", "note": "怎么样 asks how something is, in any context.", "tags": ["weather", "trap"]},
+          {"target": "天气预报", "english": "weather forecast", "pronunciation": "tiānqì yùbào", "example": "天气预报说明天下雨。", "example_en": "The forecast says it will rain tomorrow.", "note": "The future needs no verb marking; 明天 does the work.", "tags": ["weather", "trap"]}
+        ]
+      },
+      {
+        "title": "Seasons and landscape",
+        "items": [
+          {"target": "春天", "english": "spring", "pronunciation": "chūntiān", "example": "春天花都开了。", "example_en": "In spring all the flowers bloom.", "note": "All four seasons end in 天: 春天, 夏天, 秋天, 冬天.", "tags": ["seasons", "trap"]},
+          {"target": "夏天", "english": "summer", "pronunciation": "xiàtiān", "example": "夏天我们去海边。", "example_en": "In summer we go to the seaside.", "note": "The time word comes before the verb.", "tags": ["seasons", "trap"]},
+          {"target": "山", "english": "mountain", "pronunciation": "shān", "example": "今年冬天我们去山里。", "example_en": "This winter we're going to the mountains.", "note": "里 turns it into a location: 山里, inside the mountains.", "tags": ["nature", "trap"]},
+          {"target": "海", "english": "sea", "pronunciation": "hǎi", "example": "今天海很平静。", "example_en": "The sea is calm today.", "note": "海边 is the seaside, literally the sea's edge.", "tags": ["nature", "trap"]},
+          {"target": "森林", "english": "forest", "pronunciation": "sēnlín", "example": "周日我们在森林里散步。", "example_en": "On Sundays we walk in the forest.", "note": "Both characters are built from 木, tree.", "tags": ["nature", "culture"]},
+          {"target": "气候变化", "english": "climate change", "pronunciation": "qìhòu biànhuà", "example": "气候变化正在改变季节。", "example_en": "Climate change is altering the seasons.", "note": "正在 marks an ongoing process, more formal than 在.", "tags": ["climate", "trap"]}
+        ]
+      }
+    ]
+  },
+  "culture-media": {
+    "grammar": ["zh-guo", "zh-shi-de"],
+    "groups": [
+      {
+        "title": "Films, books, music",
+        "items": [
+          {"target": "电影", "english": "film", "pronunciation": "diànyǐng", "example": "这是我看过三次的电影。", "example_en": "This is a film I've watched three times.", "note": "The relative clause comes BEFORE the noun, with 的.", "tags": ["film", "trap"]},
+          {"target": "原声", "english": "original soundtrack, original audio", "pronunciation": "yuánshēng", "example": "我喜欢看原声电影。", "example_en": "I like watching films in the original language.", "note": "配音 means dubbed.", "tags": ["film", "trap"]},
+          {"target": "字幕", "english": "subtitles", "pronunciation": "zìmù", "example": "把字幕调成中文。", "example_en": "Switch the subtitles to Chinese.", "note": "Chinese TV usually carries Chinese subtitles by default.", "tags": ["film", "culture"]},
+          {"target": "小说", "english": "novel", "pronunciation": "xiǎoshuō", "example": "我开始看一本侦探小说。", "example_en": "I started reading a detective novel.", "note": "本 is the measure word for books.", "tags": ["books", "trap"]},
+          {"target": "值得看", "english": "worth watching", "pronunciation": "zhíde kàn", "example": "这部剧很长，但值得看。", "example_en": "The series is long, but it's worth watching.", "note": "部 is the measure word for films and series.", "tags": ["opinion", "trap"]},
+          {"target": "我推荐你看", "english": "I recommend you watch it", "pronunciation": "wǒ tuījiàn nǐ kàn", "example": "这本书我很推荐你看。", "example_en": "I really recommend you read this book.", "note": "Fronting 这本书 makes it the topic: a very Chinese move.", "tags": ["opinion", "trap"]}
+        ]
+      },
+      {
+        "title": "Free time",
+        "items": [
+          {"target": "想", "english": "to want to, to feel like", "pronunciation": "xiǎng", "example": "今晚我想出去。", "example_en": "I feel like going out tonight.", "note": "想 is softer than 要; it also means to think and to miss someone.", "tags": ["hobbies", "trap"]},
+          {"target": "跟朋友出去", "english": "to go out with friends", "pronunciation": "gēn péngyou chūqù", "example": "星期五我跟朋友出去。", "example_en": "I'm going out with friends on Friday.", "note": "跟 or 和 for with; it comes before the verb.", "tags": ["hobbies", "trap"]},
+          {"target": "爱好", "english": "hobby, interest", "pronunciation": "àihào", "example": "摄影是我最大的爱好。", "example_en": "Photography is my biggest hobby.", "note": "好 is hào here, meaning to be fond of.", "tags": ["hobbies", "trap"]},
+          {"target": "聚会", "english": "gathering, party", "pronunciation": "jùhuì", "example": "我们聚会到凌晨三点。", "example_en": "Our gathering went on until three in the morning.", "note": "到 marks the endpoint.", "tags": ["hobbies"]},
+          {"target": "怎么样？", "english": "how about it?", "pronunciation": "zěnmeyàng", "example": "今晚看电影，怎么样？", "example_en": "A film tonight, how about it?", "note": "Tacked on the end, it turns a plan into an invitation.", "tags": ["hobbies", "trap"]},
+          {"target": "在哪儿见？", "english": "where shall we meet?", "pronunciation": "zài nǎr jiàn", "example": "我们在哪儿见，几点？", "example_en": "Where shall we meet, and at what time?", "note": "The place phrase comes before the verb 见.", "tags": ["hobbies", "trap"]}
+        ]
+      }
+    ]
+  },
+  "opinions-debate": {
+    "grammar": ["zh-conjunction-pairs", "zh-topicalization", "zh-yue"],
+    "groups": [
+      {
+        "title": "Stating a position",
+        "items": [
+          {"target": "我觉得", "english": "I feel, I think", "pronunciation": "wǒ juéde", "example": "我觉得这是个坏主意。", "example_en": "I think that's a bad idea.", "note": "The everyday opinion opener, softer than 我认为.", "tags": ["opinion", "trap"]},
+          {"target": "我认为", "english": "I hold that, I consider", "pronunciation": "wǒ rènwéi", "example": "我认为这个讨论缺乏细节。", "example_en": "I consider this discussion to lack nuance.", "note": "More formal and more committed than 我觉得.", "tags": ["opinion", "trap"]},
+          {"target": "在我看来", "english": "in my view", "pronunciation": "zài wǒ kànlái", "example": "在我看来，情况已经变了。", "example_en": "In my view, the situation has already changed.", "note": "A framing phrase at the start of the sentence.", "tags": ["opinion", "phrase"]},
+          {"target": "我相信", "english": "I believe, I'm confident", "pronunciation": "wǒ xiāngxìn", "example": "我相信这个方法会成功。", "example_en": "I believe this approach will work.", "note": "会 here marks likelihood, not ability.", "tags": ["opinion", "trap"]},
+          {"target": "话虽如此", "english": "that said, even so", "pronunciation": "huà suī rúcǐ", "example": "话虽如此，成本还是个问题。", "example_en": "That said, the cost is still a problem.", "note": "A written-register connector that signals a concession.", "tags": ["connectors", "trap"]},
+          {"target": "另一方面", "english": "on the other hand", "pronunciation": "lìng yì fāngmiàn", "example": "很贵；另一方面，可以用很多年。", "example_en": "It's expensive; on the other hand, it lasts for years.", "note": "Pairs with 一方面, on the one hand.", "tags": ["connectors", "trap"]}
+        ]
+      },
+      {
+        "title": "Agreeing, conceding, pushing back",
+        "items": [
+          {"target": "我同意你的看法", "english": "I agree with your view", "pronunciation": "wǒ tóngyì nǐ de kànfǎ", "example": "这一点我同意你的看法。", "example_en": "On this point I agree with your view.", "note": "同意 takes a direct object, with no preposition.", "tags": ["agreement", "trap"]},
+          {"target": "我不太赞成", "english": "I don't really agree", "pronunciation": "wǒ bú tài zànchéng", "example": "老实说，我不太赞成。", "example_en": "Honestly, I don't really agree.", "note": "不太 softens the disagreement, which matters a lot in Chinese.", "tags": ["argument", "culture"]},
+          {"target": "虽然 ... 但是 ...", "english": "although ..., ... nevertheless", "pronunciation": "suīrán ... dànshì ...", "example": "虽然有风险，但是不做也有风险。", "example_en": "Although there is risk, there is also risk in doing nothing.", "note": "Chinese keeps BOTH halves of the pair, unlike English.", "tags": ["argument", "trap"]},
+          {"target": "我们要现实一点", "english": "we need to be realistic", "pronunciation": "wǒmen yào xiànshí yìdiǎn", "example": "关于时间安排，我们要现实一点。", "example_en": "We need to be a bit more realistic about the schedule.", "note": "一点 after an adjective softens it into a suggestion.", "tags": ["argument", "trap"]},
+          {"target": "如果 ... 的话", "english": "if ...", "pronunciation": "rúguǒ ... dehuà", "example": "如果我能选的话，我会做得不一样。", "example_en": "If I could choose, I'd do it differently.", "note": "如果 opens and 的话 closes the condition; either alone is also fine.", "tags": ["argument", "trap"]},
+          {"target": "不管怎么样", "english": "no matter what, in any case", "pronunciation": "bùguǎn zěnmeyàng", "example": "不管怎么样，今天必须决定。", "example_en": "In any case, we have to decide today.", "note": "不管 plus a question word means regardless of the answer.", "tags": ["connectors", "trap"]}
+        ]
+      }
+    ]
+  }
+}

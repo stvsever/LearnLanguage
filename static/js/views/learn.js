@@ -5,12 +5,16 @@
 //  2. Recognize - low-effort retrieval (meaning MCQ) right after encoding.
 //  3. Produce  - effortful typed recall, the strongest encoding event.
 // Completed items enter the FSRS pipeline and resurface in Review.
+//
+// Material comes from two sources, both first-class: the curated Topics
+// library (works offline) and AI generation on any topic you can describe.
 
-import { el, icon, toast, shuffled, sample, progressSteps } from '../ui.js';
+import { el, icon, toast, shuffled, sample, progressSteps, fmtInt } from '../ui.js';
 import { keySetupCard } from '../keysetup.js';
 import {
   state, cards, newCards, addCards, recordNewCard, recordTime,
   newCardsIntroducedToday, currentLanguage, persist, recordGrammarFeatures,
+  updateSettings, deckCounts,
 } from '../store.js';
 import { api, ApiError } from '../api.js';
 import { speak, preload, feedbackTone } from '../audio.js';
@@ -25,8 +29,6 @@ let keyHandler = null;
 export function render(container) {
   cleanup();
   const lang = currentLanguage();
-  const remaining = Math.max(0, state.settings.newPerDay - newCardsIntroducedToday(lang));
-  const queue = newCards(lang).slice(0, remaining);
 
   if (session && session.lang === lang && session.index < session.queue.length) {
     renderSession(container);
@@ -34,14 +36,21 @@ export function render(container) {
   }
   session = null;
 
+  const pending = newCards(lang);
+  const introduced = newCardsIntroducedToday(lang);
+  const remaining = Math.max(0, state.settings.newPerDay - introduced);
+  const queue = pending.slice(0, remaining);
+
   if (queue.length > 0) {
-    renderStart(container, queue);
+    renderStart(container, queue, pending.length);
+  } else if (pending.length > 0) {
+    // Cards are waiting but today's budget is spent. Say so plainly and offer
+    // both honest options instead of silently showing the generator again.
+    renderCapReached(container, pending, introduced);
   } else {
-    renderGeneratePanel(container, {
-      title: newCards(lang).length > 0 ? 'Daily new-card goal reached' : 'Add learning material',
-      sub: newCards(lang).length > 0
-        ? `You've introduced ${newCardsIntroducedToday(lang)} new cards today. Raise the daily limit in Settings, or add material for tomorrow.`
-        : 'Generate a lesson on any topic - the model builds high-frequency, level-appropriate items with examples and pronunciation.',
+    renderSourcePanel(container, {
+      title: 'Add learning material',
+      sub: 'Pick a curated topic from the library, or describe any subject and let the model build a lesson for it.',
     });
   }
 }
@@ -51,23 +60,59 @@ export function cleanup() {
 }
 
 // -- start screen ------------------------------------------------------------
-function renderStart(container, queue) {
-  const lang = currentLanguage();
+function renderStart(container, queue, pendingTotal) {
+  const extra = pendingTotal - queue.length;
   container.replaceChildren(
     el('div', { class: 'view-inner narrow' },
       el('div', { class: 'card start-card' },
         el('div', { class: 'start-icon' }, icon('sparkles', 28)),
         el('h2', {}, `${queue.length} new item${queue.length === 1 ? '' : 's'} ready`),
         el('p', { class: 'muted' },
-          'Each item is presented with audio and context, then tested immediately - first recognition, then typed recall. Immediate retrieval is what locks new words in.'),
-        el('div', { class: 'row gap center' },
+          'Each item is presented with audio and context, then tested immediately: first recognition, then typed recall. Immediate retrieval is what locks new words in.'),
+        extra > 0 ? el('p', { class: 'muted small' },
+          `${extra} more are queued for the coming days (daily limit: ${state.settings.newPerDay}).`) : null,
+        el('div', { class: 'row gap center wrap' },
           el('button', {
             class: 'btn btn-primary btn-lg', id: 'startLearnBtn',
             onclick: () => startSession(container, queue),
-          }, icon('play', 18), `Start learning`),
-          el('button', { class: 'btn btn-ghost', onclick: () => renderGeneratePanel(container, { title: 'Add learning material', sub: 'Generate another lesson on any topic.', backTo: () => render(container) }) },
-            icon('plus', 16), 'Add material'))),
-    ));
+          }, icon('play', 18), 'Start learning'),
+          el('button', {
+            class: 'btn btn-ghost',
+            onclick: () => renderSourcePanel(container, {
+              title: 'Add more material',
+              sub: 'Browse the curated library or generate a lesson on any topic.',
+              backTo: () => render(container),
+            }),
+          }, icon('plus', 16), 'Add material')))));
+}
+
+function renderCapReached(container, pending, introduced) {
+  container.replaceChildren(
+    el('div', { class: 'view-inner narrow' },
+      el('div', { class: 'card start-card' },
+        el('div', { class: 'start-icon success' }, icon('check', 28)),
+        el('h2', {}, 'Daily new-card goal reached'),
+        el('p', { class: 'muted' },
+          `You introduced ${introduced} new item${introduced === 1 ? '' : 's'} today, which is your limit. ${fmtInt(pending.length)} more are waiting in the deck. Stopping here is the sustainable choice: every new card generates future reviews.`),
+        el('div', { class: 'row gap center wrap' },
+          el('button', { class: 'btn btn-primary', onclick: () => ctx.navigate('review') }, icon('refresh', 16), 'Go to reviews'),
+          el('button', {
+            class: 'btn btn-soft',
+            onclick: () => {
+              const bonus = Math.min(5, pending.length);
+              updateSettings({ newPerDay: state.settings.newPerDay + bonus });
+              toast(`Daily limit raised to ${state.settings.newPerDay}`, 'info');
+              render(container);
+            },
+          }, icon('plus', 16), 'Learn 5 more anyway'),
+          el('button', {
+            class: 'btn btn-ghost',
+            onclick: () => renderSourcePanel(container, {
+              title: 'Add material for tomorrow',
+              sub: 'Queue up the next topic now; it will be waiting when the daily budget resets.',
+              backTo: () => render(container),
+            }),
+          }, 'Add material')))));
 }
 
 function startSession(container, queue) {
@@ -222,30 +267,74 @@ function renderProduce(stage, card, container) {
 
 function renderDone(container) {
   const total = session.queue.length;
-  const lang = session.lang;
   session = null;
   container.replaceChildren(
     el('div', { class: 'view-inner narrow' },
       el('div', { class: 'card start-card' },
         el('div', { class: 'start-icon success' }, icon('check', 28)),
         el('h2', {}, `${total} item${total === 1 ? '' : 's'} learned`),
-        el('p', { class: 'muted' }, 'They are now in your spaced-repetition pipeline and will come up for review in a few minutes - the first retrieval soon after learning matters most.'),
-        el('div', { class: 'row gap center' },
+        el('p', { class: 'muted' }, 'They are now in your spaced-repetition pipeline and will come up for review in a few minutes. The first retrieval soon after learning matters most.'),
+        el('div', { class: 'row gap center wrap' },
           el('button', { class: 'btn btn-primary btn-lg', onclick: () => ctx.navigate('review') }, icon('refresh', 18), 'Go to reviews'),
-          el('button', { class: 'btn btn-ghost', onclick: () => ctx.navigate('dashboard') }, 'Dashboard')))));
+          el('button', { class: 'btn btn-ghost', onclick: () => ctx.navigate('topics') }, icon('layers', 16), 'More topics')))));
 }
 
-// -- generation panel --------------------------------------------------------
-function renderGeneratePanel(container, { title, sub, backTo }) {
+// -- material sources: library first, generation second ----------------------
+function renderSourcePanel(container, { title, sub, backTo }) {
   const lang = currentLanguage();
   const profile = languageProfile(lang);
-  const offline = ctx.config?.provider === 'offline';
-  const hasSeed = ctx.config?.seedLanguages?.includes(lang);
+  const offline = (ctx.config?.provider || 'offline') === 'offline';
+  const stock = ctx.config?.curriculum?.[lang];
+  const hasLibrary = Boolean(stock?.items);
+  const counts = deckCounts(lang);
+
+  container.replaceChildren(
+    el('div', { class: 'view-inner narrow' },
+      el('div', { class: 'source-head' },
+        el('h2', {}, title),
+        el('p', { class: 'muted' }, sub)),
+
+      hasLibrary ? el('section', { class: 'card source-card primary-source' },
+        el('div', { class: 'source-card-head' },
+          el('span', { class: 'source-icon' }, icon('layers', 22)),
+          el('div', {},
+            el('h3', {}, 'Browse the topic library'),
+            el('p', { class: 'muted small' },
+              `${fmtInt(stock.items)} curated ${profile?.display || ''} items in ${stock.units} topics across ${stock.domains} areas of life, with pronunciation, examples, and usage traps. No AI key needed.`))),
+        el('div', { class: 'row gap wrap' },
+          el('button', { class: 'btn btn-primary', onclick: () => ctx.navigate('topics') },
+            icon('layers', 16), 'Open the library'),
+          counts.total === 0 ? el('button', {
+            class: 'btn btn-soft',
+            onclick: (e) => loadStarter(e.currentTarget, container, lang),
+          }, icon('zap', 16), 'Quick start: 24 core items') : null)) : null,
+
+      el('section', { class: 'card source-card' },
+        el('div', { class: 'source-card-head' },
+          el('span', { class: 'source-icon' }, icon('sparkles', 22)),
+          el('div', {},
+            el('h3', {}, 'Generate a lesson'),
+            el('p', { class: 'muted small' },
+              offline
+                ? 'Connect a key to build a lesson on any subject you can describe.'
+                : 'Describe any subject; the model writes high-frequency, level-appropriate items with examples and pronunciation.'))),
+        offline ? keySetupCard({ onConnected: () => renderSourcePanel(container, { title, sub, backTo }) }) : null,
+        generateForm(container, lang, offline)),
+
+      backTo ? el('div', { class: 'row center' },
+        el('button', { class: 'btn btn-ghost', onclick: backTo }, icon('arrowLeft', 16), 'Back')) : null));
+}
+
+function generateForm(container, lang, offline) {
+  const prefill = ctx.learnTopic || '';
+  ctx.learnTopic = null;
 
   const topicInput = el('textarea', {
     class: 'input', rows: 2, maxlength: 280, id: 'topicInput',
-    placeholder: `e.g. ordering at a café, apartment hunting, small talk about work…`,
+    placeholder: 'e.g. ordering at a cafe, apartment hunting, small talk about work…',
   });
+  if (prefill) topicInput.value = prefill;
+
   const levelSelect = el('select', { class: 'input' },
     (ctx.config?.levels || ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']).map((lv) =>
       el('option', { value: lv, selected: lv === state.settings.level || undefined }, lv)));
@@ -253,9 +342,14 @@ function renderGeneratePanel(container, { title, sub, backTo }) {
     [8, 12, 16, 20, 24].map((n) => el('option', { value: n, selected: n === 12 || undefined }, `${n} items`)));
 
   const progressHost = el('div', { class: 'progress-host' });
+  const resultHost = el('div', {});
+
   const generateBtn = el('button', {
-    class: 'btn btn-primary', id: 'generateLessonBtn',
+    class: 'btn btn-primary', id: 'generateLessonBtn', disabled: offline || undefined,
     onclick: async () => {
+      const topic = topicInput.value.trim();
+      if (!topic) { topicInput.focus(); toast('Describe a topic first', 'info'); return; }
+      resultHost.replaceChildren();
       generateBtn.disabled = true;
       generateBtn.replaceChildren(el('span', { class: 'spinner' }), 'Working');
       const model = (state.settings.model || ctx.config?.model || 'the model').split('/').pop();
@@ -266,57 +360,109 @@ function renderGeneratePanel(container, { title, sub, backTo }) {
         'Adding cards to your deck',
       ], [1400, 14000, 5000]);
       progressHost.replaceChildren(progress.root);
+
+      const restore = () => {
+        generateBtn.disabled = false;
+        generateBtn.replaceChildren(icon('sparkles', 16), 'Generate lesson');
+      };
+
+      let pack;
       try {
-        const known = cards(lang).map((c) => c.target).slice(-120);
-        const pack = await api.lesson({
-          topic: topicInput.value.trim(),
+        pack = await api.lesson({
+          topic,
           language: lang,
           level: levelSelect.value,
           count: Number(countSelect.value),
-          knownWords: known,
+          knownWords: cards(lang).map((c) => c.target).slice(-120),
         });
-        const added = addCards(pack.items, pack.topic || topicInput.value.trim(), lang);
+      } catch (err) {
+        progress.fail(err instanceof ApiError && err.status === 503
+          ? 'No AI key configured yet. Connect one above, or use the topic library.'
+          : `Generation failed: ${err.message}`);
+        resultHost.replaceChildren(failureCard(container, err, topic));
+        restore();
+        return;
+      }
+
+      // Storing the pack is a separate failure domain from generating it: a
+      // malformed item must never swallow a lesson that already arrived.
+      try {
+        const report = addCards(pack.items, pack.topic || topic, lang, { level: pack.level });
         recordGrammarFeatures(pack.grammar_features || [], lang);
         progress.finish();
         if (pack.notice) toast(pack.notice, 'info', 6000);
-        toast(`${added} new card${added === 1 ? '' : 's'} added to your deck`, 'success');
-        setTimeout(() => render(container), 600);
+        resultHost.replaceChildren(resultCard(container, report, pack, topic));
+        restore();
       } catch (err) {
-        progress.fail(err instanceof ApiError && err.status === 503
-          ? 'No AI key configured yet. Connect one below.'
-          : `Generation failed: ${err.message}`);
-        generateBtn.disabled = false;
-        generateBtn.replaceChildren(icon('sparkles', 16), 'Generate lesson');
+        console.error('Saving generated cards failed', err);
+        progress.fail(`The lesson arrived but could not be saved: ${err.message}`);
+        resultHost.replaceChildren(failureCard(container, err, topic, pack));
+        restore();
       }
     },
   }, icon('sparkles', 16), 'Generate lesson');
 
-  const seedBtn = hasSeed ? el('button', {
-    class: 'btn btn-soft',
-    onclick: async () => {
-      try {
-        const pack = await api.lesson({ language: lang, seed: true });
-        const added = addCards(pack.items, pack.topic, lang);
-        toast(added > 0 ? `Starter deck loaded - ${added} cards` : 'Starter deck already in your deck', added > 0 ? 'success' : 'info');
-        render(container);
-      } catch (err) {
-        toast(`Could not load starter deck: ${err.message}`, 'error');
-      }
-    },
-  }, icon('layers', 16), `${profile?.display || ''} starter deck`) : null;
+  return el('div', {},
+    el('label', { class: 'field' }, el('span', {}, 'Topic'), topicInput),
+    el('div', { class: 'row gap' },
+      el('label', { class: 'field grow' }, el('span', {}, 'Level (CEFR)'), levelSelect),
+      el('label', { class: 'field grow' }, el('span', {}, 'Amount'), countSelect)),
+    el('div', { class: 'row gap wrap', style: { marginTop: '6px' } }, generateBtn),
+    progressHost,
+    resultHost);
+}
 
-  container.replaceChildren(
-    el('div', { class: 'view-inner narrow' },
-      el('div', { class: 'card generate-card', id: 'generatePanel' },
-        el('h2', {}, title),
-        el('p', { class: 'muted' }, sub),
-        offline ? keySetupCard({ onConnected: () => render(container) }) : null,
-        el('label', { class: 'field' }, el('span', {}, 'Topic'), topicInput),
-        el('div', { class: 'row gap' },
-          el('label', { class: 'field grow' }, el('span', {}, 'Level (CEFR)'), levelSelect),
-          el('label', { class: 'field grow' }, el('span', {}, 'Amount'), countSelect)),
-        el('div', { class: 'row gap wrap', style: { marginTop: '6px' } },
-          generateBtn, seedBtn,
-          backTo ? el('button', { class: 'btn btn-ghost', onclick: backTo }, 'Back') : null),
-        progressHost)));
+/** What actually landed in the deck, stated plainly. Never a silent redirect. */
+function resultCard(container, report, pack, topic) {
+  const lines = [];
+  if (report.added) lines.push(`${report.added} new card${report.added === 1 ? '' : 's'} added`);
+  if (report.duplicates) lines.push(`${report.duplicates} already in your deck`);
+  if (report.skipped) lines.push(`${report.skipped} incomplete item${report.skipped === 1 ? '' : 's'} skipped`);
+
+  return el('div', { class: `result-card${report.added ? ' ok' : ' warn'}` },
+    el('div', { class: 'result-head' },
+      icon(report.added ? 'check' : 'lightbulb', 18),
+      el('strong', {}, report.added
+        ? `“${pack.topic || topic}” is in your deck`
+        : 'Nothing new to add')),
+    el('p', { class: 'muted small' }, lines.join(' · ') || 'No items came back.'),
+    !report.added && report.duplicates
+      ? el('p', { class: 'muted small' }, 'Try a narrower topic, a higher level, or the topic library for material you do not have yet.')
+      : null,
+    el('div', { class: 'row gap wrap' },
+      report.added ? el('button', {
+        class: 'btn btn-primary btn-sm', onclick: () => render(container),
+      }, icon('play', 15), 'Start learning them') : null,
+      el('button', { class: 'btn btn-ghost btn-sm', onclick: () => ctx.navigate('topics') },
+        icon('layers', 15), 'Topic library')));
+}
+
+function failureCard(container, err, topic, pack) {
+  return el('div', { class: 'result-card error' },
+    el('div', { class: 'result-head' }, icon('x', 18), el('strong', {}, 'That did not work')),
+    el('p', { class: 'muted small' }, err?.message || String(err)),
+    pack ? el('p', { class: 'muted small' }, `The model returned ${pack.items?.length || 0} items, but they could not be stored.`) : null,
+    el('div', { class: 'row gap wrap' },
+      el('button', { class: 'btn btn-soft btn-sm', onclick: () => document.querySelector('#generateLessonBtn')?.click() },
+        icon('refresh', 15), 'Try again'),
+      el('button', { class: 'btn btn-ghost btn-sm', onclick: () => ctx.navigate('topics') },
+        icon('layers', 15), 'Use the curated library instead')),
+    topic ? el('p', { class: 'muted small' }, `Topic kept: “${topic}”`) : null);
+}
+
+async function loadStarter(btn, container, lang) {
+  btn.disabled = true;
+  btn.replaceChildren(el('span', { class: 'spinner' }), 'Loading');
+  try {
+    const pack = await api.lesson({ language: lang, seed: true, count: 24 });
+    const report = addCards(pack.items, pack.topic, lang, { level: pack.level });
+    toast(report.added
+      ? `Starter set loaded: ${report.added} cards`
+      : 'Those starter cards are already in your deck', report.added ? 'success' : 'info');
+    render(container);
+  } catch (err) {
+    toast(`Could not load the starter set: ${err.message}`, 'error');
+    btn.disabled = false;
+    btn.replaceChildren(icon('zap', 16), 'Quick start: 24 core items');
+  }
 }

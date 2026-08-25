@@ -9,7 +9,7 @@
 
 **A local-first, science-based language tutor that runs on your machine.** 🧠
 
-Spaced repetition, active recall, listening, speaking, free-form composed input, and an explicit grammar map: one continuous learning loop, with all progress stored privately in your browser.
+A curated topic library of 1,200 hand-written items, spaced repetition, active recall, listening, speaking, free-form composed input, and an explicit grammar map: one continuous learning loop, with all progress stored privately in your browser.
 
 Built for 🇫🇷 **French** (default), 🇪🇸 **Spanish**, 🇷🇺 **Russian**, and 🇨🇳 **Mandarin**. The interface is in English.
 
@@ -29,7 +29,7 @@ python app.py --open
 
 The app opens at `http://127.0.0.1:8765`. A first-run walkthrough shows you around, and the app itself guides you through connecting a free [OpenRouter](https://openrouter.ai/keys) key: paste it once in the interface and it saves automatically, no restart needed.
 
-Without a key the app runs fully offline on curated French starter content. With a key it generates unlimited lessons, compositions, and word glosses in all four languages. Audio always works: free neural voices with a browser fallback.
+**No key is required to learn.** All four languages ship a complete, hand-written curriculum: 24 topics, 300 items each, with pronunciation, example sentences, and usage traps. A key adds unlimited *extra* generation on any topic you can describe. Audio always works: free neural voices with a browser fallback.
 
 🐳 Prefer Docker?
 
@@ -44,7 +44,8 @@ A session follows one loop, and the dashboard always points at the next step:
 
 1. **Review** clears the cards the scheduler predicts you are about to forget.
 2. **Learn** introduces new vocabulary through a guided ladder: see and hear the item in context, recognize its meaning, then type it from memory.
-3. **Compose, Listen, or Speak** turns knowledge into skill with real input and output.
+3. **Topics** is where that vocabulary comes from: pick a topic from the curated library, or generate one.
+4. **Compose, Listen, or Speak** turns knowledge into skill with real input and output.
 
 Ten focused minutes a day beats a weekend marathon; the streak and heatmap keep you honest. 🔥
 
@@ -53,7 +54,8 @@ Ten focused minutes a day beats a weekend marathon; the streak and heatmap keep 
 | Room | What happens there |
 | --- | --- |
 | 🏠 **Home** | The single best next action, streak, weekly activity, deck pipeline, and a rotating "today's structure" nudge |
-| ✨ **Learn** | LLM-generated lessons on any topic at your CEFR level, each item with IPA or pinyin, neural audio, an example sentence, and a usage note |
+| 🗂️ **Topics** | The curated library: 8 areas of life, 24 topics, 300 items per language, browsable and addable without any AI key |
+| ✨ **Learn** | The guided encoding ladder, plus lesson generation on any topic at your CEFR level |
 | 🔄 **Review** | The FSRS spaced-repetition queue with four-grade rating, real interval previews, and exercises that get harder as memories get stronger |
 | 🎧 **Listen** | Dictation and sound-discrimination drills built from your own deck |
 | 🎙️ **Speak** | Pronunciation practice scored word by word with free on-device speech recognition |
@@ -61,9 +63,25 @@ Ten focused minutes a day beats a weekend marathon; the streak and heatmap keep 
 | 📖 **Grammar** | The structural map of your language: pillars, a CEFR roadmap, transfer traps, phonology |
 | 📈 **Progress** | Vocabulary growth, live memory strength, grammar coverage, study mix, consistency, leeches |
 
+## 🗂️ Topics: a taxonomy of what there is to learn
+
+The library is a four-tier tree, and the tiers above the leaf are the same in every language, so learning the map once pays off four times:
+
+```text
+Topics
+└── Domain          8 broad areas of life        "Food & Drink"
+    └── Unit        24 teachable topics, CEFR    "Restaurant & ordering" (A2)
+        └── Group   slices inside the unit       "Getting a table"
+            └── Item  one card                   "la carte" (the menu, not le menu)
+```
+
+Every one of the 1,200 items is hand-written, with IPA (or pinyin with tone marks), a natural example sentence and its translation, and a note only where there is a real trap: a false friend, an irregular form, a register clash, a grammar point. Units also declare the grammar features they exercise, which links the library straight into the Grammar map.
+
+Browse by area, filter by CEFR level, search across every topic and word at once, tick exactly the items you want, and they flow into the same spaced-repetition pipeline as anything the model writes. Per-unit progress rings show how much of each topic is already in your deck. With a key connected, any unit can also be extended with fresh generated items that stay inside its scope and skip everything you already have.
+
 ## ✍️ Compose: describe it, get it
 
-Type any idea: a scene, a rant, a voicemail, a news piece. A single LLM call classifies the best presentation format (dialogue, monologue, story, or article) and writes it at your level, deliberately weaving in the grammar structures you are currently learning. While it works, the interface shows every underlying step, from format classification to validation.
+Type any idea: a scene, a rant, a voicemail, a news piece. Leave everything on Auto and a single LLM call classifies the best presentation format (dialogue, monologue, story, or article) and writes it at your level, deliberately weaving in the grammar structures you are currently learning. Or take control: pin the format, the register (casual, neutral, formal), the number of speakers, up to four grammar structures that must appear, and the vocabulary to weave in, drawn from the cards due for review. While it works, the interface shows every underlying step, from format classification to validation.
 
 ![Compose: a generated dialogue](docs/images/learnlanguage-compose.png)
 
@@ -108,7 +126,10 @@ backend/
 ├── content.py          # lessons, format-classified compositions, glosses
 ├── models.py           # pydantic schemas; all LLM output is validated
 ├── tts.py              # neural text-to-speech with a content-addressed disk cache
-└── seed/               # curated French starter deck + composition (offline mode)
+├── curriculum/
+│   ├── taxonomy.py     # the language-neutral tree: domains, units, CEFR, path
+│   └── data/<lang>/    # 1,200 hand-written items, one file per domain
+└── seed/               # a curated composition per language (offline mode)
 static/
 ├── css/                # design system: tokens, components, views (light + dark)
 └── js/
@@ -117,7 +138,7 @@ static/
     ├── store.js        # localStorage state, migrations, grammar tracking
     ├── audio.js        # TTS client, per-speaker voices, Web Speech fallback
     ├── keysetup.js     # in-app OpenRouter key onboarding (paste, auto-save)
-    └── views/          # home, learn, review, listen, speak,
+    └── views/          # home, topics, learn, review, listen, speak,
                         #   compose, grammar, progress, settings
 tests/                  # Python unit tests + Node tests for the JS engines
 ```
@@ -126,9 +147,10 @@ Design decisions:
 
 - **No build step.** The frontend is native ES modules: open the app, edit a file, refresh.
 - **Local-first.** All learner data lives in `localStorage`, exportable as JSON from Settings. The server only generates content and audio.
-- **LLM-agnostic.** [OpenRouter](https://openrouter.ai) first (default model `deepseek/deepseek-v4-flash-0731`, switchable in Settings to a curated list or any custom slug), OpenAI as fallback, curated seed content offline. Every response is validated against pydantic schemas with one repair retry.
+- **The LLM is optional.** The curriculum is the spine; generation is the extension. When a key is missing or a call fails, a free-form topic is matched to the closest curated unit rather than returning nothing. [OpenRouter](https://openrouter.ai) first (default model `deepseek/deepseek-v4-flash-0731`, switchable in Settings to a curated list or any custom slug), OpenAI as fallback. Every response is validated against pydantic schemas with one repair retry.
 - **Free TTS.** Microsoft Edge neural voices via `edge-tts`, cached on disk, with the browser's Web Speech API as an offline fallback.
-- **Honest feedback.** Long-running generation shows its underlying steps; every settings change confirms itself with a visible save indicator.
+- **Honest feedback.** Long-running generation shows its underlying steps and then reports exactly what landed in your deck: added, already present, skipped. Generation failures and storage failures are separate paths, so a text that arrived is never lost because one item was malformed.
+- **Routable state.** Every view is a hash route, and the library carries its position (`#/topics/food/restaurant`), so the back button, bookmarks, and deep links all work.
 
 ## ⚙️ Configuration
 
@@ -146,12 +168,18 @@ The easiest path is in-app: **Settings → AI model** connects your OpenRouter k
 ## 🧪 Tests
 
 ```bash
-# Backend: grammar model integrity, schemas, seeds, key setup (no network)
+# Backend: grammar model, curriculum integrity, schemas, offline fallbacks,
+# key setup (47 tests, no network)
 python -m unittest discover -s tests -v
 
-# Frontend engines: FSRS scheduler + grading (Node 20 or newer)
-node --test tests/frontend.test.mjs
+# Frontend engines: FSRS scheduler, grading, deck store (27 tests, Node 20+)
+node --test tests/*.test.mjs
 ```
+
+The curriculum tests are the load-bearing ones: they assert that every language
+covers the whole taxonomy, that no item is missing a field, that no card target
+repeats across units (which would silently collapse two cards into one), and
+that every declared grammar id exists in the grammar model.
 
 ## 🔒 Privacy
 

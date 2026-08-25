@@ -1,0 +1,83 @@
+{
+  "family": {
+    "grammar": ["ru-gender", "ru-u-menya"],
+    "groups": [
+      {
+        "title": "The household",
+        "items": [
+          {"target": "семья", "english": "family", "pronunciation": "/sʲɪˈmʲja/", "example": "Вся семья была там.", "example_en": "The whole family was there.", "note": "The soft sign plus я gives a y sound before the vowel.", "tags": ["family"]},
+          {"target": "родители", "english": "parents", "pronunciation": "/rɐˈdʲitʲɪlʲɪ/", "example": "Мои родители живут в деревне.", "example_en": "My parents live in the countryside.", "note": "Plural only in this sense. родственники means relatives.", "tags": ["family", "trap"]},
+          {"target": "брат", "english": "brother", "pronunciation": "/brat/", "example": "Мой брат младше меня.", "example_en": "My brother is younger than me.", "note": "Irregular plural: братья.", "tags": ["family", "trap"]},
+          {"target": "сестра", "english": "sister", "pronunciation": "/sʲɪˈstra/", "example": "У меня две сестры.", "example_en": "I have two sisters.", "note": "After 2, 3, 4 the noun takes the genitive singular: две сестры.", "tags": ["family", "trap"]},
+          {"target": "сын", "english": "son", "pronunciation": "/sɨn/", "example": "Их сын пошёл в школу.", "example_en": "Their son started school.", "note": "Irregular plural: сыновья.", "tags": ["family", "trap"]},
+          {"target": "бабушка и дедушка", "english": "grandmother and grandfather", "pronunciation": "/ˈbabuʂkə i ˈdʲeduʂkə/", "example": "В воскресенье едем к бабушке и дедушке.", "example_en": "On Sunday we're going to our grandparents'.", "note": "к plus dative means towards or to someone's place.", "tags": ["family"]}
+        ]
+      },
+      {
+        "title": "Couples and close ties",
+        "items": [
+          {"target": "муж", "english": "husband", "pronunciation": "/muʂ/", "example": "Мой муж готовит лучше меня.", "example_en": "My husband cooks better than I do.", "note": "жена is wife. женщина is woman, a different word.", "tags": ["family", "trap"]},
+          {"target": "девушка", "english": "girlfriend, young woman", "pronunciation": "/ˈdʲevuʂkə/", "example": "Я иду в кино со своей девушкой.", "example_en": "I'm going to the cinema with my girlfriend.", "note": "With a possessive it means girlfriend; on its own, a young woman. Also how you address a waitress.", "tags": ["family", "culture"]},
+          {"target": "замужем", "english": "married (of a woman)", "pronunciation": "/ˈzamuʐɨm/", "example": "Она замужем уже десять лет.", "example_en": "She's been married for ten years.", "note": "A man is женат. The two are not interchangeable.", "tags": ["family", "trap"]},
+          {"target": "друг", "english": "friend", "pronunciation": "/druk/", "example": "Он мой близкий друг.", "example_en": "He's a close friend of mine.", "note": "Irregular plural друзья. A woman friend is подруга.", "tags": ["friends", "trap"]},
+          {"target": "знакомый", "english": "acquaintance", "pronunciation": "/znɐˈkomɨj/", "example": "Это просто знакомый, не друг.", "example_en": "That's just an acquaintance, not a friend.", "note": "Russians draw a sharp line between друг and знакомый.", "tags": ["friends", "culture"]},
+          {"target": "хорошо ладить с", "english": "to get along well with", "pronunciation": "/xərɐˈʂo ˈladʲɪtʲ s/", "example": "Я хорошо лажу с сестрой.", "example_en": "I get along well with my sister.", "note": "с takes the instrumental: с сестрой.", "tags": ["friends", "trap"]}
+        ]
+      }
+    ]
+  },
+  "describing-people": {
+    "grammar": ["ru-gender", "ru-instrumental"],
+    "groups": [
+      {
+        "title": "Appearance",
+        "items": [
+          {"target": "высокий", "english": "tall", "pronunciation": "/vɨˈsokʲɪj/", "example": "Она высокая и стройная.", "example_en": "She is tall and slim.", "note": "Adjectives agree: высокий, высокая, высокое, высокие.", "tags": ["appearance", "trap"]},
+          {"target": "тёмные волосы", "english": "dark hair", "pronunciation": "/ˈtʲomnɨje ˈvoləsɨ/", "example": "У него тёмные короткие волосы.", "example_en": "He has short dark hair.", "note": "волосы is plural. Possession uses у него, not он имеет.", "tags": ["appearance", "trap"]},
+          {"target": "зелёные глаза", "english": "green eyes", "pronunciation": "/zʲɪˈlʲonɨje ɡlɐˈza/", "example": "У неё зелёные глаза, как у матери.", "example_en": "She has green eyes, like her mother.", "note": "Singular глаз, plural глаза with a stress shift.", "tags": ["appearance"]},
+          {"target": "носить очки", "english": "to wear glasses", "pronunciation": "/nɐˈsʲitʲ ɐtɕˈkʲi/", "example": "Мой коллега носит круглые очки.", "example_en": "My colleague wears round glasses.", "note": "очки is plural only. носить is habitual; надеть is the one-off act of putting on.", "tags": ["appearance", "trap"]},
+          {"target": "выглядеть", "english": "to look, to appear", "pronunciation": "/ˈvɨɡlʲɪdʲɪtʲ/", "example": "Ты выглядишь усталым.", "example_en": "You look tired.", "note": "The following adjective goes into the instrumental: усталым.", "tags": ["appearance", "trap"]},
+          {"target": "похож на", "english": "similar to, looks like", "pronunciation": "/pɐˈxoʂ na/", "example": "Она очень похожа на отца.", "example_en": "She looks a lot like her father.", "note": "Short adjective, agreeing with the subject: похож, похожа, похожи.", "tags": ["appearance", "trap"]}
+        ]
+      },
+      {
+        "title": "Character",
+        "items": [
+          {"target": "добрый", "english": "kind", "pronunciation": "/ˈdobrɨj/", "example": "Сосед очень добрый человек.", "example_en": "The neighbour is a very kind person.", "note": "The same root as in доброе утро.", "tags": ["character"]},
+          {"target": "весёлый", "english": "cheerful, fun", "pronunciation": "/vʲɪˈsʲolɨj/", "example": "Твой брат очень весёлый.", "example_en": "Your brother is a lot of fun.", "note": "The ё is always stressed, and always written that way in learners' texts.", "tags": ["character"]},
+          {"target": "трудолюбивый", "english": "hard-working", "pronunciation": "/trudəlʲʉˈbʲivɨj/", "example": "Это очень трудолюбивая команда.", "example_en": "It's a very hard-working team.", "note": "Built from труд (labour) and любить (to love).", "tags": ["character"]},
+          {"target": "упрямый", "english": "stubborn", "pronunciation": "/ʊˈprʲamɨj/", "example": "Он упрямый как осёл.", "example_en": "He's as stubborn as a donkey.", "note": "The Russian comparison uses a donkey, not a mule.", "tags": ["character", "culture"]},
+          {"target": "в хорошем настроении", "english": "in a good mood", "pronunciation": "/f xɐˈroʂɨm nəstrɐˈjenʲɪɪ/", "example": "Она сегодня в хорошем настроении.", "example_en": "She's in a good mood today.", "note": "в plus prepositional. The opposite: в плохом настроении.", "tags": ["character", "trap"]},
+          {"target": "у него хороший характер", "english": "he has a good temperament", "pronunciation": "/u nʲɪˈvo xɐˈroʂɨj xɐˈraktʲɪr/", "example": "Несмотря ни на что, у неё хороший характер.", "example_en": "In spite of everything, she has a good temperament.", "note": "персонаж is a character in a story.", "tags": ["character", "trap"]}
+        ]
+      }
+    ]
+  },
+  "feelings": {
+    "grammar": ["ru-dative-exp", "ru-u-menya"],
+    "groups": [
+      {
+        "title": "How you feel",
+        "items": [
+          {"target": "рад", "english": "glad", "pronunciation": "/rat/", "example": "Я рад тебя видеть.", "example_en": "I'm glad to see you.", "note": "Short adjective: рад, рада, рады.", "tags": ["emotion", "trap"]},
+          {"target": "грустно", "english": "sad, sadly", "pronunciation": "/ˈɡrusnə/", "example": "Мне грустно от этой новости.", "example_en": "That news makes me sad.", "note": "Impersonal: мне грустно, literally to me it is sad.", "tags": ["emotion", "trap"]},
+          {"target": "устал", "english": "tired", "pronunciation": "/ʊˈstal/", "example": "Я устал, пойду спать.", "example_en": "I'm tired, I'm going to sleep.", "note": "Literally the past tense of устать, to get tired. A woman says устала.", "tags": ["emotion", "trap"]},
+          {"target": "бояться", "english": "to be afraid", "pronunciation": "/bɐˈjatsə/", "example": "Я боюсь летать на самолёте.", "example_en": "I'm afraid of flying.", "note": "Reflexive verb, and its object takes the genitive: боюсь темноты.", "tags": ["emotion", "trap"]},
+          {"target": "мне надоело", "english": "I'm fed up", "pronunciation": "/mnʲe nədɐˈjelə/", "example": "Мне надоел этот шум.", "example_en": "I'm fed up with this noise.", "note": "The thing is the subject and agrees with it: надоел, надоела, надоело.", "tags": ["emotion", "trap"]},
+          {"target": "нервничать", "english": "to be nervous, to stress", "pronunciation": "/ˈnʲervnʲɪtɕɪtʲ/", "example": "Я нервничаю перед совещанием.", "example_en": "I get nervous before meetings.", "note": "перед takes the instrumental.", "tags": ["emotion"]}
+        ]
+      },
+      {
+        "title": "Keeping the conversation alive",
+        "items": [
+          {"target": "да ладно!", "english": "no way! come on!", "pronunciation": "/da ˈladnə/", "example": "Он уволился? Да ладно!", "example_en": "He quit? No way!", "note": "Friendly disbelief. ладно on its own means fine, all right.", "tags": ["reaction", "informal"]},
+          {"target": "серьёзно?", "english": "seriously?", "pronunciation": "/sʲɪrʲˈjoznə/", "example": "Серьёзно? Я не знал.", "example_en": "Seriously? I didn't know.", "note": "", "tags": ["reaction"]},
+          {"target": "тем лучше", "english": "so much the better", "pronunciation": "/tʲem ˈlutɕʂɨ/", "example": "Дождь кончился? Тем лучше.", "example_en": "The rain stopped? So much the better.", "note": "The instrumental тем plus a comparative.", "tags": ["reaction"]},
+          {"target": "смотря когда", "english": "it depends when", "pronunciation": "/smɐˈtrʲa kɐɡˈda/", "example": "Придёшь? Смотря когда.", "example_en": "Will you come? It depends when.", "note": "смотря plus a question word is the Russian it depends.", "tags": ["reaction", "trap"]},
+          {"target": "а ты?", "english": "and you?", "pronunciation": "/a tɨ/", "example": "У меня всё хорошо, а ты?", "example_en": "I'm doing fine, and you?", "note": "а contrasts, и adds. Using и here would sound wrong.", "tags": ["small talk", "trap"]},
+          {"target": "короче", "english": "anyway, in short", "pronunciation": "/kɐˈrotɕɪ/", "example": "Короче, мы хорошо провели время.", "example_en": "Anyway, we had a good time.", "note": "Literally shorter. Everywhere in spoken Russian.", "tags": ["small talk", "informal"]}
+        ]
+      }
+    ]
+  }
+}

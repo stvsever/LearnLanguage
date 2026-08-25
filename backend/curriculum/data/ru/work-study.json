@@ -1,0 +1,83 @@
+{
+  "jobs": {
+    "grammar": ["ru-instrumental", "ru-present-conj"],
+    "groups": [
+      {
+        "title": "What people do",
+        "items": [
+          {"target": "работа", "english": "work, job", "pronunciation": "/rɐˈbotə/", "example": "Работа начинается в девять.", "example_en": "Work starts at nine.", "note": "Work as a place takes на: на работе, на работу.", "tags": ["work", "trap"]},
+          {"target": "должность", "english": "position, post", "pronunciation": "/ˈdolʐnəsʲtʲ/", "example": "Она получила должность в Казани.", "example_en": "She got a position in Kazan.", "note": "Feminine because of the soft sign.", "tags": ["work", "trap"]},
+          {"target": "учитель", "english": "teacher", "pronunciation": "/ʊˈtɕitʲɪlʲ/", "example": "Мой отец учитель.", "example_en": "My father is a teacher.", "note": "No verb to be in the present, and no article.", "tags": ["jobs", "trap"]},
+          {"target": "врач", "english": "doctor", "pronunciation": "/vratɕ/", "example": "Она работает врачом в больнице.", "example_en": "She works as a doctor in a hospital.", "note": "работать plus instrumental: работает врачом.", "tags": ["jobs", "trap"]},
+          {"target": "инженер", "english": "engineer", "pronunciation": "/ɪnʐɨˈnʲer/", "example": "Он инженер-строитель.", "example_en": "He's a civil engineer.", "note": "", "tags": ["jobs"]},
+          {"target": "работать на себя", "english": "to be self-employed", "pronunciation": "/rɐˈbotətʲ nə sʲɪˈbʲa/", "example": "Я работаю на себя с 2020 года.", "example_en": "I've been self-employed since 2020.", "note": "Literally to work for oneself.", "tags": ["work", "phrase"]}
+        ]
+      },
+      {
+        "title": "Conditions and colleagues",
+        "items": [
+          {"target": "коллега", "english": "colleague", "pronunciation": "/kɐˈlʲeɡə/", "example": "Мои коллеги очень приятные.", "example_en": "My colleagues are very pleasant.", "note": "Ends in -а but takes the gender of the person referred to.", "tags": ["colleagues", "trap"]},
+          {"target": "начальник", "english": "boss, manager", "pronunciation": "/nɐˈtɕalʲnʲɪk/", "example": "Начальник хочет нас видеть.", "example_en": "The boss wants to see us.", "note": "Feminine начальница. шеф is the informal version.", "tags": ["colleagues"]},
+          {"target": "полный рабочий день", "english": "full-time", "pronunciation": "/ˈpolnɨj rɐˈbotɕɪj dʲenʲ/", "example": "Я работаю полный рабочий день.", "example_en": "I work full-time.", "note": "неполный рабочий день is part-time.", "tags": ["schedule", "phrase"]},
+          {"target": "отпуск", "english": "leave, holiday from work", "pronunciation": "/ˈotpusk/", "example": "На следующей неделе я в отпуске.", "example_en": "I'm on leave next week.", "note": "каникулы is a school or university holiday, never for adults at work.", "tags": ["schedule", "trap"]},
+          {"target": "работать сверхурочно", "english": "to work overtime", "pronunciation": "/rɐˈbotətʲ svʲɪrxʊˈrotɕnə/", "example": "Всю неделю я работал сверхурочно.", "example_en": "I worked overtime all week.", "note": "", "tags": ["schedule"]},
+          {"target": "зарплата", "english": "salary, pay", "pronunciation": "/zɐrˈpɫatə/", "example": "Зарплата нормальная для региона.", "example_en": "The salary is decent for the region.", "note": "Short for заработная плата.", "tags": ["work"]}
+        ]
+      }
+    ]
+  },
+  "office-email": {
+    "grammar": ["ru-dative-full", "ru-imperative"],
+    "groups": [
+      {
+        "title": "Phone and meetings",
+        "items": [
+          {"target": "алло", "english": "hello (on the phone)", "pronunciation": "/ɐˈlo/", "example": "Алло? Да, это я.", "example_en": "Hello? Yes, speaking.", "note": "Only on the phone, never face to face.", "tags": ["phone", "trap"]},
+          {"target": "соединяю", "english": "I'll put you through", "pronunciation": "/səjɪdʲɪˈnʲaju/", "example": "Минуту, соединяю с техподдержкой.", "example_en": "One moment, I'll put you through to tech support.", "note": "", "tags": ["phone", "phrase"]},
+          {"target": "не кладите трубку", "english": "hold the line", "pronunciation": "/nʲe klɐˈdʲitʲe ˈtrupku/", "example": "Не кладите трубку, я проверю.", "example_en": "Hold the line, I'll check.", "note": "Literally do not put down the receiver. Оставайтесь на линии is the modern version.", "tags": ["phone", "trap"]},
+          {"target": "совещание", "english": "meeting", "pronunciation": "/səvʲɪˈɕːanʲɪje/", "example": "Совещание перенесли на четверг.", "example_en": "The meeting has been moved to Thursday.", "note": "перенести means to move an event to another time.", "tags": ["meetings", "trap"]},
+          {"target": "повестка дня", "english": "the agenda", "pronunciation": "/pɐˈvʲestkə dnʲa/", "example": "Этого пункта нет в повестке дня.", "example_en": "That item isn't on the agenda.", "note": "Genitive after нет: этого пункта нет.", "tags": ["meetings", "trap"]},
+          {"target": "подвести итоги", "english": "to sum up, to take stock", "pronunciation": "/pədvʲɪˈsʲtʲi ɪˈtoɡʲɪ/", "example": "Давайте подведём итоги.", "example_en": "Let's sum up.", "note": "давайте plus first-person plural is the Russian let's.", "tags": ["meetings", "trap"]}
+        ]
+      },
+      {
+        "title": "Writing an email",
+        "items": [
+          {"target": "уважаемый", "english": "dear (formal)", "pronunciation": "/ʊvɐˈʐajɪmɨj/", "example": "Уважаемая Анна Петровна, пишу вам по поводу договора.", "example_en": "Dear Anna Petrovna, I am writing to you about the contract.", "note": "Formal Russian letters address people by first name and patronymic.", "tags": ["email", "culture"]},
+          {"target": "пишу вам по поводу", "english": "I am writing to you regarding", "pronunciation": "/pʲɪˈʂu vam pə ˈpovədu/", "example": "Пишу вам по поводу вашего объявления.", "example_en": "I am writing to you regarding your advert.", "note": "по поводу takes the genitive.", "tags": ["email", "formal"]},
+          {"target": "во вложении", "english": "attached, in the attachment", "pronunciation": "/və vlɐˈʐenʲɪɪ/", "example": "Во вложении моё резюме.", "example_en": "My CV is attached.", "note": "вложение is the attachment; вложить is to enclose.", "tags": ["email"]},
+          {"target": "буду признателен за ответ", "english": "I'd be grateful for a reply", "pronunciation": "/ˈbudu prʲɪˈznatʲɪlʲɪn zə ɐtˈvʲet/", "example": "Буду признателен за ответ.", "example_en": "I'd be grateful for a reply.", "note": "Female speaker: признательна.", "tags": ["email", "formal"]},
+          {"target": "с уважением", "english": "kind regards", "pronunciation": "/s ʊvɐˈʐenʲɪjɪm/", "example": "С уважением, Мария Лефевр.", "example_en": "Kind regards, Maria Lefebvre.", "note": "The standard sign-off. Literally with respect, in the instrumental.", "tags": ["email", "trap"]},
+          {"target": "заранее спасибо", "english": "thanks in advance", "pronunciation": "/zɐˈranʲɪje spɐˈsʲibə/", "example": "Заранее спасибо за помощь.", "example_en": "Thanks in advance for your help.", "note": "", "tags": ["email", "phrase"]}
+        ]
+      }
+    ]
+  },
+  "study-tech": {
+    "grammar": ["ru-aspect-core", "ru-accusative"],
+    "groups": [
+      {
+        "title": "Studying",
+        "items": [
+          {"target": "учить наизусть", "english": "to learn by heart", "pronunciation": "/ʊˈtɕitʲ nəɪˈzusʲtʲ/", "example": "Эти глаголы нужно учить наизусть.", "example_en": "These verbs have to be learnt by heart.", "note": "", "tags": ["study", "phrase"]},
+          {"target": "готовиться к экзамену", "english": "to prepare for an exam", "pronunciation": "/ɡɐˈtovʲɪtsə k ɪɡˈzamʲɪnu/", "example": "Я готовлюсь к экзамену в пятницу.", "example_en": "I'm preparing for Friday's exam.", "note": "к plus dative for what you are preparing for.", "tags": ["study", "trap"]},
+          {"target": "сдавать экзамен", "english": "to sit an exam", "pronunciation": "/zdɐˈvatʲ ɪɡˈzamʲɪn/", "example": "Завтра я сдаю экзамен.", "example_en": "I'm sitting my exam tomorrow.", "note": "Big trap: imperfective сдавать is to sit it, perfective сдать is to pass it.", "tags": ["study", "trap"]},
+          {"target": "сдать экзамен", "english": "to pass an exam", "pronunciation": "/zdatʲ ɪɡˈzamʲɪn/", "example": "Она сдала экзамен с первого раза.", "example_en": "She passed the exam on the first try.", "note": "Failing is провалить or не сдать.", "tags": ["study", "trap"]},
+          {"target": "занятие", "english": "class, lesson", "pronunciation": "/zɐˈnʲatʲɪje/", "example": "Занятие начинается в два часа.", "example_en": "The class starts at two.", "note": "урок is a school lesson, лекция a university lecture.", "tags": ["study", "trap"]},
+          {"target": "делать заметки", "english": "to take notes", "pronunciation": "/ˈdʲelətʲ zɐˈmʲetkʲɪ/", "example": "Я делаю заметки на компьютере.", "example_en": "I take notes on my computer.", "note": "Also конспектировать, specifically for lecture notes.", "tags": ["study"]}
+        ]
+      },
+      {
+        "title": "Screens and problems",
+        "items": [
+          {"target": "компьютер", "english": "computer", "pronunciation": "/kəmˈpʲjutər/", "example": "Мой компьютер очень медленный.", "example_en": "My computer is very slow.", "note": "", "tags": ["technology"]},
+          {"target": "пароль", "english": "password", "pronunciation": "/pɐˈrolʲ/", "example": "Я забыл пароль.", "example_en": "I forgot my password.", "note": "Masculine despite the soft sign.", "tags": ["technology", "trap"]},
+          {"target": "скачать", "english": "to download", "pronunciation": "/skɐˈtɕatʲ/", "example": "Скачайте файл до совещания.", "example_en": "Download the file before the meeting.", "note": "Uploading is загрузить or выложить.", "tags": ["technology"]},
+          {"target": "файл", "english": "file", "pronunciation": "/fajl/", "example": "Файл не открывается.", "example_en": "The file won't open.", "note": "папка is a folder. The reflexive не открывается expresses the passive.", "tags": ["technology", "trap"]},
+          {"target": "глючит", "english": "it's glitching", "pronunciation": "/ˈɡlʲutɕɪt/", "example": "Сайт глючит с самого утра.", "example_en": "The site has been glitching since first thing.", "note": "Informal but universal, from English glitch.", "tags": ["problems", "informal"]},
+          {"target": "перезагрузить", "english": "to restart, to reboot", "pronunciation": "/pʲɪrʲɪzɡrʊˈzʲitʲ/", "example": "Попробуйте перезагрузить устройство.", "example_en": "Try restarting the device.", "note": "The universal answer to every technical question.", "tags": ["problems"]}
+        ]
+      }
+    ]
+  }
+}

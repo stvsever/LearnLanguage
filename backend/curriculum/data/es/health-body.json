@@ -1,0 +1,83 @@
+{
+  "body-basics": {
+    "grammar": ["es-gender-articles", "es-gustar"],
+    "groups": [
+      {
+        "title": "The body",
+        "items": [
+          {"target": "la cabeza", "english": "the head", "pronunciation": "/la kaˈβe.sa/", "example": "Me duele la cabeza.", "example_en": "I have a headache.", "note": "doler works like gustar: me duele la cabeza, me duelen los pies.", "tags": ["body", "trap"]},
+          {"target": "la mano", "english": "the hand", "pronunciation": "/la ˈma.no/", "example": "Dame la mano.", "example_en": "Give me your hand.", "note": "Feminine despite the -o ending, and Spanish uses the article, not a possessive.", "tags": ["body", "trap"]},
+          {"target": "el brazo", "english": "the arm", "pronunciation": "/el ˈbɾa.so/", "example": "Se rompió el brazo.", "example_en": "He broke his arm.", "note": "The reflexive se carries the his.", "tags": ["body"]},
+          {"target": "la pierna", "english": "the leg", "pronunciation": "/la ˈpjeɾ.na/", "example": "Me duelen las piernas después de correr.", "example_en": "My legs hurt after running.", "note": "", "tags": ["body"]},
+          {"target": "la espalda", "english": "the back", "pronunciation": "/la esˈpal.da/", "example": "Me duele la espalda desde ayer.", "example_en": "My back has hurt since yesterday.", "note": "The back of an object is la parte de atrás.", "tags": ["body", "trap"]},
+          {"target": "el estómago", "english": "the stomach", "pronunciation": "/el esˈto.ma.ɣo/", "example": "Me duele el estómago.", "example_en": "I have a stomach ache.", "note": "la barriga is the informal belly.", "tags": ["body"]}
+        ]
+      },
+      {
+        "title": "Basic states and needs",
+        "items": [
+          {"target": "tener hambre", "english": "to be hungry", "pronunciation": "/teˈneɾ ˈam.bɾe/", "example": "Tengo hambre, ¿comemos algo?", "example_en": "I'm hungry, shall we eat something?", "note": "Never estoy hambre. Spanish HAS hunger.", "tags": ["needs", "trap"]},
+          {"target": "tener sed", "english": "to be thirsty", "pronunciation": "/teˈneɾ seð/", "example": "¿Tienes sed? Hay agua en la nevera.", "example_en": "Are you thirsty? There's water in the fridge.", "note": "", "tags": ["needs"]},
+          {"target": "tener frío", "english": "to be cold", "pronunciation": "/teˈneɾ ˈfɾi.o/", "example": "Tengo frío, ¿puedes cerrar la ventana?", "example_en": "I'm cold, can you close the window?", "note": "hace frío is about the weather, tengo frío about you.", "tags": ["needs", "trap"]},
+          {"target": "tener sueño", "english": "to be sleepy", "pronunciation": "/teˈneɾ ˈswe.ɲo/", "example": "Tengo sueño, me voy a la cama.", "example_en": "I'm sleepy, I'm off to bed.", "note": "el sueño means both sleepiness and a dream.", "tags": ["needs", "trap"]},
+          {"target": "necesito", "english": "I need", "pronunciation": "/ne.seˈsi.to/", "example": "Necesito descansar un poco.", "example_en": "I need to rest a bit.", "note": "Takes a direct object, no preposition.", "tags": ["needs", "phrase"]},
+          {"target": "¿dónde está el baño?", "english": "where is the toilet?", "pronunciation": "/ˈdon.de esˈta el ˈba.ɲo/", "example": "Perdone, ¿dónde está el baño?", "example_en": "Excuse me, where is the toilet?", "note": "In Spain also los servicios or el aseo.", "tags": ["needs", "essential"]}
+        ]
+      }
+    ]
+  },
+  "doctor-pharmacy": {
+    "grammar": ["es-subj-present", "es-aspect-contrast"],
+    "groups": [
+      {
+        "title": "Describing symptoms",
+        "items": [
+          {"target": "no me encuentro bien", "english": "I don't feel well", "pronunciation": "/no me eŋˈkwen.tɾo ˈbjen/", "example": "Desde esta mañana no me encuentro bien.", "example_en": "I haven't been feeling well since this morning.", "note": "Also no me siento bien.", "tags": ["symptoms", "phrase"]},
+          {"target": "tener fiebre", "english": "to have a fever", "pronunciation": "/teˈneɾ ˈfje.βɾe/", "example": "Tiene fiebre desde hace dos días.", "example_en": "He's had a fever for two days.", "note": "desde hace plus a period covers English for.", "tags": ["symptoms", "trap"]},
+          {"target": "toser", "english": "to cough", "pronunciation": "/toˈseɾ/", "example": "Toso sobre todo por la noche.", "example_en": "I cough mostly at night.", "note": "The noun is la tos.", "tags": ["symptoms"]},
+          {"target": "estar resfriado", "english": "to have a cold", "pronunciation": "/esˈtaɾ res.fɾiˈa.ðo/", "example": "Estoy un poco resfriado.", "example_en": "I have a bit of a cold.", "note": "un resfriado is the cold itself. In Latin America: estar resfriado or agripado.", "tags": ["symptoms"]},
+          {"target": "me duele aquí", "english": "it hurts here", "pronunciation": "/me ˈdwe.le aˈki/", "example": "Me duele aquí cuando aprieto.", "example_en": "It hurts here when I press.", "note": "", "tags": ["symptoms", "phrase"]},
+          {"target": "¿desde cuándo?", "english": "since when? for how long?", "pronunciation": "/ˈdes.de ˈkwan.do/", "example": "¿Desde cuándo tiene estos dolores?", "example_en": "How long have you had this pain?", "note": "Answered with desde plus a date, or desde hace plus a duration.", "tags": ["symptoms", "question"]}
+        ]
+      },
+      {
+        "title": "Getting treated",
+        "items": [
+          {"target": "pedir cita", "english": "to make an appointment", "pronunciation": "/peˈðiɾ ˈsi.ta/", "example": "Quería pedir cita con el médico.", "example_en": "I'd like to make an appointment with the doctor.", "note": "una cita is also a date, romantic or not.", "tags": ["appointment", "trap"]},
+          {"target": "la receta", "english": "the prescription", "pronunciation": "/la reˈse.ta/", "example": "Aquí tiene su receta para la farmacia.", "example_en": "Here's your prescription for the pharmacy.", "note": "Same word as a cooking recipe.", "tags": ["prescription", "trap"]},
+          {"target": "el medicamento", "english": "the medicine", "pronunciation": "/el me.ði.kaˈmen.to/", "example": "Este medicamento se toma después de comer.", "example_en": "This medicine is taken after meals.", "note": "The reflexive se expresses the passive: it is taken.", "tags": ["prescription", "trap"]},
+          {"target": "es necesario que descanse", "english": "you need to rest", "pronunciation": "/es ne.seˈsa.ɾjo ke desˈkan.se/", "example": "Es necesario que descanse tres días.", "example_en": "You need to rest for three days.", "note": "es necesario que triggers the subjunctive: descanse.", "tags": ["advice", "trap"]},
+          {"target": "urgencias", "english": "the emergency room", "pronunciation": "/uɾˈxen.sjas/", "example": "Lo llevamos a urgencias anoche.", "example_en": "We took him to A and E last night.", "note": "Plural. The European emergency number is 112.", "tags": ["emergency", "culture"]},
+          {"target": "la tarjeta sanitaria", "english": "the health card", "pronunciation": "/la taɾˈxe.ta sa.niˈta.ɾja/", "example": "¿Tiene su tarjeta sanitaria?", "example_en": "Do you have your health card?", "note": "The card that opens the Spanish public health system.", "tags": ["culture"]}
+        ]
+      }
+    ]
+  },
+  "wellbeing-sport": {
+    "grammar": ["es-reflexives", "es-se-impersonal"],
+    "groups": [
+      {
+        "title": "Moving your body",
+        "items": [
+          {"target": "hacer deporte", "english": "to do sport, to exercise", "pronunciation": "/aˈseɾ deˈpoɾ.te/", "example": "Hago deporte tres veces por semana.", "example_en": "I exercise three times a week.", "note": "hacer covers most activities: hacer yoga, hacer natación.", "tags": ["sport", "phrase"]},
+          {"target": "correr", "english": "to run", "pronunciation": "/koˈreɾ/", "example": "Corro por el parque.", "example_en": "I run in the park.", "note": "Regular -er verb, unlike its French cousin.", "tags": ["sport"]},
+          {"target": "el gimnasio", "english": "the gym", "pronunciation": "/el ximˈna.sjo/", "example": "Me he apuntado al gimnasio.", "example_en": "I've signed up at the gym.", "note": "apuntarse a means to sign up for.", "tags": ["sport"]},
+          {"target": "entrenar", "english": "to train", "pronunciation": "/en.tɾeˈnaɾ/", "example": "Entrena para un maratón.", "example_en": "She's training for a marathon.", "note": "", "tags": ["sport"]},
+          {"target": "estar en forma", "english": "to be in shape", "pronunciation": "/esˈtaɾ en ˈfoɾ.ma/", "example": "¡Se te ve en forma!", "example_en": "You look in great shape!", "note": "", "tags": ["fitness", "phrase"]},
+          {"target": "tener agujetas", "english": "to be sore after exercise", "pronunciation": "/teˈneɾ a.ɣuˈxe.tas/", "example": "Tengo agujetas por todo el cuerpo.", "example_en": "I ache all over.", "note": "The specific word for post-exercise muscle soreness.", "tags": ["fitness", "culture"]}
+        ]
+      },
+      {
+        "title": "Rest and stress",
+        "items": [
+          {"target": "dormir bien", "english": "to sleep well", "pronunciation": "/doɾˈmiɾ ˈbjen/", "example": "No he dormido bien esta noche.", "example_en": "I didn't sleep well last night.", "note": "esta noche means both tonight and last night; the tense decides.", "tags": ["sleep", "trap"]},
+          {"target": "descansar", "english": "to rest", "pronunciation": "/des.kanˈsaɾ/", "example": "Descansa, lo necesitas.", "example_en": "Rest, you need it.", "note": "", "tags": ["rest"]},
+          {"target": "el estrés", "english": "stress", "pronunciation": "/el esˈtɾes/", "example": "El estrés del trabajo me agota.", "example_en": "Stress at work exhausts me.", "note": "Borrowed from English, with a Spanish e- in front of the s.", "tags": ["stress"]},
+          {"target": "relajarse", "english": "to relax", "pronunciation": "/re.laˈxaɾ.se/", "example": "El fin de semana intento relajarme.", "example_en": "At the weekend I try to relax.", "note": "The pronoun attaches to the infinitive: relajarme.", "tags": ["stress", "trap"]},
+          {"target": "cuidarse", "english": "to look after yourself", "pronunciation": "/kwiˈðaɾ.se/", "example": "Hay que cuidarse en invierno.", "example_en": "You have to look after yourself in winter.", "note": "", "tags": ["wellbeing"]},
+          {"target": "cuídate", "english": "take care", "pronunciation": "/ˈkwi.ða.te/", "example": "Nos vemos pronto. ¡Cuídate!", "example_en": "See you soon. Take care!", "note": "A warm way to end a call or a message.", "tags": ["wellbeing", "phrase"]}
+        ]
+      }
+    ]
+  }
+}

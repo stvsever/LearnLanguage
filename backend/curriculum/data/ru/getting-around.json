@@ -1,0 +1,83 @@
+{
+  "directions": {
+    "grammar": ["ru-prepositional", "ru-imperative"],
+    "groups": [
+      {
+        "title": "Asking the way",
+        "items": [
+          {"target": "где находится ... ?", "english": "where is ... located?", "pronunciation": "/ɡdʲe nɐˈxodʲɪtsə/", "example": "Извините, где находится вокзал?", "example_en": "Excuse me, where is the station?", "note": "Slightly more formal than plain где; both are fine.", "tags": ["directions", "question"]},
+          {"target": "как пройти к", "english": "how do I get to (on foot)", "pronunciation": "/kak prɐjˈtʲi k/", "example": "Как пройти к музею?", "example_en": "How do I get to the museum?", "note": "пройти is on foot; проехать is by transport. к takes the dative.", "tags": ["directions", "trap"]},
+          {"target": "это далеко?", "english": "is it far?", "pronunciation": "/ˈetə dəlʲɪˈko/", "example": "Это далеко отсюда пешком?", "example_en": "Is it far from here on foot?", "note": "близко means near.", "tags": ["directions", "question"]},
+          {"target": "прямо", "english": "straight ahead", "pronunciation": "/ˈprʲamə/", "example": "Идите прямо до светофора.", "example_en": "Go straight ahead to the traffic light.", "note": "", "tags": ["directions"]},
+          {"target": "налево", "english": "to the left", "pronunciation": "/nɐˈlʲevə/", "example": "Поверните налево после церкви.", "example_en": "Turn left after the church.", "note": "направо is to the right. слева and справа mean on the left and on the right.", "tags": ["directions", "trap"]},
+          {"target": "на углу", "english": "on the corner", "pronunciation": "/nə ʊɡˈlu/", "example": "Аптека на углу.", "example_en": "The pharmacy is on the corner.", "note": "угол has a special locative form: на углу, not на угле.", "tags": ["directions", "trap"]}
+        ]
+      },
+      {
+        "title": "Places in town",
+        "items": [
+          {"target": "вокзал", "english": "main railway station", "pronunciation": "/vɐɡˈzal/", "example": "Встретимся перед вокзалом.", "example_en": "Let's meet in front of the station.", "note": "A large terminus; a small stop is станция.", "tags": ["places", "trap"]},
+          {"target": "остановка", "english": "bus or tram stop", "pronunciation": "/əstɐˈnofkə/", "example": "Автобусная остановка через дорогу.", "example_en": "The bus stop is across the road.", "note": "From остановиться, to stop.", "tags": ["places"]},
+          {"target": "магазин", "english": "shop", "pronunciation": "/məɡɐˈzʲin/", "example": "Магазин работает до десяти.", "example_en": "The shop is open until ten.", "note": "False friend: not a magazine, which is журнал.", "tags": ["places", "trap"]},
+          {"target": "аптека", "english": "pharmacy", "pronunciation": "/ɐpˈtʲekə/", "example": "Круглосуточная аптека рядом.", "example_en": "There's a 24-hour pharmacy nearby.", "note": "", "tags": ["places"]},
+          {"target": "перекрёсток", "english": "crossroads", "pronunciation": "/pʲɪrʲɪˈkrʲostək/", "example": "Поверните на следующем перекрёстке.", "example_en": "Turn at the next crossroads.", "note": "", "tags": ["places"]},
+          {"target": "район", "english": "district, neighbourhood", "pronunciation": "/rɐjˈon/", "example": "Мне очень нравится этот район.", "example_en": "I really like this neighbourhood.", "note": "нравиться works backwards: the thing liked is the subject.", "tags": ["places", "trap"]}
+        ]
+      }
+    ]
+  },
+  "transport": {
+    "grammar": ["ru-motion-basic", "ru-past"],
+    "groups": [
+      {
+        "title": "Tickets and platforms",
+        "items": [
+          {"target": "билет туда и обратно", "english": "a return ticket", "pronunciation": "/bʲɪˈlʲet tuˈda i ɐˈbratnə/", "example": "Один билет туда и обратно до Твери.", "example_en": "One return ticket to Tver.", "note": "One way is билет в одну сторону.", "tags": ["tickets", "trap"]},
+          {"target": "касса", "english": "ticket office, till", "pronunciation": "/ˈkasːə/", "example": "Купить можно в кассе или онлайн.", "example_en": "You can buy at the ticket office or online.", "note": "Also the checkout in a shop.", "tags": ["tickets", "trap"]},
+          {"target": "платформа", "english": "platform", "pronunciation": "/plɐtˈformə/", "example": "Поезд отправляется с третьей платформы.", "example_en": "The train departs from platform three.", "note": "с plus genitive for departing from.", "tags": ["train", "trap"]},
+          {"target": "пересадка", "english": "connection, transfer", "pronunciation": "/pʲɪrʲɪˈsatkə/", "example": "У меня пересадка в Москве.", "example_en": "I have a connection in Moscow.", "note": "Also used for changing metro lines.", "tags": ["train"]},
+          {"target": "ехать на метро", "english": "to travel by metro", "pronunciation": "/ˈjexətʲ nə mʲɪˈtro/", "example": "Мы едем на метро, четвёртая линия.", "example_en": "We're taking the metro, line four.", "note": "на plus prepositional for the means of transport.", "tags": ["transport", "trap"]},
+          {"target": "расписание", "english": "timetable", "pronunciation": "/rəspʲɪˈsanʲɪje/", "example": "Посмотри расписание в приложении.", "example_en": "Check the timetable in the app.", "note": "", "tags": ["transport"]}
+        ]
+      },
+      {
+        "title": "When things go wrong",
+        "items": [
+          {"target": "поезд опаздывает", "english": "the train is running late", "pronunciation": "/ˈpojɪst ɐˈpazdɨvəjɪt/", "example": "Поезд опаздывает на двадцать минут.", "example_en": "The train is twenty minutes late.", "note": "на plus accusative for the size of the delay.", "tags": ["delays", "trap"]},
+          {"target": "задержка", "english": "delay", "pronunciation": "/zɐˈdʲerʂkə/", "example": "Задержка рейса на два часа.", "example_en": "The flight is delayed by two hours.", "note": "", "tags": ["delays"]},
+          {"target": "отменён", "english": "cancelled", "pronunciation": "/ɐtmʲɪˈnʲon/", "example": "Наш рейс отменён.", "example_en": "Our flight has been cancelled.", "note": "Short passive participle, agreeing with the subject: отменён, отменена.", "tags": ["delays", "trap"]},
+          {"target": "опоздать на поезд", "english": "to miss the train", "pronunciation": "/əpɐzˈdatʲ nə ˈpojɪst/", "example": "Я опоздал на последний поезд.", "example_en": "I missed the last train.", "note": "Literally to be late for the train. на plus accusative.", "tags": ["delays", "trap"]},
+          {"target": "я заблудился", "english": "I got lost", "pronunciation": "/ja zəbluˈdʲilsə/", "example": "Извините, я заблудился по дороге.", "example_en": "Sorry, I got lost on the way.", "note": "Past tense agrees with the speaker: заблудился, заблудилась.", "tags": ["problems", "trap"]},
+          {"target": "когда следующий?", "english": "when is the next one?", "pronunciation": "/kɐɡˈda ˈslʲedujʉɕːɪj/", "example": "Когда следующий автобус?", "example_en": "When is the next bus?", "note": "", "tags": ["transport", "question"]}
+        ]
+      }
+    ]
+  },
+  "travel-stay": {
+    "grammar": ["ru-conditional", "ru-dative-full"],
+    "groups": [
+      {
+        "title": "Booking and checking in",
+        "items": [
+          {"target": "у меня забронирован номер", "english": "I have a room booked", "pronunciation": "/u mʲɪˈnʲa zəbrɐˈnʲirəvən ˈnomʲɪr/", "example": "Добрый вечер, у меня забронирован номер на фамилию Дюпон.", "example_en": "Good evening, I have a room booked under the name Dupont.", "note": "номер is a hotel room; комната is a room in a home.", "tags": ["hotel", "trap"]},
+          {"target": "двухместный номер", "english": "a double room", "pronunciation": "/dvuxˈmʲesnɨj ˈnomʲɪr/", "example": "Двухместный номер с видом на море.", "example_en": "A double room with a sea view.", "note": "одноместный is a single.", "tags": ["hotel"]},
+          {"target": "завтрак включён?", "english": "is breakfast included?", "pronunciation": "/ˈzaftrək fklʲʉˈtɕon/", "example": "Завтрак включён в стоимость?", "example_en": "Is breakfast included in the price?", "note": "включён is a short passive participle.", "tags": ["hotel", "question"]},
+          {"target": "ключ от номера", "english": "the room key", "pronunciation": "/klʲutɕ ɐt ˈnomʲɪrə/", "example": "Вот ключ от номера.", "example_en": "Here's the room key.", "note": "от plus genitive expresses the key belonging to something.", "tags": ["hotel", "trap"]},
+          {"target": "во сколько выезд?", "english": "what time is check-out?", "pronunciation": "/və ˈskolʲkə ˈvɨjɪst/", "example": "Во сколько выезд завтра?", "example_en": "What time is check-out tomorrow?", "note": "заезд is check-in, выезд is check-out.", "tags": ["hotel", "trap"]},
+          {"target": "я хотел бы отменить бронь", "english": "I'd like to cancel the booking", "pronunciation": "/ja xɐˈtʲel bɨ ətmʲɪˈnʲitʲ bronʲ/", "example": "Я хотел бы отменить бронь на пятницу.", "example_en": "I'd like to cancel the booking for Friday.", "note": "бы keeps it conditional and therefore polite.", "tags": ["hotel", "phrase"]}
+        ]
+      },
+      {
+        "title": "Complaining politely",
+        "items": [
+          {"target": "у меня проблема с", "english": "I have a problem with", "pronunciation": "/u mʲɪˈnʲa prɐˈblʲemə s/", "example": "У меня проблема с отоплением.", "example_en": "I have a problem with the heating.", "note": "с plus instrumental: с отоплением.", "tags": ["complaints", "trap"]},
+          {"target": "не работает", "english": "it doesn't work", "pronunciation": "/nʲe rɐˈbotəjɪt/", "example": "Кондиционер не работает.", "example_en": "The air conditioning doesn't work.", "note": "The same verb as to work at a job.", "tags": ["complaints", "trap"]},
+          {"target": "не могли бы вы", "english": "could you possibly", "pronunciation": "/nʲe mɐˈɡlʲi bɨ vɨ/", "example": "Не могли бы вы поменять номер?", "example_en": "Could you possibly change our room?", "note": "The negative conditional is the most polite Russian request form.", "tags": ["complaints", "trap"]},
+          {"target": "багаж", "english": "luggage", "pronunciation": "/bɐˈɡaʂ/", "example": "Можно оставить багаж на ресепшене?", "example_en": "Can we leave our luggage at reception?", "note": "Collective singular, like English.", "tags": ["luggage"]},
+          {"target": "страховка", "english": "insurance", "pronunciation": "/strɐˈxofkə/", "example": "К счастью, у меня была страховка.", "example_en": "Luckily, I had insurance.", "note": "", "tags": ["travel"]},
+          {"target": "спасибо за понимание", "english": "thank you for your understanding", "pronunciation": "/spɐˈsʲibə zə pənʲɪˈmanʲɪje/", "example": "Спасибо за понимание.", "example_en": "Thank you for your understanding.", "note": "за plus accusative for what you are thanking someone for.", "tags": ["formal", "trap"]}
+        ]
+      }
+    ]
+  }
+}

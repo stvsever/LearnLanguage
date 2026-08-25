@@ -13,18 +13,23 @@ const STEPS = [
   },
   {
     target: '[data-tour="nav"]',
-    title: 'One loop, eight rooms',
-    body: 'Learn introduces new words; Review brings them back right before you\'d forget. Listen and Speak train your ear and mouth. Compose writes anything you describe at your level, Grammar maps the language, Progress keeps the score.',
+    title: 'One loop, nine rooms',
+    body: 'Topics is the curated library: hundreds of hand-written items organised by area of life, no AI key needed. Learn introduces new words; Review brings them back right before you\'d forget. Listen and Speak train your ear and mouth. Compose writes anything you describe at your level, Grammar maps the language, Progress keeps the score.',
   },
   {
     target: '[data-tour="lang"]',
     title: 'Your language',
-    body: 'French is set up by default. Switch anytime - every language keeps its own deck, schedule, and stats.',
+    body: 'French is set up by default. Switch anytime: every language keeps its own deck, schedule, and stats, and the same topic library is written out in all four.',
   },
   {
     target: '[data-tour="actions"]', view: 'dashboard',
     title: 'The daily plan',
     body: 'The dashboard always tells you the single best next action: clear due reviews first, then learn new items, then get input. Consistency is the whole trick.',
+  },
+  {
+    target: null, view: 'topics',
+    title: 'Everything there is to learn',
+    body: 'The library is a taxonomy: eight areas of life, twenty-four topics, each one a set of hand-written words and phrases with pronunciation, real examples, and the traps English speakers fall into. Pick a topic, add what you want, and it flows straight into the same spaced-repetition pipeline.',
   },
   {
     target: '[data-tour="streak"]',
@@ -39,7 +44,7 @@ const STEPS = [
   {
     target: null,
     title: 'C\'est parti !',
-    body: 'Head to Learn for the starter deck or a lesson on any topic - or open Compose and describe a scene you\'d actually enjoy reading. Two minutes from now you\'ll be practicing.',
+    body: 'Open Topics, pick something you actually want to say this week, add it to your deck, and start learning. Two minutes from now you\'ll be practicing.',
   },
 ];
 

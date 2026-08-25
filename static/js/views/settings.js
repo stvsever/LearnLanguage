@@ -77,9 +77,9 @@ export function openSettings({ onChange: onChangeExternal } = {}) {
 
     return [
       section('globe', 'Language & voice', [
-        selectRow('Target language', 'Each language keeps its own deck and stats', 'language',
+        selectRow('Target language', 'Each language keeps its own deck, stats, and topic library', 'language',
           (ctx.config?.languages || []).map((l) => [l.code, `${l.flag} ${l.display}`]),
-          { onSet: () => { ctx.refreshChrome(); rerender(); } }),
+          { onSet: () => { ctx.refreshChrome(); ctx.rerenderView(); rerender(); } }),
         selectRow('Your level', 'Sets the default difficulty of generated content', 'level',
           (ctx.config?.levels || []).map((lv) => [lv, lv])),
         el('div', { class: 'set-row' },
