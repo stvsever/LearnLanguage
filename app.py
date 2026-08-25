@@ -1,4 +1,4 @@
-"""Glotta local web server.
+"""Language Learning Studio local web server.
 
 Zero-framework HTTP server (Python stdlib) exposing a small JSON API over the
 backend services, plus static file serving for the frontend. All learner state
@@ -48,7 +48,10 @@ def config_payload() -> dict:
 
 
 class TutorRequestHandler(BaseHTTPRequestHandler):
-    server_version = f"Glotta/{config.APP_VERSION}"
+    # HTTP product tokens cannot contain spaces (RFC 7230), so the Server
+    # header uses a compact slug while every user-facing string below uses
+    # the full name.
+    server_version = f"LanguageLearningStudio/{config.APP_VERSION}"
 
     def log_message(self, fmt: str, *args: object) -> None:
         logger.info("%s - %s", self.address_string(), fmt % args)
@@ -174,20 +177,20 @@ def run(host: str, port: int, open_browser: bool) -> None:
     config.ensure_runtime_dirs()
     server = ThreadingHTTPServer((host, port), TutorRequestHandler)
     url = f"http://{host}:{port}"
-    logger.info("Glotta %s | provider=%s model=%s | %s",
+    logger.info("Language Learning Studio %s | provider=%s model=%s | %s",
                 config.APP_VERSION, config.active_provider(), config.active_model(), url)
     if open_browser:
         webbrowser.open(url)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        logger.info("Shutting down Glotta.")
+        logger.info("Shutting down Language Learning Studio.")
     finally:
         server.server_close()
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run the Glotta local web app.")
+    parser = argparse.ArgumentParser(description="Run the Language Learning Studio local web app.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--open", action="store_true", help="Open the app in your default browser.")

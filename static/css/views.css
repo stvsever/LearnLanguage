@@ -17,7 +17,8 @@
   padding: 18px 12px;
   gap: 18px;
 }
-.brand { display: flex; align-items: center; gap: 10px; padding: 0 8px; }
+.brand { display: flex; align-items: flex-start; gap: 10px; padding: 0 8px; }
+.brand .brand-mark { margin-top: 1px; }
 .brand-mark {
   width: 34px; height: 34px;
   border-radius: 10px;
@@ -27,8 +28,8 @@
   box-shadow: var(--shadow-sm);
 }
 .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
-.brand-text strong { font-size: 15px; letter-spacing: -0.01em; }
-.brand-text small { color: var(--text-faint); font-size: 11px; }
+.brand-text strong { font-size: 14px; line-height: 1.2; letter-spacing: -0.01em; }
+.brand-text small { display: block; margin-top: 3px; color: var(--text-faint); font-size: 11px; }
 
 .sidebar-nav { display: flex; flex-direction: column; gap: 3px; flex: 1; }
 .sidebar-foot { display: flex; flex-direction: column; gap: 3px; }

@@ -90,7 +90,7 @@ function buildChrome(root) {
     el('div', { class: 'brand' },
       el('div', { class: 'brand-mark' }, icon('globe', 20)),
       el('div', { class: 'brand-text' },
-        el('strong', {}, 'Glotta'),
+        el('strong', {}, 'Language Learning Studio'),
         el('small', {}, 'science-based tutor'))),
     el('nav', { class: 'sidebar-nav', dataset: { tour: 'nav' } }, navButtons),
     el('div', { class: 'sidebar-foot' },

@@ -62,7 +62,7 @@ def get_client() -> tuple[OpenAI, str, str]:
                 max_retries=1,
                 default_headers={
                     "HTTP-Referer": "https://github.com/stvsever/LearnLanguage",
-                    "X-Title": "Glotta",
+                    "X-Title": "Language Learning Studio",
                 },
             )
         else:
