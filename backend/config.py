@@ -42,7 +42,7 @@ LLM_TIMEOUT_SECONDS = float(os.getenv("LEARNLANGUAGE_LLM_TIMEOUT", "120"))
 
 DEFAULT_LANGUAGE = os.getenv("LEARNLANGUAGE_DEFAULT_LANGUAGE", "fr")
 
-APP_NAME = "Language Learning Studio"
+APP_NAME = "AI-Studio for Learning Languages"
 APP_VERSION = "2.1.0"
 
 

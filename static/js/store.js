@@ -317,7 +317,7 @@ export function exportData() {
 export function importData(json) {
   const parsed = JSON.parse(json);
   if (!parsed || parsed.version !== 2 || !parsed.settings || !parsed.decks) {
-    throw new Error('Not a valid Language Learning Studio export file.');
+    throw new Error('Not a valid AI-Studio for Learning Languages export file.');
   }
   delete parsed.exportedAt;
   parsed.settings = { ...DEFAULT_SETTINGS, ...parsed.settings };

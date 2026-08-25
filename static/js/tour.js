@@ -9,7 +9,7 @@ const STEPS = [
   {
     target: null,
     title: 'Bienvenue 👋',
-    body: 'Language Learning Studio is a science-based tutor: spaced repetition, active recall, listening, speaking, and real reading - all in one loop, all stored privately in your browser.',
+    body: 'AI-Studio for Learning Languages is a science-based tutor: spaced repetition, active recall, listening, speaking, and real reading - all in one loop, all stored privately in your browser.',
   },
   {
     target: '[data-tour="nav"]',

@@ -1,4 +1,4 @@
-# Language Learning Studio
+# AI-Studio for Learning Languages
 edge-tts>=7.2.8
 openai>=1.40
 pydantic>=2.8
