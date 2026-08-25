@@ -1,0 +1,36 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE and OS files
+.idea/
+.vscode/
+.claude/
+.DS_Store
+
+# Runtime artifacts (generated audio, caches)
+runtime/
+*.log
+*.tmp
+
+# Local-only material (not part of the published application)
+tutors/
+content/
+other/
+requirements-legacy.txt
+docs/images/tutor1-interface.png
+docs/images/tutor2-interface.png

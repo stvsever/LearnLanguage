@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LearnLanguage</title>
+    <meta name="description" content="A science-based local language tutor: spaced repetition, active recall, listening, speaking, and graded reading." />
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+    <script>
+      // Apply theme before first paint to avoid a flash.
+      try {
+        var s = JSON.parse(localStorage.getItem('learnlanguage.v2') || '{}').settings || {};
+        var pref = s.theme || 'system';
+        var dark = pref === 'dark' || (pref === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/components.css" />
+    <link rel="stylesheet" href="/static/css/views.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="bootSplash" style="margin:auto;display:flex;flex-direction:column;align-items:center;gap:12px;color:var(--text-muted);">
+        <div class="spinner dark" style="width:22px;height:22px;border-width:3px;"></div>
+        <span>Starting LearnLanguage…</span>
+      </div>
+    </div>
+    <script type="module" src="/static/js/main.js"></script>
+  </body>
+</html>

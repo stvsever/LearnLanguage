@@ -1,0 +1,60 @@
+{
+  "language": "fr",
+  "format": "story",
+  "title": "Le rendez-vous de Camille",
+  "level": "A2",
+  "scene": "A bookseller prepares a small surprise for a friend arriving by train.",
+  "participants": [],
+  "segments": [
+    { "speaker": "", "text": "Camille travaille dans une petite librairie près de la gare.", "text_en": "Camille works in a small bookshop near the train station." },
+    { "speaker": "", "text": "Ce matin, elle a reçu un message de son amie Nadia.", "text_en": "This morning, she received a message from her friend Nadia." },
+    { "speaker": "", "text": "Nadia arrive à Lyon à midi, mais son train a vingt minutes de retard.", "text_en": "Nadia arrives in Lyon at noon, but her train is twenty minutes late." },
+    { "speaker": "", "text": "Camille décide donc de préparer une surprise.", "text_en": "So Camille decides to prepare a surprise." },
+    { "speaker": "", "text": "Elle achète des croissants et deux cafés au coin de la rue.", "text_en": "She buys croissants and two coffees on the street corner." },
+    { "speaker": "", "text": "À la gare, elle attend sur le quai numéro trois.", "text_en": "At the station, she waits on platform number three." },
+    { "speaker": "", "text": "Quand Nadia descend du train, elle ne voit pas Camille tout de suite.", "text_en": "When Nadia gets off the train, she doesn't see Camille right away." },
+    { "speaker": "", "text": "Camille lève les croissants au-dessus de sa tête, et Nadia éclate de rire.", "text_en": "Camille lifts the croissants above her head, and Nadia bursts out laughing." }
+  ],
+  "glossary": [
+    { "word": "librairie", "gloss": "bookshop (false friend: not 'library', which is « bibliothèque »)" },
+    { "word": "a reçu", "gloss": "received (passé composé of « recevoir »)" },
+    { "word": "retard", "gloss": "delay - « avoir du retard » = to be late" },
+    { "word": "donc", "gloss": "so, therefore" },
+    { "word": "au coin de", "gloss": "on the corner of" },
+    { "word": "quai", "gloss": "platform (train station)" },
+    { "word": "descend du", "gloss": "gets off (from « descendre de »)" },
+    { "word": "tout de suite", "gloss": "right away, immediately" },
+    { "word": "lève", "gloss": "lifts, raises (from « lever »)" },
+    { "word": "éclate de rire", "gloss": "bursts out laughing" }
+  ],
+  "grammar_spotlights": [
+    { "feature": "fr-passe-compose", "excerpt": "elle a reçu un message", "explanation": "Passé composé with avoir: a completed event that moves the story forward." },
+    { "feature": "fr-negation-nepas", "excerpt": "elle ne voit pas Camille", "explanation": "The ne … pas frame wraps around the conjugated verb." }
+  ],
+  "questions": [
+    {
+      "question": "Où travaille Camille ?",
+      "choices": ["Dans une gare", "Dans un café", "Dans une librairie", "Dans une boulangerie"],
+      "correct_choice": 2,
+      "explanation": "The first sentence says she works « dans une petite librairie » - a small bookshop."
+    },
+    {
+      "question": "Pourquoi Nadia n'arrive-t-elle pas à midi ?",
+      "choices": ["Son train a du retard", "Elle a raté son train", "Elle travaille ce matin", "Elle attend à la librairie"],
+      "correct_choice": 0,
+      "explanation": "Her train « a vingt minutes de retard » - it is twenty minutes late."
+    },
+    {
+      "question": "Qu'est-ce que Camille achète ?",
+      "choices": ["Deux billets de train", "Des croissants et deux cafés", "Un livre pour Nadia", "Des fleurs et un café"],
+      "correct_choice": 1,
+      "explanation": "She buys « des croissants et deux cafés » on the street corner."
+    },
+    {
+      "question": "Comment Nadia trouve-t-elle Camille sur le quai ?",
+      "choices": ["Camille crie son nom", "Nadia lui téléphone", "Elles se voient à la sortie", "Elle voit les croissants levés"],
+      "correct_choice": 3,
+      "explanation": "Camille lifts the croissants above her head, which is how Nadia spots her."
+    }
+  ]
+}
