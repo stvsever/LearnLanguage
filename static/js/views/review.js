@@ -16,6 +16,7 @@ import { grade, suggestedRating } from '../grading.js';
 import { schedule, Rating } from '../srs.js';
 import { typingInput, verdictPanel, choiceGrid, audioButton, progressBar, gradeBar } from '../exercises.js';
 import { ctx, languageProfile } from '../context.js';
+import { isEnabled as adaptiveOn, selectReviewMode, recordAttempt, MODES } from '../adaptive.js';
 
 let session = null;
 let keyHandler = null;
@@ -60,16 +61,32 @@ function shuffleLearningLast(queue) {
 }
 
 /**
- * Retrieval difficulty should grow with memory strength (a desirable
- * difficulty), and the modality should vary so one skill does not carry the
- * whole deck. Production stays the backbone; listening and cloze interleave.
+ * Which retrieval this card gets.
+ *
+ * With adaptive testing on, adaptive.js picks the hardest mode the learner is
+ * still predicted to pass, from the modes this card can actually support (a
+ * card whose target does not appear literally in its example cannot be clozed).
+ * With it off, the previous fixed rotation applies unchanged.
  */
 function pickMode(card) {
+  const available = ['recognize'];
+  if (clozeSentence(card)) available.push('cloze');
+  available.push('produce', 'dictation');
+
+  if (adaptiveOn()) return selectReviewMode(card, session.lang, { available });
+
   if (card.srs.reps < 2) return 'recognize';
-  const rotation = card.example
-    ? ['produce', 'listen', 'produce', 'cloze']
-    : ['produce', 'listen'];
+  const rotation = available.includes('cloze')
+    ? ['produce', 'dictation', 'produce', 'cloze']
+    : ['produce', 'dictation'];
   return rotation[(card.srs.reps - 2) % rotation.length];
+}
+
+/** The cloze display for a card, or null when the item is not literally there. */
+function clozeSentence(card) {
+  if (!card.example) return null;
+  const pattern = new RegExp(escapeRegExp(card.target), 'i');
+  return pattern.test(card.example) ? card.example.replace(pattern, '_____') : null;
 }
 
 function renderEmpty(container, capLeft) {
@@ -112,10 +129,11 @@ function renderCard(container) {
         el('button', { class: 'btn btn-ghost btn-sm', onclick: () => endSession(container) }, 'End session')),
       stage));
 
+  session.mode = mode;
   const finish = (verdict, answer) => showVerdict(stage, container, card, verdict, answer);
 
   if (mode === 'recognize') renderRecognize(stage, card, finish);
-  else if (mode === 'listen') renderListen(stage, card, finish);
+  else if (mode === 'dictation') renderListen(stage, card, finish);
   else if (mode === 'cloze') renderCloze(stage, card, finish);
   else renderProduce(stage, card, finish);
 }
@@ -132,7 +150,7 @@ function renderRecognize(stage, card, finish) {
     onPick: (correct) => setTimeout(() => finish(correct ? 'correct' : 'wrong', null), correct ? 500 : 1100),
   });
   stage.append(el('div', { class: 'quiz-card' },
-    el('span', { class: 'phase-tag' }, 'Meaning'),
+    modeTag('recognize'),
     el('h2', { class: 'quiz-prompt' }, card.target),
     el('div', { class: 'row gap center' }, audioButton(card.target, { lang: session.lang })),
     grid));
@@ -144,7 +162,7 @@ function renderRecognize(stage, card, finish) {
 function renderProduce(stage, card, finish) {
   const typing = makeTyping(card, finish, `Translate to ${languageProfile(session.lang)?.display || 'target'}…`);
   stage.append(el('div', { class: 'quiz-card' },
-    el('span', { class: 'phase-tag' }, 'Produce'),
+    modeTag('produce'),
     el('h2', { class: 'quiz-prompt' }, card.english),
     typing.root));
   typing.focus();
@@ -153,7 +171,7 @@ function renderProduce(stage, card, finish) {
 function renderListen(stage, card, finish) {
   const typing = makeTyping(card, finish, 'Type what you hear…');
   stage.append(el('div', { class: 'quiz-card' },
-    el('span', { class: 'phase-tag' }, 'Listening'),
+    modeTag('dictation'),
     el('div', { class: 'listen-controls' },
       audioButton(card.target, { lang: session.lang, kind: 'soft', label: 'Play' }),
       audioButton(card.target, { lang: session.lang, slow: true, kind: 'ghost', label: 'Slow' })),
@@ -163,19 +181,16 @@ function renderListen(stage, card, finish) {
 }
 
 function renderCloze(stage, card, finish) {
-  const sentence = card.example;
-  const targetPattern = new RegExp(escapeRegExp(card.target), 'i');
-  let display;
-  if (targetPattern.test(sentence)) {
-    display = sentence.replace(targetPattern, '_____');
-  } else {
+  const display = clozeSentence(card);
+  if (!display) {
     // Item not literally in the example (inflection) - fall back to production.
+    session.mode = 'produce';
     renderProduce(stage, card, finish);
     return;
   }
   const typing = makeTyping(card, finish, 'Fill in the blank…');
   stage.append(el('div', { class: 'quiz-card' },
-    el('span', { class: 'phase-tag' }, 'In context'),
+    modeTag('cloze'),
     el('h2', { class: 'quiz-prompt cloze' }, display),
     card.exampleEn ? el('p', { class: 'muted small center' }, card.exampleEn) : null,
     el('p', { class: 'muted small center' }, `(${card.english})`),
@@ -206,6 +221,15 @@ function escapeRegExp(text) {
   return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+/** Names the retrieval, and says so when adaptive testing chose it. */
+function modeTag(mode) {
+  const label = MODES[mode]?.label || mode;
+  return el('span', {
+    class: `phase-tag${adaptiveOn() ? ' adaptive' : ''}`,
+    title: adaptiveOn() ? 'Chosen by adaptive testing from your current ability' : '',
+  }, adaptiveOn() ? icon('zap', 11) : null, label);
+}
+
 // -- verdict + grading -------------------------------------------------------
 function showVerdict(stage, container, card, verdict, answer) {
   cleanup();
@@ -232,10 +256,17 @@ function showVerdict(stage, container, card, verdict, answer) {
 }
 
 function applyGrade(container, card, verdict, rating) {
+  // The estimate is fed whether or not adaptive selection is on, so switching
+  // the toggle on later starts from real evidence rather than from scratch.
+  recordAttempt({ mode: session.mode || 'produce', verdict, card, lang: session.lang });
   schedule(card, rating, Date.now(), { targetRetention: state.settings.targetRetention });
   const ms = Date.now() - session.cardStart;
-  recordReview({ correct: rating >= Rating.GOOD, ms, mode: 'review' }, session.lang);
-  session.results.push({ id: card.id, target: card.target, rating, verdict });
+  // A dictation review really is listening practice, so the study mix says so.
+  recordReview({
+    correct: rating >= Rating.GOOD, ms,
+    mode: session.mode === 'dictation' ? 'listen' : 'review',
+  }, session.lang);
+  session.results.push({ id: card.id, target: card.target, rating, verdict, mode: session.mode });
   persist();
   session.index += 1;
   const upcoming = session.queue[session.index + 1];
@@ -256,6 +287,10 @@ function renderSummary(container) {
   const correct = results.filter((r) => r.rating >= Rating.GOOD).length;
   const accuracy = results.length ? Math.round((correct / results.length) * 100) : 0;
   const lapses = results.filter((r) => r.rating === Rating.AGAIN);
+  const modeCounts = results.reduce((acc, r) => {
+    if (r.mode) acc[r.mode] = (acc[r.mode] || 0) + 1;
+    return acc;
+  }, {});
 
   container.replaceChildren(
     el('div', { class: 'view-inner narrow' },
@@ -266,6 +301,13 @@ function renderSummary(container) {
           summaryStat(String(results.length), 'reviews'),
           summaryStat(`${accuracy}%`, 'accuracy'),
           summaryStat(String(lapses.length), 'lapses')),
+        adaptiveOn() && Object.keys(modeCounts).length ? el('div', { class: 'mode-mix' },
+          el('h4', {}, 'Retrievals used'),
+          el('div', { class: 'row gap wrap center' },
+            Object.entries(modeCounts)
+              .sort((a, b) => (MODES[a[0]]?.difficulty || 0) - (MODES[b[0]]?.difficulty || 0))
+              .map(([mode, count]) => el('span', { class: 'chip mode-chip' },
+                `${MODES[mode]?.label || mode} · ${count}`)))) : null,
         lapses.length ? el('div', { class: 'lapse-list' },
           el('h4', {}, 'Back in the queue soon:'),
           lapses.slice(0, 6).map((r) => el('span', { class: 'chip' }, r.target))) : null,

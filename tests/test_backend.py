@@ -13,7 +13,7 @@ APP_DIR = Path(__file__).resolve().parents[1]
 if str(APP_DIR) not in sys.path:
     sys.path.insert(0, str(APP_DIR))
 
-from backend import config, content, curriculum, tts  # noqa: E402
+from backend import config, content, curriculum, levels, tts  # noqa: E402
 from backend.grammar import CEFR_ORDER, GRAMMAR, feature_index, grammar_profile, prompt_brief  # noqa: E402
 from backend.languages import get_language, normalize_language_code, LANGUAGES  # noqa: E402
 from backend.llm import extract_json, resolve_model_override  # noqa: E402
@@ -266,6 +266,40 @@ class TestCurriculum(unittest.TestCase):
             self.assertEqual({item["level"] for item in pack["items"]}, {"A1"}, code)
             domains = {curriculum.UNIT_INDEX[i["unit"]]["domain"] for i in pack["items"]}
             self.assertGreaterEqual(len(domains), 4, f"{code} starter set is too narrow")
+
+
+class TestLevels(unittest.TestCase):
+    def test_every_level_has_a_name_a_blurb_and_guidance(self):
+        self.assertEqual(tuple(levels.LEVELS), levels.CEFR_ORDER)
+        for code, meta in levels.LEVELS.items():
+            for key in ("name", "blurb", "guidance"):
+                self.assertTrue(meta[key], f"{code} missing {key}")
+            self.assertNotEqual(meta["name"], code, f"{code} name must be words, not the code")
+
+    def test_one_table_feeds_every_module(self):
+        """The order lived in three modules and drifted; assert it cannot again."""
+        from backend import grammar
+        self.assertIs(grammar.CEFR_ORDER, levels.CEFR_ORDER)
+        self.assertIs(curriculum.CEFR_ORDER, levels.CEFR_ORDER)
+        self.assertIs(content.CEFR_LEVELS, levels.CEFR_ORDER)
+        self.assertEqual(set(content.LEVEL_GUIDANCE), set(levels.CEFR_ORDER))
+
+    def test_normalisation_and_ordering(self):
+        self.assertEqual(levels.normalize_level("b1"), "B1")
+        self.assertEqual(levels.normalize_level("nonsense"), levels.DEFAULT_LEVEL)
+        self.assertEqual(levels.normalize_level(None), levels.DEFAULT_LEVEL)
+        self.assertEqual(levels.level_index("A1"), 0)
+        self.assertLess(levels.level_index("A2"), levels.level_index("C1"))
+
+    def test_public_payload_shape(self):
+        payload = levels.public_level_payload()
+        self.assertEqual([row["code"] for row in payload], list(levels.CEFR_ORDER))
+        for row in payload:
+            self.assertEqual(set(row), {"code", "name", "blurb"})
+
+    def test_every_curriculum_unit_sits_on_the_scale(self):
+        for unit_id, meta in curriculum.UNIT_INDEX.items():
+            self.assertIn(meta["level"], levels.CEFR_ORDER, unit_id)
 
 
 class TestTTS(unittest.TestCase):

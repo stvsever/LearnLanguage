@@ -21,6 +21,7 @@ import { speak, stopAudio, feedbackTone } from '../audio.js';
 import { normalize } from '../grading.js';
 import { choiceGrid } from '../exercises.js';
 import { ctx, languageProfile } from '../context.js';
+import { allLevels, levelBlurb, levelLabel } from '../levels.js';
 
 const FORMAT_META = {
   dialogue: { label: 'Dialogue', icon: 'mic', hint: 'A spoken exchange between named speakers' },
@@ -177,10 +178,17 @@ function composeForm(container) {
       }, icon(meta.icon, 16), el('span', {}, meta.label))));
   syncSpeakerRow();
 
+  const levelHint = el('small', { class: 'muted' }, levelBlurb(form.level));
   const levelSelect = el('select', {
     class: 'input',
-    onchange: (e) => { form.level = e.target.value; refreshFocusPicker(); },
-  }, (ctx.config?.levels || []).map((lv) => el('option', { value: lv, selected: lv === form.level || undefined }, lv)));
+    onchange: (e) => {
+      form.level = e.target.value;
+      levelHint.textContent = levelBlurb(form.level);
+      refreshFocusPicker();
+    },
+  }, allLevels().map((lv) => el('option', {
+    value: lv.code, title: lv.blurb, selected: lv.code === form.level || undefined,
+  }, `${lv.code} · ${lv.name}`)));
 
   const lengthSelect = el('select', {
     class: 'input',
@@ -230,7 +238,7 @@ function composeForm(container) {
         speakerRow),
       el('div', { class: 'field' },
         el('span', {}, 'Grammar to exercise'),
-        el('small', { class: 'muted' }, `Pick up to four structures from ${form.level}. They must appear in the text and in the spotlights.`),
+        el('small', { class: 'muted' }, `Pick up to four structures from ${levelLabel(form.level)}. They must appear in the text and in the spotlights.`),
         focusHost),
       el('label', { class: 'field' },
         el('span', {}, 'Vocabulary to weave in'),
@@ -251,7 +259,7 @@ function composeForm(container) {
     exampleRow,
     el('div', { class: 'field' }, el('span', {}, 'Format'), formatRow),
     el('div', { class: 'row gap wrap compose-controls' },
-      el('label', { class: 'field grow' }, el('span', {}, 'Level'), levelSelect),
+      el('label', { class: 'field grow' }, el('span', {}, 'Level'), levelSelect, levelHint),
       el('label', { class: 'field grow' }, el('span', {}, 'Length'), lengthSelect)),
     advanced,
     el('div', { class: 'compose-actions row gap wrap' }, composeBtn),
@@ -283,7 +291,7 @@ async function runCompose(container, { composeBtn, progressHost, resultHost, lan
     form.format === 'auto'
       ? 'Choosing the best format: dialogue, monologue, story, or article'
       : `Shaping it as a ${FORMAT_META[form.format].label.toLowerCase()}`,
-    `Writing at ${form.level} in a ${form.register} register`,
+    `Writing at ${levelLabel(form.level)} in a ${form.register} register`,
     'Validating structure, glossary, spotlights, and questions',
   ], [1500, 5000, 16000]);
   progressHost.replaceChildren(progress.root);

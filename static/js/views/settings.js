@@ -9,6 +9,11 @@ import { ctx, languageProfile } from '../context.js';
 import { startTour } from '../tour.js';
 import { applyTheme } from '../theme.js';
 import { keySetupCard, keyReplaceRow } from '../keysetup.js';
+import { allLevels, levelBlurb, levelLabel } from '../levels.js';
+import {
+  ability, abilityBand, abilityRecord, isEnabled as adaptiveOn, modeForecast,
+  recentAccuracy, levelRecommendation, resetAbility, targetSuccess,
+} from '../adaptive.js';
 
 export function openSettings({ onChange: onChangeExternal } = {}) {
   // Every control change flashes a "Saved" confirmation in the header:
@@ -28,7 +33,7 @@ export function openSettings({ onChange: onChangeExternal } = {}) {
     onChange?.();
   };
 
-  function toggleRow(label, hint, key) {
+  function toggleRow(label, hint, key, { onToggle } = {}) {
     const isOn = Boolean(state.settings[key]);
     return el('div', { class: 'set-row' },
       el('div', { class: 'set-text' }, el('strong', {}, label), hint ? el('span', {}, hint) : null),
@@ -39,8 +44,110 @@ export function openSettings({ onChange: onChangeExternal } = {}) {
           e.currentTarget.classList.toggle('on');
           e.currentTarget.setAttribute('aria-checked', String(state.settings[key]));
           onChange?.();
+          // Some switches change what the rest of the section should say.
+          if (onToggle) setTimeout(onToggle, 0);
         },
       }, el('span', { class: 'knob' })));
+  }
+
+  /** Level, with the adjective that makes the code mean something. */
+  function levelRow(repaint) {
+    const current = state.settings.level;
+    const hint = el('span', {}, levelBlurb(current));
+    return el('div', { class: 'set-row' },
+      el('div', { class: 'set-text' }, el('strong', {}, 'Your level'), hint),
+      el('select', {
+        class: 'input compact level-select',
+        onchange: (e) => {
+          updateSettings({ level: e.target.value });
+          hint.textContent = levelBlurb(e.target.value);
+          onChange?.();
+          ctx.rerenderView();
+          setTimeout(repaint, 0);
+        },
+      }, allLevels().map((lv) => el('option', {
+        value: lv.code, title: lv.blurb, selected: lv.code === current || undefined,
+      }, `${lv.code} · ${lv.name}`))));
+  }
+
+  /**
+   * What adaptive testing is currently doing, in plain words: the band it reads
+   * you at, how it got there, which retrievals that selects, and whether your
+   * CEFR level still matches the evidence.
+   */
+  function adaptiveReadout(repaint) {
+    const lang = currentLanguage();
+    const record = abilityRecord(lang);
+    const score = ability(lang);
+    const band = abilityBand(score);
+    const accuracy = recentAccuracy(lang);
+    const recommendation = levelRecommendation(lang, state.settings.level);
+
+    if (!adaptiveOn()) {
+      return el('div', { class: 'adaptive-panel off' },
+        el('p', { class: 'muted small' },
+          'Exercises follow a fixed rotation. Your ability estimate keeps updating in the background, so switching this on later starts from real evidence.'),
+        el('p', { class: 'muted small' },
+          `Current reading: ${band.label.toLowerCase()}, from ${record.samples} answer${record.samples === 1 ? '' : 's'}.`));
+    }
+
+    const forecast = modeForecast(lang);
+    return el('div', { class: 'adaptive-panel' },
+      el('div', { class: 'adaptive-head' },
+        el('div', {},
+          el('strong', {}, band.label),
+          el('span', { class: 'muted small' }, band.hint)),
+        el('div', { class: 'adaptive-score' },
+          el('strong', {}, `${Math.round(score * 100)}`),
+          el('span', {}, 'ability'))),
+      el('div', { class: 'adaptive-meter' },
+        el('span', { style: { width: `${Math.round(score * 100)}%` } })),
+      el('p', { class: 'muted small' },
+        `${record.samples} answer${record.samples === 1 ? '' : 's'} measured`
+        + (accuracy === null ? '' : ` · ${Math.round(accuracy * 100)}% recent accuracy`)
+        + ` · aiming for ${Math.round(targetSuccess() * 100)}% success`),
+      el('div', { class: 'forecast' },
+        forecast.map((row) => el('div', { class: `forecast-row${row.selected ? ' selected' : ''}` },
+          el('span', { class: 'forecast-label' }, row.label),
+          el('div', { class: 'forecast-track' },
+            el('span', { style: { width: `${Math.round(row.predicted * 100)}%` } })),
+          el('span', { class: 'forecast-value' }, `${Math.round(row.predicted * 100)}%`)))),
+      el('p', { class: 'muted small' },
+        'Bars are the predicted success rate for each retrieval. The hardest one still above your target is the one you get.'),
+      recommendationRow(recommendation, repaint),
+      el('div', { class: 'row gap wrap' },
+        el('button', {
+          class: 'btn btn-ghost btn-sm',
+          onclick: async () => {
+            if (await confirmDialog('Reset the adaptive estimate for this language? Exercises start from the easy end again.', { confirmLabel: 'Reset estimate' })) {
+              resetAbility(lang);
+              toast('Adaptive estimate reset', 'info');
+              repaint();
+            }
+          },
+        }, icon('refresh', 15), 'Reset estimate')));
+  }
+
+  function recommendationRow(recommendation, repaint) {
+    if (recommendation.action === 'hold') {
+      return el('p', { class: 'muted small' }, icon('check', 13), ' ', recommendation.reason);
+    }
+    return el('div', { class: `level-suggestion ${recommendation.action}` },
+      el('div', {},
+        el('strong', {}, recommendation.action === 'up'
+          ? `Ready for ${levelLabel(recommendation.suggested)}`
+          : `Consider dropping to ${levelLabel(recommendation.suggested)}`),
+        el('span', { class: 'muted small' }, recommendation.reason)),
+      el('button', {
+        class: 'btn btn-soft btn-sm',
+        onclick: () => {
+          updateSettings({ level: recommendation.suggested });
+          toast(`Level set to ${levelLabel(recommendation.suggested)}`, 'success');
+          onChange?.();
+          ctx.rerenderView();
+          repaint();
+        },
+      }, 'Apply'));
   }
 
   function selectRow(label, hint, key, options, { onSet } = {}) {
@@ -80,8 +187,7 @@ export function openSettings({ onChange: onChangeExternal } = {}) {
         selectRow('Target language', 'Each language keeps its own deck, stats, and topic library', 'language',
           (ctx.config?.languages || []).map((l) => [l.code, `${l.flag} ${l.display}`]),
           { onSet: () => { ctx.refreshChrome(); ctx.rerenderView(); rerender(); } }),
-        selectRow('Your level', 'Sets the default difficulty of generated content', 'level',
-          (ctx.config?.levels || []).map((lv) => [lv, lv])),
+        levelRow(rerender),
         el('div', { class: 'set-row' },
           el('div', { class: 'set-text' }, el('strong', {}, 'Voice'), el('span', {}, `Neural voice used for ${profile?.display || ''} audio`)),
           el('select', {
@@ -98,6 +204,13 @@ export function openSettings({ onChange: onChangeExternal } = {}) {
           [['slow', 'Slow'], ['study', 'Study'], ['natural', 'Natural'], ['fast', 'Fast']]),
         toggleRow('Autoplay audio', 'Hear each item as soon as it appears', 'autoplayAudio'),
         toggleRow('Feedback sounds', 'Short tones on correct / incorrect answers', 'soundEffects'),
+      ]),
+
+      section('zap', 'Testing & difficulty', [
+        toggleRow('Adaptive testing',
+          'Pick each exercise from your measured ability instead of a fixed rotation',
+          'adaptiveTesting', { onToggle: rerender }),
+        adaptiveReadout(rerender),
       ]),
 
       section('target', 'Daily plan & scheduler', [

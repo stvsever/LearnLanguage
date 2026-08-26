@@ -1,0 +1,149 @@
+/* Levels with names, and the adaptive testing readout. */
+
+/* -- Level chips ------------------------------------------------------------ */
+/* A chip is code + name. The name hides below 520px, where only the code fits. */
+.level-chip {
+  display: inline-flex; align-items: baseline; gap: 5px;
+  white-space: nowrap;
+}
+.level-chip strong { font-weight: 700; }
+.level-chip-name {
+  font-weight: 500;
+  font-size: 0.92em;
+  letter-spacing: 0;
+  opacity: 0.85;
+}
+.level-chip.active .level-chip-name { opacity: 0.9; }
+@media (max-width: 520px) { .level-chip-name { display: none; } }
+
+/* How a topic sits against the learner's own level. */
+.relation-chip {
+  font-size: 10.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.r-review { color: var(--text-faint); background: var(--surface-2); border-color: var(--border); }
+.r-stretch { color: var(--warn); background: var(--warn-soft); border-color: color-mix(in srgb, var(--warn) 28%, transparent); }
+.r-ahead { color: var(--bad); background: var(--bad-soft); border-color: color-mix(in srgb, var(--bad) 28%, transparent); }
+
+.filter-chip-inner { display: inline-flex; align-items: baseline; gap: 5px; }
+.filter-chip-inner span { font-weight: 500; opacity: 0.85; }
+@media (max-width: 700px) { .filter-chip-inner span { display: none; } }
+
+.filter-note {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  padding: 9px 14px;
+  margin-bottom: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border-strong);
+  background: var(--surface-2);
+}
+
+.unit-hero-level { margin: -2px 0 0; max-width: 620px; }
+.level-select { min-width: 180px; }
+
+/* -- Adaptive testing readout ----------------------------------------------- */
+.adaptive-panel {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent-soft-border);
+  background: linear-gradient(180deg, var(--accent-soft), var(--surface) 65%);
+}
+.adaptive-panel.off {
+  border-color: var(--border);
+  background: var(--surface-2);
+  border-style: dashed;
+}
+.adaptive-panel p { margin: 0; }
+.adaptive-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.adaptive-head > div:first-child { display: flex; flex-direction: column; gap: 2px; }
+.adaptive-head strong { font-size: 15.5px; }
+.adaptive-score { display: flex; flex-direction: column; align-items: center; line-height: 1.1; flex: none; }
+.adaptive-score strong { font-size: 22px; color: var(--accent); }
+.adaptive-score span { font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.adaptive-meter {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+.adaptive-meter span {
+  display: block; height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 55%, var(--ok)));
+  transition: width 0.4s var(--ease);
+}
+
+.forecast { display: flex; flex-direction: column; gap: 4px; margin-top: 2px; }
+.forecast-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 90px 40px;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.forecast-row.selected {
+  background: var(--surface);
+  border: 1px solid var(--accent-soft-border);
+  color: var(--text);
+  font-weight: 550;
+}
+.forecast-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.forecast-track { height: 6px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
+.forecast-track span { display: block; height: 100%; border-radius: 999px; background: var(--text-faint); }
+.forecast-row.selected .forecast-track span { background: var(--accent); }
+.forecast-value { text-align: right; font-variant-numeric: tabular-nums; font-size: 12.5px; }
+@media (max-width: 620px) {
+  .forecast-row { grid-template-columns: minmax(0, 1fr) 40px; }
+  .forecast-track { display: none; }
+}
+
+.level-suggestion {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--ok) 32%, transparent);
+  background: var(--ok-soft);
+}
+.level-suggestion.down {
+  border-color: color-mix(in srgb, var(--warn) 32%, transparent);
+  background: var(--warn-soft);
+}
+.level-suggestion > div { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.level-suggestion strong { font-size: 14px; }
+
+/* The exercise tag says when adaptive testing chose the retrieval. */
+.phase-tag.adaptive {
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.phase-tag.adaptive svg { opacity: 0.85; }
+
+.mode-mix { margin-top: 14px; }
+.mode-mix h4 { margin-bottom: 6px; color: var(--text-muted); font-size: 12.5px; }
+.chip.mode-chip { font-size: 12px; color: var(--text-muted); }
+
+.adaptive-note {
+  display: inline-flex; align-items: flex-start; gap: 7px;
+  text-align: left;
+  margin: 4px auto 2px;
+  max-width: 460px;
+}
+.adaptive-note svg { flex: none; margin-top: 2px; color: var(--accent); }
+
+/* Progress view panel */
+.adaptive-progress { display: flex; flex-direction: column; gap: 12px; }
+.adaptive-progress-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.adaptive-progress-head > div:first-child { display: flex; flex-direction: column; gap: 2px; }
+.ability-trend { height: 70px; }
+.ability-trend svg { width: 100%; height: 100%; }
+.coverage-row .forecast-label { min-width: 150px; }

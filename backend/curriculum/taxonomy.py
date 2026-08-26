@@ -22,7 +22,7 @@ from __future__ import annotations
 
 from typing import Dict, List, Optional
 
-CEFR_ORDER = ("A1", "A2", "B1", "B2", "C1", "C2")
+from ..levels import CEFR_ORDER  # noqa: F401 - re-exported through the package
 
 
 def _u(uid: str, title: str, level: str, goal: str, keywords: List[str]) -> dict:

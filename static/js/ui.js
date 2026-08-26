@@ -21,6 +21,21 @@ export function el(tag, attrs = {}, ...children) {
   return node;
 }
 
+/**
+ * Replace a node's children, applying the same rules el() applies to its own:
+ * arrays are flattened and null/undefined/false are dropped.
+ *
+ * Native replaceChildren does neither, so passing a `cond ? node : null` into
+ * it renders the literal text "null". Use this wherever children are built
+ * conditionally at the top level.
+ */
+export function paint(node, ...children) {
+  node.replaceChildren(...children.flat(Infinity)
+    .filter((child) => child !== null && child !== undefined && child !== false)
+    .map((child) => (child instanceof Node ? child : document.createTextNode(String(child)))));
+  return node;
+}
+
 export function esc(text) {
   const div = document.createElement('div');
   div.textContent = String(text ?? '');

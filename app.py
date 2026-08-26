@@ -21,7 +21,7 @@ CURRENT_DIR = Path(__file__).resolve().parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
 
-from backend import config, content, curriculum, tts  # noqa: E402
+from backend import config, content, curriculum, levels, tts  # noqa: E402
 from backend.grammar import grammar_profile  # noqa: E402
 from backend.languages import LANGUAGES, normalize_language_code, public_language_payload  # noqa: E402
 from backend.llm import LLMUnavailable, reset_client  # noqa: E402
@@ -40,7 +40,7 @@ def config_payload() -> dict:
         "modelChoices": config.MODEL_CHOICES,
         "defaultLanguage": config.DEFAULT_LANGUAGE,
         "languages": public_language_payload(),
-        "levels": list(content.CEFR_LEVELS),
+        "levels": levels.public_level_payload(),
         # How much curated, LLM-free material each language ships with. The UI
         # uses this to decide whether to offer the library as a first-class path.
         "curriculum": {code: curriculum.summary(code) for code in LANGUAGES},

@@ -22,26 +22,14 @@ from typing import List, Optional
 from . import config, curriculum
 from .grammar import feature_index, prompt_brief
 from .languages import get_language
+from .levels import CEFR_ORDER, LEVEL_GUIDANCE, normalize_level  # noqa: F401 - re-exported
 from .llm import LLMUnavailable, generate_structured
 from .models import CompositionPack, Gloss, LessonPack
 
 logger = logging.getLogger(__name__)
 
-CEFR_LEVELS = ("A1", "A2", "B1", "B2", "C1", "C2")
-
-LEVEL_GUIDANCE = {
-    "A1": "Absolute beginner. Very high-frequency words and fixed chunks. Simple present-oriented sentences under 8 words.",
-    "A2": "Elementary. Everyday topics, first past-tense forms, short compound sentences.",
-    "B1": "Intermediate. Opinions, plans, narration across time frames. Natural connectors.",
-    "B2": "Upper-intermediate. Abstract topics, idiomatic collocations, register contrasts.",
-    "C1": "Advanced. Nuanced idiom, low-frequency vocabulary, complex syntax.",
-    "C2": "Mastery. Native-like idiom, subtle register, literary and technical range.",
-}
-
-
-def normalize_level(value: Optional[str]) -> str:
-    raw = str(value or "A2").strip().upper()
-    return raw if raw in CEFR_LEVELS else "A2"
+# Historical alias: the level scale itself now lives in backend/levels.py.
+CEFR_LEVELS = CEFR_ORDER
 
 
 def strip_em_dashes(value):
@@ -132,8 +120,8 @@ def seed_composition(language_code: str) -> Optional[dict]:
 def _valid_feature_list(language_code: str, level: str) -> List[str]:
     """Feature menu offered to the model: ids at or one level below the target."""
     index = feature_index(language_code)
-    position = CEFR_LEVELS.index(level)
-    allowed_levels = set(CEFR_LEVELS[max(0, position - 1): position + 1])
+    position = CEFR_ORDER.index(level)
+    allowed_levels = set(CEFR_ORDER[max(0, position - 1): position + 1])
     return [fid for fid, meta in index.items() if meta["level"] in allowed_levels]
 
 

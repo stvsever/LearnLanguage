@@ -9,6 +9,7 @@ import { speak, feedbackTone, stopAudio } from '../audio.js';
 import { grade } from '../grading.js';
 import { typingInput, verdictPanel, audioButton, choiceGrid, progressBar } from '../exercises.js';
 import { ctx } from '../context.js';
+import { listenPlan, recordAttempt, isEnabled as adaptiveOn, abilityBand, ability } from '../adaptive.js';
 
 const ROUND_LENGTH = 8;
 let session = null;
@@ -17,8 +18,11 @@ let keyHandler = null;
 export function render(container) {
   cleanup();
   session = null;
-  const pool = learnedCards(currentLanguage());
+  const lang = currentLanguage();
+  const pool = learnedCards(lang);
   const ready = pool.length >= 4;
+  const plan = listenPlan(lang);
+  const recommended = plan.mode;
 
   container.replaceChildren(
     el('div', { class: 'view-inner narrow' },
@@ -28,11 +32,18 @@ export function render(container) {
         el('p', { class: 'muted' }, ready
           ? 'Train your ear on the words you already know. Dictation builds sound-to-spelling mapping; discrimination sharpens similar-sounding words.'
           : 'Learn at least 4 items first - listening drills reuse your own deck so every rep also reinforces vocabulary.'),
+        ready && adaptiveOn() ? el('p', { class: 'muted small adaptive-note' },
+          icon('zap', 13),
+          el('span', {}, `Adaptive testing suggests ${recommended === 'dictation' ? 'dictation' : 'discrimination'} right now, with ${plan.distractors} options and ${plan.preferSentence ? 'full sentences' : 'single items'}. Either button still works.`)) : null,
         el('div', { class: 'row gap center' },
-          el('button', { class: 'btn btn-primary btn-lg', disabled: !ready || undefined, onclick: () => start(container, 'dictation') },
-            icon('penLine', 18), 'Dictation'),
-          el('button', { class: 'btn btn-soft btn-lg', disabled: !ready || undefined, onclick: () => start(container, 'discrimination') },
-            icon('ear', 18), 'Discrimination')),
+          el('button', {
+            class: `btn btn-lg ${recommended === 'dictation' ? 'btn-primary' : 'btn-soft'}`,
+            disabled: !ready || undefined, onclick: () => start(container, 'dictation'),
+          }, icon('penLine', 18), 'Dictation'),
+          el('button', {
+            class: `btn btn-lg ${recommended === 'discrimination' ? 'btn-primary' : 'btn-soft'}`,
+            disabled: !ready || undefined, onclick: () => start(container, 'discrimination'),
+          }, icon('ear', 18), 'Discrimination')),
         !ready ? el('button', { class: 'btn btn-ghost', style: { marginTop: '10px' }, onclick: () => ctx.navigate('learn') }, 'Go to Learn') : null)));
 }
 
@@ -45,7 +56,9 @@ function start(container, mode) {
   const lang = currentLanguage();
   const pool = shuffled(learnedCards(lang));
   const items = pool.slice(0, ROUND_LENGTH);
-  session = { mode, lang, items, index: 0, correct: 0, startedAt: Date.now() };
+  // The plan sets how hard the round is: sentence or single item for
+  // dictation, and how many confusable options for discrimination.
+  session = { mode, lang, items, index: 0, correct: 0, startedAt: Date.now(), plan: listenPlan(lang, mode) };
   step(container);
 }
 
@@ -67,7 +80,9 @@ function step(container) {
 }
 
 function useSentence(card) {
-  // Prefer the example sentence when it's not too long - richer signal.
+  // Prefer the example sentence when it's not too long - richer signal - but
+  // only once the learner can hold that much; below that, single items.
+  if (!session?.plan?.preferSentence) return card.target;
   return card.example && card.example.length <= 90 ? card.example : card.target;
 }
 
@@ -86,6 +101,7 @@ function dictation(stage, card, container) {
       const ok = result.verdict === 'correct' || result.verdict === 'accents';
       if (ok) session.correct += 1;
       feedbackTone(ok ? 'correct' : 'wrong');
+      recordAttempt({ mode: 'dictation', verdict: result.verdict, card, lang: session.lang });
       recordReview({ correct: ok, ms: 0, mode: 'listen' }, session.lang);
       stage.querySelector('.quiz-card').append(
         verdictPanel({ verdict: result.verdict, answer: value, expected: text, card: text === card.target ? card : null, lang: session.lang }),
@@ -114,7 +130,8 @@ function discrimination(stage, card, container) {
     .map((c) => ({ c, s: confusability(c.target, card.target) }))
     .sort((a, b) => b.s - a.s)
     .slice(0, 8);
-  const distractors = sample(scored, Math.min(3, scored.length)).map((x) => x.c.target);
+  const wanted = Math.max(2, (session.plan?.distractors || 4) - 1);
+  const distractors = sample(scored, Math.min(wanted, scored.length)).map((x) => x.c.target);
   const choices = shuffled([card.target, ...distractors]);
   const correctIndex = choices.indexOf(card.target);
 
@@ -123,6 +140,7 @@ function discrimination(stage, card, container) {
     onPick: (correct) => {
       if (correct) session.correct += 1;
       feedbackTone(correct ? 'correct' : 'wrong');
+      recordAttempt({ mode: 'discriminate', verdict: correct, card, lang: session.lang });
       recordReview({ correct, ms: 0, mode: 'listen' }, session.lang);
       setTimeout(() => { session.index += 1; step(container); }, correct ? 600 : 1400);
     },
@@ -153,7 +171,8 @@ function confusability(a, b) {
 }
 
 function summary(container) {
-  const { correct, items, mode } = session;
+  const { correct, items, lang } = session;
+  const band = abilityBand(ability(lang));
   session = null;
   container.replaceChildren(
     el('div', { class: 'view-inner narrow' },
@@ -163,6 +182,8 @@ function summary(container) {
         el('p', { class: 'muted' }, correct === items.length
           ? 'Perfect ear. Try a faster voice speed in Settings for a harder challenge.'
           : 'Missed items stay in your review pipeline - the scheduler will bring them back.'),
+        adaptiveOn() ? el('p', { class: 'muted small' },
+          `Adaptive testing now reads your level as ${band.label.toLowerCase()}.`) : null,
         el('div', { class: 'row gap center' },
           el('button', { class: 'btn btn-primary', onclick: () => render(container) }, 'Another round'),
           el('button', { class: 'btn btn-ghost', onclick: () => ctx.navigate('dashboard') }, 'Dashboard')))));

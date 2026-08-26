@@ -10,6 +10,11 @@ import {
 import { retrievability } from '../srs.js';
 import { api } from '../api.js';
 import { ctx } from '../context.js';
+import { levelName, levelBlurb, levelLabel } from '../levels.js';
+import {
+  ability, abilityBand, abilityRecord, isEnabled as adaptiveOn,
+  levelRecommendation, modeForecast,
+} from '../adaptive.js';
 
 const DAY_MS = 86400000;
 
@@ -47,6 +52,7 @@ export function render(container) {
           el('h3', {}, 'Study mix · 30d'),
           el('p', { class: 'muted small' }, 'Balanced skills grow together - reviews build memory, listening and speaking build fluency.'),
           studyMix(days)),
+        adaptiveCard(lang),
         el('section', { class: 'card wide grammar-coverage-card' },
           el('div', { class: 'row gap', style: { justifyContent: 'space-between', alignItems: 'baseline' } },
             el('h3', {}, 'Grammar coverage'),
@@ -66,6 +72,65 @@ export function render(container) {
 }
 
 export function cleanup() {}
+
+/**
+ * What adaptive testing has measured, and what it is doing with it.
+ * Sits in Progress because it is a measurement of the learner, not a setting.
+ */
+function adaptiveCard(lang) {
+  const record = abilityRecord(lang);
+  const score = ability(lang);
+  const band = abilityBand(score);
+  const recommendation = levelRecommendation(lang, state.settings.level);
+  const trend = record.recent.map((sample) => sample.score);
+
+  return el('section', { class: 'card wide' },
+    el('div', { class: 'row gap', style: { justifyContent: 'space-between', alignItems: 'baseline' } },
+      el('h3', {}, 'Adaptive testing'),
+      el('span', { class: 'muted small' },
+        adaptiveOn() ? `${record.samples} answers measured` : 'Currently switched off in Settings')),
+    el('p', { class: 'muted small' },
+      'One ability estimate per language, moved by every graded answer. It decides which retrieval each review asks of you.'),
+    record.samples === 0
+      ? el('p', { class: 'muted' }, 'Nothing measured yet. Answer a few reviews and this fills in.')
+      : el('div', { class: 'adaptive-progress' },
+        el('div', { class: 'adaptive-progress-head' },
+          el('div', {},
+            el('strong', {}, band.label),
+            el('span', { class: 'muted small' }, band.hint)),
+          el('div', { class: 'adaptive-score' },
+            el('strong', {}, String(Math.round(score * 100))),
+            el('span', {}, 'ability'))),
+        trend.length > 1 ? abilityTrend(trend) : null,
+        el('div', { class: 'coverage-rows' },
+          modeForecast(lang).map((row) => el('div', { class: `coverage-row${row.selected ? ' current' : ''}` },
+            el('span', { class: 'muted small forecast-label' }, row.label),
+            el('div', { class: 'coverage-track big' }, el('span', { style: { width: `${Math.round(row.predicted * 100)}%` } })),
+            el('span', { class: 'coverage-count' }, `${Math.round(row.predicted * 100)}%`)))),
+        recommendation.action === 'hold'
+          ? el('p', { class: 'muted small' }, recommendation.reason)
+          : el('div', { class: `level-suggestion ${recommendation.action}` },
+            el('div', {},
+              el('strong', {}, recommendation.action === 'up'
+                ? `Ready for ${levelLabel(recommendation.suggested)}`
+                : `Consider ${levelLabel(recommendation.suggested)}`),
+              el('span', { class: 'muted small' }, recommendation.reason)),
+            el('span', { class: 'muted small' }, 'Change it in Settings'))));
+}
+
+/** How the estimate has moved over the last stretch of answers. */
+function abilityTrend(scores) {
+  const W = 560, H = 70, P = 5;
+  const stepX = (W - P * 2) / Math.max(scores.length - 1, 1);
+  const coords = scores.map((value, i) => [P + i * stepX, H - P - value * (H - P * 2)]);
+  const line = coords.map(([x, y], i) => `${i ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
+  const wrap = el('div', { class: 'growth-chart ability-trend' });
+  wrap.innerHTML = `
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-label="Ability estimate over recent answers">
+      <path d="${line}" class="growth-line" fill="none"></path>
+    </svg>`;
+  return wrap;
+}
 
 function tile(iconName, value, label) {
   return el('div', { class: 'stat-tile' },
@@ -203,8 +268,10 @@ async function fillCoverage(lang) {
   rowsEl.replaceChildren(...Object.entries(profile.roadmap).map(([level, features]) => {
     const covered = features.filter((f) => seen[f.id]?.seen).length;
     const pct = Math.round((covered / features.length) * 100);
-    return el('div', { class: `coverage-row${level === userLevel ? ' current' : ''}` },
-      el('span', { class: `level-chip${level === userLevel ? ' active' : ''}` }, level),
+    return el('div', { class: `coverage-row${level === userLevel ? ' current' : ''}`, title: levelBlurb(level) },
+      el('span', { class: `level-chip${level === userLevel ? ' active' : ''}` },
+        el('strong', {}, level),
+        el('span', { class: 'level-chip-name' }, levelName(level))),
       el('div', { class: 'coverage-track big' }, el('span', { style: { width: `${pct}%` } })),
       el('span', { class: 'coverage-count' }, `${covered} / ${features.length}`));
   }));

@@ -23,12 +23,14 @@ export const DEFAULT_SETTINGS = {
   showPronunciation: true,
   showExamples: true,
   accentToolbar: true,
-  topicLevelFilter: 'all',  // Topics library: 'all' | 'A1' | 'A2' | 'B1' | 'B2'
+  adaptiveTesting: true,    // let adaptive.js choose exercise difficulty
+  topicLevelFilter: 'all',  // Topics library: 'all' or a CEFR code
   tourDone: false,
   model: null,           // OpenRouter model override; null = server default
 };
 
 const SUPPORTED_LANGUAGES = ['fr', 'es', 'ru', 'zh'];
+const SUPPORTED_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
 function freshState() {
   return {
@@ -39,6 +41,7 @@ function freshState() {
     stats: {},        // lang -> { days: { 'YYYY-MM-DD': {reviews, correct, newCards, timeMs} } }
     compositions: {}, // lang -> [compositionPack]
     grammar: {},      // lang -> { featureId: {seen, lastSeen} }
+    ability: {},      // lang -> { score, samples, updatedAt, recent } (adaptive.js)
   };
 }
 
@@ -76,8 +79,22 @@ function migrate(parsed) {
     });
   }
   if (!parsed.grammar) parsed.grammar = {};
+  // v2.2 adds the adaptive ability estimate.
+  if (!parsed.ability || typeof parsed.ability !== 'object') parsed.ability = {};
   if (!SUPPORTED_LANGUAGES.includes(parsed.settings.language)) parsed.settings.language = 'fr';
+  // A level outside the scale silently broke the grammar focus and generation
+  // defaults, so it is normalised on the way in rather than trusted.
+  parsed.settings.level = normalizeLevelCode(parsed.settings.level);
+  if (parsed.settings.topicLevelFilter !== 'all'
+      && !SUPPORTED_LEVELS.includes(parsed.settings.topicLevelFilter)) {
+    parsed.settings.topicLevelFilter = 'all';
+  }
   return parsed;
+}
+
+function normalizeLevelCode(value) {
+  const raw = String(value || '').trim().toUpperCase();
+  return SUPPORTED_LEVELS.includes(raw) ? raw : DEFAULT_SETTINGS.level;
 }
 
 function load() {
@@ -123,7 +140,9 @@ export function emit(event, payload) {
 
 // -- settings ----------------------------------------------------------------
 export function updateSettings(patch) {
-  Object.assign(state.settings, patch);
+  const next = { ...patch };
+  if ('level' in next) next.level = normalizeLevelCode(next.level);
+  Object.assign(state.settings, next);
   persist();
   emit('settings', state.settings);
 }
@@ -397,8 +416,10 @@ export function resetProgress(lang = currentLanguage()) {
   delete state.stats[lang];
   delete state.compositions[lang];
   delete state.grammar[lang];
+  if (state.ability) delete state.ability[lang];
   persist(true);
   emit('deck', lang);
+  emit('ability', lang);
 }
 
 export function resetAll() {

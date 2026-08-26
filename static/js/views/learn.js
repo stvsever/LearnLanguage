@@ -1,10 +1,12 @@
 // Learn view: acquire new items through a guided encoding ladder.
 //
-// Each new item passes three phases built on how memories form:
+// Each new item passes the rungs of a ladder built on how memories form:
 //  1. Present  - dual coding: orthography + IPA + audio + example in context.
 //  2. Recognize - low-effort retrieval (meaning MCQ) right after encoding.
 //  3. Produce  - effortful typed recall, the strongest encoding event.
-// Completed items enter the FSRS pipeline and resurface in Review.
+// With adaptive testing on, the recognition rung drops away once the learner
+// is reliably producing (see adaptive.js). Completed items enter the FSRS
+// pipeline and resurface in Review.
 //
 // Material comes from two sources, both first-class: the curated Topics
 // library (works offline) and AI generation on any topic you can describe.
@@ -22,6 +24,8 @@ import { grade } from '../grading.js';
 import { schedule, Rating } from '../srs.js';
 import { typingInput, verdictPanel, choiceGrid, audioButton, progressBar } from '../exercises.js';
 import { ctx, languageProfile } from '../context.js';
+import { learnLadder, recordAttempt, isEnabled as adaptiveOn } from '../adaptive.js';
+import { allLevels, levelLabel } from '../levels.js';
 
 let session = null; // { queue, index, phase, startedAt }
 let keyHandler = null;
@@ -67,8 +71,7 @@ function renderStart(container, queue, pendingTotal) {
       el('div', { class: 'card start-card' },
         el('div', { class: 'start-icon' }, icon('sparkles', 28)),
         el('h2', {}, `${queue.length} new item${queue.length === 1 ? '' : 's'} ready`),
-        el('p', { class: 'muted' },
-          'Each item is presented with audio and context, then tested immediately: first recognition, then typed recall. Immediate retrieval is what locks new words in.'),
+        el('p', { class: 'muted' }, ladderBlurb()),
         extra > 0 ? el('p', { class: 'muted small' },
           `${extra} more are queued for the coming days (daily limit: ${state.settings.newPerDay}).`) : null,
         el('div', { class: 'row gap center wrap' },
@@ -84,6 +87,17 @@ function renderStart(container, queue, pendingTotal) {
               backTo: () => render(container),
             }),
           }, icon('plus', 16), 'Add material')))));
+}
+
+/** Describes the ladder the next session will actually use. */
+function ladderBlurb() {
+  const ladder = learnLadder(currentLanguage());
+  if (!adaptiveOn()) {
+    return 'Each item is presented with audio and context, then tested immediately: first recognition, then typed recall. Immediate retrieval is what locks new words in.';
+  }
+  return ladder.includes('recognize')
+    ? 'Each item is presented with audio and context, then tested immediately: first recognition, then typed recall. Adaptive testing will drop the recognition step once you are reliably producing.'
+    : 'Adaptive testing has you going straight from presentation to typed recall, the strongest encoding event, because your recognition is already secure.';
 }
 
 function renderCapReached(container, pending, introduced) {
@@ -116,7 +130,14 @@ function renderCapReached(container, pending, introduced) {
 }
 
 function startSession(container, queue) {
-  session = { queue, index: 0, phase: 0, lang: currentLanguage(), startedAt: Date.now(), phaseStart: Date.now() };
+  const lang = currentLanguage();
+  session = {
+    queue, index: 0, phase: 0, lang,
+    // Adaptive testing decides how many rungs the encoding ladder needs: a
+    // learner who reliably produces does not gain from the recognition rung.
+    ladder: learnLadder(lang),
+    startedAt: Date.now(), phaseStart: Date.now(),
+  };
   preload(queue.slice(0, 4).map((c) => c.target), session.lang);
   renderSession(container);
 }
@@ -136,15 +157,16 @@ function renderSession(container) {
         el('button', { class: 'btn btn-ghost btn-sm', onclick: () => { session = null; render(container); } }, 'End session')),
       stage));
 
-  if (session.phase === 0) renderPresent(stage, card, container);
-  else if (session.phase === 1) renderRecognize(stage, card, container);
+  const rung = session.ladder[session.phase];
+  if (rung === 'present') renderPresent(stage, card, container);
+  else if (rung === 'recognize') renderRecognize(stage, card, container);
   else renderProduce(stage, card, container);
 }
 
 function nextPhase(container) {
   session.phase += 1;
   session.phaseStart = Date.now();
-  if (session.phase > 2) {
+  if (session.phase >= session.ladder.length) {
     const card = session.queue[session.index];
     finishItem(card);
     session.index += 1;
@@ -211,6 +233,7 @@ function renderRecognize(stage, card, container) {
     onPick: (correct) => {
       feedbackTone(correct ? 'correct' : 'wrong');
       if (!correct) card._learnFailed = true;
+      recordAttempt({ mode: 'recognize', verdict: correct, card, lang: session.lang });
       setTimeout(() => nextPhase(container), correct ? 700 : 1600);
     },
   });
@@ -243,6 +266,7 @@ function renderProduce(stage, card, container) {
       });
       feedbackTone(result.verdict === 'wrong' ? 'wrong' : 'correct');
       if (result.verdict === 'wrong') card._learnFailed = true;
+      recordAttempt({ mode: 'produce', verdict: result.verdict, card, lang: session.lang });
       typing.input.disabled = true;
       stage.querySelector('.quiz-card').append(
         verdictPanel({ verdict: result.verdict, answer: value, expected: card.target, card, lang: session.lang }),
@@ -336,8 +360,11 @@ function generateForm(container, lang, offline) {
   if (prefill) topicInput.value = prefill;
 
   const levelSelect = el('select', { class: 'input' },
-    (ctx.config?.levels || ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']).map((lv) =>
-      el('option', { value: lv, selected: lv === state.settings.level || undefined }, lv)));
+    allLevels().map((lv) =>
+      el('option', {
+        value: lv.code, title: lv.blurb,
+        selected: lv.code === state.settings.level || undefined,
+      }, `${lv.code} · ${lv.name}`)));
   const countSelect = el('select', { class: 'input' },
     [8, 12, 16, 20, 24].map((n) => el('option', { value: n, selected: n === 12 || undefined }, `${n} items`)));
 
@@ -425,7 +452,9 @@ function resultCard(container, report, pack, topic) {
       el('strong', {}, report.added
         ? `“${pack.topic || topic}” is in your deck`
         : 'Nothing new to add')),
-    el('p', { class: 'muted small' }, lines.join(' · ') || 'No items came back.'),
+    el('p', { class: 'muted small' },
+      [lines.join(' · ') || 'No items came back.', pack.level ? `pitched at ${levelLabel(pack.level)}` : null]
+        .filter(Boolean).join(' · ')),
     !report.added && report.duplicates
       ? el('p', { class: 'muted small' }, 'Try a narrower topic, a higher level, or the topic library for material you do not have yet.')
       : null,

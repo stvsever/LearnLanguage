@@ -56,7 +56,7 @@ Ten focused minutes a day beats a weekend marathon; the streak and heatmap keep 
 | 🏠 **Home** | The single best next action, streak, weekly activity, deck pipeline, and a rotating "today's structure" nudge |
 | 🗂️ **Topics** | The curated library: 8 areas of life, 24 topics, 300 items per language, browsable and addable without any AI key |
 | ✨ **Learn** | The guided encoding ladder, plus lesson generation on any topic at your CEFR level |
-| 🔄 **Review** | The FSRS spaced-repetition queue with four-grade rating, real interval previews, and exercises that get harder as memories get stronger |
+| 🔄 **Review** | The FSRS spaced-repetition queue with four-grade rating, real interval previews, and adaptive exercise selection |
 | 🎧 **Listen** | Dictation and sound-discrimination drills built from your own deck |
 | 🎙️ **Speak** | Pronunciation practice scored word by word with free on-device speech recognition |
 | ✍️ **Compose** | Describe anything; one model call picks the best format and writes it at your level (see below) |
@@ -101,12 +101,27 @@ This one model does three jobs:
 
 The four models in brief: French (fusional Romance: gender and agreement, the verb engine, clitic pronouns, liaison), Spanish (pro-drop, ser/estar, two past aspects, the living subjunctive), Russian (six cases, aspect pairs, motion verbs, word order as information structure), Mandarin (tones, topic-prominence, aspect particles, measure words, complements).
 
+## 🎚️ Levels and adaptive testing
+
+Every level is shown with the adjective that makes it mean something: **A1 Beginner**, **A2 Elementary**, **B1 Intermediate**, **B2 Upper intermediate**, **C1 Advanced**, **C2 Mastery**. One table in `backend/levels.py` feeds the prompts, the interface, and the curriculum, so what the model is told and what you read never drift apart. Topics are marked against your own level too: *below your level*, *stretch*, or *ahead*.
+
+Adaptive testing (Settings, on by default) answers a different question from the scheduler. The scheduler decides **when** a card comes back; this decides **how**:
+
+1. Every exercise mode carries a difficulty: recognise a meaning (0.18), fill a gap in context (0.42), type from meaning (0.58), type what you hear (0.74).
+2. One ability estimate per language, also 0 to 1, moves after every graded answer by an Elo-style step. The step shrinks as evidence accumulates, so early answers move it fast and later ones refine it.
+3. Before each item, the predicted success rate of every mode is computed. The hardest mode still predicted to clear ~80% wins, adjusted for how much trouble that specific card has given you.
+
+The result: a beginner gets recognition, and the ladder unlocks as ability grows, with the ceiling reached only by learners who have earned it. Settings shows exactly what it measured, what it predicts for each retrieval, and whether your CEFR level still matches the evidence. It never changes your level on its own; it points, you decide.
+
+Switch it off and exercises follow the previous fixed rotation. The estimate keeps updating either way, so turning it on later starts from real evidence rather than from scratch.
+
 ## 🧠 The learning science inside
 
 | Principle | Implementation |
 | --- | --- |
 | Spaced repetition | An FSRS scheduler models every card's memory state and times reviews to a configurable target retention (default 90%) |
-| Active recall | Every exposure is a test; the modality escalates with card maturity: recognition, typed production, listening transcription, cloze in context |
+| Adaptive testing | A per-language ability estimate picks the hardest retrieval you are still predicted to pass, aiming at ~80% success: the edge where learning happens |
+| Active recall | Every exposure is a test; the modality escalates with ability: recognition, cloze in context, typed production, listening transcription |
 | Rich encoding | New items pair orthography, pronunciation, audio, and context, then get retrieved twice within the first minute |
 | Comprehensible input | Compositions are written from a brief of exactly what you know, plus a thin layer of inferable new material |
 | Output and noticing | Speaking practice surfaces the gap between what you meant to say and what a recognizer heard |
@@ -119,6 +134,7 @@ The four models in brief: French (fusional Romance: gender and agreement, the ve
 app.py                  # zero-framework HTTP server (Python stdlib) + JSON API
 backend/
 ├── config.py           # env, paths, provider selection, in-app key setup
+├── levels.py           # the CEFR table: names, blurbs, prompt guidance
 ├── languages.py        # language profiles: voices, scripts, recognition locales
 ├── grammar.py          # per-language grammar model -> prompts + UI + progress
 ├── llm.py              # provider chain, schema-validated JSON generation with
@@ -133,7 +149,9 @@ backend/
 static/
 ├── css/                # design system: tokens, components, views (light + dark)
 └── js/
-    ├── srs.js          # FSRS scheduler
+    ├── srs.js          # FSRS scheduler (when a card returns)
+    ├── adaptive.js     # ability estimate + exercise selection (how it returns)
+    ├── levels.js       # CEFR names, ordering, relation to the learner
     ├── grading.js      # normalization, edit distance, diffs, verdicts
     ├── store.js        # localStorage state, migrations, grammar tracking
     ├── audio.js        # TTS client, per-speaker voices, Web Speech fallback
@@ -168,18 +186,26 @@ The easiest path is in-app: **Settings → AI model** connects your OpenRouter k
 ## 🧪 Tests
 
 ```bash
-# Backend: grammar model, curriculum integrity, schemas, offline fallbacks,
-# key setup (47 tests, no network)
+# Backend: grammar model, curriculum integrity, level table, schemas,
+# offline fallbacks, key setup (52 tests, no network)
 python -m unittest discover -s tests -v
 
-# Frontend engines: FSRS scheduler, grading, deck store (27 tests, Node 20+)
+# Frontend engines: FSRS scheduler, grading, deck store, adaptive testing
+# and the level model (57 tests, Node 20+)
 node --test tests/*.test.mjs
 ```
 
-The curriculum tests are the load-bearing ones: they assert that every language
-covers the whole taxonomy, that no item is missing a field, that no card target
-repeats across units (which would silently collapse two cards into one), and
-that every declared grammar id exists in the grammar model.
+Two suites carry most of the weight:
+
+- **Curriculum**: every language covers the whole taxonomy, no item is missing a
+  field, no card target repeats across units (which would silently collapse two
+  cards into one), and every declared grammar id exists in the grammar model.
+- **Adaptive**: every exercise mode is actually *reachable*. The first
+  calibration spaced the mode difficulties so widely that typed production and
+  dictation could never clear the selection target at any attainable ability,
+  which would have pinned every learner to the easiest rung forever. That bug is
+  invisible in the interface and obvious in arithmetic, so it is pinned in
+  arithmetic.
 
 ## 🔒 Privacy
 

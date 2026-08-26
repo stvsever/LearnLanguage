@@ -22,8 +22,7 @@ from __future__ import annotations
 from typing import Dict, List, Optional
 
 from .languages import normalize_language_code
-
-CEFR_ORDER = ("A1", "A2", "B1", "B2", "C1", "C2")
+from .levels import CEFR_ORDER  # noqa: F401 - re-exported for callers and tests
 
 
 def _f(fid: str, name: str, tip: str, example: str, example_en: str) -> dict:

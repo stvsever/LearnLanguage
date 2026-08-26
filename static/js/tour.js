@@ -37,9 +37,14 @@ const STEPS = [
     body: 'Memories consolidate during sleep, so daily contact beats weekend marathons. The flame keeps you honest.',
   },
   {
+    target: null,
+    title: 'It measures you, then adapts',
+    body: 'Adaptive testing keeps one ability estimate per language and moves it after every answer. It then picks the hardest retrieval you are still likely to pass: recognition at first, then gaps in context, typed recall, and finally typing from audio alone. Settings shows exactly what it measured and what it predicts, and tells you when your CEFR level no longer matches the evidence.',
+  },
+  {
     target: '[data-tour="settings"]',
     title: 'Make it yours',
-    body: 'Voices, speech speed, daily limits, target retention, accent strictness, themes, data export - everything is adjustable in Settings.',
+    body: 'Voices, speech speed, daily limits, target retention, adaptive testing, accent strictness, themes, data export - everything is adjustable in Settings.',
   },
   {
     target: null,

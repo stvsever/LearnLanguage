@@ -9,7 +9,7 @@
 // offers "extend with AI", which generates fresh material inside that unit's
 // scope while avoiding everything already curated or already in the deck.
 
-import { el, icon, toast, fmtInt, progressSteps } from '../ui.js';
+import { el, icon, toast, fmtInt, progressSteps, paint } from '../ui.js';
 import { api, ApiError } from '../api.js';
 import {
   state, addCards, currentLanguage, unitCoverage, deckIndex, normalizeTarget,
@@ -17,12 +17,11 @@ import {
 } from '../store.js';
 import { audioButton } from '../exercises.js';
 import { ctx, languageProfile } from '../context.js';
+import { levelName, levelBlurb, levelLabel, levelRelation, levelIndex, LEVEL_ORDER } from '../levels.js';
 
 const treeCache = new Map();   // lang -> { domains, path, summary }
 const unitCache = new Map();   // `${lang}:${unitId}` -> unit detail
 let searchTimer = null;
-
-const LEVELS = ['A1', 'A2', 'B1', 'B2'];
 
 export function cleanup() {
   clearTimeout(searchTimer);
@@ -55,7 +54,7 @@ function renderShell(container, lang, fill) {
   loadTree(lang).then((tree) => {
     if (currentLanguage() !== lang) return;
     if (!tree) {
-      host.replaceChildren(el('div', { class: 'card start-card' },
+      paint(host, el('div', { class: 'card start-card' },
         el('h2', {}, 'Library unavailable'),
         el('p', { class: 'muted' }, 'Could not reach the local server. Is app.py still running?'),
         el('button', { class: 'btn btn-primary', onclick: () => render(container) }, 'Try again')));
@@ -120,8 +119,23 @@ function ring(done, total, size = 40) {
   return wrap;
 }
 
-function levelChip(level, extraClass = '') {
-  return el('span', { class: `level-chip ${extraClass}`.trim() }, level);
+/**
+ * A level chip always shows the code; the compact variants also show the name,
+ * because "A2" on its own tells a learner nothing about whether to click.
+ */
+function levelChip(level, { size = '', withName = false } = {}) {
+  return el('span', {
+    class: `level-chip ${size}`.trim(), title: `${levelLabel(level)}: ${levelBlurb(level)}`,
+  },
+    el('strong', {}, level),
+    withName ? el('span', { class: 'level-chip-name' }, levelName(level)) : null);
+}
+
+/** How this unit sits against the learner's own level. */
+function relationChip(unitLevel) {
+  const relation = levelRelation(unitLevel, state.settings.level);
+  if (relation.key === 'at') return null; // the default needs no label
+  return el('span', { class: `relation-chip r-${relation.key}`, title: relation.label }, relation.short);
 }
 
 function searchBox(lang, initial = '') {
@@ -154,7 +168,7 @@ function renderOverview(host, lang) {
   const inDeck = available.reduce((a, u) => a + Math.min(coverage[u.id]?.inDeck || 0, u.itemCount), 0);
 
   if (!available.length) {
-    host.replaceChildren(
+    paint(host, 
       el('div', { class: 'card start-card' },
         el('div', { class: 'start-icon' }, icon('layers', 26)),
         el('h2', {}, `No curated ${profile?.display || ''} units yet`),
@@ -165,12 +179,17 @@ function renderOverview(host, lang) {
 
   const next = nextUnit(data, coverage);
 
-  host.replaceChildren(
+  paint(host, 
     el('header', { class: 'topics-hero' },
       el('div', { class: 'topics-hero-text' },
         el('h1', {}, 'Topic library'),
         el('p', { class: 'muted' },
-          `${fmtInt(totalItems)} curated ${profile?.display || ''} items across ${available.length} topics in ${data.domains.length} areas of life. Everything here works without an AI key.`)),
+          `${fmtInt(totalItems)} curated ${profile?.display || ''} items across ${available.length} topics in ${data.domains.length} areas of life. Everything here works without an AI key.`),
+        el('p', { class: 'muted small' },
+          `You are set to ${levelLabel(state.settings.level)}. `,
+          el('button', {
+            class: 'btn-link', onclick: () => ctx.navigate('progress'),
+          }, 'Levels are explained in Progress'))),
       el('div', { class: 'topics-hero-progress' },
         ring(inDeck, totalItems, 62),
         el('div', { class: 'topics-hero-stat' },
@@ -183,9 +202,10 @@ function renderOverview(host, lang) {
       el('div', { class: 'next-unit-text' },
         el('span', { class: 'focus-kicker' }, icon('target', 14), 'Suggested next'),
         el('strong', {}, next.title),
-        el('span', { class: 'muted' }, next.goal)),
+        el('span', { class: 'muted' }, next.goal),
+        el('span', { class: 'muted small' }, levelRelation(next.level, state.settings.level).label)),
       el('div', { class: 'row gap' },
-        levelChip(next.level, 'big'),
+        levelChip(next.level, { size: 'big', withName: true }),
         el('button', {
           class: 'btn btn-primary',
           onclick: () => ctx.navigate('topics', next.domain, next.id),
@@ -193,17 +213,37 @@ function renderOverview(host, lang) {
 
     el('div', { class: 'level-filter', role: 'group', 'aria-label': 'Filter by level' },
       el('span', { class: 'muted small' }, 'Level'),
-      ['all', ...LEVELS].map((lv) => el('button', {
+      ['all', ...presentLevels(available), 'mine'].map((lv) => el('button', {
         class: `filter-chip${levelFilter === lv ? ' active' : ''}`, type: 'button',
+        title: lv === 'all' ? 'Every level'
+          : lv === 'mine' ? `Everything at or below ${levelLabel(state.settings.level)}`
+            : `${levelLabel(lv)}: ${levelBlurb(lv)}`,
         onclick: () => { updateSettings({ topicLevelFilter: lv }); renderOverview(host, lang); },
-      }, lv === 'all' ? 'All' : lv))),
+      },
+        lv === 'all' ? 'All'
+          : lv === 'mine' ? `Up to ${state.settings.level}`
+            : el('span', { class: 'filter-chip-inner' },
+              el('strong', {}, lv), el('span', {}, levelName(lv)))))),
 
     el('div', { class: 'domain-grid' },
       data.domains.map((domain) => domainCard(domain, coverage, levelFilter))));
 }
 
+/** Which levels this language actually ships units at, in scale order. */
+function presentLevels(units) {
+  const present = new Set(units.map((u) => u.level));
+  return LEVEL_ORDER.filter((code) => present.has(code));
+}
+
+/** One place decides what the level filter means, including "up to mine". */
+function matchesFilter(unit, levelFilter) {
+  if (levelFilter === 'all') return true;
+  if (levelFilter === 'mine') return levelIndex(unit.level) <= levelIndex(state.settings.level);
+  return unit.level === levelFilter;
+}
+
 function domainCard(domain, coverage, levelFilter) {
-  const units = domain.units.filter((u) => u.available && (levelFilter === 'all' || u.level === levelFilter));
+  const units = domain.units.filter((u) => u.available && matchesFilter(u, levelFilter));
   const total = units.reduce((a, u) => a + u.itemCount, 0);
   const done = units.reduce((a, u) => a + Math.min(coverage[u.id]?.inDeck || 0, u.itemCount), 0);
   if (!units.length) return null;
@@ -220,18 +260,21 @@ function domainCard(domain, coverage, levelFilter) {
       el('span', {}, `${units.length} topic${units.length === 1 ? '' : 's'}`),
       el('span', { class: 'dot-sep' }, '·'),
       el('span', {}, `${total} items`),
-      el('span', { class: 'domain-levels' }, [...new Set(units.map((u) => u.level))].sort().map((lv) => levelChip(lv)))));
+      el('span', { class: 'domain-levels' }, presentLevels(units).map((lv) => levelChip(lv)))));
 }
 
-/** First unit on the recommended path that is not yet fully in the deck. */
+/**
+ * The next unit worth opening: first incomplete unit on the level-ordered path,
+ * preferring anything at or below the learner's own level so a beginner is not
+ * pointed at a B2 unit just because the A-levels happen to be finished.
+ */
 function nextUnit(data, coverage) {
   const byId = new Map(data.domains.flatMap((d) => d.units).map((u) => [u.id, u]));
-  for (const id of data.path) {
-    const unit = byId.get(id);
-    if (!unit?.available) continue;
-    if ((coverage[id]?.inDeck || 0) < unit.itemCount) return unit;
-  }
-  return null;
+  const incomplete = data.path
+    .map((id) => byId.get(id))
+    .filter((unit) => unit?.available && (coverage[unit.id]?.inDeck || 0) < unit.itemCount);
+  const userIndex = levelIndex(state.settings.level);
+  return incomplete.find((unit) => levelIndex(unit.level) <= userIndex) || incomplete[0] || null;
 }
 
 // -- level 2: one domain ------------------------------------------------------
@@ -240,9 +283,12 @@ function renderDomain(host, lang, domainId) {
   const domain = data.domains.find((d) => d.id === domainId);
   if (!domain) { ctx.navigate('topics'); return; }
   const coverage = unitCoverage(lang);
-  const units = domain.units.filter((u) => u.available);
+  const all = domain.units.filter((u) => u.available);
+  const levelFilter = state.settings.topicLevelFilter || 'all';
+  const units = all.filter((u) => matchesFilter(u, levelFilter));
+  const hidden = all.length - units.length;
 
-  host.replaceChildren(
+  paint(host, 
     crumbs({ label: 'Topics', to: ['topics'] }, { label: domain.title }),
     el('header', { class: `domain-hero accent-${domain.accent}` },
       el('span', { class: 'domain-icon big' }, icon(domain.icon, 26)),
@@ -250,9 +296,16 @@ function renderDomain(host, lang, domainId) {
         el('h1', {}, domain.title),
         el('p', { class: 'muted' }, domain.blurb))),
     searchBox(lang),
+    hidden > 0 ? el('div', { class: 'filter-note' },
+      el('span', { class: 'muted small' },
+        `${hidden} topic${hidden === 1 ? '' : 's'} hidden by the level filter.`),
+      el('button', {
+        class: 'btn-link',
+        onclick: () => { updateSettings({ topicLevelFilter: 'all' }); renderDomain(host, lang, domainId); },
+      }, 'Show all levels')) : null,
     units.length
       ? el('div', { class: 'unit-list' }, units.map((unit) => unitRow(unit, coverage[unit.id], domain)))
-      : el('p', { class: 'muted' }, 'No authored units in this area for this language yet.'));
+      : el('p', { class: 'muted' }, 'No topics in this area match the current level filter.'));
 }
 
 function unitRow(unit, cover, domain) {
@@ -265,8 +318,9 @@ function unitRow(unit, cover, domain) {
   },
     el('div', { class: 'unit-row-main' },
       el('div', { class: 'unit-row-title' },
-        levelChip(unit.level),
+        levelChip(unit.level, { withName: true }),
         el('strong', {}, unit.title),
+        relationChip(unit.level),
         inDeck >= unit.itemCount ? el('span', { class: 'unit-done' }, icon('check', 12), 'in deck') : null),
       el('span', { class: 'unit-goal' }, unit.goal),
       el('div', { class: 'unit-keywords' }, unit.keywords.map((k) => el('span', { class: 'kw' }, k)))),
@@ -282,13 +336,13 @@ function unitRow(unit, cover, domain) {
 function renderUnit(host, lang, domainId, unitId) {
   const data = tree(lang);
   const domain = data.domains.find((d) => d.id === domainId);
-  host.replaceChildren(el('div', { class: 'topics-loading' }, el('span', { class: 'spinner dark' }), ' Loading topic…'));
+  paint(host, el('div', { class: 'topics-loading' }, el('span', { class: 'spinner dark' }), ' Loading topic…'));
 
   loadUnit(lang, unitId).then((unit) => {
     if (currentLanguage() !== lang) return;
     paintUnit(host, lang, domain, unit);
   }).catch((err) => {
-    host.replaceChildren(
+    paint(host, 
       crumbs({ label: 'Topics', to: ['topics'] }, { label: domain?.title || 'Topic' }),
       el('div', { class: 'card start-card' },
         el('h2', {}, 'Topic unavailable'),
@@ -367,7 +421,7 @@ function paintUnit(host, lang, domain, unit) {
       return row;
     }))));
 
-  host.replaceChildren(
+  paint(host, 
     crumbs(
       { label: 'Topics', to: ['topics'] },
       { label: domain?.title || unit.domainTitle, to: ['topics', unit.domain] },
@@ -375,9 +429,13 @@ function paintUnit(host, lang, domain, unit) {
 
     el('header', { class: 'unit-hero' },
       el('div', { class: 'unit-hero-main' },
-        el('div', { class: 'row gap' }, levelChip(unit.level, 'big'), el('span', { class: 'muted small' }, unit.domainTitle)),
+        el('div', { class: 'row gap wrap' },
+          levelChip(unit.level, { size: 'big', withName: true }),
+          relationChip(unit.level),
+          el('span', { class: 'muted small' }, unit.domainTitle)),
         el('h1', {}, unit.title),
         el('p', { class: 'unit-hero-goal' }, icon('target', 15), el('span', {}, unit.goal)),
+        el('p', { class: 'unit-hero-level muted small' }, levelBlurb(unit.level)),
         unit.grammar?.length ? el('div', { class: 'unit-grammar' },
           el('span', { class: 'muted small' }, 'Grammar exercised:'),
           unit.grammar.map((fid) => el('button', {
@@ -484,7 +542,7 @@ function extendCard(lang, unit, host, domain) {
 function renderSearch(host, lang, query) {
   const data = tree(lang);
   const profile = languageProfile(lang);
-  host.replaceChildren(
+  paint(host, 
     crumbs({ label: 'Topics', to: ['topics'] }, { label: `Search: ${query}` }),
     searchBox(lang, query),
     el('div', { class: 'topics-loading' }, el('span', { class: 'spinner dark' }), ' Searching…'));
@@ -501,7 +559,7 @@ function renderSearch(host, lang, query) {
           class: 'search-unit', type: 'button',
           onclick: () => ctx.navigate('topics', u.domain, u.id),
         },
-          levelChip(u.level),
+          levelChip(u.level, { withName: true }),
           el('strong', {}, u.title),
           el('span', { class: 'muted small' }, `${u.domainTitle} · ${u.itemCount} items`))))));
     }
@@ -558,14 +616,14 @@ function renderSearch(host, lang, query) {
           }, icon('sparkles', 16), 'Generate a lesson on this'))));
     }
 
-    host.replaceChildren(
+    paint(host, 
       crumbs({ label: 'Topics', to: ['topics'] }, { label: `Search: ${query}` }),
       searchBox(lang, query),
       ...body);
     const input = host.querySelector('.topics-search');
     if (input) { input.focus(); input.setSelectionRange(query.length, query.length); }
   }).catch(() => {
-    host.replaceChildren(
+    paint(host, 
       crumbs({ label: 'Topics', to: ['topics'] }, { label: 'Search' }),
       el('p', { class: 'muted' }, 'Search is unavailable right now.'));
   });

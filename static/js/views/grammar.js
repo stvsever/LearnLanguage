@@ -11,6 +11,7 @@ import { state, grammarSeen, currentLanguage } from '../store.js';
 import { api } from '../api.js';
 import { speak } from '../audio.js';
 import { ctx, languageProfile } from '../context.js';
+import { levelName, levelBlurb, levelLabel } from '../levels.js';
 
 const profileCache = new Map(); // lang -> grammar profile
 
@@ -71,7 +72,7 @@ function renderProfile(container, profile, lang) {
         el('div', { class: 'roadmap-head' },
           el('h3', {}, 'The roadmap'),
           el('p', { class: 'muted small' },
-            `CEFR-staged structures. Counters show how often your generated lessons and compositions have used each one. Your level: ${userLevel}.`)),
+            `CEFR-staged structures. Counters show how often your generated lessons and compositions have used each one. Your level: ${levelLabel(userLevel)}.`)),
         el('div', { class: 'roadmap' },
           Object.entries(profile.roadmap).map(([level, features]) =>
             levelBlock(level, features, seen, userLevel, lang, focus)))),
@@ -102,8 +103,10 @@ function levelBlock(level, features, seen, userLevel, lang, focus) {
     class: `roadmap-level${isCurrent ? ' current' : ''}`,
     open: (isCurrent || containsFocus) || undefined,
   },
-    el('summary', {},
-      el('span', { class: `level-chip big${isCurrent ? ' active' : ''}` }, level),
+    el('summary', { title: levelBlurb(level) },
+      el('span', { class: `level-chip big${isCurrent ? ' active' : ''}` },
+        el('strong', {}, level),
+        el('span', { class: 'level-chip-name' }, levelName(level))),
       el('span', { class: 'roadmap-level-label' }, isCurrent ? 'Your level' : ''),
       el('span', { class: 'roadmap-coverage' },
         el('span', { class: 'coverage-track' },

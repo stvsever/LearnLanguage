@@ -8,6 +8,7 @@ import {
 } from '../store.js';
 import { api } from '../api.js';
 import { ctx, languageProfile } from '../context.js';
+import { levelLabel } from '../levels.js';
 
 const DAY_MS = 86400000;
 
@@ -171,7 +172,7 @@ async function fillFocus(lang) {
   card.replaceChildren(
     el('div', { class: 'focus-body' },
       el('div', { class: 'focus-text' },
-        el('span', { class: 'focus-kicker' }, icon('zap', 14), `Today's structure · ${state.settings.level}`),
+        el('span', { class: 'focus-kicker' }, icon('zap', 14), `Today's structure · ${levelLabel(state.settings.level)}`),
         el('strong', { class: 'focus-name' }, feature.name),
         el('span', { class: 'focus-tip' }, feature.tip),
         el('span', { class: 'focus-example' }, `${feature.example} - ${feature.example_en}`)),
